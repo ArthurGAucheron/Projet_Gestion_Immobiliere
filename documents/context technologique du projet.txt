@@ -1,0 +1,12 @@
+-----------------------------------
+Context technologique du projet 
+-----------------------------------
+	
+	> context agile : scrum ( gitlab / trello )
+	
+	> Angular 
+	> JWT (JSON Web Token) pour l'authentification
+	> spring boot
+	> Spring Data - Repository 
+	> Spring WebService 
+	> MySQL
