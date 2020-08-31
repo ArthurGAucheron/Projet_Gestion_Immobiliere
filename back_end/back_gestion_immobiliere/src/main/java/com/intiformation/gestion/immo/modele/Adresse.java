@@ -103,6 +103,9 @@ public class Adresse {
 	public void setLocalite(String localite) {
 		this.localite = localite;
 	}
+public class Adresse {
+
+	private String pays ;
 
 	public String getPays() {
 		return pays;
@@ -140,3 +143,5 @@ public class Adresse {
 	*/
 	
 }//end class
+	
+}
