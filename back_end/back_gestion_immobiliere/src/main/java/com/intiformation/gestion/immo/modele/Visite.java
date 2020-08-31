@@ -40,7 +40,7 @@ public class Visite {
 	 */
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="conseiller_id", referencedColumnName="id_conseiller")
-	private ConseillerImmobilier conseiller;
+	private ConseillerImmobilier conseillers;
 	
 	
 	///// CTOR ///////
@@ -88,13 +88,14 @@ public class Visite {
 		this.dateVisite = dateVisite;
 	}
 
-	public ConseillerImmobilier getConseiller() {
-		return conseiller;
+	public ConseillerImmobilier getConseillers() {
+		return conseillers;
 	}
 
-	public void setConseiller(ConseillerImmobilier conseiller) {
-		this.conseiller = conseiller;
+	public void setConseillers(ConseillerImmobilier conseillers) {
+		this.conseillers = conseillers;
 	}
+
 	
 	
 

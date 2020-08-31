@@ -41,7 +41,7 @@ public class Contrat {
 	 */
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="conseiller_id" , referencedColumnName="id_conseiller")
-	private ConseillerImmobilier conseiller;
+	private ConseillerImmobilier conseillers;
 
 	///// CTOR ///////
 	public Contrat() {
@@ -97,11 +97,11 @@ public class Contrat {
 	}
 
 	public ConseillerImmobilier getConseiller() {
-		return conseiller;
+		return conseillers;
 	}
 
-	public void setConseiller(ConseillerImmobilier conseiller) {
-		this.conseiller = conseiller;
+	public void setConseiller(ConseillerImmobilier conseillers) {
+		this.conseillers = conseillers;
 	}
 	
 

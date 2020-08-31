@@ -38,6 +38,20 @@ public class ConseillerImmobilier {
 	@Column(name = "telephone")
 	private String telephone;
 	
+	/// ASSOCIATIONS /////
+	/**
+	 * Association OneToMany
+	 * One Conseillers To Many Visite
+	 */
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="conseillers")
+	private List<Visite> visite;
+	
+	/**
+	 * Association OneToMany
+	 * One Conseillers To Many Contrat
+	 */
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="conseillers")
+	private List<Contrat> contrat;
 	
 	////// Ctor /////
 	public ConseillerImmobilier() {
@@ -125,15 +139,6 @@ public class ConseillerImmobilier {
 	public void setVisite(List<Visite> visite) {
 		this.visite = visite;
 	}
-
-	public List<Contrat> getContrat() {
-		return contrat;
-	}
-
-	public void setContrat(List<Contrat> contrat) {
-		this.contrat = contrat;
-	}
-	
 	
 
 }// END CLASS
