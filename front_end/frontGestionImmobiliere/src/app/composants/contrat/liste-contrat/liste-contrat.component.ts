@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ContratService } from "src/app/services/contrat/contrat.service";
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-liste-contrat',
   templateUrl: './liste-contrat.component.html',
@@ -7,9 +8,20 @@ import { ContratService } from "src/app/services/contrat/contrat.service";
 })
 export class ListeContratComponent implements OnInit {
 
-  constructor(private contratService : ContratService) { }
+  contrats = [];
+
+
+  constructor(private contratService : ContratService, private router : Router) { }
 
   ngOnInit(): void {
+    this.findAllContrat();
   }
 
+  findAllContrat(){
+    this.contratService.getAllContrat().subscribe(data => this.contrats =data)
+  }
+  
+  editContrat(idContrat : number ){
+    this.router.navigate([ 'edit/contrat', idContrat])
+  }
 }

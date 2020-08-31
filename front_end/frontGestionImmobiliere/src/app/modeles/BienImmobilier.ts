@@ -1,6 +1,9 @@
 import { ClasseStandard } from "./ClasseStandard";
 import { Visite } from "./Visite";
 import { Contrat } from "./Contrat";
+import { Proprietaire } from "./Proprietaire";
+import { Adresse } from './Adresse';
+import { Client } from './Client';
 
 export class BienImmobilier{
 
@@ -12,15 +15,10 @@ export class BienImmobilier{
     revenuCadastral : number;
     descriptif : String;
     classeStandard : ClasseStandard;
-    visites : Visite[];
+    listeVisite : Array<Visite>;
     contrat : Contrat;
-
-    /*
-    proprietaire : proprietaire;
-    adresse : adresse;
-    clients : client[];
-    */
-
-
-
+    proprietaire : Proprietaire;
+    adresse : Adresse;
+    listeClients : Array<Client>;
+ 
 }

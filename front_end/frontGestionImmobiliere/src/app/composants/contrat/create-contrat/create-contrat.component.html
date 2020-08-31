@@ -1,1 +1,43 @@
-<p>create-contrat works!</p>
+<form (ngSubmit)="saveContrat()">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Adding an employee</h3>
+        </div>
+        <div class="panel-body">
+
+            <div class="form-group">
+                <label for="pNom">Name :</label>
+                <input type="text" id="pNom" class="form-control" placeholder="Enter name" [(ngModel)]="employe.nom" name="nom"/>
+            </div>
+
+            <div class="form-group">
+                <label for="pFonction">Fonction :</label>
+                <input type="text" id="pFonction" class="form-control" placeholder="Enter fonction" [(ngModel)]="employe.fonction" name="fonction"/>
+            </div>
+
+            <div class="form-group">
+                <label for="pSalaire">Salary :</label>
+                <input type="text" id="pSalaire" class="form-control" placeholder="Enter salary" [(ngModel)]="employe.salaire"  name="salaire"/>
+            </div>
+
+            <div class="form-group">
+                <label for="pImage">Image :</label>
+                <input type="text" id="pImage" class="form-control" placeholder="Saisir l'url de l'image" [(ngModel)]="employe.urlImage" name="urlImage"/>
+            </div>
+
+            <div class="form-group">
+                <button type="button" class="btn btn-primary" (click)="toggleImagePreview()"> {{previewImage ? "Masquer" : "Afficher"}} l'apperçu de l'image</button>
+            </div>
+
+            <div class="form-group">
+                <img [src]="employe.urlImage" *ngIf="previewImage" width="200" height="200"/>
+            </div>
+
+        </div>
+        <div class="panel-footer">
+            <button type="submit" class="btn btn-primary">{{employe.idEmploye ? "Modifier" : "Ajouter"}}</button>
+        </div>
+        
+
+    </div>
+</form>
