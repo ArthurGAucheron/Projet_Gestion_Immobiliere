@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "frontGestionImmobiliere"
+    }
+  },
+  "defaultProject": "frontGestionImmobiliere",
+  "cli": {
+    "analytics": "d3a779ea-9261-4afb-8da7-cf3e48e9b440"
+  }
 }
