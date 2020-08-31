@@ -21,7 +21,7 @@ public class BienAchat extends BienImmobilier {
 	// ______________constructeurs______________
 
 	public BienAchat() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public BienAchat(double prix, String etat) {
