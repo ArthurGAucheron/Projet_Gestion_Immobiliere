@@ -51,8 +51,8 @@ public class Adresse {
 	private List<Client> clients;
 	
 	//association avec BienImmobilier : One to Many (une adresse pour plusieurs biens)
-	//@OneToMany(targetEntity=BienImmobilier.class, mappedBy="idBien")
-	//private List<BienImmobilier> biensImmobilier;
+	@OneToMany(targetEntity=BienImmobilier.class, mappedBy="idBien")
+	private List<BienImmobilier> biensImmobilier;
 	
 	/*_______________ ctor ______________*/
 	/**
@@ -103,35 +103,8 @@ public class Adresse {
 	public void setLocalite(String localite) {
 		this.localite = localite;
 	}
-public class Adresse {
 
-	private String pays ;
-
-	public String getPays() {
-		return pays;
-	}
-
-	public void setPays(String pays) {
-		this.pays = pays;
-	}
-
-	public List<Proprietaire> getProprietaires() {
-		return proprietaires;
-	}
-
-	public void setProprietaires(List<Proprietaire> proprietaires) {
-		this.proprietaires = proprietaires;
-	}
-
-	public List<Client> getClients() {
-		return clients;
-	}
-
-	public void setClients(List<Client> clients) {
-		this.clients = clients;
-	}
-
-	/*
+	
 	public List<BienImmobilier> getBiensImmobilier() {
 		return biensImmobilier;
 	}
@@ -140,8 +113,7 @@ public class Adresse {
 		this.biensImmobilier = biensImmobilier;
 	}
 	
-	*/
+	
 	
 }//end class
 	
-}

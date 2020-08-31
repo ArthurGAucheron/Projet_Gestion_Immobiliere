@@ -8,7 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -39,29 +42,28 @@ public class Client {
 	private Adresse adresse;
 	
 	//association avec BienImmobilier : Many to Many (plusieurs clients pour plusieurs biens immobiliers)
-	//@ManyToMany
-	//@JoinTable(name="clients_assoc_biens", joinColumns= @JoinColumn(name="client_id"), inverseJoinColumns=@JoinColumn(name="bien_id"))
-	//private List<BienImmobilier> biensImmobiliers;
+	@ManyToMany
+	@JoinTable(name="clients_assoc_biens", joinColumns= @JoinColumn(name="client_id"), inverseJoinColumns=@JoinColumn(name="bien_id"))
+	private List<BienImmobilier> biensImmobiliers;
 	
 	//association avec ClasseStandard : Many to Many (plusieurs clients pour plusieurs classes standards)
-	//@ManyToMany
-	//@JoinTable(name="clients_assoc_classe", joinColumns= @JoinColumn(name="client_id"), inverseJoinColumns=@JoinColumn(name="classe_id"))
-	//private List<ClasseStandard> classesStandard;
+	@ManyToMany
+	@JoinTable(name="clients_assoc_classe", joinColumns= @JoinColumn(name="client_id"), inverseJoinColumns=@JoinColumn(name="classe_id"))
+	private List<ClasseStandard> classesStandard;
 	
 	//association avec Visite : One to Many (un client pour plusieurs visites)
-	//@OneToMany(targetEntity=Visite.class, mappedBy="idVisite")
-	//private List<Visite> visites;
+	@OneToMany(targetEntity=Visite.class, mappedBy="client")
+	private List<Visite> visites;
 	
 	//association avec Contrat : One to Many (un client pour plusieurs contrats)
-	//@OneToMany(targetEntity=Contrat.class, mappedBy="idContrat")
-	//private List<Contrat> contrats;
+	@OneToMany(targetEntity=Contrat.class, mappedBy="client")
+	private List<Contrat> contrats;
 	
 	/*_______________ ctor ______________*/
 	/**
 	 * ctor vide
 	 */
 	public Client() {
-		// TODO Auto-generated constructor stub
 	}
 
 	
@@ -99,7 +101,7 @@ public class Client {
 		this.adresse = adresse;
 	}
 
-	/*
+	
 	public List<BienImmobilier> getBiensImmobiliers() {
 		return biensImmobiliers;
 	}
@@ -134,9 +136,6 @@ public class Client {
 	public void setClassesStandard(List<ClasseStandard> classesStandard) {
 		this.classesStandard = classesStandard;
 	}
-	
-	*/
-	
 	
 		
 	

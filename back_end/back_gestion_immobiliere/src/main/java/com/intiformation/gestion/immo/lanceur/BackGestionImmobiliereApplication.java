@@ -24,8 +24,7 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
  * @author giovanni
  *
  */
-@SpringBootApplication
-//désactivation de la config par défaut de spring boot pour la co à la bdd
+@SpringBootApplication //désactivation de la config par défaut de spring boot pour la co à la bdd
 @EnableAutoConfiguration(exclude = {
 	DataSourceAutoConfiguration.class,
 	DataSourceTransactionManagerAutoConfiguration.class,

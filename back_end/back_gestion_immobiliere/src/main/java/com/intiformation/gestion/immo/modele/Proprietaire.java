@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -42,8 +43,9 @@ public class Proprietaire {
 	private Adresse adresse;
 	
 	//association avec BienImmobilier : One to Many (un propriétaire pour plusieurs bien immobilier)
-	//@OneToMany(targetEntity=BienImmoblier.class, mappedBy="idBien")
-	//private List<BienImmoblier> biensImmobiliers;
+	@OneToMany(targetEntity=BienImmobilier.class, mappedBy="idBien")
+	private List<BienImmobilier> biensImmobiliers;
+
 	
 	/*_______________ ctor ______________*/
 	/**
@@ -96,15 +98,15 @@ public class Proprietaire {
 		this.adresse = adresse;
 	}
 
-	/*
-	public List<BienImmoblier> getBiensImmobiliers() {
+	
+	public List<BienImmobilier> getBiensImmobiliers() {
 		return biensImmobiliers;
 	}
 
-	public void setBiensImmobiliers(List<BienImmoblier> biensImmobiliers) {
+	public void setBiensImmobiliers(List<BienImmobilier> biensImmobiliers) {
 		this.biensImmobiliers = biensImmobiliers;
 	}
-	*/
+	
 	
 	
 }//end class

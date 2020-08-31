@@ -2,6 +2,7 @@ package com.intiformation.gestion.immo.modele;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
@@ -13,6 +14,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -53,16 +55,31 @@ public abstract class BienImmobilier {
 	@Column(name = "descriptif")
 	private String descriptif;
 
-	@Column(name = "classe")
+	
 	@ManyToOne
 	@JoinColumn(name="classe_id", referencedColumnName="id_classe")
 	private ClasseStandard classe;
 	
-	@Column(name = "adresse")
+
 	@ManyToOne
 	@JoinColumn(name="adresse_id", referencedColumnName="id_adresse")
 	private Adresse adresse;
 	
+	/**
+	 * Association entre BienImmobilier et propriétaire
+	 * Many bienimmo To One Proprio
+	 */
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="proprietaire_id", referencedColumnName="id_proprietaire")
+	private Proprietaire proprietaire;
+	
+	/**
+	 * Association entre BienImmobilier et propriétaire
+	 * One bienimmo To One Contrat
+	 */
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="contrat_id", referencedColumnName="id_contrat")
+	private Contrat contrat;
 
 	// ______________constructeurs______________
 
@@ -159,9 +176,26 @@ public abstract class BienImmobilier {
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
 	}
+	
 
 	// ______________toString()______________
 	
+	public Proprietaire getProprietaire() {
+		return proprietaire;
+	}
+
+	public void setProprietaireId(Proprietaire proprietaire) {
+		this.proprietaire = proprietaire;
+	}
+
+	public Contrat getContrat() {
+		return contrat;
+	}
+
+	public void setContrat(Contrat contrat) {
+		this.contrat = contrat;
+	}
+
 	@Override
 	public String toString() {
 		return "BienImmobilier [idBien=" + idBien + ", libelle=" + libelle + ", dateSoumission=" + dateSoumission

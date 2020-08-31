@@ -139,6 +139,15 @@ public class ConseillerImmobilier {
 	public void setVisite(List<Visite> visite) {
 		this.visite = visite;
 	}
+
+	public List<Contrat> getContrat() {
+		return contrat;
+	}
+
+	public void setContrat(List<Contrat> contrat) {
+		this.contrat = contrat;
+	}
+	
 	
 
 }// END CLASS
