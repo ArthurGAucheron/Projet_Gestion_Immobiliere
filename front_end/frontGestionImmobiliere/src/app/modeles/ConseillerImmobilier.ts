@@ -1,4 +1,5 @@
 import { Visite } from "./Visite";
+import { Contrat } from './Contrat';
 
 export class ConseillerImmobilier{
     idConseiller: number;
@@ -7,5 +8,5 @@ export class ConseillerImmobilier{
     nom: string;
     telephone: string;
     listeVisites: Array<Visite>;
-    //listeContrat: Array<Contrat>;
+    listeContrat: Array<Contrat>;
 }

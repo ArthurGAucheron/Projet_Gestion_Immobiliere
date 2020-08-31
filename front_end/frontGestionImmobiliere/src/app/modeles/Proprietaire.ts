@@ -1,4 +1,5 @@
 import { Adresse } from "./Adresse";
+import { BienImmobilier } from './BienImmobilier';
 
 export class Proprietaire{
     idProprietaire : number;
@@ -6,5 +7,5 @@ export class Proprietaire{
     telPrive: string;
     telTravail: string;
     adresse : Adresse;
-    //listeBienImmobilier: Array<BienImmobilier>;
+    listeBienImmobilier: Array<BienImmobilier>;
 }

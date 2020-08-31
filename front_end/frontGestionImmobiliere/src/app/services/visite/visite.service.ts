@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Visite } from '../../modeles/Visite';
 import { Observable } from 'rxjs';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -38,3 +39,4 @@ export class VisiteService {
     return this.httpClient.put<void>(`${this.WS_REST_BASE_URL}/update/${visite.idVisite}`, visite);
   }
 }
+
