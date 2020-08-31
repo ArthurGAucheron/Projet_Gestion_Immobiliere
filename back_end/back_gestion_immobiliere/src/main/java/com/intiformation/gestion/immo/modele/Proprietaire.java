@@ -1,0 +1,110 @@
+package com.intiformation.gestion.immo.modele;
+
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+/**
+ * modèle de données pour un propriétaire
+ * @author marle
+ *
+ */
+@Entity
+@Table(name="proprietaires")
+public class Proprietaire {
+
+	/*_______________ propriétés ______________*/
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id_proprietaire")
+	private int idProprietaire;
+	
+	@Column(name="nom")
+	private String nom;
+	
+	@Column(name="tel_prive")
+	private String telPrive;
+	
+	@Column(name="tel_travail")
+	private String telTravail;
+	
+	//+++++++ associations +++++++++
+	//association avec Adresse : Many to One (plusieurs propriétaires pour une adresse)
+	@ManyToOne
+	@JoinColumn(name="adresse_id", referencedColumnName="id_adresse")
+	private Adresse adresse;
+	
+	//association avec BienImmobilier : One to Many (un propriétaire pour plusieurs bien immobilier)
+	//@OneToMany(targetEntity=BienImmoblier.class, mappedBy="idBien")
+	//private List<BienImmoblier> biensImmobiliers;
+	
+	/*_______________ ctor ______________*/
+	/**
+	 * ctor vide
+	 */
+	public Proprietaire() {
+		// TODO Auto-generated constructor stub
+	}
+
+	
+	/*_______________ getters/setters ______________*/
+	
+	public int getIdProprietaire() {
+		return idProprietaire;
+	}
+
+	public void setIdProprietaire(int idProprietaire) {
+		this.idProprietaire = idProprietaire;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public String getTelPrive() {
+		return telPrive;
+	}
+
+	public void setTelPrive(String telPrive) {
+		this.telPrive = telPrive;
+	}
+
+	public String getTelTravail() {
+		return telTravail;
+	}
+
+	public void setTelTravail(String telTravail) {
+		this.telTravail = telTravail;
+	}
+
+	public Adresse getAdresse() {
+		return adresse;
+	}
+
+	public void setAdresse(Adresse adresse) {
+		this.adresse = adresse;
+	}
+
+	/*
+	public List<BienImmoblier> getBiensImmobiliers() {
+		return biensImmobiliers;
+	}
+
+	public void setBiensImmobiliers(List<BienImmoblier> biensImmobiliers) {
+		this.biensImmobiliers = biensImmobiliers;
+	}
+	*/
+	
+	
+}//end class
