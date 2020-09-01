@@ -4302,7 +4302,11 @@
 									"hostEdge": {
 										"$ref": "AAAAAAF0QEhg6Y4hKfU="
 									},
+<<<<<<< HEAD
 									"text": "0..*"
+=======
+									"text": "0..1"
+>>>>>>> master
 								},
 								{
 									"_type": "UMLQualifierCompartmentView",
@@ -5334,7 +5338,11 @@
 										"$ref": "AAAAAAF0QFJ6E7Z+uTE="
 									},
 									"edgePosition": 2,
+<<<<<<< HEAD
 									"text": "0..*"
+=======
+									"text": "0..1"
+>>>>>>> master
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -6567,7 +6575,11 @@
 								"reference": {
 									"$ref": "AAAAAAF0QDbg+nGTW0I="
 								},
+<<<<<<< HEAD
 								"multiplicity": "0..*"
+=======
+								"multiplicity": "0..1"
+>>>>>>> master
 							},
 							"end2": {
 								"_type": "UMLAssociationEnd",
@@ -6927,7 +6939,11 @@
 								"reference": {
 									"$ref": "AAAAAAF0QEcmhojCdAw="
 								},
+<<<<<<< HEAD
 								"multiplicity": "0..*"
+=======
+								"multiplicity": "0..1"
+>>>>>>> master
 							}
 						},
 						{

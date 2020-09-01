@@ -8,6 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 
+
 @SpringBootApplication
 @EntityScan(basePackages= {"com.intiformation.gestion.immo.modele"})
 @EnableJpaRepositories(basePackages= {"com.intiformation.gestion.immo.dao"})
@@ -22,6 +23,6 @@ public class BackGestionImmobiliereApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		
-	}
+	}//END METHODE
 
 }

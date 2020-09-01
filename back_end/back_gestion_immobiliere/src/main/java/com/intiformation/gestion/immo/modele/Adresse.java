@@ -1,8 +1,22 @@
+  
 package com.intiformation.gestion.immo.modele;
+
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import java.io.Serializable;
 import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -44,32 +58,40 @@ public class Adresse implements Serializable {
 	
 	//+++++++ associations +++++++++
 	//association avec Propriétaire : One to Many (une adresse pour plusieurs propriétaires)
-	@OneToMany(targetEntity=Proprietaire.class, mappedBy="idProprietaire")
+	@OneToMany(targetEntity=Proprietaire.class, mappedBy="adresse")
+	@JsonBackReference
 	private List<Proprietaire> proprietaires;
 	
 	//association avec Client : One to Many (une adresse pour plusieurs clients)
-	@OneToMany(targetEntity=Client.class, mappedBy="idClient")
+	@OneToMany(targetEntity=Client.class, mappedBy="adresse")
+	@JsonBackReference
 	private List<Client> clients;
 	
 	//association avec BienImmobilier : One to Many (une adresse pour plusieurs biens)
+
 	//@OneToMany(targetEntity=BienImmobilier.class, mappedBy="idBien")
 	//private List<BienImmobilier> biensImmobilier;
+	@OneToMany(targetEntity=BienImmobilier.class, mappedBy="adresse")
+	@JsonBackReference
+	private List<BienImmobilier> biensImmobilier;
+
 	
 	/*_______________ ctor ______________*/
 	/**
 	 * ctor vide
 	 */
 	public Adresse() {
-		// TODO Auto-generated constructor stub
 	}
 	
 	/*_______________ getters/setters ______________*/
-	
+
+
 	public Long getIdAdresse() {
 		return idAdresse;
 	}
 
 	public void setIdAdresse(Long idAdresse) {
+
 		this.idAdresse = idAdresse;
 	}
 
@@ -129,6 +151,12 @@ public class Adresse implements Serializable {
 		this.clients = clients;
 	}
 
+
+	/*
+	public List<BienImmobilier> getBiensImmobilier() {
+		return biensImmobilier;
+	}
+
 	@Override
 	public String toString() {
 		return "Adresse [idAdresse=" + idAdresse + ", numero=" + numero + ", rue=" + rue + ", codePostal=" + codePostal
@@ -136,17 +164,20 @@ public class Adresse implements Serializable {
 				+ clients + "]";
 	}
 
-	/*
+	
 	public List<BienImmobilier> getBiensImmobilier() {
 		return biensImmobilier;
 	}
+
 
 	public void setBiensImmobilier(List<BienImmobilier> biensImmobilier) {
 		this.biensImmobilier = biensImmobilier;
 	}
 	
+
 	*/
 	
-	
-	
 }//end class
+
+	
+

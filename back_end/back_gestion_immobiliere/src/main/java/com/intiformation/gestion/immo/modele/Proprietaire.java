@@ -1,6 +1,8 @@
 package com.intiformation.gestion.immo.modele;
 
+
 import java.io.Serializable;
+
 import java.util.List;
 
 import javax.persistence.Column;
@@ -10,7 +12,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+
+import javax.persistence.OneToMany;
+
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
  * modèle de données pour un propriétaire
@@ -19,14 +29,16 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="proprietaires")
+@JsonIgnoreProperties({"bienImmobiliers"})
 public class Proprietaire implements Serializable {
+
 
 	/*_______________ propriétés ______________*/
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_proprietaire")
 	private Long idProprietaire;
-	
+
 	@Column(name="nom")
 	private String nom;
 	
@@ -40,18 +52,23 @@ public class Proprietaire implements Serializable {
 	//association avec Adresse : Many to One (plusieurs propriétaires pour une adresse)
 	@ManyToOne
 	@JoinColumn(name="adresse_id", referencedColumnName="id_adresse")
+	@JsonManagedReference
 	private Adresse adresse;
 	
 	//association avec BienImmobilier : One to Many (un propriétaire pour plusieurs bien immobilier)
-	//@OneToMany(targetEntity=BienImmoblier.class, mappedBy="idBien")
-	//private List<BienImmoblier> biensImmobiliers;
+
+	@OneToMany(targetEntity=BienImmobilier.class, mappedBy="proprietaire")
+	@JsonBackReference
+	private List<BienImmobilier> biensImmobiliers;
+
+
 	
 	/*_______________ ctor ______________*/
 	/**
 	 * ctor vide
 	 */
 	public Proprietaire() {
-		// TODO Auto-generated constructor stub
+
 	}
 
 	
@@ -62,6 +79,7 @@ public class Proprietaire implements Serializable {
 	}
 
 	public void setIdProprietaire(Long idProprietaire) {
+
 		this.idProprietaire = idProprietaire;
 	}
 
@@ -97,15 +115,26 @@ public class Proprietaire implements Serializable {
 		this.adresse = adresse;
 	}
 
+
 	/*
 	public List<BienImmoblier> getBiensImmobiliers() {
 		return biensImmobiliers;
 	}
-
 	public void setBiensImmobiliers(List<BienImmoblier> biensImmobiliers) {
 		this.biensImmobiliers = biensImmobiliers;
 	}
 	*/
+
+	
+	public List<BienImmobilier> getBiensImmobiliers() {
+		return biensImmobiliers;
+	}
+
+	public void setBiensImmobiliers(List<BienImmobilier> biensImmobiliers) {
+		this.biensImmobiliers = biensImmobiliers;
+	}
+	
+
 	
 	
 }//end class
