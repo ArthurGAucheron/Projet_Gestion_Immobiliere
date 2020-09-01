@@ -88,7 +88,9 @@ public class BienLocation extends BienImmobilier {
 	@Override
 	public String toString() {
 		return "BienLocation [caution=" + caution + ", loyer=" + loyer + ", charges=" + charges + ", typeBail="
-				+ typeBail + ", garniture=" + garniture + "]";
+				+ typeBail + ", garniture=" + garniture + "]" + "[idBien=\" + idBien + \", libelle=\" + libelle + \", dateSoumission=\" + dateSoumission\r\n" + 
+						"				+ \", dateMiseADispo=\" + dateMiseADispo + \", revenuCadastral=\" + revenuCadastral + \", descriptif=\"\r\n" + 
+						"				+ descriptif + \", classe=\" + classe + \"]\";";
 	}
 
 }// end class

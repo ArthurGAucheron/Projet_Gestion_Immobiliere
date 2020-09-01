@@ -51,7 +51,9 @@ public class BienAchat extends BienImmobilier {
 	// ______________toString()______________
 	@Override
 	public String toString() {
-		return "BienAchat [prix=" + prix + ", etat=" + etat + "]";
+		return "BienAchat [prix=" + prix + ", etat=" + etat + "] "+ "[idBien=\" + idBien + \", libelle=\" + libelle + \", dateSoumission=\" + dateSoumission\r\n" + 
+				"				+ \", dateMiseADispo=\" + dateMiseADispo + \", revenuCadastral=\" + revenuCadastral + \", descriptif=\"\r\n" + 
+				"				+ descriptif + \", classe=\" + classe + \"]\";";
 	}
 
 }// end class

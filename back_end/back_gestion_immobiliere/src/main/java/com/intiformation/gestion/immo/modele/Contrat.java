@@ -14,6 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * Classe mappé sur la table Contrat de la bdd <br/>
  * @author giovanni
@@ -21,6 +23,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="Contrats")
+@JsonIgnoreProperties
 public class Contrat {
 	
 	////// PROP //////

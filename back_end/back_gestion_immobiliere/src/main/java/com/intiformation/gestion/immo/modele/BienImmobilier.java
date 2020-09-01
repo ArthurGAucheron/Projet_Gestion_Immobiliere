@@ -1,5 +1,6 @@
 package com.intiformation.gestion.immo.modele;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -21,13 +22,16 @@ import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
-@Table(name = "biens_immobiliers")
+@Table(name ="biens_immobiliers")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(
 	    name="type",
 	    discriminatorType=DiscriminatorType.STRING)
-public abstract class BienImmobilier {
+@JsonIgnoreProperties({ "proprietaire", "contrat","adresse" })
+public abstract class BienImmobilier implements Serializable {
 
 	// ______________propriétés______________
 
@@ -55,11 +59,9 @@ public abstract class BienImmobilier {
 	@Column(name = "descriptif")
 	private String descriptif;
 
-
 	@ManyToOne
 	@JoinColumn(name="classe_id", referencedColumnName="id_classe")
 	private ClasseStandard classe;
-	
 
 	@ManyToOne
 	@JoinColumn(name="adresse_id", referencedColumnName="id_adresse")
@@ -69,6 +71,7 @@ public abstract class BienImmobilier {
 	 * Association entre BienImmobilier et propriétaire
 	 * Many bienimmo To One Proprio
 	 */
+
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="proprietaire_id", referencedColumnName="id_proprietaire")
 	private Proprietaire proprietaire;
@@ -77,6 +80,7 @@ public abstract class BienImmobilier {
 	 * Association entre BienImmobilier et propriétaire
 	 * One bienimmo To One Contrat
 	 */
+
 	@OneToOne(mappedBy="bienImmobilier")
 	@JoinColumn(name="bien_id", referencedColumnName="id_bien")
 	private Contrat contrat;
@@ -178,14 +182,12 @@ public abstract class BienImmobilier {
 		this.adresse = adresse;
 	}
 	
-
-	// ______________toString()______________
 	
 	public Proprietaire getProprietaire() {
 		return proprietaire;
 	}
 
-	public void setProprietaireId(Proprietaire proprietaire) {
+	public void setProprietaire(Proprietaire proprietaire) {
 		this.proprietaire = proprietaire;
 	}
 
@@ -196,13 +198,15 @@ public abstract class BienImmobilier {
 	public void setContrat(Contrat contrat) {
 		this.contrat = contrat;
 	}
+	
+	// ______________toString()______________
 
-	@Override
-	public String toString() {
-		return "BienImmobilier [idBien=" + idBien + ", libelle=" + libelle + ", dateSoumission=" + dateSoumission
-				+ ", dateMiseADispo=" + dateMiseADispo + ", revenuCadastral=" + revenuCadastral + ", descriptif="
-				+ descriptif + ", classe=" + classe + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "BienImmobilier [idBien=" + idBien + ", libelle=" + libelle + ", dateSoumission=" + dateSoumission
+//				+ ", dateMiseADispo=" + dateMiseADispo + ", revenuCadastral=" + revenuCadastral + ", descriptif="
+//				+ descriptif + ", classe=" + classe + "]";
+//	}
 
 
 

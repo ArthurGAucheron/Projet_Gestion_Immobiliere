@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.intiformation.gestion.immo.modele.ClasseStandard;
 
 @Repository
-public interface ClasseStandardRepository extends JpaRepository<ClasseStandard, Integer> {
+public interface ClasseStandardRepository extends JpaRepository<ClasseStandard, Long> {
 	
 	public ClasseStandard findBytypeBiens(String pTypeBiens) ;
 	public ClasseStandard findBymodeOffre(String pTypeBiens) ;
