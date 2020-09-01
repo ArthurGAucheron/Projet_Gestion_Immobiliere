@@ -11,12 +11,15 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class CreateClasseStandardComponent implements OnInit {
 
-  classeStandard : ClasseStandard = {
+  classeStandard = {
     idClasse : null,
     typeBiens : null,
     modeOffre : null,
     prixMax : null,
-    superficieMin : null
+    superficieMin : null,
+
+    listeClients : null,
+    listeBienImmobilier : null
   }
 
   constructor(private classeStandardService : ClasseStandardService,
@@ -46,4 +49,25 @@ export class CreateClasseStandardComponent implements OnInit {
     this.router.navigateByUrl("");
   }
 
+  fileToUpload: File = null;
+  test : string ;
+
+  handleFileInput(files: FileList) {
+    this.fileToUpload = files.item(0);
+    var reader = new FileReader();
+   reader.readAsDataURL(this.fileToUpload);
+   reader.onload = () => {
+      this.test= <string>reader.result;
+   };
+   
+   reader.onerror = function (error) {
+     console.log('Error: ', error);
+   };
 }
+
+ 
+
+}
+
+
+

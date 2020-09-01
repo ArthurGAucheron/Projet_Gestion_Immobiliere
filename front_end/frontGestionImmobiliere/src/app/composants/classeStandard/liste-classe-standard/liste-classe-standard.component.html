@@ -9,6 +9,10 @@
       <table class="table table-bordered" id="dataTable" width="80%" cellspacing="0" style="margin: auto;">
         <thead class="thead-blue">
 
+          <tr>
+            <th colspan="7"><a href="" (click)="navigateToAddClasseStandard($event)"><img width="25px" src="../../../../assets/images/file-earmark-plus.svg">Ajout Classe Standard</a></th>
+          </tr>
+
 
           <tr style="background-color: #df4937;color:  #333333;">
             <th scope="col">ID</th>
@@ -16,6 +20,8 @@
             <th scope="col">Offre</th>
             <th scope="col">Prix Max</th>
             <th scope="col">Superficie Min</th>
+            <th scope="col">Consulter</th>
+            <th scope="col">Supprimer</th>
           </tr>
         </thead>
 
@@ -27,6 +33,8 @@
             <td>{{classeStandard.modeOffre}}</td>
             <td>{{classeStandard.prixMax | prixClasseStandard : classeStandard.modeOffre}}</td>
             <td>{{classeStandard.superficieMin | superficie : classeStandard.typeBiens}}</td>
+            <td class="tdCenter"><a href="" (click)="navigateToDetailsClasseStandard($event, classeStandard.idClasse)"><img width="25px" src="../../../../assets/images/search.svg"></a></td>
+            <td class="tdCenter"><a href="" (click)="deleteClasseStandard($event,classeStandard.idClasse)"><img width="25px" src="../../../../assets/images/trash2-fill.svg"></a></td>
           </tr>
         </tbody>
         

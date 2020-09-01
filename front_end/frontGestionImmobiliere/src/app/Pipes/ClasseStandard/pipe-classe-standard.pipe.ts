@@ -8,7 +8,7 @@ export class PipeClasseStandardPipe implements PipeTransform {
   transform(prix: number, modeOffre : string): string {
     
     if (modeOffre=="Location") {
-      return prix+" € / mois"
+      return prix+"€ / mois"
     } else {
       return prix + "€"
     }

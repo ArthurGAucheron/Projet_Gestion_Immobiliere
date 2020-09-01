@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class ListeClasseStandardComponent implements OnInit {
 
   
-  listeClasseStandard :ClasseStandard[] =[
+  listeClasseStandard  =[
     { idClasse:1,typeBiens:"Maison",modeOffre:"Location",prixMax:300,superficieMin:55 }
     ,{ idClasse:2,typeBiens:"Terrain",modeOffre:"Achat",prixMax:30000,superficieMin:75 }];
 
@@ -21,9 +21,21 @@ export class ListeClasseStandardComponent implements OnInit {
     //this.classeStandardService.getAllClasseStandard().subscribe(data=>this.listeClasseStandard=data);
   }
 
-  deleteClasseStandard(idClasseStandard : number){
+  deleteClasseStandard(event:Event , idClasseStandard : number){
+    event.preventDefault();
     this.classeStandardService.deleteClasseStandard(idClasseStandard).subscribe(() => this.ngOnInit());
-    this.router.navigate([""]);
+    this.router.navigate(["list/classeStandard"]);
+  }
+
+  //Redirection
+  navigateToAddClasseStandard(event:Event){
+    event.preventDefault();
+    this.router.navigateByUrl("edit/classeStandard/0");
+  }
+
+  navigateToDetailsClasseStandard(event:Event, idClasseStandard:number){
+    event.preventDefault();
+    this.router.navigateByUrl("look/classeStandard/"+idClasseStandard);
   }
 
 }

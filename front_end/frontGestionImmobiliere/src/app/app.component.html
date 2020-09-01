@@ -1,48 +1,16 @@
-
-
 <app-header-component></app-header-component>
-<div>
-  <app-liste-classe-standard></app-liste-classe-standard>
-</div>
-<div>
-  <app-create-classe-standard></app-create-classe-standard>
-</div>
-
-<h1 style="color: #d49625;margin: 1rem 0 2rem 4rem;font-weight: bold;">Un titre</h1>
-
-<h2 style="color: #333333;margin: 1rem 0 2rem 6rem;">Un titre pour le tableau</h2>
-
-<div class="card shadow mb-4" style="width: 97.5%; margin: auto;">
-  <div class="card-body">
-    <div class="table-responsive">
-      <table class="table table-bordered" id="dataTable" width="80%" cellspacing="0" style="margin: auto;">
-        <thead class="thead-blue">
 
 
-          <tr style="background-color: #df4937;color:  #333333;">
-            <th scope="col">Test</th>
-            <th scope="col">Test</th>
-            <th scope="col">Test</th>
-            <th scope="col">Test</th>
-            <th scope="col">Test</th>
-          </tr>
-        </thead>
+<router-outlet></router-outlet>
 
-        <!-- données de la table -->
-        <tbody>
-          <tr>
-            <td>Test</td>
-            <td>Test</td>
-            <td>Test</td>
-            <td>Test</td>
-            <td>Test</td>
-          </tr>
-        </tbody>
-        
-      </table>
-    </div>
-  </div>
-</div>
+
+<div>TEST COMPOSANT</div>
+
+<app-liste-classe-standard></app-liste-classe-standard>
+<app-create-classe-standard></app-create-classe-standard>
+
+<app-details-classe-standard></app-details-classe-standard>
+
 
 
 <footer class="container">

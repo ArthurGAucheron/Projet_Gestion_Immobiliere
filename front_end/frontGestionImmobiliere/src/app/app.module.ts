@@ -30,6 +30,7 @@ import { FormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { PipeClasseStandardPipe } from './Pipes/ClasseStandard/pipe-classe-standard.pipe';
 import { SuperficiePipe } from './Pipes/ClasseStandard/superficie.pipe';
+import { DetailsClasseStandardComponent } from './composants/classeStandard/details-classe-standard/details-classe-standard/details-classe-standard.component';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { SuperficiePipe } from './Pipes/ClasseStandard/superficie.pipe';
     ListeVisiteComponent,
     CreateVisiteComponent,
     PipeClasseStandardPipe,
-    SuperficiePipe
+    SuperficiePipe,
+    DetailsClasseStandardComponent
 
   ],
   imports: [
