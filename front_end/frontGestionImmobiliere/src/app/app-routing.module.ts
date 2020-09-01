@@ -11,7 +11,6 @@ import { ProprietaireCardComponent } from './composants/proprietaire/proprietair
 
 const routes: Routes = [
 
-  {path:"list/contrat", component:ListeContratComponent},
   {path:"edit/contrat/:id", component:CreateContratComponent},
 
   {path:"client_card/:id", component:ClientCardComponent, canActivate:[]},
@@ -21,11 +20,7 @@ const routes: Routes = [
   {path:"proprietaire_card/:id", component:ProprietaireCardComponent, canActivate:[]},
   {path:"proprietaire_edit/:id", component:ProprietaireCreateComponent, canActivate:[]},
   {path:"proprietaire_list", component:ProprietaireListComponent, canActivate:[]},
-  
-
-
 ];
-
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

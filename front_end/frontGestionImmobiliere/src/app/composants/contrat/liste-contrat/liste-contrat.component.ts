@@ -7,12 +7,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./liste-contrat.component.css']
 })
 export class ListeContratComponent implements OnInit {
+  
+  // ========= Propriétés ==========
 
   contrats = [];
 
 
+  // ========= Constructeurs ==========
+
   constructor(private contratService : ContratService, private router : Router) { }
 
+  // ========= Méthodes ==========
+  
   ngOnInit(): void {
     this.findAllContrat();
   }
@@ -21,7 +27,11 @@ export class ListeContratComponent implements OnInit {
     this.contratService.getAllContrat().subscribe(data => this.contrats =data)
   }
   
-  editContrat(idContrat : number ){
-    this.router.navigate([ 'edit/contrat', idContrat])
+  updateContrat(idContrat : number ){
+    this.router.navigate([ 'contrat/edit', idContrat])
+  }
+
+  deleteContrat(idContrat : number){
+    this.contratService.deleteContrat(idContrat).subscribe(() => {this.findAllContrat();});
   }
 }

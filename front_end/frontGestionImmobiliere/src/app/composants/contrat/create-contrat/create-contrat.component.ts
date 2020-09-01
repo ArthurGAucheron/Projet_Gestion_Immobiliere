@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ContratService } from "src/app/services/contrat/contrat.service";
 import { Contrat } from 'src/app/modeles/Contrat';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-create-contrat',
@@ -9,22 +10,42 @@ import { Contrat } from 'src/app/modeles/Contrat';
 })
 export class CreateContratComponent implements OnInit {
 
-  constructor(private contratService : ContratService) { }
-
+  // ========= Propriétés ==========
   contrat : Contrat = {
     idContrat : null,
     prixAcquisition : null,
     dateAcquisition : null,
     bienImmobilier : null,
     conseiller : null,
-    client : null,
+    client : null
   }
+  // ========= Constructeurs ==========
+  constructor(private contratService : ContratService, private router: Router, private activatedRoute :ActivatedRoute) {}
 
+  // ========= Méthodes ==========
   ngOnInit(): void {
+
+    this.activatedRoute.paramMap.subscribe((paramsMap) => {
+      const idContrat = +paramsMap.get("id");
+    })
   }
 
-  saveContrat(){
+  findContratById(pIdContrat : number){
+    
+    if (pIdContrat==0) {
+      this.contrat={ idContrat : null,prixAcquisition : null,dateAcquisition : null, bienImmobilier : null,conseiller : null,client : null,}
+    } else {
+      this.contratService.getContratById(pIdContrat).subscribe((contratToUpdate) => {this.contrat=contratToUpdate});
+    }
+  }
 
-    this.contratService.addContrat(this.contrat).subscribe();
+  saveOrUpdateContrat(){
+
+    if (this.contrat.idContrat==null) {
+      this.contratService.addContrat(this.contrat).subscribe();
+    } else {
+      this.contratService.updateContrat(this.contrat).subscribe();
+    }
+    this.router.navigate(['contrat/list'])
   }
 }
