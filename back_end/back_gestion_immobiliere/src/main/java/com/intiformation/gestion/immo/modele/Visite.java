@@ -49,7 +49,7 @@ public class Visite {
 	 * Avec Many Visite To One BienImmo
 	 */
 	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="id_bien", referencedColumnName="id_bien")
+	@JoinColumn(name="bien_id", referencedColumnName="id_bien")
 	private BienImmobilier bienImmobilier;
 	
 	/**

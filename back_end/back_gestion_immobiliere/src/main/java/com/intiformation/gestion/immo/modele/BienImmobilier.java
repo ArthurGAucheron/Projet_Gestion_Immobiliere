@@ -77,8 +77,8 @@ public abstract class BienImmobilier {
 	 * Association entre BienImmobilier et propriétaire
 	 * One bienimmo To One Contrat
 	 */
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="contrat_id", referencedColumnName="id_contrat")
+	@OneToOne(mappedBy="bienImmobilier")
+	@JoinColumn(name="bien_id", referencedColumnName="id_bien")
 	private Contrat contrat;
 
 	// ______________constructeurs______________

@@ -7,7 +7,6 @@ import javax.sql.DataSource;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -31,7 +30,7 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 	DataSourceTransactionManagerAutoConfiguration.class,
 	HibernateJpaAutoConfiguration.class,		
 })
-@ComponentScan(basePackages= {"com.intiformation.gestion.immo.dao", "com.intiformation.gestion.immo.webservice"})
+@ComponentScan(basePackages= {"com.intiformation.gestion.immo.dao"})
 public class BackGestionImmobiliereApplication {
 	
 	// variable représentant l'environnement dans lequel notre app est exécuté
