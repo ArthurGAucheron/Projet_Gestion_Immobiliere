@@ -14,7 +14,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 /**
  * Classe mappé sur la table Contrat de la bdd <br/>
@@ -23,6 +25,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
  */
 @Entity
 @Table(name="contrats")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idContrat", scope = Long.class)
 public class Contrat {
 	
 	////// PROP //////
@@ -45,7 +48,7 @@ public class Contrat {
 	 */
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="conseiller_id" , referencedColumnName="id_conseiller")
-	@JsonBackReference
+//	@JsonBackReference
 	private ConseillerImmobilier conseillers;
 	
 	/**
@@ -53,7 +56,7 @@ public class Contrat {
 	 */
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="bien_id", referencedColumnName="id_bien")
-	@JsonBackReference
+//	@JsonBackReference
 	private BienImmobilier bienImmobilier;
 	
 	/**
@@ -63,7 +66,7 @@ public class Contrat {
 	 */
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="client_id", referencedColumnName="id_client")
-	@JsonBackReference
+//	@JsonBackReference
 	private Client client;
 	
 	///// CTOR ///////

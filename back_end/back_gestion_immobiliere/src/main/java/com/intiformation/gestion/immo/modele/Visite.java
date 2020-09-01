@@ -15,7 +15,10 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 
 
@@ -26,6 +29,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
  */
 @Entity
 @Table(name="visites")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idVisite", scope = Long.class)
 public class Visite {
 	
 	//// PROP //////
@@ -45,7 +49,7 @@ public class Visite {
 	 */
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="conseiller_id", referencedColumnName="id_conseiller")
-	@JsonBackReference
+//	@JsonBackReference
 	private ConseillerImmobilier conseillers;
 	
 	/**
@@ -55,7 +59,8 @@ public class Visite {
 	 */
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="bien_id", referencedColumnName="id_bien")
-	@JsonBackReference
+//	@JsonBackReference
+	@JsonIdentityReference(alwaysAsId=true)
 	private BienImmobilier bienImmobilier;
 	
 	/**
@@ -65,7 +70,7 @@ public class Visite {
 	 */
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="client_id", referencedColumnName="id_client")
-	@JsonBackReference
+//	@JsonBackReference
 	private Client client;
 	
 	

@@ -102,7 +102,7 @@ public class ClientWSRestSpringWS {
 		//modifications
 		clientToUpdate.setNom(pClient.getNom());
 		clientToUpdate.setTelephone(pClient.getTelephone());
-		//clientToUpdate.setAdresse(pClient.getAdresse());
+		clientToUpdate.setAdresse(pClient.getAdresse());
 		
 		//modification
 		Client clientUpdated = clientRepository.save(clientToUpdate);

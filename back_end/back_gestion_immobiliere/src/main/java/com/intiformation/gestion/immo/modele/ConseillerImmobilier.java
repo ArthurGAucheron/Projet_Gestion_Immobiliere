@@ -12,7 +12,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 /**
  * Classe mappé à partie la table ConseillerImmobilier de la bdd <br/>
@@ -21,6 +24,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  */
 @Entity
 @Table(name = "conseillers")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idConseiller", scope = Long.class)
 public class ConseillerImmobilier {
 
 	///// Prop /////
@@ -47,7 +51,8 @@ public class ConseillerImmobilier {
 	 * One Conseillers To Many Visite
 	 */
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="conseillers")
-	@JsonBackReference
+//	@JsonBackReference
+	@JsonIdentityReference(alwaysAsId=true)
 	private List<Visite> visite;
 	
 	/**
@@ -55,7 +60,8 @@ public class ConseillerImmobilier {
 	 * One Conseillers To Many Contrat
 	 */
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="conseillers")
-	@JsonBackReference
+//	@JsonBackReference
+	@JsonIdentityReference(alwaysAsId=true)
 	private List<Contrat> contrat;
 	
 	////// Ctor /////

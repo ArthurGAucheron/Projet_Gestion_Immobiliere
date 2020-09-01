@@ -103,7 +103,7 @@ public class ProprietaireWSRestSpringWS {
 		proprietaireToUpdate.setNom(pProprietaire.getNom());
 		proprietaireToUpdate.setTelTravail(pProprietaire.getTelTravail());
 		proprietaireToUpdate.setTelPrive(pProprietaire.getTelPrive());
-		//proprietaireToUpdate.setAdresse(pProprietaire.getAdresse());
+		proprietaireToUpdate.setAdresse(pProprietaire.getAdresse());
 		
 		//modification
 		Proprietaire proprietaireUpdated = proprietaireRepository.save(proprietaireToUpdate);

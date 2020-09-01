@@ -22,9 +22,11 @@ import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name ="biens_immobiliers")
@@ -32,6 +34,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 @DiscriminatorColumn(
 	    name="type",
 	    discriminatorType=DiscriminatorType.STRING)
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idBien", scope = Long.class)
 public abstract class BienImmobilier implements Serializable {
 
 	
@@ -63,12 +66,12 @@ public abstract class BienImmobilier implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name="classe_id", referencedColumnName="id_classe")
-	@JsonManagedReference
+//	@JsonManagedReference
 	private ClasseStandard classe;
 
-	@ManyToOne
+	@ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinColumn(name="adresse_id", referencedColumnName="id_adresse")
-	@JsonManagedReference
+//	@JsonManagedReference
 	private Adresse adresse;
 
 	/**
@@ -76,9 +79,9 @@ public abstract class BienImmobilier implements Serializable {
 	 * Many bienimmo To One Proprio
 	 */
 
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name="proprietaire_id", referencedColumnName="id_proprietaire")
-	@JsonManagedReference
+//	@JsonManagedReference
 	private Proprietaire proprietaire;
 	
 	/**
@@ -88,7 +91,7 @@ public abstract class BienImmobilier implements Serializable {
 
 	@OneToOne(mappedBy="bienImmobilier")
 	@JoinColumn(name="bien_id", referencedColumnName="id_bien")
-	@JsonManagedReference
+//	@JsonManagedReference
 	private Contrat contrat;
 
 

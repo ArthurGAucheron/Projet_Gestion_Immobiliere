@@ -11,9 +11,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "classes")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idClasse", scope = Long.class)
 public class ClasseStandard {
 
 	// ______________propriétés______________
@@ -36,7 +40,8 @@ public class ClasseStandard {
 	private double superficieMin;
 	
 	@OneToMany(targetEntity=BienImmobilier.class, mappedBy="classe")
-	@JsonBackReference
+//	@JsonBackReference
+	@JsonIdentityReference(alwaysAsId=true)
 	private List<BienImmobilier> biensImmobilier;
 
 	// ______________constructeurs______________

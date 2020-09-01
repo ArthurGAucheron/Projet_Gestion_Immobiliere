@@ -5,6 +5,7 @@ import java.io.Serializable;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,8 +20,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 /**
  * modèle de données pour un propriétaire
@@ -29,7 +33,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
  */
 @Entity
 @Table(name="proprietaires")
-@JsonIgnoreProperties({"bienImmobiliers"})
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idProprietaire", scope = Long.class)
 public class Proprietaire implements Serializable {
 
 
@@ -50,15 +54,16 @@ public class Proprietaire implements Serializable {
 	
 	//+++++++ associations +++++++++
 	//association avec Adresse : Many to One (plusieurs propriétaires pour une adresse)
-	@ManyToOne
+	@ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinColumn(name="adresse_id", referencedColumnName="id_adresse")
-	@JsonManagedReference
+//	@JsonManagedReference
 	private Adresse adresse;
 	
 	//association avec BienImmobilier : One to Many (un propriétaire pour plusieurs bien immobilier)
 
 	@OneToMany(targetEntity=BienImmobilier.class, mappedBy="proprietaire")
-	@JsonBackReference
+//	@JsonManagedReference
+	@JsonIdentityReference(alwaysAsId=true)
 	private List<BienImmobilier> biensImmobiliers;
 
 
