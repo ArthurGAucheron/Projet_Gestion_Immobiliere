@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponentComponent } from './header-component/header-component.component';
@@ -24,7 +27,7 @@ import { CreateContratComponent } from './composants/contrat/create-contrat/crea
 import { ListeContratComponent } from './composants/contrat/liste-contrat/liste-contrat.component';
 import { ListeVisiteComponent } from './composants/visite/liste-visite/liste-visite.component';
 import { CreateVisiteComponent } from './composants/visite/create-visite/create-visite.component';
-
+import { ProprietaireCardComponent } from './composants/proprietaire/proprietaire-card/proprietaire-card.component';
 
 @NgModule({
   declarations: [
@@ -45,12 +48,14 @@ import { CreateVisiteComponent } from './composants/visite/create-visite/create-
     CreateContratComponent,
     ListeContratComponent,
     ListeVisiteComponent,
-    CreateVisiteComponent
-
+    CreateVisiteComponent,
+    ProprietaireCardComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule, 
+    FormsModule
   ],
   providers: [
     AuthGuardService,{provide:HTTP_INTERCEPTORS, useClass:BasicAuthHttpInterceptorService, multi:true }
