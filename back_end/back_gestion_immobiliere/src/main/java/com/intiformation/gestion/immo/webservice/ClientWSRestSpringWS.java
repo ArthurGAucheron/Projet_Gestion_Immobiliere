@@ -79,10 +79,10 @@ public class ClientWSRestSpringWS {
 	 * 
 	 */
 	@RequestMapping(value="/save", method=RequestMethod.POST)
-	public ResponseEntity<Boolean> addClient(@RequestBody Client pClient) {
+	public ResponseEntity<Client> addClient(@RequestBody Client pClient) {
 		
-		clientRepository.save(pClient);
-		return new ResponseEntity<>(Boolean.TRUE, HttpStatus.OK);
+		Client clientAdded = clientRepository.save(pClient);
+		return new ResponseEntity<>(clientAdded, HttpStatus.OK);
 
 	}//end addClient
 	
@@ -92,7 +92,7 @@ public class ClientWSRestSpringWS {
 	 * 
 	 */
 	@RequestMapping(value="/update/{id}", method=RequestMethod.PUT)
-	public ResponseEntity<Boolean> updateClient(@RequestBody Client pClient, @PathVariable("id") Long pIdClient) {
+	public ResponseEntity<Client> updateClient(@RequestBody Client pClient, @PathVariable("id") Long pIdClient) {
 				
 		//récup du client à modifier
 		Client clientToUpdate = clientRepository.getOne(pIdClient);
@@ -103,8 +103,8 @@ public class ClientWSRestSpringWS {
 		//clientToUpdate.setAdresse(pClient.getAdresse());
 		
 		//modification
-		clientRepository.save(clientToUpdate);
-		return new ResponseEntity<>(Boolean.TRUE, HttpStatus.OK);
+		Client clientUpdated = clientRepository.save(clientToUpdate);
+		return new ResponseEntity<>(clientUpdated, HttpStatus.OK);
 
 	}//end updateClient
 	

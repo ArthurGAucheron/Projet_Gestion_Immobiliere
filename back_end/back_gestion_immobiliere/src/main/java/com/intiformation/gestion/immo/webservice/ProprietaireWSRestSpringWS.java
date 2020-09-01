@@ -79,10 +79,10 @@ public class ProprietaireWSRestSpringWS {
 	 * 
 	 */
 	@RequestMapping(value="/save", method=RequestMethod.POST)
-	public ResponseEntity<Boolean> addProprietaire(@RequestBody Proprietaire pProprietaire) {
+	public ResponseEntity<Proprietaire> addProprietaire(@RequestBody Proprietaire pProprietaire) {
 		
-		proprietaireRepository.save(pProprietaire);
-		return new ResponseEntity<>(Boolean.TRUE, HttpStatus.OK);
+		Proprietaire proprietaireAdded = proprietaireRepository.save(pProprietaire);
+		return new ResponseEntity<>(proprietaireAdded, HttpStatus.OK);
 
 	}//end addProprietaire
 	
@@ -92,7 +92,7 @@ public class ProprietaireWSRestSpringWS {
 	 * 
 	 */
 	@RequestMapping(value="/update/{id}", method=RequestMethod.PUT)
-	public ResponseEntity<Boolean> updateProprietaire(@RequestBody Proprietaire pProprietaire, @PathVariable("id") Long pIdProprietaire) {
+	public ResponseEntity<Proprietaire> updateProprietaire(@RequestBody Proprietaire pProprietaire, @PathVariable("id") Long pIdProprietaire) {
 				
 		//récup du propriétaire à modifier
 		Proprietaire proprietaireToUpdate = proprietaireRepository.getOne(pIdProprietaire);
@@ -104,8 +104,8 @@ public class ProprietaireWSRestSpringWS {
 		//proprietaireToUpdate.setAdresse(pProprietaire.getAdresse());
 		
 		//modification
-		proprietaireRepository.save(proprietaireToUpdate);
-		return new ResponseEntity<>(Boolean.TRUE, HttpStatus.OK);
+		Proprietaire proprietaireUpdated = proprietaireRepository.save(proprietaireToUpdate);
+		return new ResponseEntity<>(proprietaireUpdated, HttpStatus.OK);
 
 	}//end updateProprietaire
 	

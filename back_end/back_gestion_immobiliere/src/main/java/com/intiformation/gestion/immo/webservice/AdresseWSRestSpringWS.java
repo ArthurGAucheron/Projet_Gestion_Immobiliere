@@ -79,9 +79,10 @@ public class AdresseWSRestSpringWS {
 	 * 
 	 */
 	@RequestMapping(value="/save", method=RequestMethod.POST)
-	public void addAdresse(@RequestBody Adresse pAdresse) {
+	public ResponseEntity<Adresse> addAdresse(@RequestBody Adresse pAdresse) {
 		
-		adresseRepository.save(pAdresse);
+		Adresse adresseAdded = adresseRepository.save(pAdresse);
+		return new ResponseEntity<Adresse>(adresseAdded, HttpStatus.OK);
 	
 	}//end addAdresse
 	
@@ -91,7 +92,7 @@ public class AdresseWSRestSpringWS {
 	 * 
 	 */
 	@RequestMapping(value="/update/{id}", method=RequestMethod.PUT)
-	public ResponseEntity<Boolean> updateAdresse(@RequestBody Adresse pAdresse, @PathVariable("id") Long pIdAdresse) {
+	public ResponseEntity<Adresse> updateAdresse(@RequestBody Adresse pAdresse, @PathVariable("id") Long pIdAdresse) {
 				
 		//récup de l'adresse à modifier
 		Adresse adresseToUpdate = adresseRepository.getOne(pIdAdresse);
@@ -106,10 +107,9 @@ public class AdresseWSRestSpringWS {
 		//adresseToUpdate.setProprietaires(pAdresse.getProprietaires());
 		
 		//modification
-		adresseRepository.save(adresseToUpdate);
+		Adresse adresseUpdated = adresseRepository.save(adresseToUpdate);		
+		return new ResponseEntity<Adresse>(adresseUpdated, HttpStatus.OK);
 		
-		return new ResponseEntity<>(Boolean.TRUE, HttpStatus.OK);
-	
 	}//end updateAdresse
 	
 	/**
