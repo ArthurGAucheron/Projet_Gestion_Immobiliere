@@ -17,7 +17,7 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name = "Conseillers")
+@Table(name = "conseillers")
 public class ConseillerImmobilier {
 
 	///// Prop /////

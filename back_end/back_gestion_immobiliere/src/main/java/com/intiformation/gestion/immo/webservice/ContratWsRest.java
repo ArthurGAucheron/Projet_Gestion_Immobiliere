@@ -23,7 +23,7 @@ import com.intiformation.gestion.immo.modele.Contrat;
  *
  */
 @RestController
-@RequestMapping("/contrat")
+@RequestMapping(value = "contrats")
 public class ContratWsRest {
 
 	@Autowired
@@ -40,7 +40,7 @@ public class ContratWsRest {
 	/**
 	 * méthode exposée dans le ws rest pour recuperer la liste des contrats
 	 * effectuées renvoie la liste des contrats en JSON invoquée avec une requete
-	 * HTPP en GET
+	 * HTTP en GET
 	 * @return
 	 */
 	@RequestMapping(value = "/getall", method = RequestMethod.GET)

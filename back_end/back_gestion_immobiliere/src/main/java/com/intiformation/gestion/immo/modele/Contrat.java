@@ -20,7 +20,7 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name="Contrats")
+@Table(name="contrats")
 public class Contrat {
 	
 	////// PROP //////
@@ -29,10 +29,10 @@ public class Contrat {
 	@Column(name="id_contrat")
 	private Long idContrat;
 	
-	@Column(name="PrixAcquisition")
+	@Column(name="prix_acquisition")
 	private Double prixAcquisition;
 	
-	@Column(name="DateAcquisition")
+	@Column(name="date_acquisition")
 	private Date dateAcquisition;
 	
 	////// ASSOCIATIONS //////

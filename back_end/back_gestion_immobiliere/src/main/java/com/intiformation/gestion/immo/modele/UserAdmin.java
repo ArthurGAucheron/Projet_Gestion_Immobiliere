@@ -50,4 +50,14 @@ public class UserAdmin {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	public Long getIdAdmin() {
+		return idAdmin;
+	}
+
+	public void setIdAdmin(Long idAdmin) {
+		this.idAdmin = idAdmin;
+	}
+	
+	
 }//end class
