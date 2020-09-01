@@ -53,15 +53,17 @@ public abstract class BienImmobilier {
 	@Column(name = "descriptif")
 	private String descriptif;
 
-	@Column(name = "classe")
 	@ManyToOne
 	@JoinColumn(name="classe_id", referencedColumnName="id_classe")
 	private ClasseStandard classe;
 	
-	@Column(name = "adresse")
 	@ManyToOne
 	@JoinColumn(name="adresse_id", referencedColumnName="id_adresse")
 	private Adresse adresse;
+	
+	@ManyToOne
+	@JoinColumn(name="proprietaire_id", referencedColumnName="id_proprietaire")
+	private Proprietaire proprietaire;
 	
 
 	// ______________constructeurs______________
