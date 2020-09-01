@@ -7,6 +7,7 @@ import javax.sql.DataSource;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -37,6 +38,17 @@ public class BackGestionImmobiliereApplication {
 	@Autowired
 	private Environment appEnvironment;
 
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+
+
+@SpringBootApplication
+@EntityScan(basePackages= {"com.intiformation.gestion.immo.modele"})
+@EnableJpaRepositories(basePackages= {"com.intiformation.gestion.immo.dao"})
+@ComponentScan(basePackages= {"com.intiformation.gestion.immo.webservice"})
+public class BackGestionImmobiliereApplication implements CommandLineRunner{
+	
 	
 	public static void main(String[] args) {
 		SpringApplication.run(BackGestionImmobiliereApplication.class, args);
@@ -128,4 +140,10 @@ public class BackGestionImmobiliereApplication {
 		
 	}//END METHODE
 
-}//END CLASS
+
+	@Override
+	public void run(String... args) throws Exception {
+		
+	}
+
+}
