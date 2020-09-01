@@ -48,7 +48,8 @@ public class Contrat {
 	/**
 	 * Assocation entre bienImmo et contrat de type One To One
 	 */
-	@OneToOne(mappedBy="contrat")
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="bien_id", referencedColumnName="id_bien")
 	private BienImmobilier bienImmobilier;
 	
 	/**
