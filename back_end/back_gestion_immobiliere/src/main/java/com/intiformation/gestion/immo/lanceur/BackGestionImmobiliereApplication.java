@@ -37,17 +37,6 @@ public class BackGestionImmobiliereApplication {
 	// variable représentant l'environnement dans lequel notre app est exécuté
 	@Autowired
 	private Environment appEnvironment;
-
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-
-
-@SpringBootApplication
-@EntityScan(basePackages= {"com.intiformation.gestion.immo.modele"})
-@EnableJpaRepositories(basePackages= {"com.intiformation.gestion.immo.dao"})
-@ComponentScan(basePackages= {"com.intiformation.gestion.immo.webservice"})
-public class BackGestionImmobiliereApplication implements CommandLineRunner{
 	
 	
 	public static void main(String[] args) {
@@ -141,9 +130,5 @@ public class BackGestionImmobiliereApplication implements CommandLineRunner{
 	}//END METHODE
 
 
-	@Override
-	public void run(String... args) throws Exception {
-		
-	}
 
 }

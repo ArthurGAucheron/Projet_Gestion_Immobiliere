@@ -136,7 +136,7 @@ public class Adresse implements Serializable {
 				+ clients + "]";
 	}
 
-	/*
+	
 	public List<BienImmobilier> getBiensImmobilier() {
 		return biensImmobilier;
 	}
