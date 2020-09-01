@@ -19,11 +19,17 @@ import { ListeImmobilierComponent } from './composants/bienImmobilier/liste-immo
 import { CreateImmobilierComponent } from './composants/bienImmobilier/create-immobilier/create-immobilier.component';
 import { ModifImmobilierComponent } from './composants/bienImmobilier/modif-immobilier/modif-immobilier.component';
 
+import { ListeClasseStandardComponent } from './composants/classeStandard/liste-classe-standard/liste-classe-standard.component';
 import { CreateClasseStandardComponent } from './composants/classeStandard/create-classe-standard/create-classe-standard.component';
 import { CreateContratComponent } from './composants/contrat/create-contrat/create-contrat.component';
 import { ListeContratComponent } from './composants/contrat/liste-contrat/liste-contrat.component';
 import { ListeVisiteComponent } from './composants/visite/liste-visite/liste-visite.component';
 import { CreateVisiteComponent } from './composants/visite/create-visite/create-visite.component';
+
+import { FormsModule } from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import { PipeClasseStandardPipe } from './Pipes/ClasseStandard/pipe-classe-standard.pipe';
+import { SuperficiePipe } from './Pipes/ClasseStandard/superficie.pipe';
 
 
 @NgModule({
@@ -41,16 +47,22 @@ import { CreateVisiteComponent } from './composants/visite/create-visite/create-
     ListeImmobilierComponent,
     CreateImmobilierComponent,
     ModifImmobilierComponent,
+    ListeClasseStandardComponent,
     CreateClasseStandardComponent,
     CreateContratComponent,
     ListeContratComponent,
     ListeVisiteComponent,
-    CreateVisiteComponent
+    CreateVisiteComponent,
+    PipeClasseStandardPipe,
+    SuperficiePipe
 
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
     AuthGuardService,{provide:HTTP_INTERCEPTORS, useClass:BasicAuthHttpInterceptorService, multi:true }

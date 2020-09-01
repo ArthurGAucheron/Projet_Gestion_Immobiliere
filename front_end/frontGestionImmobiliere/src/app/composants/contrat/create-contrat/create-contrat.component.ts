@@ -15,6 +15,9 @@ export class CreateContratComponent implements OnInit {
     idContrat : null,
     prixAcquisition : null,
     dateAcquisition : null,
+    bienImmobilier :  null,
+    conseiller :  null,
+    client :  null
   }
 
   ngOnInit(): void {
