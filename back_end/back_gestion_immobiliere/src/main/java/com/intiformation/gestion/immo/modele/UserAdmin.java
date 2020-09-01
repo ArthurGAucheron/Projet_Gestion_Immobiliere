@@ -14,7 +14,6 @@ public class UserAdmin {
 	//______________________________prop___________________________________
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name = "id_u")
 	private String username;
 	private String password;
 	
