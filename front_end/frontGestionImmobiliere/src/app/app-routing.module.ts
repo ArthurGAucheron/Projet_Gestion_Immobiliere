@@ -5,9 +5,9 @@ import { ListeContratComponent } from './composants/contrat/liste-contrat/liste-
 
 const routes: Routes = [
 
-  {path:"list/contrat", component:ListeContratComponent},
-  
-  {path:"edit/contrat/:id", component:CreateContratComponent}
+  // URLs : gestion des CONTRATS
+  {path:"contrat/list", component:ListeContratComponent,},
+  {path:"contrat/edit/:id", component:CreateContratComponent}
 
 
 ];
