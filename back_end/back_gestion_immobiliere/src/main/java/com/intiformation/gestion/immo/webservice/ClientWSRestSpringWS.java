@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +22,7 @@ import com.intiformation.gestion.immo.modele.Client;
  * @author marle
  *
  */
+@CrossOrigin(value="http://localhost:8080")
 @RestController
 @RequestMapping(value="clients")
 public class ClientWSRestSpringWS {
