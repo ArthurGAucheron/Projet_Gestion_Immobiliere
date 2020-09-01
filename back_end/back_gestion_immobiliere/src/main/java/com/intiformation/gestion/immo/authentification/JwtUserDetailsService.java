@@ -9,27 +9,38 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+<<<<<<< HEAD
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.security.core.userdetails.User;
+=======
+>>>>>>> 4cd84fa959b2895b5c240074b81b4955f8ed4584
 
 import com.intiformation.gestion.immo.dao.UserDAO;
 import com.intiformation.gestion.immo.modele.UserAdmin;
 
+<<<<<<< HEAD
+=======
+import org.springframework.security.core.userdetails.User;
+
+
+>>>>>>> 4cd84fa959b2895b5c240074b81b4955f8ed4584
 
 @Service
-public class JwtUserDetailsService implements UserDetailsService{
+public class JwtUserDetailsService implements UserDetailsService {
 
-	@Autowired
+	
 	private UserDAO userDao;
+	
 
 	@Autowired
 	private PasswordEncoder bcryptEncoder;
-        
 
-        // Cette methode simule la base de donnee :
-        // Si le username correspond a javainuse (ie il est present dans la base) alors
-        // elle retourne un objet user avec en password le hash correspondant a notre mot de passe
-        // “password” ecrit en dur dans l’appli
+	
+	// Cette methode simule la base de donnee :
+	// Si le username correspond a javainuse (ie il est present dans la base) alors
+	// elle retourne un objet user avec en password le hash correspondant a notre
+	// mot de passe
+	// “password” ecrit en dur dans l’appli
 	@Override
 	@Transactional	 
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -48,4 +59,5 @@ public class JwtUserDetailsService implements UserDetailsService{
 		return userDao.save(newUser);
 	}
 
-}//end class
+	
+}// end class
