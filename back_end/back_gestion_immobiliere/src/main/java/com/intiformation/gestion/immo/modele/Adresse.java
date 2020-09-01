@@ -1,5 +1,6 @@
 package com.intiformation.gestion.immo.modele;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -17,13 +18,13 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="adresses")
-public class Adresse {
+public class Adresse implements Serializable {
 
 	/*_______________ propriétés ______________*/
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_adresse")
-	private int idAdresse;
+	private Long idAdresse;
 	
 	@Column(name="numero")
 	private String numero;
@@ -64,11 +65,11 @@ public class Adresse {
 	
 	/*_______________ getters/setters ______________*/
 	
-	public int getIdAdresse() {
+	public Long getIdAdresse() {
 		return idAdresse;
 	}
 
-	public void setIdAdresse(int idAdresse) {
+	public void setIdAdresse(Long idAdresse) {
 		this.idAdresse = idAdresse;
 	}
 
@@ -128,6 +129,13 @@ public class Adresse {
 		this.clients = clients;
 	}
 
+	@Override
+	public String toString() {
+		return "Adresse [idAdresse=" + idAdresse + ", numero=" + numero + ", rue=" + rue + ", codePostal=" + codePostal
+				+ ", localite=" + localite + ", pays=" + pays + ", proprietaires=" + proprietaires + ", clients="
+				+ clients + "]";
+	}
+
 	/*
 	public List<BienImmobilier> getBiensImmobilier() {
 		return biensImmobilier;
@@ -138,5 +146,7 @@ public class Adresse {
 	}
 	
 	*/
+	
+	
 	
 }//end class

@@ -1,5 +1,6 @@
 package com.intiformation.gestion.immo.modele;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -18,13 +19,13 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="clients")
-public class Client {
+public class Client implements Serializable {
 
 	/*_______________ propriétés ______________*/
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_client")
-	private int idClient;
+	private Long idClient;
 	
 	@Column(name="nom")
 	private String nom;
@@ -67,11 +68,11 @@ public class Client {
 	
 	/*_______________ getters/setters ______________*/
 
-	public int getIdClient() {
+	public Long getIdClient() {
 		return idClient;
 	}
 
-	public void setIdClient(int idClient) {
+	public void setIdClient(Long idClient) {
 		this.idClient = idClient;
 	}
 
