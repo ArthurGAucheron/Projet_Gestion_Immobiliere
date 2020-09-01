@@ -1,5 +1,8 @@
 package com.intiformation.gestion.immo.modele;
 
+
+import java.io.Serializable;
+
 import java.util.List;
 
 import javax.persistence.Column;
@@ -9,6 +12,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+
+import javax.persistence.OneToMany;
+
 import javax.persistence.Table;
 
 /**
@@ -18,14 +25,15 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="proprietaires")
-public class Proprietaire {
+public class Proprietaire implements Serializable {
+
 
 	/*_______________ propriétés ______________*/
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_proprietaire")
-	private int idProprietaire;
-	
+	private Long idProprietaire;
+
 	@Column(name="nom")
 	private String nom;
 	
@@ -42,25 +50,32 @@ public class Proprietaire {
 	private Adresse adresse;
 	
 	//association avec BienImmobilier : One to Many (un propriétaire pour plusieurs bien immobilier)
+
 	//@OneToMany(targetEntity=BienImmoblier.class, mappedBy="idBien")
 	//private List<BienImmoblier> biensImmobiliers;
+
+	@OneToMany(targetEntity=BienImmobilier.class, mappedBy="idBien")
+	private List<BienImmobilier> biensImmobiliers;
+
+
 	
 	/*_______________ ctor ______________*/
 	/**
 	 * ctor vide
 	 */
 	public Proprietaire() {
-		// TODO Auto-generated constructor stub
+
 	}
 
 	
 	/*_______________ getters/setters ______________*/
 	
-	public int getIdProprietaire() {
+	public Long getIdProprietaire() {
 		return idProprietaire;
 	}
 
-	public void setIdProprietaire(int idProprietaire) {
+	public void setIdProprietaire(Long idProprietaire) {
+
 		this.idProprietaire = idProprietaire;
 	}
 
@@ -96,6 +111,7 @@ public class Proprietaire {
 		this.adresse = adresse;
 	}
 
+
 	/*
 	public List<BienImmoblier> getBiensImmobiliers() {
 		return biensImmobiliers;
@@ -104,6 +120,17 @@ public class Proprietaire {
 		this.biensImmobiliers = biensImmobiliers;
 	}
 	*/
+
+	
+	public List<BienImmobilier> getBiensImmobiliers() {
+		return biensImmobiliers;
+	}
+
+	public void setBiensImmobiliers(List<BienImmobilier> biensImmobiliers) {
+		this.biensImmobiliers = biensImmobiliers;
+	}
+	
+
 	
 	
 }//end class

@@ -10,9 +10,12 @@ import com.intiformation.gestion.immo.modele.BienImmobilier;
 import com.intiformation.gestion.immo.modele.ClasseStandard;
 import com.intiformation.gestion.immo.modele.Adresse;
 
+
 //@RepositoryRestResource
 @Repository
 public interface BienImmobilierRepository extends JpaRepository<BienImmobilier, Long>{
+
+
 	
 	
 	/*----------------- Méthodes de requêtes -------------------*/

@@ -11,6 +11,16 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import java.io.Serializable;
+import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
 /**
  * modèle de données pour une adresse
  * @author marle
@@ -18,13 +28,13 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="adresses")
-public class Adresse {
+public class Adresse implements Serializable {
 
 	/*_______________ propriétés ______________*/
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_adresse")
-	private int idAdresse;
+	private Long idAdresse;
 	
 	@Column(name="numero")
 	private String numero;
@@ -52,24 +62,30 @@ public class Adresse {
 	private List<Client> clients;
 	
 	//association avec BienImmobilier : One to Many (une adresse pour plusieurs biens)
+
 	//@OneToMany(targetEntity=BienImmobilier.class, mappedBy="idBien")
 	//private List<BienImmobilier> biensImmobilier;
+
+	@OneToMany(targetEntity=BienImmobilier.class, mappedBy="idBien")
+	private List<BienImmobilier> biensImmobilier;
+
 	
 	/*_______________ ctor ______________*/
 	/**
 	 * ctor vide
 	 */
 	public Adresse() {
-		// TODO Auto-generated constructor stub
 	}
 	
 	/*_______________ getters/setters ______________*/
-	
-	public int getIdAdresse() {
+
+
+	public Long getIdAdresse() {
 		return idAdresse;
 	}
 
-	public void setIdAdresse(int idAdresse) {
+	public void setIdAdresse(Long idAdresse) {
+
 		this.idAdresse = idAdresse;
 	}
 
@@ -129,14 +145,33 @@ public class Adresse {
 		this.clients = clients;
 	}
 
+
 	/*
 	public List<BienImmobilier> getBiensImmobilier() {
 		return biensImmobilier;
 	}
+
+	@Override
+	public String toString() {
+		return "Adresse [idAdresse=" + idAdresse + ", numero=" + numero + ", rue=" + rue + ", codePostal=" + codePostal
+				+ ", localite=" + localite + ", pays=" + pays + ", proprietaires=" + proprietaires + ", clients="
+				+ clients + "]";
+	}
+
+	
+	public List<BienImmobilier> getBiensImmobilier() {
+		return biensImmobilier;
+	}
+
+
 	public void setBiensImmobilier(List<BienImmobilier> biensImmobilier) {
 		this.biensImmobilier = biensImmobilier;
 	}
 	
+
 	*/
 	
 }//end class
+
+	
+
