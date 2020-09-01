@@ -4,69 +4,54 @@
 
 <div class="card shadow mb-4" style="width: 97.5%; margin: auto;">
 
-    <div class="panel">
-
-        <!--============= header du panel =============-->
-        <div class="panel-heading">
-            <h3 class="panel-title">
-                {{client.nom}}
-            </h3>
+    <div class="mx-4 my-4">
+        <h3 class="card-title">
+            {{client.nom}}
+        </h3>
+        <!--tel1-->
+        <div style="float: left;" class="mx-5">
+            <div>
+                <h5 class="card-subtitle">Téléphone :</h5>
+                {{client.telephone}}
+            </div>
+            
         </div>
+        <div style="float: left;" class="mx-5">
+            <!--adresse-->
+            <div>
+                <h5 class="card-subtitle"> Adresse : </h5>
+                {{client.adresse.numero}}, {{client.adresse.rue}} <br>
+                {{client.adresse.codePostal}} {{client.adresse.localite}} <br>
+                {{client.adresse.pays}}
 
-        <!--============= body du panel =============-->
-        <div class="panel-body">
-            <div class="col-xs-10">
-                <div class="row vertical-align">
-                    <!--+++ details employe +++-->
-                    <!--tel1-->
-                    <div class="row">
-                        <div class="col-xs-6">
-                            Téléphone :
-                        </div>
-                        <div class="col-xs-6">
-                            {{client.telephone}}
-                        </div>
-                    </div>
-                    
-                    <br>
-                    <!--adresse-->
-                    <div class="row">
-                        <div class="col-xs-6">
-                            Adresse :
-                        </div>
-                        <div class="col-xs-6">
-                            {{client.adresse.toString()}}
-                        </div>
-                    </div>
-
-                </div>
             </div>
         </div>
+    </div>
 
-        <!--====== footer du panel ======-->
-        <div class="panel-footer">
-            <button class="btn btn-primary" (click)="editClient(client.idClient)">
-                Edit
-            </button>
-            <button class="btn btn-primary" (click)="deleteClient(client)">
-                Delete
-            </button>
-        </div>
-
+    <!--====== footer du panel ======-->
+    <div>
+        <button class="btn btn-primary float-right mr-4 mb-4" (click)="editClient(client.idClient)">
+            Edit
+        </button>
+        <button class="btn btn-primary float-right mr-4 mb-4" (click)="deleteClient(client)">
+            Delete
+        </button>
     </div>
 
 </div>
 
+
+
 <!--===========================================================-->
 <!--=========== Biens immobilier associés =====================-->
 <!--===========================================================-->
-<div class="panel panel-primary" *ngFor="let bien of client.listeContrat">
-Liste des contrats
+<div class="card shadow mb-4" style="width: 95%; margin: auto;" *ngFor="let bien of client.listeContrat">
+    Liste des contrats
 
 
 </div>
 
-<div class="panel panel-primary" *ngFor="let bien of client.listeVisites">
+<div class="card shadow mb-4" style="width: 95%; margin: auto;" *ngFor="let bien of client.listeVisites">
     Liste des visites
-    
+
 </div>
