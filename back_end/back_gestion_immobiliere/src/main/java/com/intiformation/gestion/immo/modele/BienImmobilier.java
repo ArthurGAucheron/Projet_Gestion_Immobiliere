@@ -33,6 +33,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 	    discriminatorType=DiscriminatorType.STRING)
 public abstract class BienImmobilier implements Serializable {
 
+	
 	// ______________propriétés______________
 
 	@Id
@@ -83,8 +84,8 @@ public abstract class BienImmobilier implements Serializable {
 	 */
 
 	@OneToOne(mappedBy="bienImmobilier")
-	@JsonIgnore
 	@JoinColumn(name="bien_id", referencedColumnName="id_bien")
+	@JsonIgnore
 	private Contrat contrat;
 
 

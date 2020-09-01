@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 
 
@@ -21,7 +22,7 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name="Visites")
+@Table(name="visites")
 public class Visite {
 	
 	//// PROP //////

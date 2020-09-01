@@ -1,7 +1,6 @@
 package com.intiformation.gestion.immo.modele;
 
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -14,16 +13,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 /**
  * Classe mappé sur la table Contrat de la bdd <br/>
  * @author giovanni
  *
  */
 @Entity
-@Table(name="Contrats")
-@JsonIgnoreProperties
+@Table(name="contrats")
 public class Contrat {
 	
 	////// PROP //////
@@ -32,10 +28,10 @@ public class Contrat {
 	@Column(name="id_contrat")
 	private Long idContrat;
 	
-	@Column(name="PrixAcquisition")
-	private Double prixAcquisition;
+	@Column(name="prix_acquisition")
+	private Double prixAcquisition; 
 	
-	@Column(name="DateAcquisition")
+	@Column(name="date_acquisition")
 	private Date dateAcquisition;
 	
 	////// ASSOCIATIONS //////
@@ -117,7 +113,8 @@ public class Contrat {
 		this.dateAcquisition = dateAcquisition;
 	}
 
-	public ConseillerImmobilier getConseiller() {
+	public ConseillerImmobilier getConseillers() {
+
 		return conseillers;
 	}
 

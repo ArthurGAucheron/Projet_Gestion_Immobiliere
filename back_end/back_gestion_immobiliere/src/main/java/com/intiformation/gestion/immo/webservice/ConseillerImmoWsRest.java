@@ -22,7 +22,7 @@ import com.intiformation.gestion.immo.modele.ConseillerImmobilier;
  *
  */
 @RestController
-@RequestMapping("/conseillers")
+@RequestMapping(value = "conseillers")
 public class ConseillerImmoWsRest {
 	
 	@Autowired

@@ -22,7 +22,7 @@ import com.intiformation.gestion.immo.modele.Visite;
  *
  */
 @RestController
-@RequestMapping("/visites")
+@RequestMapping(value = "visites")
 public class VisiteWsRest {
 
 	@Autowired
