@@ -14,6 +14,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * Classe mappé sur la table Contrat de la bdd <br/>
  * @author giovanni
@@ -21,6 +24,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="contrats")
+@JsonIgnoreProperties(value= { "client", "conseillers", "bienImmobilier"}, allowGetters = true)
 public class Contrat {
 	
 	////// PROP //////
@@ -43,6 +47,7 @@ public class Contrat {
 	 */
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="conseiller_id" , referencedColumnName="id_conseiller")
+	@JsonIgnore
 	private ConseillerImmobilier conseillers;
 	
 	/**
@@ -50,6 +55,7 @@ public class Contrat {
 	 */
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="bien_id", referencedColumnName="id_bien")
+	@JsonIgnore
 	private BienImmobilier bienImmobilier;
 	
 	/**
@@ -59,6 +65,7 @@ public class Contrat {
 	 */
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="client_id", referencedColumnName="id_client")
+	@JsonIgnore
 	private Client client;
 	
 	///// CTOR ///////
@@ -112,14 +119,6 @@ public class Contrat {
 
 	public void setDateAcquisition(Date dateAcquisition) {
 		this.dateAcquisition = dateAcquisition;
-	}
-
-	public ConseillerImmobilier getConseiller() {
-		return conseillers;
-	}
-
-	public void setConseiller(ConseillerImmobilier conseillers) {
-		this.conseillers = conseillers;
 	}
 
 	public ConseillerImmobilier getConseillers() {

@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * modèle de données pour un propriétaire
  * @author marle
@@ -20,6 +22,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="proprietaires")
+@JsonIgnoreProperties({"bienImmobiliers"})
 public class Proprietaire implements Serializable {
 
 	/*_______________ propriétés ______________*/

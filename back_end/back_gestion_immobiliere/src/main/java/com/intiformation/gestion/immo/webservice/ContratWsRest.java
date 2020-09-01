@@ -75,7 +75,7 @@ public class ContratWsRest {
 
 		contratToUpdate.setDateAcquisition(pContrat.getDateAcquisition());
 		contratToUpdate.setPrixAcquisition(pContrat.getPrixAcquisition());
-		contratToUpdate.setConseiller(pContrat.getConseiller());
+		contratToUpdate.setConseillers(pContrat.getConseillers());
 		
 		contratRepository.save(contratToUpdate);
 

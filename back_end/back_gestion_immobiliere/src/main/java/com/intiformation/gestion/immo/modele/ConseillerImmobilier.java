@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * Classe mappé à partie la table ConseillerImmobilier de la bdd <br/>
  * @author giovanni
@@ -51,6 +53,7 @@ public class ConseillerImmobilier {
 	 * One Conseillers To Many Contrat
 	 */
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="conseillers")
+	@JsonIgnore
 	private List<Contrat> contrat;
 	
 	////// Ctor /////

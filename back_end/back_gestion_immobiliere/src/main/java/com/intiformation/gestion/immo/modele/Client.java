@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * modèle de données pour un client
  * @author marle
@@ -58,6 +60,7 @@ public class Client implements Serializable {
 	
 	//association avec Contrat : One to Many (un client pour plusieurs contrats)
 	@OneToMany(targetEntity=Contrat.class, mappedBy="client")
+	@JsonIgnore
 	private List<Contrat> contrats;
 	
 	/*_______________ ctor ______________*/

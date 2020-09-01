@@ -21,12 +21,16 @@ import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "biens_immobiliers")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(
 	    name="type",
 	    discriminatorType=DiscriminatorType.STRING)
+@JsonIgnoreProperties(value= {"classe" , "adresse", "proprietaire", "contrat"}, allowGetters = true)
 public abstract class BienImmobilier {
 
 	// ______________propriétés______________
@@ -79,6 +83,7 @@ public abstract class BienImmobilier {
 	 */
 	@OneToOne(mappedBy="bienImmobilier")
 	@JoinColumn(name="bien_id", referencedColumnName="id_bien")
+	@JsonIgnore
 	private Contrat contrat;
 
 	// ______________constructeurs______________
