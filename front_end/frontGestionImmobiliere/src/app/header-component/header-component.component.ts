@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 //import { AuthenticationService } from '';
 
 @Component({
@@ -8,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponentComponent implements OnInit {
 
-  constructor(/*private loginService:AuthentificationService*/ ) { }
+  constructor(/*private loginService:AuthentificationService,*/ private router: Router ) { }
 
   ngOnInit(): void {
+  }
+
+  viewProprietaire(){
+    this.router.navigate(["proprietaire_list"])
+  }
+
+  viewClient(){
+    this.router.navigate(["client_list"])
   }
 
 }

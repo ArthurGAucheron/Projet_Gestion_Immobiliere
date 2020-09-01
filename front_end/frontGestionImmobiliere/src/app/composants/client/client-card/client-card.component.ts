@@ -40,7 +40,7 @@ export class ClientCardComponent implements OnInit {
    * permet de naviguer vers la page de modifiaction du client
    * @param idClient id du propriétaire à modifier
    */
-  editProprietaire(idClient: number){
+  editClient(idClient: number){
     this.router.navigate(["client_edit", idClient])
   }
 
@@ -48,7 +48,7 @@ export class ClientCardComponent implements OnInit {
    * permet de supprimer un client de la bdd
    * @param client le client à supprimer
    */
-  deleteProprietaire(client : Client){
+  deleteClient(client : Client){
     this.clientService.supprimerClientViaWsRest(client).subscribe();
     this.router.navigate(["client_list"])
   }

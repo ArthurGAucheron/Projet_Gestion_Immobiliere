@@ -2,61 +2,62 @@
 
 <h2 style="color: #333333;margin: 1rem 0 2rem 6rem;">Ajout d'un client</h2>
 
-<div class="card shadow mb-4" style="width: 97.5%; margin: auto;">
+<div class="card shadow mb-4" style="width: 95%; margin: auto;">
     <!--===== Formulaire d'ajout d'un Proprio =========-->
     <form (ngSubmit)="saveOrUpdateClient()">
-        <div class="panel">
+        <div class="mx-5 my-5">
 
-            <!--body du panel-->
-            <div class="panel-body">
-                <!--+++ nom +++-->
-                <div class="form-group">
-                    <label for="pNom">Nom : </label>
-                    <input type="text" name="nom" class="form-control" id="pNom" [(ngModel)]="client.nom">
-                </div>
-                <!--+++ tel1 +++-->
-                <div class="form-group">
-                    <label for="pTel">Telephone : </label>
-                    <input type="text" name="tel" class="form-control" id="pTel" [(ngModel)]="client.telephone">
-                </div>
 
-                <!--++++++++++++++ adresse +++++++++++++++++-->
-                <!--+++ numero voie +++-->
-                <div class="form-group">
-                    <label for="pNumVoie">Numéro de voie : </label>
-                    <input type="text" name="numVoie" class="form-control" id="pNumVoie"
-                        [(ngModel)]="client.adresse.numero">
-                </div>
-                <!--+++ rue +++-->
-                <div class="form-group">
-                    <label for="pRue">Rue : </label>
-                    <input type="text" name="rue" class="form-control" id="pRue" [(ngModel)]="client.adresse.rue">
-                </div>
-                <!--+++ code postal +++-->
-                <div class="form-group">
-                    <label for="pCodePostal">Code Postal : </label>
-                    <input type="text" name="codePostal" class="form-control" id="pCodePostal"
-                        [(ngModel)]="client.adresse.codePostal">
-                </div>
-                <!--+++ localite +++-->
-                <div class="form-group">
-                    <label for="pLocalite">Ville/localité : </label>
-                    <input type="text" name="localite" class="form-control" id="pLocalite"
-                        [(ngModel)]="client.adresse.localite">
-                </div>
-                <!--+++ pays +++-->
-                <div class="form-group">
-                    <label for="pPays">Pays : </label>
-                    <input type="text" name="pays" class="form-control" id="pPays" [(ngModel)]="client.adresse.pays">
-                </div>
-
+            <!--+++ nom +++-->
+            <div class="form-group">
+                <label for="pNom">Nom : </label>
+                <input type="text" name="nom" class="form-control" id="pNom" [(ngModel)]="client.nom">
+            </div>
+            <!--+++ tel1 +++-->
+            <div class="form-group">
+                <label for="pTel">Telephone : </label>
+                <input type="text" name="tel" class="form-control" id="pTel" [(ngModel)]="client.telephone">
             </div>
 
-            <!--footer du panel-->
-            <div class="panel-footer">
-                <button type="submit" class="btn btn-primary">Ajout</button>
+            <!--++++++++++++++ adresse +++++++++++++++++-->
+            <!--+++ numero voie +++-->
+            <div class="form-group">
+                <label for="pNumVoie">Numéro de voie : </label>
+                <input type="text" name="numVoie" class="form-control" id="pNumVoie"
+                    [(ngModel)]="client.adresse.numero">
+            </div>
+            <!--+++ rue +++-->
+            <div class="form-group">
+                <label for="pRue">Rue : </label>
+                <input type="text" name="rue" class="form-control" id="pRue" [(ngModel)]="client.adresse.rue">
+            </div>
+            <!--+++ code postal +++-->
+            <div class="form-group">
+                <label for="pCodePostal">Code Postal : </label>
+                <input type="text" name="codePostal" class="form-control" id="pCodePostal"
+                    [(ngModel)]="client.adresse.codePostal">
+            </div>
+            <!--+++ localite +++-->
+            <div class="form-group">
+                <label for="pLocalite">Ville/localité : </label>
+                <input type="text" name="localite" class="form-control" id="pLocalite"
+                    [(ngModel)]="client.adresse.localite">
+            </div>
+            <!--+++ pays +++-->
+            <div class="form-group">
+                <label for="pPays">Pays : </label>
+                <input type="text" name="pays" class="form-control" id="pPays" [(ngModel)]="client.adresse.pays">
+            </div>
+
+            <!--bouton-->
+            <div>
+                <button type="submit" class="btn btn-primary float-right my-4">Ajout</button>
             </div>
         </div>
     </form>
 
 </div>
+
+<footer class="container">
+    <p>&copy; Company nom Agence 2020 </p>
+  </footer>

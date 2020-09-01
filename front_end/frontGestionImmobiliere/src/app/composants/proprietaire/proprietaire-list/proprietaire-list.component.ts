@@ -34,6 +34,9 @@ export class ProprietaireListComponent implements OnInit {
     this.router.navigate(["proprietaire_card", idProprietaire])
   }
 
+  newProprietaire(){
+    this.router.navigate(["proprietaire_edit", 0])
+  }
   
 
 }

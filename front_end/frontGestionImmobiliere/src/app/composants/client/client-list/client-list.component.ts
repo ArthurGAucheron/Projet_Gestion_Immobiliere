@@ -36,4 +36,8 @@ export class ClientListComponent implements OnInit {
     this.router.navigate(["client_card", idClient])
   }
 
+  newClient(){
+    this.router.navigate(["client_edit", 0])
+  }
+
 }
