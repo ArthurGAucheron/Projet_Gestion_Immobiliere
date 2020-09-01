@@ -1,7 +1,7 @@
 package com.intiformation.gestion.immo.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.stereotype.Repository;
 
 import com.intiformation.gestion.immo.modele.Visite;
 
@@ -10,7 +10,7 @@ import com.intiformation.gestion.immo.modele.Visite;
  * @author giovanni
  *
  */
-@RepositoryRestResource
+@Repository
 public interface VisiteRepository extends JpaRepository<Visite, Long> {
 	
 	/*_______ Méthode de requêtes __________*/

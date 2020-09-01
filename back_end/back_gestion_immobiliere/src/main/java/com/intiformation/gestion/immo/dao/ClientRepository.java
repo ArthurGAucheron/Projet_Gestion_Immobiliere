@@ -2,7 +2,8 @@ package com.intiformation.gestion.immo.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import ch.qos.logback.core.net.server.Client;
+import com.intiformation.gestion.immo.modele.Client;
+
 
 /**
  * couche d'accès aux données (DAO) pour les clients

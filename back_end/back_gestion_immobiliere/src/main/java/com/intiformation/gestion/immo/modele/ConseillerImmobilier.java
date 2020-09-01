@@ -83,7 +83,6 @@ public class ConseillerImmobilier {
 	 * @param telephone
 	 */
 	public ConseillerImmobilier(String identifiant, String motDePasse, String nom, String telephone) {
-		super();
 		this.identifiant = identifiant;
 		this.motDePasse = motDePasse;
 		this.nom = nom;

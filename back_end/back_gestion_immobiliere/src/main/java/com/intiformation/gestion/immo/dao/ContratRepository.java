@@ -1,7 +1,7 @@
 package com.intiformation.gestion.immo.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.stereotype.Repository;
 
 import com.intiformation.gestion.immo.modele.Contrat;
 
@@ -9,7 +9,7 @@ import com.intiformation.gestion.immo.modele.Contrat;
  * @author giovanni
  *
  */
-@RepositoryRestResource
+@Repository
 public interface ContratRepository extends JpaRepository<Contrat, Long>{
 	
 	/*________ Méthodes de requêtes __________*/

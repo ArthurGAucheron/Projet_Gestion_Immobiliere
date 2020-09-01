@@ -50,9 +50,6 @@
 		</dependency>
 
 
-		<!-- Starter Web : ensemble de dépendances pour l'implémentation de spring 
-			mvc -->
-
 		
 		<!-- Starter spring-security : ensemble de dépendances pour spirng data -->
         <dependency>
@@ -97,7 +94,6 @@
 			<artifactId>spring-boot-starter-data-rest</artifactId>
 		</dependency>
 		
-
 		<!-- Starter spring-security : ensemble de dépendances pour spirng security -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -115,6 +111,7 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-taglibs</artifactId>
 		</dependency>
+
 	</dependencies>
 
 	<build>
