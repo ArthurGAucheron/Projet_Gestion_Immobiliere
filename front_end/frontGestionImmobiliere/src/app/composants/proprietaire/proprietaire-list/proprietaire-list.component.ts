@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ProprietaireService } from 'src/app/services/propietaire/proprietaire.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-proprietaire-list',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProprietaireListComponent implements OnInit {
 
-  constructor() { }
+  /*____________ props ___________ */
+  proprietaire = [];
+
+  /*____________ ctor ___________ */
+  constructor(private proprietaireService : ProprietaireService, private router: Router) { }
 
   ngOnInit(): void {
+    this.findAllProprietaire();
   }
+
+  findAllProprietaire(){
+    this.proprietaireService.getAllProprietaireFromWsRest().subscribe(data => this.proprietaire = data)
+  }
+
+  selectProprietaire(idProprietaire: number){
+    this.router.navigate(["proprietaire_card", idProprietaire])
+  }
+
+  
 
 }

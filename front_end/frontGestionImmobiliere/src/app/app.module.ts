@@ -3,12 +3,9 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-<<<<<<< HEAD
-import { ProprietaireComponent } from './composants/proprietaire/proprietaire/proprietaire.component';
 import { ProprietaireCreateComponent } from './composants/proprietaire/proprietaire-create/proprietaire-create.component';
 import { ProprietaireListComponent } from './composants/proprietaire/proprietaire-list/proprietaire-list.component';
 import { ClientCreateComponent } from './composants/client/client-create/client-create.component';
-=======
 import { ListeImmobilierComponent } from './composants/bienImmobilier/liste-immobilier/liste-immobilier.component';
 import { CreateImmobilierComponent } from './composants/bienImmobilier/create-immobilier/create-immobilier.component';
 import { ModifImmobilierComponent } from './composants/bienImmobilier/modif-immobilier/modif-immobilier.component';
@@ -18,17 +15,14 @@ import { CreateContratComponent } from './composants/contrat/create-contrat/crea
 import { ListeContratComponent } from './composants/contrat/liste-contrat/liste-contrat.component';
 import { ListeVisiteComponent } from './composants/visite/liste-visite/liste-visite.component';
 import { CreateVisiteComponent } from './composants/visite/create-visite/create-visite.component';
->>>>>>> 1601d7e44e48837810e9de9c2e1c2e6013d6b9a3
+import { ProprietaireCardComponent } from './composants/proprietaire/proprietaire-card/proprietaire-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-<<<<<<< HEAD
-    ProprietaireComponent,
     ProprietaireCreateComponent,
     ProprietaireListComponent,
-    ClientCreateComponent
-=======
+    ClientCreateComponent,
     ListeImmobilierComponent,
     CreateImmobilierComponent,
     ModifImmobilierComponent,
@@ -36,8 +30,8 @@ import { CreateVisiteComponent } from './composants/visite/create-visite/create-
     CreateContratComponent,
     ListeContratComponent,
     ListeVisiteComponent,
-    CreateVisiteComponent
->>>>>>> 1601d7e44e48837810e9de9c2e1c2e6013d6b9a3
+    CreateVisiteComponent,
+    ProprietaireCardComponent
   ],
   imports: [
     BrowserModule,

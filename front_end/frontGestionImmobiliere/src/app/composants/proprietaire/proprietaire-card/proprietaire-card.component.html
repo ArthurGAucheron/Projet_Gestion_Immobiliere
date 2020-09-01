@@ -47,10 +47,21 @@
 
     <!--====== footer du panel ======-->
     <div class="panel-footer">
-        <button class="btn btn-primary" (click)="selectProprietaire(proprio.idProprietaire)">
-            Voir la fiche
+        <button class="btn btn-primary" (click)="editProprietaire(proprio.idProprietaire)">
+            Edit
         </button> 
-        
+        <button class="btn btn-primary" (click)="deleteProprietaire(proprio)">
+            Delete
+        </button>
     </div>
+
+</div>
+
+<!--===========================================================-->
+<!--=========== Biens immobilier associés =====================-->
+<!--===========================================================-->
+<div class="panel panel-primary" *ngFor="let bien of proprietaire.listeBienImmobilier">
+
+    
 
 </div>
