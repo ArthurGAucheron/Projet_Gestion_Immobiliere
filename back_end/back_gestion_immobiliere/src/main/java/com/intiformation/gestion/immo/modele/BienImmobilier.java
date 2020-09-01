@@ -22,6 +22,7 @@ import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -30,7 +31,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @DiscriminatorColumn(
 	    name="type",
 	    discriminatorType=DiscriminatorType.STRING)
-@JsonIgnoreProperties({ "proprietaire", "contrat","adresse" })
 public abstract class BienImmobilier implements Serializable {
 
 	// ______________propriétés______________
@@ -60,6 +60,7 @@ public abstract class BienImmobilier implements Serializable {
 	private String descriptif;
 
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name="classe_id", referencedColumnName="id_classe")
 	private ClasseStandard classe;
 
@@ -82,6 +83,7 @@ public abstract class BienImmobilier implements Serializable {
 	 */
 
 	@OneToOne(mappedBy="bienImmobilier")
+	@JsonIgnore
 	@JoinColumn(name="bien_id", referencedColumnName="id_bien")
 	private Contrat contrat;
 

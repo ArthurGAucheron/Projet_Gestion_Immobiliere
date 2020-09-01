@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Column;
@@ -54,10 +56,12 @@ public class Adresse implements Serializable {
 	
 	//+++++++ associations +++++++++
 	//association avec Propriétaire : One to Many (une adresse pour plusieurs propriétaires)
+	@JsonIgnore
 	@OneToMany(targetEntity=Proprietaire.class, mappedBy="idProprietaire")
 	private List<Proprietaire> proprietaires;
 	
 	//association avec Client : One to Many (une adresse pour plusieurs clients)
+	@JsonIgnore
 	@OneToMany(targetEntity=Client.class, mappedBy="idClient")
 	private List<Client> clients;
 	
@@ -65,7 +69,7 @@ public class Adresse implements Serializable {
 
 	//@OneToMany(targetEntity=BienImmobilier.class, mappedBy="idBien")
 	//private List<BienImmobilier> biensImmobilier;
-
+	@JsonIgnore
 	@OneToMany(targetEntity=BienImmobilier.class, mappedBy="idBien")
 	private List<BienImmobilier> biensImmobilier;
 

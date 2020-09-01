@@ -121,14 +121,6 @@ public class Contrat {
 		return conseillers;
 	}
 
-	public void setConseiller(ConseillerImmobilier conseillers) {
-		this.conseillers = conseillers;
-	}
-
-	public ConseillerImmobilier getConseillers() {
-		return conseillers;
-	}
-
 	public void setConseillers(ConseillerImmobilier conseillers) {
 		this.conseillers = conseillers;
 	}
