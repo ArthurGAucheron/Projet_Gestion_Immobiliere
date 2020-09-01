@@ -1,5 +1,6 @@
 package com.intiformation.gestion.immo.modele;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -25,7 +26,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name = "biens_immobiliers")
+@Table(name ="biens_immobiliers")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(
 	    name="type",
@@ -59,20 +60,20 @@ public abstract class BienImmobilier {
 	@Column(name = "descriptif")
 	private String descriptif;
 
-	
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name="classe_id", referencedColumnName="id_classe")
 	private ClasseStandard classe;
-	
 
 	@ManyToOne
 	@JoinColumn(name="adresse_id", referencedColumnName="id_adresse")
 	private Adresse adresse;
-	
+
 	/**
 	 * Association entre BienImmobilier et propriétaire
 	 * Many bienimmo To One Proprio
 	 */
+
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="proprietaire_id", referencedColumnName="id_proprietaire")
 	private Proprietaire proprietaire;
@@ -81,10 +82,13 @@ public abstract class BienImmobilier {
 	 * Association entre BienImmobilier et propriétaire
 	 * One bienimmo To One Contrat
 	 */
+
 	@OneToOne(mappedBy="bienImmobilier")
+	@JsonIgnore
 	@JoinColumn(name="bien_id", referencedColumnName="id_bien")
 	@JsonIgnore
 	private Contrat contrat;
+
 
 	// ______________constructeurs______________
 
@@ -105,7 +109,7 @@ public abstract class BienImmobilier {
 	}// end ctor chargé
 
 	public BienImmobilier(String libelle, Date dateSoumission, Date dateMiseADispo, double revenuCadastral,
-			String descriptif, ClasseStandard classe) {
+			String descriptif, ClasseStandard classe, Adresse adresse) {
 		super();
 		this.libelle = libelle;
 		this.dateSoumission = dateSoumission;
@@ -182,14 +186,12 @@ public abstract class BienImmobilier {
 		this.adresse = adresse;
 	}
 	
-
-	// ______________toString()______________
 	
 	public Proprietaire getProprietaire() {
 		return proprietaire;
 	}
 
-	public void setProprietaireId(Proprietaire proprietaire) {
+	public void setProprietaire(Proprietaire proprietaire) {
 		this.proprietaire = proprietaire;
 	}
 
@@ -200,13 +202,15 @@ public abstract class BienImmobilier {
 	public void setContrat(Contrat contrat) {
 		this.contrat = contrat;
 	}
+	
+	// ______________toString()______________
 
-	@Override
-	public String toString() {
-		return "BienImmobilier [idBien=" + idBien + ", libelle=" + libelle + ", dateSoumission=" + dateSoumission
-				+ ", dateMiseADispo=" + dateMiseADispo + ", revenuCadastral=" + revenuCadastral + ", descriptif="
-				+ descriptif + ", classe=" + classe + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "BienImmobilier [idBien=" + idBien + ", libelle=" + libelle + ", dateSoumission=" + dateSoumission
+//				+ ", dateMiseADispo=" + dateMiseADispo + ", revenuCadastral=" + revenuCadastral + ", descriptif="
+//				+ descriptif + ", classe=" + classe + "]";
+//	}
 
 
 

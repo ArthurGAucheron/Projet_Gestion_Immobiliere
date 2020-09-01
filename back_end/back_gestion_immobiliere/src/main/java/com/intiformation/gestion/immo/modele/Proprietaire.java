@@ -1,6 +1,8 @@
 package com.intiformation.gestion.immo.modele;
 
+
 import java.io.Serializable;
+
 import java.util.List;
 
 import javax.persistence.Column;
@@ -10,7 +12,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+
 import javax.persistence.OneToMany;
+
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -25,12 +30,13 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties({"bienImmobiliers"})
 public class Proprietaire implements Serializable {
 
+
 	/*_______________ propriétés ______________*/
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_proprietaire")
 	private Long idProprietaire;
-	
+
 	@Column(name="nom")
 	private String nom;
 	
@@ -47,8 +53,13 @@ public class Proprietaire implements Serializable {
 	private Adresse adresse;
 	
 	//association avec BienImmobilier : One to Many (un propriétaire pour plusieurs bien immobilier)
+
+	//@OneToMany(targetEntity=BienImmoblier.class, mappedBy="idBien")
+	//private List<BienImmoblier> biensImmobiliers;
+
 	@OneToMany(targetEntity=BienImmobilier.class, mappedBy="idBien")
 	private List<BienImmobilier> biensImmobiliers;
+
 
 	
 	/*_______________ ctor ______________*/
@@ -56,7 +67,7 @@ public class Proprietaire implements Serializable {
 	 * ctor vide
 	 */
 	public Proprietaire() {
-		// TODO Auto-generated constructor stub
+
 	}
 
 	
@@ -67,6 +78,7 @@ public class Proprietaire implements Serializable {
 	}
 
 	public void setIdProprietaire(Long idProprietaire) {
+
 		this.idProprietaire = idProprietaire;
 	}
 
@@ -102,6 +114,16 @@ public class Proprietaire implements Serializable {
 		this.adresse = adresse;
 	}
 
+
+	/*
+	public List<BienImmoblier> getBiensImmobiliers() {
+		return biensImmobiliers;
+	}
+	public void setBiensImmobiliers(List<BienImmoblier> biensImmobiliers) {
+		this.biensImmobiliers = biensImmobiliers;
+	}
+	*/
+
 	
 	public List<BienImmobilier> getBiensImmobiliers() {
 		return biensImmobiliers;
@@ -111,6 +133,7 @@ public class Proprietaire implements Serializable {
 		this.biensImmobiliers = biensImmobiliers;
 	}
 	
+
 	
 	
 }//end class
