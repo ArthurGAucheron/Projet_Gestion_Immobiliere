@@ -18,7 +18,7 @@ import com.intiformation.gestion.immo.modele.JwtRequest;
 import com.intiformation.gestion.immo.modele.JwtResponse;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins="http://localhost:4200")
 public class JwtAuthentificationController {
 
 	@Autowired

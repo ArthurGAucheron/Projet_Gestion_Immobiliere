@@ -40,8 +40,8 @@ export class AuthentificationService {
 
 isUserLoggedIn() {
   let user = sessionStorage.getItem('username')
-  // console.log("username :" , sessionStorage.getItem('username'));
-  // console.log("token :" , sessionStorage.getItem('token'));
+  console.log("username :" , sessionStorage.getItem('username'));
+  console.log("token :" , sessionStorage.getItem('token'));
   return !(user === null)
 }
 logOut() {
