@@ -28,6 +28,8 @@ import { ListeContratComponent } from './composants/contrat/liste-contrat/liste-
 import { ListeVisiteComponent } from './composants/visite/liste-visite/liste-visite.component';
 import { CreateVisiteComponent } from './composants/visite/create-visite/create-visite.component';
 import { ProprietaireCardComponent } from './composants/proprietaire/proprietaire-card/proprietaire-card.component';
+import { ClientListComponent } from './composants/client/client-list/client-list.component';
+import { ClientCardComponent } from './composants/client/client-card/client-card.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,9 @@ import { ProprietaireCardComponent } from './composants/proprietaire/proprietair
     ListeContratComponent,
     ListeVisiteComponent,
     CreateVisiteComponent,
-    ProprietaireCardComponent
+    ProprietaireCardComponent,
+    ClientListComponent,
+    ClientCardComponent
   ],
   imports: [
     BrowserModule,

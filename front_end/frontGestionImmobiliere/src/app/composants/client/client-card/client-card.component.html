@@ -1,6 +1,6 @@
-<h1 style="color: #d49625;margin: 1rem 0 2rem 4rem;font-weight: bold;">Propriétaire</h1>
+<h1 style="color: #d49625;margin: 1rem 0 2rem 4rem;font-weight: bold;">Client</h1>
 
-<h2 style="color: #333333;margin: 1rem 0 2rem 6rem;">Fiche d'un proprietaire</h2>
+<h2 style="color: #333333;margin: 1rem 0 2rem 6rem;">Fiche d'un client</h2>
 
 <div class="card shadow mb-4" style="width: 97.5%; margin: auto;">
 
@@ -9,7 +9,7 @@
         <!--============= header du panel =============-->
         <div class="panel-heading">
             <h3 class="panel-title">
-                {{proprietaire.nom}}
+                {{client.nom}}
             </h3>
         </div>
 
@@ -21,29 +21,21 @@
                     <!--tel1-->
                     <div class="row">
                         <div class="col-xs-6">
-                            Téléphone prive :
+                            Téléphone :
                         </div>
                         <div class="col-xs-6">
-                            {{proprietaire.telPrive}}
+                            {{client.telephone}}
                         </div>
                     </div>
-                    <!--tel2-->
-                    <div class="row">
-                        <div class="col-xs-6">
-                            Téléphone pro :
-                        </div>
-                        <div class="col-xs-6">
-                            {{proprietaire.telTravail}}
-                        </div>
-                    </div>
+                    
                     <br>
-                    <!--tel2-->
+                    <!--adresse-->
                     <div class="row">
                         <div class="col-xs-6">
                             Adresse :
                         </div>
                         <div class="col-xs-6">
-                            {{proprietaire.adresse.toString()}}
+                            {{client.adresse.toString()}}
                         </div>
                     </div>
 
@@ -53,10 +45,10 @@
 
         <!--====== footer du panel ======-->
         <div class="panel-footer">
-            <button class="btn btn-primary" (click)="editProprietaire(proprietaire.idProprietaire)">
+            <button class="btn btn-primary" (click)="editProprietaire(proprio.idProprietaire)">
                 Edit
             </button>
-            <button class="btn btn-primary" (click)="deleteProprietaire(proprietaire)">
+            <button class="btn btn-primary" (click)="deleteProprietaire(proprio)">
                 Delete
             </button>
         </div>
@@ -68,8 +60,13 @@
 <!--===========================================================-->
 <!--=========== Biens immobilier associés =====================-->
 <!--===========================================================-->
-<div class="panel panel-primary" *ngFor="let bien of proprietaire.listeBienImmobilier">
+<div class="panel panel-primary" *ngFor="let bien of client.listeContrat">
+Liste des contrats
 
-    Liste des Biens Immobilier
 
+</div>
+
+<div class="panel panel-primary" *ngFor="let bien of client.listeVisites">
+    Liste des visites
+    
 </div>

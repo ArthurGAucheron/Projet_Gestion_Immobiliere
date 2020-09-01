@@ -1,6 +1,6 @@
-<h1 style="color: #d49625;margin: 1rem 0 2rem 4rem;font-weight: bold;">Propriétaire</h1>
+<h1 style="color: #d49625;margin: 1rem 0 2rem 4rem;font-weight: bold;">Client</h1>
 
-<h2 style="color: #333333;margin: 1rem 0 2rem 6rem;">Liste des propriétaire</h2>
+<h2 style="color: #333333;margin: 1rem 0 2rem 6rem;">Liste des clients</h2>
 
 <div class="card shadow mb-4" style="width: 97.5%; margin: auto;">
   <div class="card-body">
@@ -11,19 +11,17 @@
 
           <tr style="background-color: #df4937;color:  #333333;">
             <th scope="col">Nom</th>
-            <th scope="col">Tel privé</th>
-            <th scope="col">Tel pro</th>
+            <th scope="col">Téléphone</th>
             <th scope="col">Adresse</th>
           </tr>
         </thead>
 
         <!-- données de la table -->
         <tbody>
-          <tr *ngFor="let proprio of proprietaires">
-            <td><a (click)="selectProprietaire(proprio.idProprietaire)">{{proprio.nom}}</a></td>
-            <td>{{proprio.telPrive}}</td>
-            <td>{{proprio.telTravail}}</td>
-            <td>{{proprio.adresse.toString()}}</td>
+          <tr *ngFor="let clt of clients">
+            <td><a (click)="selectClient(clt.idClient)">{{clt.nom}}</a></td>
+            <td>{{clt.telephone}}</td>
+            <td>{{clt.adresse.toString()}}</td>
             
           </tr>
         </tbody>
