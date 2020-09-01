@@ -15,7 +15,9 @@ public class UserAdmin {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long idUser;
+
 	private String username;
+	
 	private String password;
 	
 

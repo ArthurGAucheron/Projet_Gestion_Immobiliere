@@ -27,7 +27,7 @@ export class AuthentificationService {
   authenticate(username, password) {
     console.log("Authenticate : " + username +":"+password);
 
-    return this.httpClient.post<any>('http://localhost:8080/rest/authenticate',
+    return this.httpClient.post<any>('http://localhost:8080//gestion-immo/authenticate',
       {username:username,password:password}).subscribe(
        userData => {
         sessionStorage.setItem('username',username);

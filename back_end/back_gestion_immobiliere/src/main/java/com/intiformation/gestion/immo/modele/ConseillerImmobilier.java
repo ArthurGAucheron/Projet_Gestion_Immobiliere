@@ -38,6 +38,20 @@ public class ConseillerImmobilier {
 	@Column(name = "telephone")
 	private String telephone;
 	
+	/// ASSOCIATIONS /////
+	/**
+	 * Association OneToMany
+	 * One Conseillers To Many Visite
+	 */
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="conseillers")
+	private List<Visite> visite;
+	
+	/**
+	 * Association OneToMany
+	 * One Conseillers To Many Contrat
+	 */
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="conseillers")
+	private List<Contrat> contrat;
 	
 	////// Ctor /////
 	public ConseillerImmobilier() {
@@ -69,7 +83,6 @@ public class ConseillerImmobilier {
 	 * @param telephone
 	 */
 	public ConseillerImmobilier(String identifiant, String motDePasse, String nom, String telephone) {
-		super();
 		this.identifiant = identifiant;
 		this.motDePasse = motDePasse;
 		this.nom = nom;

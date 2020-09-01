@@ -1,6 +1,7 @@
 package com.intiformation.gestion.immo.modele;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -40,7 +41,25 @@ public class Visite {
 	 */
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="conseiller_id", referencedColumnName="id_conseiller")
-	private ConseillerImmobilier conseiller;
+	private ConseillerImmobilier conseillers;
+	
+	/**
+	 * Assocations de type ManyToOne 
+	 * Associations entre l'entité Visite et l'entité BienImmobilier 
+	 * Avec Many Visite To One BienImmo
+	 */
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="bien_id", referencedColumnName="id_bien")
+	private BienImmobilier bienImmobilier;
+	
+	/**
+	 * Assocations de type ManyToOne 
+	 * Associations entre l'entité Visite et l'entité clients 
+	 * Avec Many Visite To One Client
+	 */
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="client_id", referencedColumnName="id_client")
+	private Client client;
 	
 	
 	///// CTOR ///////
@@ -88,13 +107,31 @@ public class Visite {
 		this.dateVisite = dateVisite;
 	}
 
-	public ConseillerImmobilier getConseiller() {
-		return conseiller;
+	public ConseillerImmobilier getConseillers() {
+		return conseillers;
 	}
 
-	public void setConseiller(ConseillerImmobilier conseiller) {
-		this.conseiller = conseiller;
+	public void setConseillers(ConseillerImmobilier conseillers) {
+		this.conseillers = conseillers;
 	}
+
+	public BienImmobilier getBienImmobilier() {
+		return bienImmobilier;
+	}
+
+	public void setBienImmobilier(BienImmobilier bienImmobilier) {
+		this.bienImmobilier = bienImmobilier;
+	}
+
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+
+	
 	
 	
 

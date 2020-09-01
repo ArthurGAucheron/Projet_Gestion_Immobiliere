@@ -24,21 +24,21 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
  * @author giovanni
  *
  */
-@SpringBootApplication
 
-//désactivation de la config par défaut de spring boot pour la co à la bdd
+@SpringBootApplication // désactivation de la config par défaut de spring boot pour la co à la bdd
 @EnableAutoConfiguration(exclude = {
 	DataSourceAutoConfiguration.class,
 	DataSourceTransactionManagerAutoConfiguration.class,
 	HibernateJpaAutoConfiguration.class,		
 })
+
 @ComponentScan(basePackages = {"com.intiformation.gestion.immo.dao"})// détection auto des beans spring
 public class BackGestionImmobiliereApplication {
 	
 	// variable représentant l'environnement dans lequel notre app est exécuté
 	@Autowired
 	private Environment appEnvironment;
-
+	
 	
 	public static void main(String[] args) {
 		SpringApplication.run(BackGestionImmobiliereApplication.class, args);
@@ -130,4 +130,6 @@ public class BackGestionImmobiliereApplication {
 		
 	}//END METHODE
 
-}//END CLASS
+
+
+}
