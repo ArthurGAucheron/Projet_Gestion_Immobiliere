@@ -18,7 +18,9 @@ import javax.persistence.OneToMany;
 
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
  * modèle de données pour un propriétaire
@@ -50,14 +52,13 @@ public class Proprietaire implements Serializable {
 	//association avec Adresse : Many to One (plusieurs propriétaires pour une adresse)
 	@ManyToOne
 	@JoinColumn(name="adresse_id", referencedColumnName="id_adresse")
+	@JsonManagedReference
 	private Adresse adresse;
 	
 	//association avec BienImmobilier : One to Many (un propriétaire pour plusieurs bien immobilier)
 
-	//@OneToMany(targetEntity=BienImmoblier.class, mappedBy="idBien")
-	//private List<BienImmoblier> biensImmobiliers;
-
-	@OneToMany(targetEntity=BienImmobilier.class, mappedBy="idBien")
+	@OneToMany(targetEntity=BienImmobilier.class, mappedBy="proprietaire")
+	@JsonBackReference
 	private List<BienImmobilier> biensImmobiliers;
 
 

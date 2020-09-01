@@ -24,6 +24,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name ="biens_immobiliers")
@@ -61,12 +62,13 @@ public abstract class BienImmobilier implements Serializable {
 	private String descriptif;
 
 	@ManyToOne
-	@JsonIgnore
 	@JoinColumn(name="classe_id", referencedColumnName="id_classe")
+	@JsonManagedReference
 	private ClasseStandard classe;
 
 	@ManyToOne
 	@JoinColumn(name="adresse_id", referencedColumnName="id_adresse")
+	@JsonManagedReference
 	private Adresse adresse;
 
 	/**
@@ -76,6 +78,7 @@ public abstract class BienImmobilier implements Serializable {
 
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="proprietaire_id", referencedColumnName="id_proprietaire")
+	@JsonManagedReference
 	private Proprietaire proprietaire;
 	
 	/**
@@ -85,7 +88,7 @@ public abstract class BienImmobilier implements Serializable {
 
 	@OneToOne(mappedBy="bienImmobilier")
 	@JoinColumn(name="bien_id", referencedColumnName="id_bien")
-	@JsonIgnore
+	@JsonManagedReference
 	private Contrat contrat;
 
 

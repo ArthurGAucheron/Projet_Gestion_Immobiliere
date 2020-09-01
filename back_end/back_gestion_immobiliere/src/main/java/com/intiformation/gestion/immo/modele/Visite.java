@@ -14,6 +14,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 
 /**
@@ -42,6 +45,7 @@ public class Visite {
 	 */
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="conseiller_id", referencedColumnName="id_conseiller")
+	@JsonBackReference
 	private ConseillerImmobilier conseillers;
 	
 	/**
@@ -51,6 +55,7 @@ public class Visite {
 	 */
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="bien_id", referencedColumnName="id_bien")
+	@JsonBackReference
 	private BienImmobilier bienImmobilier;
 	
 	/**
@@ -60,6 +65,7 @@ public class Visite {
 	 */
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="client_id", referencedColumnName="id_client")
+	@JsonBackReference
 	private Client client;
 	
 	

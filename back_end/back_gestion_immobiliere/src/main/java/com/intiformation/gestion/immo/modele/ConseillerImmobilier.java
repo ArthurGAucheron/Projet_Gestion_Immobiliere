@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
@@ -46,6 +47,7 @@ public class ConseillerImmobilier {
 	 * One Conseillers To Many Visite
 	 */
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="conseillers")
+	@JsonBackReference
 	private List<Visite> visite;
 	
 	/**
@@ -53,7 +55,7 @@ public class ConseillerImmobilier {
 	 * One Conseillers To Many Contrat
 	 */
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="conseillers")
-	@JsonIgnore
+	@JsonBackReference
 	private List<Contrat> contrat;
 	
 	////// Ctor /////

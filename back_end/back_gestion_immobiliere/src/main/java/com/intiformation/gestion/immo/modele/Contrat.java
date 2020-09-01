@@ -13,6 +13,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 /**
  * Classe mappé sur la table Contrat de la bdd <br/>
  * @author giovanni
@@ -42,6 +45,7 @@ public class Contrat {
 	 */
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="conseiller_id" , referencedColumnName="id_conseiller")
+	@JsonBackReference
 	private ConseillerImmobilier conseillers;
 	
 	/**
@@ -49,6 +53,7 @@ public class Contrat {
 	 */
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="bien_id", referencedColumnName="id_bien")
+	@JsonBackReference
 	private BienImmobilier bienImmobilier;
 	
 	/**
@@ -58,6 +63,7 @@ public class Contrat {
 	 */
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="client_id", referencedColumnName="id_client")
+	@JsonBackReference
 	private Client client;
 	
 	///// CTOR ///////
