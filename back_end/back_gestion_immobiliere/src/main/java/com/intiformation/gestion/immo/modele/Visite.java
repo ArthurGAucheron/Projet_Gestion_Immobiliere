@@ -17,6 +17,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -49,7 +50,7 @@ public class Visite {
 	 */
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="conseiller_id", referencedColumnName="id_conseiller")
-//	@JsonBackReference
+	@JsonIgnoreProperties(value= {"visite","contrat"})
 	private ConseillerImmobilier conseillers;
 	
 	/**
@@ -59,8 +60,7 @@ public class Visite {
 	 */
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="bien_id", referencedColumnName="id_bien")
-//	@JsonBackReference
-	@JsonIdentityReference(alwaysAsId=true)
+	@JsonIgnoreProperties(value= {"visite","contrat","classe"})
 	private BienImmobilier bienImmobilier;
 	
 	/**
@@ -69,8 +69,8 @@ public class Visite {
 	 * Avec Many Visite To One Client
 	 */
 	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="client_id", referencedColumnName="id_client")
-//	@JsonBackReference
+	@JoinColumn(name="client_id", referencedColumnName="id_client", nullable=false, insertable=false, updatable=false)
+	@JsonIgnoreProperties(value= {"visite","contrat"})
 	private Client client;
 	
 	
