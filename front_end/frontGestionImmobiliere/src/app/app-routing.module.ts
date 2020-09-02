@@ -15,6 +15,8 @@ import { ClientCreateComponent } from './composants/client/client-create/client-
 import { ClientListComponent } from './composants/client/client-list/client-list.component';
 import { ProprietaireCardComponent } from './composants/proprietaire/proprietaire-card/proprietaire-card.component';
 import { AuthGuardService } from './guards/auth-guard.service';
+import { FicheImmobilierLocationComponent } from './composants/bienImmobilier/fiche-immobilier-location/fiche-immobilier-location.component';
+import { CreateImmobilierLocationComponent } from './composants/bienImmobilier/create-immobilier-location/create-immobilier-location.component';
 
 
 
@@ -38,6 +40,8 @@ const routes: Routes = [
 
   //URLs : gestion des BIENS IMMOBILIER A LOUER
   {path:"bienImmoLocation/list", component:ListeImmobilierLocationComponent},
+  {path:"bienImmoLocation/fiche/:id", component:FicheImmobilierLocationComponent},
+  {path:"bienImmoLocation/edit/:id", component:CreateImmobilierLocationComponent},
   
   //URLs : gestion DES PROPRIETAIRES 
   {path:"proprietaire_card/:id", component:ProprietaireCardComponent},

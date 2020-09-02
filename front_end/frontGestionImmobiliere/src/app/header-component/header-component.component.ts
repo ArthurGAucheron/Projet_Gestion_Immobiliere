@@ -21,9 +21,4 @@ export class HeaderComponentComponent implements OnInit {
   viewClient(){
     this.router.navigate(["client_list"])
   }
-
-  viewBien(){
-    this.router.navigate(["bienImmoAchat/list"]);
-    window.location.reload();
-  }
 }
