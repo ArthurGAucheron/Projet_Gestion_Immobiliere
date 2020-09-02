@@ -54,7 +54,7 @@ public class ConseillerImmobilier {
 	 * Association OneToMany
 	 * One Conseillers To Many Visite
 	 */
-	@OneToMany(mappedBy="conseillers")
+	@OneToMany(mappedBy="conseillers", cascade=CascadeType.REMOVE)
 	@JsonIgnoreProperties(value= {"client","bienImmobilier","conseillers"})
 	private List<Visite> visite;
 	

@@ -65,7 +65,7 @@ public class Proprietaire implements Serializable {
 	
 	//association avec BienImmobilier : One to Many (un propriétaire pour plusieurs bien immobilier)
 
-	@OneToMany(targetEntity=BienImmobilier.class, mappedBy="proprietaire")
+	@OneToMany(targetEntity=BienImmobilier.class, mappedBy="proprietaire", cascade=CascadeType.REMOVE)
 	@JsonIgnoreProperties(value= {"classe","proprietaire","adresse","contrat"})
 	private List<BienImmobilier> biensImmobiliers;
 
@@ -122,17 +122,6 @@ public class Proprietaire implements Serializable {
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
 	}
-
-
-	/*
-	public List<BienImmoblier> getBiensImmobiliers() {
-		return biensImmobiliers;
-	}
-	public void setBiensImmobiliers(List<BienImmoblier> biensImmobiliers) {
-		this.biensImmobiliers = biensImmobiliers;
-	}
-	*/
-
 	
 	public List<BienImmobilier> getBiensImmobiliers() {
 		return biensImmobiliers;

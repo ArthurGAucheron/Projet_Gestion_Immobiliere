@@ -2,6 +2,7 @@ package com.intiformation.gestion.immo.modele;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -40,8 +41,7 @@ public class ClasseStandard {
 	@Column(name = "superficie_min")
 	private double superficieMin;
 	
-	@OneToMany(targetEntity=BienImmobilier.class, mappedBy="classe")
-//	@JsonBackReference
+	@OneToMany(targetEntity=BienImmobilier.class, mappedBy="classe", cascade=CascadeType.REMOVE)
 	@JsonIgnoreProperties(value= {"classe","proprietaire","adresse","contrat"})
 	private List<BienImmobilier> biensImmobilier;
 
@@ -110,6 +110,14 @@ public class ClasseStandard {
 		this.superficieMin = superficieMin;
 	}
 
+	public List<BienImmobilier> getBiensImmobilier() {
+		return biensImmobilier;
+	}
+
+	public void setBiensImmobilier(List<BienImmobilier> biensImmobilier) {
+		this.biensImmobilier = biensImmobilier;
+	}
+	
 	// ______________toString()______________
 
 	@Override

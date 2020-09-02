@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.intiformation.gestion.immo.dao.ConseillerImmobilierRepository;
+import com.intiformation.gestion.immo.dao.ContratRepository;
 import com.intiformation.gestion.immo.modele.ConseillerImmobilier;
+import com.intiformation.gestion.immo.modele.Contrat;
 
 /**
  * implémentation d'un web service REST pour le conseiller 
@@ -37,6 +39,18 @@ public class ConseillerImmoWsRest {
 	public void setConseillerRepository(ConseillerImmobilierRepository conseillerRepository) {
 		this.conseillerRepository = conseillerRepository;
 	}
+	
+	@Autowired
+	private ContratRepository contratRepository;
+
+	/**
+	 * Setter contratRepository pour l'injection par modificateur
+	 * @param contratRepository
+	 */
+	public void setContratRepository(ContratRepository contratRepository) {
+		this.contratRepository = contratRepository;
+	}
+
 	
 	/**
 	 * méthode exposée dans le ws rest pour recuperer la liste des conseillerImmo 
@@ -117,6 +131,16 @@ public class ConseillerImmoWsRest {
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Boolean> deleteConseiller(@PathVariable("id") Long pIdConseiller) {
 
+		// modification des etudiants liés à la promo supprimée
+		List<Contrat> listeContratsBdd = contratRepository.findAll();
+				
+		for ( Contrat contrats : listeContratsBdd) {
+			if (contrats.getConseillers().getIdConseiller() == pIdConseiller) {
+					contrats.setConseillers(null);
+					contratRepository.save(contrats);
+			} // end if
+		} // end for each		
+		
 		// suppression de l'employé
 		conseillerRepository.deleteById(pIdConseiller);
 		

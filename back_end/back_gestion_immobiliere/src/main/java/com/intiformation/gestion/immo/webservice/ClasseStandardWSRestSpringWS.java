@@ -17,6 +17,7 @@ import com.intiformation.gestion.immo.dao.ClasseStandardRepository;
 import com.intiformation.gestion.immo.modele.Adresse;
 import com.intiformation.gestion.immo.modele.BienImmobilier;
 import com.intiformation.gestion.immo.modele.ClasseStandard;
+
 @CrossOrigin(value="http://localhost:4200")
 @RestController
 @RequestMapping(value = "classes")
