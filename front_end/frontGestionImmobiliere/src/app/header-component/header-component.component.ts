@@ -15,7 +15,7 @@ export class HeaderComponentComponent implements OnInit {
   }
 
   viewProprietaire(){
-    this.router.navigate(["proprietaire_list"])
+    this.router.navigate(["proprietaire_list"]).then(() => window.location.reload() );
   }
 
   viewClient(){

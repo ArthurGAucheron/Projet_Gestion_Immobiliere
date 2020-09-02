@@ -11,6 +11,7 @@ export class ProprietaireListComponent implements OnInit {
 
   /*____________ props ___________ */
   proprietaires = [];
+  dataTable: any;
 
   /*____________ ctor ___________ */
   constructor(private proprietaireService : ProprietaireService, private router: Router) { }
@@ -24,8 +25,9 @@ export class ProprietaireListComponent implements OnInit {
    * permet de recuperer tous les propriétaire via le service
    */
   findAllProprietaire(){
-    this.proprietaires = [];
-    this.proprietaireService.getAllProprietaireFromWsRest().subscribe(data => this.proprietaires = data)
+    this.proprietaireService.getAllProprietaireFromWsRest().subscribe(
+      data => {this.proprietaires = data},
+      error => {console.log(error)})
   }
 
   /**
