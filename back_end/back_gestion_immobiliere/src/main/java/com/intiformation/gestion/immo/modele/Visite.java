@@ -14,9 +14,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.hibernate.annotations.Check;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -47,9 +50,9 @@ public class Visite {
 	 * Associations entre l'entité Visite et l'entité ConseillerImmobiliers 
 	 * Avec Many visite To One Conseiller
 	 */
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name="conseiller_id", referencedColumnName="id_conseiller")
-//	@JsonBackReference
+	@JsonIgnoreProperties(value= {"visite","contrat"})
 	private ConseillerImmobilier conseillers;
 	
 	/**
@@ -57,10 +60,9 @@ public class Visite {
 	 * Associations entre l'entité Visite et l'entité BienImmobilier 
 	 * Avec Many Visite To One BienImmo
 	 */
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name="bien_id", referencedColumnName="id_bien")
-//	@JsonBackReference
-	@JsonIdentityReference(alwaysAsId=true)
+	@JsonIgnoreProperties(value= {"visite","contrat","classe"})
 	private BienImmobilier bienImmobilier;
 	
 	/**
@@ -68,9 +70,9 @@ public class Visite {
 	 * Associations entre l'entité Visite et l'entité clients 
 	 * Avec Many Visite To One Client
 	 */
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name="client_id", referencedColumnName="id_client")
-//	@JsonBackReference
+	@JsonIgnoreProperties(value= {"visite","contrat"})
 	private Client client;
 	
 	

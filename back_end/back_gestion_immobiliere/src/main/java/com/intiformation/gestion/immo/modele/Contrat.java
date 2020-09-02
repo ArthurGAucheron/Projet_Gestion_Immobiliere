@@ -15,6 +15,8 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -46,17 +48,17 @@ public class Contrat {
 	 * Associations entre l'entité Contrat et l'entité ConseillerImmobiliers 
 	 * Avec Many contrat To One Conseiller
 	 */
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name="conseiller_id" , referencedColumnName="id_conseiller")
-//	@JsonBackReference
+	@JsonIgnoreProperties(value= {"visite","contrat"})
 	private ConseillerImmobilier conseillers;
 	
 	/**
 	 * Assocation entre bienImmo et contrat de type One To One
 	 */
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne
 	@JoinColumn(name="bien_id", referencedColumnName="id_bien")
-//	@JsonBackReference
+	@JsonIgnoreProperties(value= {"visite","contrat","classe"})
 	private BienImmobilier bienImmobilier;
 	
 	/**
@@ -64,9 +66,9 @@ public class Contrat {
 	 * Associations entre l'entité Visite et l'entité clients 
 	 * Avec Many Visite To One Client
 	 */
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name="client_id", referencedColumnName="id_client")
-//	@JsonBackReference
+	@JsonIgnoreProperties(value= {"visite","contrat"})
 	private Client client;
 	
 	///// CTOR ///////

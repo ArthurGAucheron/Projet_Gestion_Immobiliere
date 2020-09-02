@@ -22,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -52,33 +53,28 @@ public class Client implements Serializable {
 	// association avec Adresse : Many to One (plusieurs clients pour une adresse)
 	@ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinColumn(name = "adresse_id", referencedColumnName = "id_adresse")
-//	@JsonManagedReference
 	private Adresse adresse;
 
 	@ManyToMany
 	@JoinTable(name = "clients_assoc_biens", joinColumns = @JoinColumn(name = "client_id"), inverseJoinColumns = @JoinColumn(name = "bien_id"))
-//	@JsonBackReference
-	@JsonIdentityReference(alwaysAsId=true)
+	@JsonIgnoreProperties(value= {"classe","proprietaire","adresse","contrat"})
 	private List<BienImmobilier> biensImmobiliers;
 
 	// association avec ClasseStandard : Many to Many (plusieurs clients pour
 	// plusieurs classes standards)
 	@ManyToMany
 	@JoinTable(name = "clients_assoc_classe", joinColumns = @JoinColumn(name = "client_id"), inverseJoinColumns = @JoinColumn(name = "classe_id"))
-//	@JsonBackReference
-	@JsonIdentityReference(alwaysAsId=true)
+	@JsonIgnoreProperties(value= {"biensImmobilier"})
 	private List<ClasseStandard> classesStandard;
 
 	// association avec Visite : One to Many (un client pour plusieurs visites)
-	@OneToMany(targetEntity = Visite.class, mappedBy = "client")
-//	@JsonBackReference
-	@JsonIdentityReference(alwaysAsId=true)
+	@OneToMany(targetEntity=Visite.class, mappedBy = "client", cascade=CascadeType.REMOVE)
+	@JsonIgnoreProperties(value= {"client","bienImmobilier","conseillers"})
 	private List<Visite> visites;
 
 	//association avec Contrat : One to Many (un client pour plusieurs contrats)
-	@OneToMany(targetEntity=Contrat.class, mappedBy="client")
-//	@JsonBackReference
-	@JsonIdentityReference(alwaysAsId=true)
+	@OneToMany(targetEntity=Contrat.class, mappedBy="client", cascade=CascadeType.REMOVE)
+	@JsonIgnoreProperties(value= {"client","bienImmobilier","conseillers"})
 	private List<Contrat> contrats;
 
 	/* _______________ ctor ______________ */
@@ -122,5 +118,39 @@ public class Client implements Serializable {
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
 	}
+
+	public List<BienImmobilier> getBiensImmobiliers() {
+		return biensImmobiliers;
+	}
+
+	public void setBiensImmobiliers(List<BienImmobilier> biensImmobiliers) {
+		this.biensImmobiliers = biensImmobiliers;
+	}
+
+	public List<ClasseStandard> getClassesStandard() {
+		return classesStandard;
+	}
+
+	public void setClassesStandard(List<ClasseStandard> classesStandard) {
+		this.classesStandard = classesStandard;
+	}
+
+	public List<Visite> getVisites() {
+		return visites;
+	}
+
+	public void setVisites(List<Visite> visites) {
+		this.visites = visites;
+	}
+
+	public List<Contrat> getContrats() {
+		return contrats;
+	}
+
+	public void setContrats(List<Contrat> contrats) {
+		this.contrats = contrats;
+	}
+	
+	
 
 }// end class
