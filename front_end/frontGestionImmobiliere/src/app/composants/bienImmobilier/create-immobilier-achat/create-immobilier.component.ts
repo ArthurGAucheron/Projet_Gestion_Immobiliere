@@ -13,7 +13,7 @@ export class CreateImmobilierComponent implements OnInit {
     idBien : null,
     libelle : null,
     statut : null,
-    dateSoummission : null,
+    dateSoumission : null,
     dateMiseADispo : null,
     revenuCadastral : null,
     descriptif : null,

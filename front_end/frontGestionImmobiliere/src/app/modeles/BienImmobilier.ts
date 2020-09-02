@@ -10,7 +10,7 @@ export class BienImmobilier{
     idBien : number;
     libelle : String;
     statut : String;
-    dateSoummission : any;
+    dateSoumission : any;
     dateMiseADispo : any;
     revenuCadastral : number;
     descriptif : String;

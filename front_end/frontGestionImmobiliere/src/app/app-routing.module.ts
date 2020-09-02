@@ -43,6 +43,13 @@ const routes: Routes = [
   {path:"proprietaire_card/:id", component:ProprietaireCardComponent},
   {path:"proprietaire_edit/:id", component:ProprietaireCreateComponent},
   {path:"proprietaire_list", component:ProprietaireListComponent},
+  {path:"client_card/:id", component:ClientCardComponent, canActivate:[]},
+  {path:"client_edit/:id", component:ClientCreateComponent, canActivate:[]},
+  {path:"client_list", component:ClientListComponent, canActivate:[]},
+
+  {path:"proprietaire_card/:id", component:ProprietaireCardComponent, canActivate:[]},
+  {path:"proprietaire_edit/:id", component:ProprietaireCreateComponent, canActivate:[]},
+  {path:"proprietaire_list", component:ProprietaireListComponent, canActivate:[]},
 ];
 
 

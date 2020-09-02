@@ -1,6 +1,6 @@
 <h1 style="color: #d49625;margin: 1rem 0 2rem 4rem;font-weight: bold;">Propriétaire</h1>
 
-<h2 style="color: #333333;margin: 1rem 0 2rem 6rem;">Fiche d'un proprietaire</h2>
+<h2 style="color: #333333;margin: 1rem 0 2rem 6rem;">Fiche proprietaire</h2>
 
 <div class="card shadow mb-4" style="width: 95%; margin: auto;">
 
@@ -49,8 +49,14 @@
 <!--===========================================================-->
 <!--=========== Biens immobilier associés =====================-->
 <!--===========================================================-->
-<div class="card shadow mb-4" style="width: 95%; margin: auto;" *ngFor="let bien of proprietaire.listeBienImmobilier">
+<h2 style="color: #333333;margin: 1rem 0 2rem 6rem;">Biens Immobilier de {{proprietaire.nom}}</h2>
 
-    Liste des Biens Immobilier
-
+<div style="width: 95%; margin: auto;">
+    <div class="d-flex flex-row flex-nowrap overflow-auto">
+        <div class="card shadow card-block mr-4 mb-3" style="min-width: 300px;" *ngFor="let bien of proprietaire.biensImmobiliers">
+           <div class="mx-4 my-4">
+                {{bien.idBien}}
+           </div> 
+        </div>
+    </div>
 </div>

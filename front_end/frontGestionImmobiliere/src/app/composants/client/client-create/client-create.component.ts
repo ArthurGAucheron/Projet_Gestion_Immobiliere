@@ -16,8 +16,8 @@ export class ClientCreateComponent implements OnInit {
     nom: null,
     telephone: null,
     adresse : null,
-    listeVisites : null,
-    listeContrat : null
+    visites : null,
+    contrats : null
   }
 
   /*_____________ ctors ______________ */

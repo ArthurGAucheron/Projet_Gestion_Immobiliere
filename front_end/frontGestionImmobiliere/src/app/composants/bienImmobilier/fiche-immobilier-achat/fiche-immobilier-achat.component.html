@@ -1,6 +1,38 @@
 <div class="container-fluid">
     <br>
-    <h1>Titre du bien {{bienAchat.libelle}}</h1>
+    <h1>{{bienAchat.libelle}}</h1>
+    <div class="card shadow mb-4" style="width: 95%; margin: auto;"> 
+        <div class="mx-4 my-4">
+            <h3 class="card-title">Informations</h3>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="card" style="width: 100%; margin: 5px;">
+                    <ul class="list-group list-group-flush"  >
+                        <li class="list-group-item">ID : {{bienAchat.idBien}} </li>
+                        <li class="list-group-item">Statut : {{bienAchat.statut}} </li>
+                        <li class="list-group-item">Date de Soumission : {{bienAchat.dateSoumission}} </li>
+                        <li class="list-group-item">Date de mise disposition : {{bienAchat.dateMiseADispo}}</li>
+                        <li class="list-group-item">Date de mise disposition : {{bienAchat.dateMiseADispo}}</li>
+                      </ul>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="card" style="width: 100%; margin: 5px;">
+                    <ul class="list-group list-group-flush ">
+                        <li class="list-group-item">ID : {{bienAchat.idBien}} </li>
+                        <li class="list-group-item">Statut : {{bienAchat.statut}} </li>
+                        <li class="list-group-item">Date de Soumission : {{bienAchat.dateSoumission}} </li>
+                        <li class="list-group-item">Date de mise disposition : {{bienAchat.dateMiseADispo}}</li>
+                        <li class="list-group-item">Date de mise disposition : {{bienAchat.dateMiseADispo}}</li>
+                      </ul>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+
     <div class="container">
         <br>
         <!-- ///// Table d'informations à propors du bien -->
@@ -19,7 +51,7 @@
                 </tr>
                 <tr>
                     <td>dateSoummission</td>
-                    <td>{{bienAchat.dateSoummission}}</td>
+                    <td>{{bienAchat.dateSoumission}}</td>
                 </tr>
                 <tr>
                     <td>dateMiseADispo</td>
