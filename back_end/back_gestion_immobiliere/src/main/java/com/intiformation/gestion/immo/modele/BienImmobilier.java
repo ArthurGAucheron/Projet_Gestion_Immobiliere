@@ -88,7 +88,7 @@ public abstract class BienImmobilier implements Serializable {
 	private ClasseStandard classe;
 
 	@ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE})
-	@JoinColumn(name="adresse_id", referencedColumnName="id_adresse")
+	@JoinColumn(name="adresse_id", referencedColumnName="id_adresse",updatable=true)
 	private Adresse adresse;
 
 	/**
@@ -101,7 +101,6 @@ public abstract class BienImmobilier implements Serializable {
 
 //	@JsonManagedReference
 	@JsonIgnoreProperties(value= {"adresse","biensImmobiliers"})
-
 	private Proprietaire proprietaire;
 	
 	/**

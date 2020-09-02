@@ -8,6 +8,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -58,8 +59,8 @@ public class Proprietaire implements Serializable {
 	
 	//+++++++ associations +++++++++
 	//association avec Adresse : Many to One (plusieurs propriétaires pour une adresse)
-	@ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE})
-	@JoinColumn(name="adresse_id", referencedColumnName="id_adresse")
+	@ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE},fetch = FetchType.EAGER)
+	@JoinColumn(name="adresse_id", referencedColumnName="id_adresse", updatable=true)
 	private Adresse adresse;
 	
 	//association avec BienImmobilier : One to Many (un propriétaire pour plusieurs bien immobilier)

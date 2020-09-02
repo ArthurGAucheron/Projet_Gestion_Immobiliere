@@ -52,7 +52,7 @@ public class Client implements Serializable {
 	// +++++++ associations +++++++++
 	// association avec Adresse : Many to One (plusieurs clients pour une adresse)
 	@ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE})
-	@JoinColumn(name = "adresse_id", referencedColumnName = "id_adresse")
+	@JoinColumn(name = "adresse_id", referencedColumnName = "id_adresse",updatable=true)
 	private Adresse adresse;
 
 	@ManyToMany
