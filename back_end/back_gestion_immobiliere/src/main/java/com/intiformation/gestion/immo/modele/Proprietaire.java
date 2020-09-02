@@ -24,6 +24,10 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
+import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 /**
@@ -56,14 +60,12 @@ public class Proprietaire implements Serializable {
 	//association avec Adresse : Many to One (plusieurs propriétaires pour une adresse)
 	@ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinColumn(name="adresse_id", referencedColumnName="id_adresse")
-//	@JsonManagedReference
 	private Adresse adresse;
 	
 	//association avec BienImmobilier : One to Many (un propriétaire pour plusieurs bien immobilier)
 
-	@OneToMany(targetEntity=BienImmobilier.class, mappedBy="proprietaire")
-//	@JsonManagedReference
-	@JsonIdentityReference(alwaysAsId=true)
+	@OneToMany(targetEntity=BienImmobilier.class, mappedBy="proprietaire", cascade=CascadeType.REMOVE)
+	@JsonIgnoreProperties(value= {"classe","proprietaire","adresse","contrat"})
 	private List<BienImmobilier> biensImmobiliers;
 
 
@@ -119,17 +121,6 @@ public class Proprietaire implements Serializable {
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
 	}
-
-
-	/*
-	public List<BienImmoblier> getBiensImmobiliers() {
-		return biensImmobiliers;
-	}
-	public void setBiensImmobiliers(List<BienImmoblier> biensImmobiliers) {
-		this.biensImmobiliers = biensImmobiliers;
-	}
-	*/
-
 	
 	public List<BienImmobilier> getBiensImmobiliers() {
 		return biensImmobiliers;
