@@ -18,6 +18,7 @@ export class CreateImmobilierComponent implements OnInit {
     revenuCadastral : null,
     descriptif : null,
     classe : null,
+    photo : null,
     visites : null,
     contrat :null,
     proprietaire :null,

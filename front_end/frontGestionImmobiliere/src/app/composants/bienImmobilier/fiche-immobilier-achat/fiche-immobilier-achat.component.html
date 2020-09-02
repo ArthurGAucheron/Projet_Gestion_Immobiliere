@@ -85,23 +85,24 @@
     <div>
         <h1>Liste des visites</h1>
     </div>
-    <div class="card shadow mb-4" style="width: 95%; margin: auto;">
-        <div class="row">
-            <div class="col-12">
-                <div class="card" style="width: 100%; margin: 5px;">
-                    <ul class="list-group list-group-flush"  >
-                        <li class="list-group-item"> 
-                            <ul>
-                                <li> IdVisite :  {{bien.visite.idVisite}} </li>
-                                <li> Date : {{bien.visite.dateVisite | date : 'MMMM d, y, h:mm:ss a z'}} </li>
+            <div class="card shadow mb-4" style="width: 95%; margin: auto;">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card" style="width: 100%; margin: 5px;">
+                            <ul class="list-group list-group-flush"  >
+                                <li class="list-group-item"> 
+                                    <ul>
+                                        <li> IdVisite :  {{bien.visite.idVisite}} </li>
+                                        <li> Date : {{bien.visite.dateVisite | date : 'MMMM d, y, h:mm:ss a z'}} </li>
+                                    </ul>
+                                    </li>
                             </ul>
-                            </li>
-                      </ul>
-                </div>
+                        </div>
+                    </div>
+                <div>
             </div>
-        <div>
+        </div>
     </div>
-</div></div>
     <div>
         <h1>Liste des clients</h1>
     </div>

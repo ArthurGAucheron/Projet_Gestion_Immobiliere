@@ -15,6 +15,7 @@ export class BienImmobilier{
     revenuCadastral : number;
     descriptif : String;
     classe : ClasseStandard;
+    photo : string;
     visites : Array<Visite>;
     contrat : Contrat;
     proprietaire : Proprietaire;
