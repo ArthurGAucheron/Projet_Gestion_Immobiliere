@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +22,7 @@ import com.intiformation.gestion.immo.modele.Proprietaire;
  * @author marle
  *
  */
+@CrossOrigin(value="http://localhost:4200")
 @RestController
 @RequestMapping(value="proprietaires")
 public class ProprietaireWSRestSpringWS {
@@ -79,10 +81,10 @@ public class ProprietaireWSRestSpringWS {
 	 * 
 	 */
 	@RequestMapping(value="/save", method=RequestMethod.POST)
-	public ResponseEntity<Boolean> addProprietaire(@RequestBody Proprietaire pProprietaire) {
+	public ResponseEntity<Proprietaire> addProprietaire(@RequestBody Proprietaire pProprietaire) {
 		
-		proprietaireRepository.save(pProprietaire);
-		return new ResponseEntity<>(Boolean.TRUE, HttpStatus.OK);
+		Proprietaire proprietaireAdded = proprietaireRepository.save(pProprietaire);
+		return new ResponseEntity<>(proprietaireAdded, HttpStatus.OK);
 
 	}//end addProprietaire
 	
@@ -92,7 +94,7 @@ public class ProprietaireWSRestSpringWS {
 	 * 
 	 */
 	@RequestMapping(value="/update/{id}", method=RequestMethod.PUT)
-	public ResponseEntity<Boolean> updateProprietaire(@RequestBody Proprietaire pProprietaire, @PathVariable("id") Long pIdProprietaire) {
+	public ResponseEntity<Proprietaire> updateProprietaire(@RequestBody Proprietaire pProprietaire, @PathVariable("id") Long pIdProprietaire) {
 				
 		//récup du propriétaire à modifier
 		Proprietaire proprietaireToUpdate = proprietaireRepository.getOne(pIdProprietaire);
@@ -101,11 +103,11 @@ public class ProprietaireWSRestSpringWS {
 		proprietaireToUpdate.setNom(pProprietaire.getNom());
 		proprietaireToUpdate.setTelTravail(pProprietaire.getTelTravail());
 		proprietaireToUpdate.setTelPrive(pProprietaire.getTelPrive());
-		//proprietaireToUpdate.setAdresse(pProprietaire.getAdresse());
+		proprietaireToUpdate.setAdresse(pProprietaire.getAdresse());
 		
 		//modification
-		proprietaireRepository.save(proprietaireToUpdate);
-		return new ResponseEntity<>(Boolean.TRUE, HttpStatus.OK);
+		Proprietaire proprietaireUpdated = proprietaireRepository.save(proprietaireToUpdate);
+		return new ResponseEntity<>(proprietaireUpdated, HttpStatus.OK);
 
 	}//end updateProprietaire
 	

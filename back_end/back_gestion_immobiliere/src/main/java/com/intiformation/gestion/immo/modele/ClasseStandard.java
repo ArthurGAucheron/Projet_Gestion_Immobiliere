@@ -1,14 +1,23 @@
 package com.intiformation.gestion.immo.modele;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "classes")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idClasse", scope = Long.class)
 public class ClasseStandard {
 
 	// ______________propriétés______________
@@ -29,6 +38,11 @@ public class ClasseStandard {
 
 	@Column(name = "superficie_min")
 	private double superficieMin;
+	
+	@OneToMany(targetEntity=BienImmobilier.class, mappedBy="classe")
+//	@JsonBackReference
+	@JsonIdentityReference(alwaysAsId=true)
+	private List<BienImmobilier> biensImmobilier;
 
 	// ______________constructeurs______________
 

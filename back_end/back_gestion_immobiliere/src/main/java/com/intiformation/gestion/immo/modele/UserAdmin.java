@@ -14,6 +14,7 @@ public class UserAdmin {
 	//______________________________prop___________________________________
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+
 	@Column(name="id_user")
 	private Long idAdmin;
 	
@@ -35,16 +36,18 @@ public class UserAdmin {
 	
 	//_______________________________getter et setter_____________________________
 
+	
+
+	public String getPassword() {
+		return password;
+	}
+
 	public String getUsername() {
 		return username;
 	}
 
 	public void setUsername(String username) {
 		this.username = username;
-	}
-
-	public String getPassword() {
-		return password;
 	}
 
 	public void setPassword(String password) {

@@ -1,1 +1,29 @@
-<p>liste-contrat works!</p>
+<div style="text-align: center;">
+    <h1 style="color:red;">Listes des contrats</h1>>
+    <br><br>
+    <a routerLink="contrat/edit/0">Ajouter un contrat</a>
+    <table> 
+      <thead>
+        <tr>
+         <td>idContrat</td>
+         <td>prixAcquisition</td>
+         <td>dateAcquisition</td>
+         <td>bienImmobilier</td>
+         <td>conseiller</td>
+         <td>client</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let contrat of contrats">
+          <td>{{contrat.idContrat}}</td>
+          <td>{{contrat.prixAcquisition}}</td>
+          <td>{{contrat.dateAcquisition}}</td>
+          <td>{{contrat.bienImmobilier.libelle}}</td>
+          <td>{{contrat.conseiller.nom}}</td>
+          <td>{{contrat.conseiller}}</td>
+          <td><button (click)="deleteContrat(contrat.idContrat)">Supprimer</button></td>
+          <td><button (click)="updateContrat(contrat.idContrat)">Modifier</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

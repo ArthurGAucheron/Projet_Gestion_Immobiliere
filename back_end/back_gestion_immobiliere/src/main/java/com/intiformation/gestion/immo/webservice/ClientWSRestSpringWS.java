@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +22,7 @@ import com.intiformation.gestion.immo.modele.Client;
  * @author marle
  *
  */
+@CrossOrigin(value="http://localhost:4200")
 @RestController
 @RequestMapping(value="clients")
 public class ClientWSRestSpringWS {
@@ -79,10 +81,10 @@ public class ClientWSRestSpringWS {
 	 * 
 	 */
 	@RequestMapping(value="/save", method=RequestMethod.POST)
-	public ResponseEntity<Boolean> addClient(@RequestBody Client pClient) {
+	public ResponseEntity<Client> addClient(@RequestBody Client pClient) {
 		
-		clientRepository.save(pClient);
-		return new ResponseEntity<>(Boolean.TRUE, HttpStatus.OK);
+		Client clientAdded = clientRepository.save(pClient);
+		return new ResponseEntity<>(clientAdded, HttpStatus.OK);
 
 	}//end addClient
 	
@@ -92,7 +94,7 @@ public class ClientWSRestSpringWS {
 	 * 
 	 */
 	@RequestMapping(value="/update/{id}", method=RequestMethod.PUT)
-	public ResponseEntity<Boolean> updateClient(@RequestBody Client pClient, @PathVariable("id") Long pIdClient) {
+	public ResponseEntity<Client> updateClient(@RequestBody Client pClient, @PathVariable("id") Long pIdClient) {
 				
 		//récup du client à modifier
 		Client clientToUpdate = clientRepository.getOne(pIdClient);
@@ -100,11 +102,11 @@ public class ClientWSRestSpringWS {
 		//modifications
 		clientToUpdate.setNom(pClient.getNom());
 		clientToUpdate.setTelephone(pClient.getTelephone());
-		//clientToUpdate.setAdresse(pClient.getAdresse());
+		clientToUpdate.setAdresse(pClient.getAdresse());
 		
 		//modification
-		clientRepository.save(clientToUpdate);
-		return new ResponseEntity<>(Boolean.TRUE, HttpStatus.OK);
+		Client clientUpdated = clientRepository.save(clientToUpdate);
+		return new ResponseEntity<>(clientUpdated, HttpStatus.OK);
 
 	}//end updateClient
 	

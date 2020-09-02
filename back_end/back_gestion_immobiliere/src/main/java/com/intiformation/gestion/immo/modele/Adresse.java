@@ -11,8 +11,11 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import java.io.Serializable;
 import java.util.List;
@@ -31,7 +34,8 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name = "adresses")
+@Table(name="adresses")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idAdresse", scope = Long.class)
 public class Adresse implements Serializable {
 
 	/* _______________ propriétés ______________ */
@@ -54,23 +58,23 @@ public class Adresse implements Serializable {
 
 	@Column(name = "pays")
 	private String pays;
-
-	// +++++++ associations +++++++++
-	// association avec Propriétaire : One to Many (une adresse pour plusieurs
-	// propriétaires)
-	@OneToMany(targetEntity = Proprietaire.class, mappedBy = "adresse")
-	private List<Proprietaire> proprietaires;
-
-	// association avec Client : One to Many (une adresse pour plusieurs clients)
-	@OneToMany(targetEntity = Client.class, mappedBy = "adresse")
-	private List<Client> clients;
-
-	// association avec BienImmobilier : One to Many (une adresse pour plusieurs
-	// biens)
-
-	// @OneToMany(targetEntity=BienImmobilier.class, mappedBy="idBien")
-	@OneToMany(targetEntity = BienImmobilier.class, mappedBy = "idBien")
-	private List<BienImmobilier> biensImmobilier;
+	
+	
+	//+++++++ associations +++++++++
+	//association avec Propriétaire : One to Many (une adresse pour plusieurs propriétaires)
+//	@OneToMany(targetEntity=Proprietaire.class, mappedBy="adresse")
+//	@JsonBackReference
+//	private List<Proprietaire> proprietaires;
+	
+	//association avec Client : One to Many (une adresse pour plusieurs clients)
+//	@OneToMany(targetEntity=Client.class, mappedBy="adresse")
+//	@JsonBackReference
+//	private List<Client> clients;
+	
+	//association avec BienImmobilier : One to Many (une adresse pour plusieurs biens)
+//	@OneToMany(targetEntity=BienImmobilier.class, mappedBy="adresse")
+//	@JsonBackReference
+//	private List<BienImmobilier> biensImmobilier;
 
 	/* _______________ ctor ______________ */
 	/**
@@ -130,6 +134,7 @@ public class Adresse implements Serializable {
 		this.pays = pays;
 	}
 
+	/*
 	public List<Proprietaire> getProprietaires() {
 		return proprietaires;
 	}

@@ -11,6 +11,11 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 /**
  * Classe mappé à partie la table ConseillerImmobilier de la bdd <br/>
@@ -19,6 +24,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "conseillers")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idConseiller", scope = Long.class)
 public class ConseillerImmobilier {
 
 	///// Prop /////
@@ -46,6 +52,8 @@ public class ConseillerImmobilier {
 	 * One Conseillers To Many Visite
 	 */
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="conseillers")
+//	@JsonBackReference
+	@JsonIdentityReference(alwaysAsId=true)
 	private List<Visite> visite;
 	
 	/**
@@ -53,6 +61,8 @@ public class ConseillerImmobilier {
 	 * One Conseillers To Many Contrat
 	 */
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="conseillers")
+//	@JsonBackReference
+	@JsonIdentityReference(alwaysAsId=true)
 	private List<Contrat> contrat;
 	
 	////// Ctor /////
@@ -133,21 +143,6 @@ public class ConseillerImmobilier {
 		this.telephone = telephone;
 	}
 
-	public List<Visite> getVisite() {
-		return visite;
-	}
-
-	public void setVisite(List<Visite> visite) {
-		this.visite = visite;
-	}
-
-	public List<Contrat> getContrat() {
-		return contrat;
-	}
-
-	public void setContrat(List<Contrat> contrat) {
-		this.contrat = contrat;
-	}
 	
 	
 

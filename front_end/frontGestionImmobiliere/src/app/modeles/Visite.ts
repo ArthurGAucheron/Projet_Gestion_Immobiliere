@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { Client } from "./Client";
 import { ConseillerImmobilier } from "./ConseillerImmobilier";
 import { BienImmobilier } from './BienImmobilier';
