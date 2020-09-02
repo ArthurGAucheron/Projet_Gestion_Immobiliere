@@ -85,6 +85,7 @@ public abstract class BienImmobilier implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name="classe_id", referencedColumnName="id_classe")
+	@JsonIgnoreProperties(value= {"biensImmobilier"})
 	private ClasseStandard classe;
 
 	@ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE})
