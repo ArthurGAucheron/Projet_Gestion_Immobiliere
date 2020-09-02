@@ -22,7 +22,7 @@ import com.intiformation.gestion.immo.modele.Adresse;
  * @author marle
  *
  */
-@CrossOrigin(value="http://localhost:8080")
+@CrossOrigin(value="http://localhost:4200")
 @RestController
 @RequestMapping(value="adresses")
 public class AdresseWSRestSpringWS {

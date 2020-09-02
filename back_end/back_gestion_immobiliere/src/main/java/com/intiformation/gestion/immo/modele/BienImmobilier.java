@@ -88,14 +88,24 @@ public abstract class BienImmobilier implements Serializable {
 	private Proprietaire proprietaire;
 	
 	/**
-	 * Association entre BienImmobilier et propriétaire
+	 * Association entre BienImmobilier et contrat
 	 * One bienimmo To One Contrat
 	 */
 
-	@OneToOne(mappedBy="bienImmobilier")
+	@OneToOne(mappedBy="bienImmobilier", cascade=CascadeType.REMOVE)
 	@JoinColumn(name="bien_id", referencedColumnName="id_bien")
 	@JsonIgnoreProperties(value= {"conseillers","bienImmobilier","client"})	
 	private Contrat contrat;
+	
+	/**
+	 * Association entre BienImmobilier et visite
+	 * One bienimmo To One Contrat
+	 */
+
+	@OneToOne(mappedBy="bienImmobilier", cascade=CascadeType.REMOVE)
+	@JoinColumn(name="bien_id", referencedColumnName="id_bien")
+	@JsonIgnoreProperties(value= {"conseillers","bienImmobilier","client"})	
+	private Visite visite;
 
 
 	// ______________constructeurs______________

@@ -68,12 +68,12 @@ public class Client implements Serializable {
 	private List<ClasseStandard> classesStandard;
 
 	// association avec Visite : One to Many (un client pour plusieurs visites)
-	@OneToMany(mappedBy = "client", cascade=CascadeType.ALL)
+	@OneToMany(targetEntity=Visite.class, mappedBy = "client", cascade=CascadeType.REMOVE)
 	@JsonIgnoreProperties(value= {"client","bienImmobilier","conseillers"})
 	private List<Visite> visites;
 
 	//association avec Contrat : One to Many (un client pour plusieurs contrats)
-	@OneToMany(targetEntity=Contrat.class, mappedBy="client")
+	@OneToMany(targetEntity=Contrat.class, mappedBy="client", cascade=CascadeType.REMOVE)
 	@JsonIgnoreProperties(value= {"client","bienImmobilier","conseillers"})
 	private List<Contrat> contrats;
 

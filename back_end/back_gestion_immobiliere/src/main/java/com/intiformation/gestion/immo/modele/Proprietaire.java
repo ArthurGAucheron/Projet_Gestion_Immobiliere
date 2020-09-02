@@ -64,7 +64,7 @@ public class Proprietaire implements Serializable {
 	
 	//association avec BienImmobilier : One to Many (un propriétaire pour plusieurs bien immobilier)
 
-	@OneToMany(targetEntity=BienImmobilier.class, mappedBy="proprietaire")
+	@OneToMany(targetEntity=BienImmobilier.class, mappedBy="proprietaire", cascade=CascadeType.REMOVE)
 	@JsonIgnoreProperties(value= {"classe","proprietaire","adresse","contrat"})
 	private List<BienImmobilier> biensImmobiliers;
 
