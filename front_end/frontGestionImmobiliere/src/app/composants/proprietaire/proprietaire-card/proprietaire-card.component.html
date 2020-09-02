@@ -1,67 +1,56 @@
-<div class="panel panel-primary" *ngFor="let proprio of proprietaire">
+<h1 style="color: #d49625;margin: 1rem 0 2rem 4rem;font-weight: bold;">Propriétaire</h1>
 
-    <!--============= header du panel =============-->
-    <div class="panel-heading">
-        <h3 class="panel-title">
-            {{proprio.nom}}
+<h2 style="color: #333333;margin: 1rem 0 2rem 6rem;">Fiche d'un proprietaire</h2>
+
+<div class="card shadow mb-4" style="width: 95%; margin: auto;">
+
+    <div class="mx-4 my-4">
+        <h3 class="card-title">
+            {{proprietaire.nom}}
         </h3>
-    </div>
-
-    <!--============= body du panel =============-->
-    <div class="panel-body">
-        <div class="col-xs-10">
-            <div class="row vertical-align">
-                <!--+++ details employe +++-->
-                <!--tel1-->
-                <div class="row">
-                    <div class="col-xs-6">
-                    Téléphone prive :
-                    </div>
-                    <div class="col-xs-6">
-                        {{proprio.telPrive}}
-                    </div>
-                </div>
-                <!--tel2-->
-                <div class="row">
-                    <div class="col-xs-6">
-                        Téléphone pro :
-                    </div>
-                    <div class="col-xs-6">
-                        {{proprio.telTravail}}
-                    </div>
-                </div>
-                <br>
-                <!--tel2-->
-                <div class="row">
-                    <div class="col-xs-6">
-                        Adresse :
-                    </div>
-                    <div class="col-xs-6">
-                        {{proprio.adresse.toString()}}
-                    </div>
-                </div>
-
+        <!--tel1-->
+        <div style="float: left;" class="mx-5">
+            <div>
+                <h5 class="card-subtitle">Téléphone prive :</h5>
+                {{proprietaire.telPrive}}
+            </div>
+            <br>
+            <!--tel2-->
+            <div>
+                <h5 class="card-subtitle"> Téléphone pro : </h5>
+                {{proprietaire.telTravail}}
+            </div>
+        </div>
+        <div style="float: left;" class="mx-5">
+            <!--adresse-->
+            <div>
+                <h5 class="card-subtitle"> Adresse : </h5>
+                {{proprietaire.adresse.numero}}, {{proprietaire.adresse.rue}} <br>
+                {{proprietaire.adresse.codePostal}} {{proprietaire.adresse.localite}} <br>
+                {{proprietaire.adresse.pays}}
             </div>
         </div>
     </div>
 
-    <!--====== footer du panel ======-->
-    <div class="panel-footer">
-        <button class="btn btn-primary" (click)="editProprietaire(proprio.idProprietaire)">
+
+    <div>
+        <button class="btn btn-primary float-right mr-4 mb-4" (click)="editProprietaire(proprietaire.idProprietaire)">
             Edit
-        </button> 
-        <button class="btn btn-primary" (click)="deleteProprietaire(proprio)">
+        </button>
+        <button class="btn btn-primary float-right mr-4 mb-4" (click)="deleteProprietaire(proprietaire)">
             Delete
         </button>
     </div>
+
+
 
 </div>
 
 <!--===========================================================-->
 <!--=========== Biens immobilier associés =====================-->
 <!--===========================================================-->
-<div class="panel panel-primary" *ngFor="let bien of proprietaire.listeBienImmobilier">
+<div class="card shadow mb-4" style="width: 95%; margin: auto;" *ngFor="let bien of proprietaire.listeBienImmobilier">
 
-    
+    Liste des Biens Immobilier
 
 </div>

@@ -23,10 +23,12 @@
 
 	<dependencies>
 		<!-- SPRING SECU -->
+		<!-- 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
+		 -->
 
 		<!-- Java Web Token (JWT) -->
 		<dependency>
@@ -48,10 +50,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
-
-		<!-- Starter Web : ensemble de dépendances pour l'implémentation de spring 
-			mvc -->
 
 		
 		<!-- Starter spring-security : ensemble de dépendances pour spirng data -->
@@ -91,23 +89,6 @@
 			<artifactId>jstl</artifactId>
 		</dependency>
 
-		<!-- Starter spring-security : ensemble de dépendances pour spirng security -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
-		<!-- Dépendance : implémentation de tests pour la sécurité -->
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-
-		<!-- Dépendance : taglib de spring security -->
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-taglibs</artifactId>
-		</dependency>
 	</dependencies>
 
 	<build>

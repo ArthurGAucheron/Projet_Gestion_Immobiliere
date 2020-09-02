@@ -31,6 +31,8 @@ import { FicheImmobilierAchatComponent } from './composants/bienImmobilier/fiche
 import { FicheImmobilierLocationComponent } from './composants/bienImmobilier/fiche-immobilier-location/fiche-immobilier-location.component';
 import { CreateImmobilierLocationComponent } from './composants/bienImmobilier/create-immobilier-location/create-immobilier-location.component';
 import { ListeImmobilierLocationComponent } from './composants/bienImmobilier/liste-immobilier-location/liste-immobilier-location.component';
+import { ClientListComponent } from './composants/client/client-list/client-list.component';
+import { ClientCardComponent } from './composants/client/client-card/client-card.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +57,9 @@ import { ListeImmobilierLocationComponent } from './composants/bienImmobilier/li
     FicheImmobilierAchatComponent,
     FicheImmobilierLocationComponent,
     CreateImmobilierLocationComponent,
-    ListeImmobilierLocationComponent
+    ListeImmobilierLocationComponent,
+    ClientListComponent,
+    ClientCardComponent
   ],
   imports: [
     BrowserModule,

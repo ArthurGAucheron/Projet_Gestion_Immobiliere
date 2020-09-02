@@ -26,21 +26,27 @@ export class ProprietaireCardComponent implements OnInit {
   }
 
   /**
-   * Permet de recuperer le propriétaire à modifier si id different de 0. Sinon ajout.
+   * Permet de recuperer le propriétaire via son id.
    * @param id : id du propriétaire à recuperer
    */
   findProprietaireById(id : number){
-    if (id != 0){
       this.proprietaireService.findProprietaireByIdFromWsRest(id).subscribe(
         data => this.proprietaire = data
       );
-    }
   }
 
+  /**
+   * permet de naviguer vers la page de modifiaction du propriétaire
+   * @param idProprietaire id du propriétaire à modifier
+   */
   editProprietaire(idProprietaire: number){
     this.router.navigate(["proprietaire_edit", idProprietaire])
   }
 
+  /**
+   * permet de supprimer un proprietaire de la bdd
+   * @param proprietaire le proprietaire à supprimer
+   */
   deleteProprietaire(proprietaire : Proprietaire){
     this.proprietaireService.supprimerProprietaireViaWsRest(proprietaire).subscribe();
     this.router.navigate(["proprietaire_list"])

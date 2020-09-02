@@ -1,12 +1,13 @@
-<!--===== Formulaire d'ajout d'un Proprio =========-->
-<form (ngSubmit)="saveOrUpdateProprietaire()">
-    <div class="panel panel-primary">
-        <!--en tete du panel-->
-        <div class="panel-heading">
-            <h3 class="panel-title">Ajout d'un propriétaire</h3>
-        </div>
-        <!--body du panel-->
-        <div class="panel-body">
+<h1 style="color: #d49625;margin: 1rem 0 2rem 4rem;font-weight: bold;">Propriétaire</h1>
+
+<h2 style="color: #333333;margin: 1rem 0 2rem 6rem;">Ajout d'un proprietaire</h2>
+
+<div class="card shadow mb-4" style="width: 95%; margin: auto;">
+    <!--===== Formulaire d'ajout d'un Proprio =========-->
+    <form (ngSubmit)="saveOrUpdateProprietaire()">
+        <div class="mx-5 my-5">
+
+
             <!--+++ nom +++-->
             <div class="form-group">
                 <label for="pNom">Nom : </label>
@@ -20,13 +21,15 @@
             <!--+++ tel2 +++-->
             <div class="form-group">
                 <label for="pTel2">Telephone pro : </label>
-                <input type="text" name="telTravail" class="form-control" id="pTel2" [(ngModel)]="proprietaire.telTravail">
+                <input type="text" name="telTravail" class="form-control" id="pTel2"
+                    [(ngModel)]="proprietaire.telTravail">
             </div>
             <!--++++++++++++++ adresse +++++++++++++++++-->
             <!--+++ numero voie +++-->
             <div class="form-group">
                 <label for="pNumVoie">Numéro de voie : </label>
-                <input type="text" name="numVoie" class="form-control" id="pNumVoie" [(ngModel)]="proprietaire.adresse.numero">
+                <input type="text" name="numVoie" class="form-control" id="pNumVoie"
+                    [(ngModel)]="proprietaire.adresse.numero">
             </div>
             <!--+++ rue +++-->
             <div class="form-group">
@@ -36,24 +39,29 @@
             <!--+++ code postal +++-->
             <div class="form-group">
                 <label for="pCodePostal">Code Postal : </label>
-                <input type="text" name="codePostal" class="form-control" id="pCodePostal" [(ngModel)]="proprietaire.adresse.codePostal">
+                <input type="text" name="codePostal" class="form-control" id="pCodePostal"
+                    [(ngModel)]="proprietaire.adresse.codePostal">
             </div>
             <!--+++ localite +++-->
             <div class="form-group">
                 <label for="pLocalite">Ville/localité : </label>
-                <input type="text" name="localite" class="form-control" id="pLocalite" [(ngModel)]="proprietaire.adresse.localite">
+                <input type="text" name="localite" class="form-control" id="pLocalite"
+                    [(ngModel)]="proprietaire.adresse.localite">
             </div>
             <!--+++ pays +++-->
             <div class="form-group">
                 <label for="pPays">Pays : </label>
                 <input type="text" name="pays" class="form-control" id="pPays" [(ngModel)]="proprietaire.adresse.pays">
             </div>
-    
+
+            <!--bouton-->
+            <div>
+                <button type="submit" class="btn btn-primary float-right my-4">Ajout</button>
+            </div>
         </div>
-    
-        <!--footer du panel-->
-        <div class="panel-footer">
-            <button type="submit" class="btn btn-primary">Ajout</button>
-        </div>
-    </div>
     </form>
+
+</div>
+<footer class="container">
+    <p>&copy; Company nom Agence 2020 </p>
+  </footer>

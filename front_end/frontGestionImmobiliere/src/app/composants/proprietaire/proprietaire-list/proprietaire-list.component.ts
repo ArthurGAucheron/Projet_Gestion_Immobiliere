@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class ProprietaireListComponent implements OnInit {
 
   /*____________ props ___________ */
-  proprietaire = [];
+  proprietaires = [];
 
   /*____________ ctor ___________ */
   constructor(private proprietaireService : ProprietaireService, private router: Router) { }
@@ -19,14 +19,24 @@ export class ProprietaireListComponent implements OnInit {
     this.findAllProprietaire();
   }
 
+  /**
+   * permet de recuperer tous les propriétaire via le service
+   */
   findAllProprietaire(){
-    this.proprietaireService.getAllProprietaireFromWsRest().subscribe(data => this.proprietaire = data)
+    this.proprietaireService.getAllProprietaireFromWsRest().subscribe(data => this.proprietaires = data)
   }
 
+  /**
+   * permet de naviguer vers la fiche d'un proprietaire
+   * @param idProprietaire id du proprietaire selectionné
+   */
   selectProprietaire(idProprietaire: number){
     this.router.navigate(["proprietaire_card", idProprietaire])
   }
 
+  newProprietaire(){
+    this.router.navigate(["proprietaire_edit", 0])
+  }
   
 
 }

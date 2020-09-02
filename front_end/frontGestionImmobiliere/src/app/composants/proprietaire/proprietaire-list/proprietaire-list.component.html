@@ -1,56 +1,43 @@
-<div class="panel panel-primary" *ngFor="let proprio of proprietaire">
+<h1 style="color: #d49625;margin: 1rem 0 2rem 4rem;font-weight: bold;">Propriétaire</h1>
 
-    <!--============= header du panel =============-->
-    <div class="panel-heading">
-        <h3 class="panel-title">
-            {{proprio.nom}}
-        </h3>
-    </div>
+<h2 style="color: #333333;margin: 1rem 0 2rem 6rem;">Liste des propriétaire</h2>
 
-    <!--============= body du panel =============-->
-    <div class="panel-body">
-        <div class="col-xs-10">
-            <div class="row vertical-align">
-                <!--+++ details employe +++-->
-                <!--tel1-->
-                <div class="row">
-                    <div class="col-xs-6">
-                    Téléphone prive :
-                    </div>
-                    <div class="col-xs-6">
-                        {{proprio.telPrive}}
-                    </div>
-                </div>
-                <!--tel2-->
-                <div class="row">
-                    <div class="col-xs-6">
-                        Téléphone pro :
-                    </div>
-                    <div class="col-xs-6">
-                        {{proprio.telTravail}}
-                    </div>
-                </div>
-                <br>
-                <!--tel2-->
-                <div class="row">
-                    <div class="col-xs-6">
-                        Adresse :
-                    </div>
-                    <div class="col-xs-6">
-                        {{proprio.adresse.toString()}}
-                    </div>
-                </div>
+<div class="card shadow mb-4" style="width: 95%; margin: auto;">
+  <div class="card-body">
+    <button class="btn btn-primary float-right my-4" (click)="newProprietaire()">
+      Ajouter Propriétaire
+    </button>
+    <div class="table-responsive">
+      <table  class="table table-bordered" id="dataTable" width="80%" cellspacing="0" style="margin: auto;">
+        <thead class="thead-blue">
 
-            </div>
-        </div>
-    </div>
 
-    <!--====== footer du panel ======-->
-    <div class="panel-footer">
-        <button class="btn btn-primary" (click)="selectProprietaire(proprio.idProprietaire)">
-            Voir la fiche
-        </button> 
+          <tr style="background-color: #df4937;color:  #333333;">
+            <th scope="col">Nom</th>
+            <th scope="col">Tel privé</th>
+            <th scope="col">Tel pro</th>
+            <th scope="col">Adresse</th>
+          </tr>
+        </thead>
+
+        <!-- données de la table -->
+        <tbody>
+          <tr *ngFor="let proprio of proprietaires">
+            <td><a (click)="selectProprietaire(proprio.idProprietaire)">{{proprio.nom}}</a></td>
+            <td>{{proprio.telPrive}}</td>
+            <td>{{proprio.telTravail}}</td>
+            <td>{{proprio.adresse.numero}}, {{proprio.adresse.rue}} <br>
+              {{proprio.adresse.codePostal}} {{proprio.adresse.localite}} {{proprio.adresse.pays}}
+            </td>
+            
+          </tr>
+        </tbody>
         
+      </table>
     </div>
-
+  </div>
 </div>
+
+<footer class="container">
+  <p>&copy; Company nom Agence 2020 </p>
+</footer>

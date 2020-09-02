@@ -10,7 +10,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 /**
  * Classe mappé sur la table Contrat de la bdd <br/>
@@ -18,7 +24,8 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name="Contrats")
+@Table(name="contrats")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idContrat", scope = Long.class)
 public class Contrat {
 	
 	////// PROP //////
@@ -27,10 +34,10 @@ public class Contrat {
 	@Column(name="id_contrat")
 	private Long idContrat;
 	
-	@Column(name="PrixAcquisition")
-	private Double prixAcquisition;
+	@Column(name="prix_acquisition")
+	private Double prixAcquisition; 
 	
-	@Column(name="DateAcquisition")
+	@Column(name="date_acquisition")
 	private Date dateAcquisition;
 	
 	////// ASSOCIATIONS //////
@@ -41,8 +48,27 @@ public class Contrat {
 	 */
 	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="conseiller_id" , referencedColumnName="id_conseiller")
-	private ConseillerImmobilier conseiller;
-
+//	@JsonBackReference
+	private ConseillerImmobilier conseillers;
+	
+	/**
+	 * Assocation entre bienImmo et contrat de type One To One
+	 */
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="bien_id", referencedColumnName="id_bien")
+//	@JsonBackReference
+	private BienImmobilier bienImmobilier;
+	
+	/**
+	 * Assocations de type ManyToOne 
+	 * Associations entre l'entité Visite et l'entité clients 
+	 * Avec Many Visite To One Client
+	 */
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="client_id", referencedColumnName="id_client")
+//	@JsonBackReference
+	private Client client;
+	
 	///// CTOR ///////
 	public Contrat() {
 	}
@@ -96,13 +122,31 @@ public class Contrat {
 		this.dateAcquisition = dateAcquisition;
 	}
 
-	public ConseillerImmobilier getConseiller() {
-		return conseiller;
+	public ConseillerImmobilier getConseillers() {
+
+		return conseillers;
 	}
 
-	public void setConseiller(ConseillerImmobilier conseiller) {
-		this.conseiller = conseiller;
+	public void setConseillers(ConseillerImmobilier conseillers) {
+		this.conseillers = conseillers;
 	}
+
+	public BienImmobilier getBienImmobilier() {
+		return bienImmobilier;
+	}
+
+	public void setBienImmobilier(BienImmobilier bienImmobilier) {
+		this.bienImmobilier = bienImmobilier;
+	}
+
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+	
 	
 
 }// END CLASS

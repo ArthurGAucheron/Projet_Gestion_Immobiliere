@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class ProprietaireService {
 
   /*_______________ props ________________ */
-  private WS_REST_BASE_URL = "http://localhost:8080/";
+  private WS_REST_BASE_URL = "http://localhost:8080/gestion-immo/proprietaires";
 
   /*_______________ ctors ________________ */
   /**
