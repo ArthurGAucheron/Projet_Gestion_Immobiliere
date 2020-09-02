@@ -45,7 +45,33 @@
                             <option *ngFor="let prop of listeProprietaire" id="pProprietaire" [(ngModel)]="bienAchat.prop">{{prop}}</option>
                         </select>
                     </div>
-                
+                    <div style="border: 1px solid grey; padding:10px 10px 10px 10px; border-radius: 5px; ">
+                        <h3>Adresse du bien</h3>
+                        <div class="row">
+                            <div class="form-group col-sm-2"> 
+                                <label for="pNumero">Numero</label>
+                                <input type="text" id="pNumero" class="form-control" [(ngModel)]="bienAchat.adresse.numero" name="numero"/>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label for="pRue">Rue</label>
+                                <input type="text" id="pRue" class="form-control" [(ngModel)]="bienAchat.adresse.rue" name="rue"/>
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label for="pCP">Code Postal</label>
+                                <input type="text" id="pCP" class="form-control" [(ngModel)]="bienAchat.adresse.codePostal" name="CP"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-sm-6">
+                                <label for="pLocalite">Ville</label>
+                                <input type="text" id="pCP" class="form-control" [(ngModel)]="bienAchat.adresse.rue" name="localite"/>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label for="pPays">Pays</label>
+                                <input type="text" id="pPays" class="form-control" [(ngModel)]="bienAchat.adresse.pays" name="pays"/>
+                            </div>
+                        </div> 
+                    </div>
                 </div>
                 <div class="panel-footer">
                     <button type="submit" class="btn btn-primary">{{bienAchat.idBien ? "Modifier" : "Ajouter"}}</button>
