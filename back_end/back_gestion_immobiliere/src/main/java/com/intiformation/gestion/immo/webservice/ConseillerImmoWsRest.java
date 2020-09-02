@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +25,7 @@ import com.intiformation.gestion.immo.modele.Contrat;
  * @author giovanni
  *
  */
+@CrossOrigin(value="http://localhost:4200")
 @RestController
 @RequestMapping(value = "conseillers")
 public class ConseillerImmoWsRest {
@@ -41,7 +43,6 @@ public class ConseillerImmoWsRest {
 	public void setConseillerRepository(ConseillerImmobilierRepository conseillerRepository) {
 		this.conseillerRepository = conseillerRepository;
 	}
-	
 	
 	/**
 	 * Setter contratRepository pour l'injection par modificateur
@@ -135,13 +136,13 @@ public class ConseillerImmoWsRest {
 
 		// modification des etudiants liés à la promo supprimée
 		List<Contrat> listeContratsBdd = contratRepository.findAll();
-		
+				
 		for ( Contrat contrats : listeContratsBdd) {
 			if (contrats.getConseillers().getIdConseiller() == pIdConseiller) {
 					contrats.setConseillers(null);
 					contratRepository.save(contrats);
 			} // end if
-		} // end for each
+		} // end for each		
 		
 		// suppression de l'employé
 		conseillerRepository.deleteById(pIdConseiller);

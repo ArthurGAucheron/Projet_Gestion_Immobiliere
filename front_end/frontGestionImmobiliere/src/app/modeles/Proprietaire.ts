@@ -7,5 +7,5 @@ export class Proprietaire{
     telPrive: string;
     telTravail: string;
     adresse : Adresse;
-    listeBienImmobilier: Array<BienImmobilier>;
+    biensImmobiliers: Array<BienImmobilier>;
 }

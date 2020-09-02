@@ -17,7 +17,7 @@ export class ProprietaireCreateComponent implements OnInit {
     telPrive: null,
     telTravail: null,
     adresse : null,
-    listeBienImmobilier: null
+    biensImmobiliers: null
   }
 
   /*_____________ ctors ______________ */

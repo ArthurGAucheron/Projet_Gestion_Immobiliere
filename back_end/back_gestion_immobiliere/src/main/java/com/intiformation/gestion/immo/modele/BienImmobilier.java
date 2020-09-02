@@ -24,10 +24,11 @@ import org.hibernate.annotations.Fetch;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
@@ -49,6 +50,9 @@ public abstract class BienImmobilier implements Serializable {
 
 	@Column(name = "libelle")
 	private String libelle;
+	
+	@Column(name = "statut")
+	private String statut;
 
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Temporal(TemporalType.DATE)
@@ -68,12 +72,10 @@ public abstract class BienImmobilier implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name="classe_id", referencedColumnName="id_classe")
-//	@JsonManagedReference
 	private ClasseStandard classe;
 
 	@ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinColumn(name="adresse_id", referencedColumnName="id_adresse")
-//	@JsonManagedReference
 	private Adresse adresse;
 
 	/**
@@ -84,18 +86,28 @@ public abstract class BienImmobilier implements Serializable {
 	
 	@ManyToOne()
 	@JoinColumn(name="proprietaire_id", referencedColumnName="id_proprietaire")
-	@JsonIgnoreProperties({ "adresse", "biensImmobiliers" })
+	@JsonIgnoreProperties(value= {"adresse","biensImmobiliers"})
 	private Proprietaire proprietaire;
 	
 	/**
-	 * Association entre BienImmobilier et propriétaire
+	 * Association entre BienImmobilier et contrat
 	 * One bienimmo To One Contrat
 	 */
 
-	@OneToOne(mappedBy="bienImmobilier")
+	@OneToOne(mappedBy="bienImmobilier", cascade=CascadeType.REMOVE)
 	@JoinColumn(name="bien_id", referencedColumnName="id_bien")
-//	@JsonManagedReference
+	@JsonIgnoreProperties(value= {"conseillers","bienImmobilier","client"})	
 	private Contrat contrat;
+	
+	/**
+	 * Association entre BienImmobilier et visite
+	 * One bienimmo To One Contrat
+	 */
+
+	@OneToOne(mappedBy="bienImmobilier", cascade=CascadeType.REMOVE)
+	@JoinColumn(name="bien_id", referencedColumnName="id_bien")
+	@JsonIgnoreProperties(value= {"conseillers","bienImmobilier","client"})	
+	private Visite visite;
 
 
 	// ______________constructeurs______________
@@ -210,6 +222,24 @@ public abstract class BienImmobilier implements Serializable {
 	public void setContrat(Contrat contrat) {
 		this.contrat = contrat;
 	}
+
+	public String getStatut() {
+		return statut;
+	}
+
+	public void setStatut(String statut) {
+		this.statut = statut;
+	}
+
+	public Visite getVisite() {
+		return visite;
+	}
+
+	public void setVisite(Visite visite) {
+		this.visite = visite;
+	}
+	
+	
 	
 	// ______________toString()______________
 
