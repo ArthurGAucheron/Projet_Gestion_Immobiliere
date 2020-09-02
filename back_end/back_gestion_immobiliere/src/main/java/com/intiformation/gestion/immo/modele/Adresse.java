@@ -1,4 +1,4 @@
-  
+
 package com.intiformation.gestion.immo.modele;
 
 import java.util.List;
@@ -12,6 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import java.io.Serializable;
 import java.util.List;
@@ -25,64 +26,60 @@ import javax.persistence.Table;
 
 /**
  * modèle de données pour une adresse
+ * 
  * @author marle
  *
  */
 @Entity
-@Table(name="adresses")
+@Table(name = "adresses")
 public class Adresse implements Serializable {
 
-	/*_______________ propriétés ______________*/
+	/* _______________ propriétés ______________ */
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id_adresse")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_adresse")
 	private Long idAdresse;
-	
-	@Column(name="numero")
+
+	@Column(name = "numero")
 	private String numero;
-	
-	@Column(name="rue")
+
+	@Column(name = "rue")
 	private String rue;
-	
-	@Column(name="code_postal")
+
+	@Column(name = "code_postal")
 	private int codePostal;
-	
-	@Column(name="localite")
+
+	@Column(name = "localite")
 	private String localite;
 
-	@Column(name="pays")
+	@Column(name = "pays")
 	private String pays;
-	
-	
-	//+++++++ associations +++++++++
-	//association avec Propriétaire : One to Many (une adresse pour plusieurs propriétaires)
-	@JsonIgnore
-	@OneToMany(targetEntity=Proprietaire.class, mappedBy="idProprietaire")
-	private List<Proprietaire> proprietaires;
-	
-	//association avec Client : One to Many (une adresse pour plusieurs clients)
-	@JsonIgnore
-	@OneToMany(targetEntity=Client.class, mappedBy="idClient")
-	private List<Client> clients;
-	
-	//association avec BienImmobilier : One to Many (une adresse pour plusieurs biens)
 
-	//@OneToMany(targetEntity=BienImmobilier.class, mappedBy="idBien")
-	//private List<BienImmobilier> biensImmobilier;
-	@JsonIgnore
-	@OneToMany(targetEntity=BienImmobilier.class, mappedBy="idBien")
+	// +++++++ associations +++++++++
+	// association avec Propriétaire : One to Many (une adresse pour plusieurs
+	// propriétaires)
+	@OneToMany(targetEntity = Proprietaire.class, mappedBy = "adresse")
+	private List<Proprietaire> proprietaires;
+
+	// association avec Client : One to Many (une adresse pour plusieurs clients)
+	@OneToMany(targetEntity = Client.class, mappedBy = "adresse")
+	private List<Client> clients;
+
+	// association avec BienImmobilier : One to Many (une adresse pour plusieurs
+	// biens)
+
+	// @OneToMany(targetEntity=BienImmobilier.class, mappedBy="idBien")
+	@OneToMany(targetEntity = BienImmobilier.class, mappedBy = "idBien")
 	private List<BienImmobilier> biensImmobilier;
 
-	
-	/*_______________ ctor ______________*/
+	/* _______________ ctor ______________ */
 	/**
 	 * ctor vide
 	 */
 	public Adresse() {
 	}
-	
-	/*_______________ getters/setters ______________*/
 
+	/* _______________ getters/setters ______________ */
 
 	public Long getIdAdresse() {
 		return idAdresse;
@@ -149,10 +146,12 @@ public class Adresse implements Serializable {
 		this.clients = clients;
 	}
 
-
-	/*
 	public List<BienImmobilier> getBiensImmobilier() {
 		return biensImmobilier;
+	}
+
+	public void setBiensImmobilier(List<BienImmobilier> biensImmobilier) {
+		this.biensImmobilier = biensImmobilier;
 	}
 
 	@Override
@@ -162,20 +161,4 @@ public class Adresse implements Serializable {
 				+ clients + "]";
 	}
 
-	
-	public List<BienImmobilier> getBiensImmobilier() {
-		return biensImmobilier;
-	}
-
-
-	public void setBiensImmobilier(List<BienImmobilier> biensImmobilier) {
-		this.biensImmobilier = biensImmobilier;
-	}
-	
-
-	*/
-	
-}//end class
-
-	
-
+}// end class

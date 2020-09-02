@@ -53,11 +53,7 @@ public class Proprietaire implements Serializable {
 	private Adresse adresse;
 	
 	//association avec BienImmobilier : One to Many (un propriétaire pour plusieurs bien immobilier)
-
-	//@OneToMany(targetEntity=BienImmoblier.class, mappedBy="idBien")
-	//private List<BienImmoblier> biensImmobiliers;
-
-	@OneToMany(targetEntity=BienImmobilier.class, mappedBy="idBien")
+	@OneToMany(targetEntity=BienImmobilier.class, mappedBy="proprietaire")
 	private List<BienImmobilier> biensImmobiliers;
 
 

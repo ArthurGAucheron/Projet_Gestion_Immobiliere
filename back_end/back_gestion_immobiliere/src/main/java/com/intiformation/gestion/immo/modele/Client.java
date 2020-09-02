@@ -17,7 +17,9 @@ import javax.persistence.OneToMany;
 
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
  * modèle de données pour un client
@@ -46,50 +48,31 @@ public class Client implements Serializable {
 	// association avec Adresse : Many to One (plusieurs clients pour une adresse)
 	@ManyToOne
 	@JoinColumn(name = "adresse_id", referencedColumnName = "id_adresse")
+	
 	private Adresse adresse;
 
 	// association avec BienImmobilier : Many to Many (plusieurs clients pour
 	// plusieurs biens immobiliers)
-
-	// @ManyToMany
-	// @JoinTable(name="clients_assoc_biens", joinColumns=
-	// @JoinColumn(name="client_id"),
-	// inverseJoinColumns=@JoinColumn(name="bien_id"))
-	// private List<BienImmobilier> biensImmobiliers;
+	 @ManyToMany
+	 @JoinTable(name="clients_assoc_biens", joinColumns=
+	 @JoinColumn(name="client_id"), inverseJoinColumns=@JoinColumn(name="bien_id"))
+	 private List<BienImmobilier> biensImmobiliers;
 
 	// association avec ClasseStandard : Many to Many (plusieurs clients pour
 	// plusieurs classes standards)
-	// @ManyToMany
-	// @JoinTable(name="clients_assoc_classe", joinColumns=
-	// @JoinColumn(name="client_id"),
-	// inverseJoinColumns=@JoinColumn(name="classe_id"))
-	// private List<ClasseStandard> classesStandard;
+	 @ManyToMany
+	 @JoinTable(name="clients_assoc_classe", joinColumns=
+	 @JoinColumn(name="client_id"), inverseJoinColumns=@JoinColumn(name="classe_id"))
+	 private List<ClasseStandard> classesStandard;
 
 	// association avec Visite : One to Many (un client pour plusieurs visites)
-	// @OneToMany(targetEntity=Visite.class, mappedBy="idVisite")
-	// private List<Visite> visites;
+	@OneToMany(targetEntity=Visite.class, mappedBy="client")
+
+	private List<Visite> visites;
 
 	// association avec Contrat : One to Many (un client pour plusieurs contrats)
-	// @OneToMany(targetEntity=Contrat.class, mappedBy="idContrat")
-	// private List<Contrat> contrats;
-
-	@ManyToMany
-	@JoinTable(name = "clients_assoc_biens", joinColumns = @JoinColumn(name = "client_id"), inverseJoinColumns = @JoinColumn(name = "bien_id"))
-	private List<BienImmobilier> biensImmobiliers;
-
-	// association avec ClasseStandard : Many to Many (plusieurs clients pour
-	// plusieurs classes standards)
-	@ManyToMany
-	@JoinTable(name = "clients_assoc_classe", joinColumns = @JoinColumn(name = "client_id"), inverseJoinColumns = @JoinColumn(name = "classe_id"))
-	private List<ClasseStandard> classesStandard;
-
-	// association avec Visite : One to Many (un client pour plusieurs visites)
-	@OneToMany(targetEntity = Visite.class, mappedBy = "client")
-	private List<Visite> visites;
-	
-	//association avec Contrat : One to Many (un client pour plusieurs contrats)
 	@OneToMany(targetEntity=Contrat.class, mappedBy="client")
-	@JsonIgnore
+
 	private List<Contrat> contrats;
 
 	/* _______________ ctor ______________ */

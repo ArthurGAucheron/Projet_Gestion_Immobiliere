@@ -11,7 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * Classe mappé à partie la table ConseillerImmobilier de la bdd <br/>
@@ -26,6 +25,7 @@ public class ConseillerImmobilier {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_conseiller")
+	
 	private Long idConseiller;
 
 	@Column(name = "identifiant")
@@ -53,7 +53,6 @@ public class ConseillerImmobilier {
 	 * One Conseillers To Many Contrat
 	 */
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="conseillers")
-	@JsonIgnore
 	private List<Contrat> contrat;
 	
 	////// Ctor /////
