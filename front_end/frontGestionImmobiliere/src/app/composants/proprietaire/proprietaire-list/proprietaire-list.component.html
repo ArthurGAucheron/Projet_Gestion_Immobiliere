@@ -7,16 +7,16 @@
     <button class="btn btn-primary float-right my-4" (click)="newProprietaire()">
       Ajouter Propriétaire
     </button>
-    <div class="table-responsive">
-      <table  class="table table-bordered" id="dataTable" width="80%" cellspacing="0" style="margin: auto;">
-        <thead class="thead-blue">
+    
+      <table datatable class="row-border hover" style="margin: auto;">
+        <thead>
 
 
           <tr style="background-color: #df4937;color:  #333333;">
-            <th scope="col">Nom</th>
-            <th scope="col">Tel privé</th>
-            <th scope="col">Tel pro</th>
-            <th scope="col">Adresse</th>
+            <th >Nom</th>
+            <th >Tel privé</th>
+            <th >Tel pro</th>
+            <th >Adresse</th> 
           </tr>
         </thead>
 
@@ -26,15 +26,16 @@
             <td><a (click)="selectProprietaire(proprio.idProprietaire)">{{proprio.nom}}</a></td>
             <td>{{proprio.telPrive}}</td>
             <td>{{proprio.telTravail}}</td>
-            <td>{{proprio.adresse.numero}}, {{proprio.adresse.rue}} <br>
-              {{proprio.adresse.codePostal}} {{proprio.adresse.localite}} {{proprio.adresse.pays}}
+            <td>
+              {{proprio.adresse.numero}}, {{proprio.adresse.rue}} <br>
+              {{proprio.adresse.codePostal}} {{proprio.adresse.localite}} {{proprio.adresse.pays}} 
             </td>
             
           </tr>
         </tbody>
         
       </table>
-    </div>
+    
   </div>
 </div>
 

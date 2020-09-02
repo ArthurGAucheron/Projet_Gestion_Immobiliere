@@ -19,7 +19,7 @@ export class HeaderComponentComponent implements OnInit {
   }
 
   viewClient(){
-    this.router.navigate(["client_list"])
+    this.router.navigate(["client_list"]).then(() => window.location.reload() );
   }
 
 }
