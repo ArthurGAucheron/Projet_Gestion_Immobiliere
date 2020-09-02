@@ -18,9 +18,8 @@ import { ProprietaireCreateComponent } from './composants/proprietaire/proprieta
 import { ProprietaireListComponent } from './composants/proprietaire/proprietaire-list/proprietaire-list.component';
 import { ClientCreateComponent } from './composants/client/client-create/client-create.component';
 
-import { ListeImmobilierComponent } from './composants/bienImmobilier/liste-immobilier/liste-immobilier.component';
-import { CreateImmobilierComponent } from './composants/bienImmobilier/create-immobilier/create-immobilier.component';
-import { ModifImmobilierComponent } from './composants/bienImmobilier/modif-immobilier/modif-immobilier.component';
+import { ListeImmobilierComponent } from './composants/bienImmobilier/liste-immobilier-achat/liste-immobilier.component';
+import { CreateImmobilierComponent } from './composants/bienImmobilier/create-immobilier-achat/create-immobilier.component';
 
 import { CreateClasseStandardComponent } from './composants/classeStandard/create-classe-standard/create-classe-standard.component';
 import { CreateContratComponent } from './composants/contrat/create-contrat/create-contrat.component';
@@ -28,6 +27,10 @@ import { ListeContratComponent } from './composants/contrat/liste-contrat/liste-
 import { ListeVisiteComponent } from './composants/visite/liste-visite/liste-visite.component';
 import { CreateVisiteComponent } from './composants/visite/create-visite/create-visite.component';
 import { ProprietaireCardComponent } from './composants/proprietaire/proprietaire-card/proprietaire-card.component';
+import { FicheImmobilierAchatComponent } from './composants/bienImmobilier/fiche-immobilier-achat/fiche-immobilier-achat.component';
+import { FicheImmobilierLocationComponent } from './composants/bienImmobilier/fiche-immobilier-location/fiche-immobilier-location.component';
+import { CreateImmobilierLocationComponent } from './composants/bienImmobilier/create-immobilier-location/create-immobilier-location.component';
+import { ListeImmobilierLocationComponent } from './composants/bienImmobilier/liste-immobilier-location/liste-immobilier-location.component';
 
 @NgModule({
   declarations: [
@@ -43,13 +46,16 @@ import { ProprietaireCardComponent } from './composants/proprietaire/proprietair
 
     ListeImmobilierComponent,
     CreateImmobilierComponent,
-    ModifImmobilierComponent,
     CreateClasseStandardComponent,
     CreateContratComponent,
     ListeContratComponent,
     ListeVisiteComponent,
     CreateVisiteComponent,
-    ProprietaireCardComponent
+    ProprietaireCardComponent,
+    FicheImmobilierAchatComponent,
+    FicheImmobilierLocationComponent,
+    CreateImmobilierLocationComponent,
+    ListeImmobilierLocationComponent
   ],
   imports: [
     BrowserModule,

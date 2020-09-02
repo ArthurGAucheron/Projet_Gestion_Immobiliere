@@ -1,0 +1,101 @@
+<div class="container-fluid">
+    <br>
+    <h1>Titre du bien {{bienAchat.libelle}}</h1>
+    <div class="container">
+        <br>
+        <!-- ///// Table d'informations à propors du bien -->
+        <table border="1px black solid" cellpadding="5px">
+            <thead>
+                <th>Informations</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>ID</td>
+                    <td>{{bienAchat.idBien}}</td>
+                </tr>
+                <tr>
+                    <td>Statut</td>
+                    <td>{{bienAchat.statut}}</td>
+                </tr>
+                <tr>
+                    <td>dateSoummission</td>
+                    <td>{{bienAchat.dateSoummission}}</td>
+                </tr>
+                <tr>
+                    <td>dateMiseADispo</td>
+                    <td>{{bienAchat.dateMiseADispo}}</td>
+                </tr>
+                <tr>
+                    <td>revenuCadastral</td>
+                    <td>{{bienAchat.revenuCadastral}}</td>
+                </tr>
+                <tr>
+                    <td>descriptif</td>
+                    <td>{{bienAchat.descriptif}}</td>
+                </tr>
+                <tr>
+                    <td>classeStandard</td>
+                    <td>{{bienAchat.classeStandard}}</td>
+                </tr>
+                <tr>
+                    <td>contrat</td>
+                    <td>{{bienAchat.contrat}}</td>
+                </tr>
+                <tr>
+                    <td>proprietaire</td>
+                    <td>{{bienAchat.proprietaire}}</td>
+                </tr>
+                <tr>
+                    <td>adresse</td>
+                    <td>{{bienAchat.adresse}}</td>
+                </tr>
+                <tr>
+                    <td>prixDemande</td>
+                    <td>{{bienAchat.prixDemande}}</td>
+                </tr>
+                <tr>
+                    <td>etat</td>
+                    <td>{{bienAchat.etat}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- //// Table liste des visites -->
+        <br>
+        <h2>Liste des visites</h2>
+            <table border="1px black solid" cellpadding="5px">
+                <thead>
+                    <th>idVisite</th>
+                    <th>dateVisite</th>
+                    <th>client</th>
+                    <th>conseiller</th>
+                </thead>
+                    <tr *ngFor="let visite of bienAchat.visites">
+                        <td>{{visite.idVisite}}</td>
+                        <td>{{visite.dateVisite}}</td>
+                        <td>{{visite.client.nom}}</td>
+                        <td>{{visite.conseiller.nom}}</td>
+                    </tr>
+                <tbody>
+                </tbody>
+            </table>
+        <!-- //// Table liste des clients-->
+        <br>
+        <h2>Liste des clients</h2>
+        <table border="1px black solid" cellpadding="5px">
+            <thead>
+                <th>idClient</th>
+                <th>nom</th>
+                <th>telephone</th>
+                <th>adresse</th>
+            </thead>
+                <tr *ngFor="let client of bienAchat.listeClients">
+                    <td>{{client.idClient}}</td>
+                    <td>{{client.nom}}</td>
+                    <td>{{client.telephone}}</td>
+                    <td>{{client.adresse}}</td>
+                </tr>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>

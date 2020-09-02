@@ -1,0 +1,39 @@
+<div class="container-fluid">
+  <h1 style="color: #d49625;margin: 1rem 0 2rem 4rem;font-weight: bold;">Liste des biens Immobilier</h1>
+  <!-- ////////////////////////////////////////////////////////// TABLEAU 1 : BIENS A ACHETER  /////////////////////////////////////////////////////// -->
+  <h2 style="color: #333333;margin: 1rem 0 2rem 6rem;">Liste des biens à acheter</h2>
+  <div class="container">
+    <a routerLink="bienAchat/edit/0">Ajouter un bien à vendre</a>
+    <div class="card shadow mb-4" style="width: 97.5%; margin: auto;">
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="80%" cellspacing="0" style="margin: auto;">
+              <!-- Header de la table -->
+              <thead class="thead-blue">
+                <tr style="background-color: #df4937;color:  #333333;">
+                  <th scope="col">libelle</th>
+                  <th scope="col">statut</th>
+                  <th scope="col">classeStandard</th>
+                  <th scope="col">proprietaire</th>
+                  <th scope="col">adresse</th>
+                  <th scope="col">prixDemande</th>
+                </tr>
+              </thead>
+              <!-- données de la table -->
+              <tbody>
+                    <tr *ngFor="let bien of biensAchat">
+                    <td>{{bien.libelle}}</td>
+                    <td>{{bien.statut}}</td>
+                    <td>{{bien.classeStandard}}</td>
+                    <td>{{bien.proprietaire}}</td>
+                    <td>{{bien.adresse}}</td>
+                    <td>{{bien.prixDemande}}</td>
+                    <td><button (click)="consulterFiche(bien.idBien)">Consulter</button></td>
+                    </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>

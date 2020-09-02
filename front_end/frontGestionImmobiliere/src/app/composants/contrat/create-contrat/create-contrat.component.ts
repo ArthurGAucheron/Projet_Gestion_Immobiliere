@@ -42,6 +42,7 @@ export class CreateContratComponent implements OnInit {
 
     this.activatedRoute.paramMap.subscribe((paramsMap) => {
       const idContrat = +paramsMap.get("id");
+      this.findContratById(idContrat);
     });
     this.findAllBiensImmo(this.modeOffre);
     this.findAllClients();
