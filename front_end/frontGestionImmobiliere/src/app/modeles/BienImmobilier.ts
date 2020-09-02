@@ -16,7 +16,7 @@ export class BienImmobilier{
     descriptif : String;
     photo : string;
     classeStandard : ClasseStandard;
-    listeVisite : Array<Visite>;
+    visites : Array<Visite>;
     contrat : Contrat;
     proprietaire : Proprietaire;
     adresse : Adresse;

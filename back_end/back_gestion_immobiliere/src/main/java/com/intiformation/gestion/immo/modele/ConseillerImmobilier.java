@@ -11,13 +11,24 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.SQLUpdate;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 /**
  * Classe mappé à partie la table ConseillerImmobilier de la bdd <br/>
  * @author giovanni
  *
  */
 @Entity
-@Table(name = "Conseillers")
+@Table(name = "conseillers")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idConseiller", scope = Long.class)
 public class ConseillerImmobilier {
 
 	///// Prop /////
@@ -38,6 +49,22 @@ public class ConseillerImmobilier {
 	@Column(name = "telephone")
 	private String telephone;
 	
+	/// ASSOCIATIONS /////
+	/**
+	 * Association OneToMany
+	 * One Conseillers To Many Visite
+	 */
+	@OneToMany(mappedBy="conseillers", cascade=CascadeType.REMOVE)
+	@JsonIgnoreProperties(value= {"client","bienImmobilier","conseillers"})
+	private List<Visite> visite;
+	
+	/**
+	 * Association OneToMany
+	 * One Conseillers To Many Contrat
+	 */
+	@OneToMany(mappedBy="conseillers")
+	@JsonIgnoreProperties(value= {"client","bienImmobilier","conseillers"})
+	private List<Contrat> contrat;
 	
 	////// Ctor /////
 	public ConseillerImmobilier() {
@@ -69,7 +96,6 @@ public class ConseillerImmobilier {
 	 * @param telephone
 	 */
 	public ConseillerImmobilier(String identifiant, String motDePasse, String nom, String telephone) {
-		super();
 		this.identifiant = identifiant;
 		this.motDePasse = motDePasse;
 		this.nom = nom;
@@ -118,21 +144,6 @@ public class ConseillerImmobilier {
 		this.telephone = telephone;
 	}
 
-	public List<Visite> getVisite() {
-		return visite;
-	}
-
-	public void setVisite(List<Visite> visite) {
-		this.visite = visite;
-	}
-
-	public List<Contrat> getContrat() {
-		return contrat;
-	}
-
-	public void setContrat(List<Contrat> contrat) {
-		this.contrat = contrat;
-	}
 	
 	
 

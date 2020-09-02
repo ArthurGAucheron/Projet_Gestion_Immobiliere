@@ -7,6 +7,6 @@ export class Client{
     nom: string;
     telephone: string;
     adresse : Adresse;
-    listeVisites : Array<Visite>;
-    listeContrat : Array<Contrat>;
+    visites : Array<Visite>;
+    contrats : Array<Contrat>;
 }

@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponentComponent } from './header-component/header-component.component';
@@ -26,14 +29,16 @@ import { ListeContratComponent } from './composants/contrat/liste-contrat/liste-
 import { ListeVisiteComponent } from './composants/visite/liste-visite/liste-visite.component';
 import { CreateVisiteComponent } from './composants/visite/create-visite/create-visite.component';
 
-import { FormsModule } from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+
 import { PipeClasseStandardPipe } from './Pipes/ClasseStandard/pipe-classe-standard.pipe';
 import { SuperficiePipe } from './Pipes/ClasseStandard/superficie.pipe';
 import { DetailsClasseStandardComponent } from './composants/classeStandard/details-classe-standard/details-classe-standard/details-classe-standard.component';
 import { BienImmoPipe } from './Pipes/Visite/bien-immo.pipe';
 import { DetailsVisiteComponent } from './composants/visite/details-visite/details-visite.component';
 
+import { ProprietaireCardComponent } from './composants/proprietaire/proprietaire-card/proprietaire-card.component';
+import { ClientListComponent } from './composants/client/client-list/client-list.component';
+import { ClientCardComponent } from './composants/client/client-card/client-card.component';
 
 @NgModule({
   declarations: [
@@ -60,15 +65,17 @@ import { DetailsVisiteComponent } from './composants/visite/details-visite/detai
     SuperficiePipe,
     DetailsClasseStandardComponent,
     BienImmoPipe,
-    DetailsVisiteComponent
+    DetailsVisiteComponent,
 
+    ProprietaireCardComponent,
+    ClientListComponent,
+    ClientCardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-
-    FormsModule,
-    HttpClientModule
+    HttpClientModule, 
+    FormsModule
   ],
   providers: [
     AuthGuardService,{provide:HTTP_INTERCEPTORS, useClass:BasicAuthHttpInterceptorService, multi:true }

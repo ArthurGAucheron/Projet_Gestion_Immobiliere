@@ -9,7 +9,7 @@ import { BienAchat } from 'src/app/modeles/BienAchat';
 })
 export class CreateImmobilierComponent implements OnInit {
 
-  /*bienLocation : BienLocation = {
+  bienLocation : BienLocation = {
     idBien : null,
     libelle : null,
     statut : null,
@@ -18,11 +18,14 @@ export class CreateImmobilierComponent implements OnInit {
     revenuCadastral : null,
     descriptif : null,
     classeStandard : null,
-   visites : null,
-    contrat : null,
+    visites : null,
+    contrat :null,
+    proprietaire :null,
+    adresse : null,
+    listeClients : null,
     montantCaution : null,
-    loyerMensuel : null,
-    montantMensuelCharges  :null,
+    loyerMensuel :null,
+    montantMensuelCharges : null,
     typeBail : null,
     garniture : null,
   }
@@ -36,11 +39,14 @@ export class CreateImmobilierComponent implements OnInit {
     revenuCadastral : null,
     descriptif : null,
     classeStandard : null,
-   // visites : null,
-    contrat : null,
+    visites : null,
+    contrat :null,
+    proprietaire :null,
+    adresse : null,
+    listeClients : null,
     prixDemande : null,
     etat : null,
-  }*/
+  }
 
   constructor() { }
 

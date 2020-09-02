@@ -5,4 +5,5 @@ export class Adresse{
     codePostal : number;
     localite : string;
     pays: string;
+
 }
