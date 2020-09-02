@@ -31,6 +31,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { PipeClasseStandardPipe } from './Pipes/ClasseStandard/pipe-classe-standard.pipe';
 import { SuperficiePipe } from './Pipes/ClasseStandard/superficie.pipe';
 import { DetailsClasseStandardComponent } from './composants/classeStandard/details-classe-standard/details-classe-standard/details-classe-standard.component';
+import { BienImmoPipe } from './Pipes/Visite/bien-immo.pipe';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { DetailsClasseStandardComponent } from './composants/classeStandard/deta
     CreateVisiteComponent,
     PipeClasseStandardPipe,
     SuperficiePipe,
-    DetailsClasseStandardComponent
+    DetailsClasseStandardComponent,
+    BienImmoPipe
 
   ],
   imports: [
