@@ -16,7 +16,7 @@ export class CreateContratComponent implements OnInit {
     prixAcquisition : null,
     dateAcquisition : null,
     bienImmobilier : null,
-    conseiller : null,
+    conseillers : null,
     client : null
   }
   // ========= Constructeurs ==========
@@ -33,7 +33,7 @@ export class CreateContratComponent implements OnInit {
   findContratById(pIdContrat : number){
     
     if (pIdContrat==0) {
-      this.contrat={ idContrat : null,prixAcquisition : null,dateAcquisition : null, bienImmobilier : null,conseiller : null,client : null,}
+      this.contrat={ idContrat : null,prixAcquisition : null,dateAcquisition : null, bienImmobilier : null,conseillers : null,client : null,}
     } else {
       this.contratService.getContratById(pIdContrat).subscribe((contratToUpdate) => {this.contrat=contratToUpdate});
     }

@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 export class VisiteService {
 
   /*_______________ props ________________ */
-  private WS_REST_BASE_URL = "http://localhost:8080/";
+  private WS_REST_BASE_URL = "http://localhost:8080/gestion-immo/visites/getall";
 
   /*_______________ ctors ________________ */
   /**

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ContratService } from "src/app/services/contrat/contrat.service";
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute} from '@angular/router';
+import { Contrat } from 'src/app/modeles/Contrat';
 @Component({
   selector: 'app-liste-contrat',
   templateUrl: './liste-contrat.component.html',
@@ -10,7 +11,7 @@ export class ListeContratComponent implements OnInit {
   
   // ========= Propriétés ==========
 
-  contrats = [];
+  contrats : Array<Contrat> = [];
 
 
   // ========= Constructeurs ==========
@@ -34,4 +35,9 @@ export class ListeContratComponent implements OnInit {
   deleteContrat(idContrat : number){
     this.contratService.deleteContrat(idContrat).subscribe(() => {this.findAllContrat();});
   }
+
+  newContrat(){
+    this.router.navigate(["edit/contrat/:id", 0])
+  }
+  
 }

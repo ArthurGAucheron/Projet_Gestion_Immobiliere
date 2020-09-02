@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class ContratService {
 
-  private WS_REST_URL;
+  private WS_REST_URL : "http://localhost:8080/gestion-immo/contrats";
 
   constructor(private httpClient : HttpClient) { }
 
@@ -21,7 +21,7 @@ export class ContratService {
   }
 
   getAllContrat():Observable<Contrat[]>{
-    return this.httpClient.get<Contrat[]>(`${this.WS_REST_URL}/getAll`);
+    return this.httpClient.get<Contrat[]>(`${this.WS_REST_URL}/getall`);
   }
 
   getContratById(idContrat : number):Observable<Contrat>{

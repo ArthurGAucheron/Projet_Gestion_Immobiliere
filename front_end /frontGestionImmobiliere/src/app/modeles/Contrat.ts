@@ -7,7 +7,7 @@ export class Contrat {
     prixAcquisition : Number;
     dateAcquisition : any;
     bienImmobilier : BienImmobilier;
-    conseiller : ConseillerImmobilier;
+    conseillers : ConseillerImmobilier;
     client : Client;
 
 }

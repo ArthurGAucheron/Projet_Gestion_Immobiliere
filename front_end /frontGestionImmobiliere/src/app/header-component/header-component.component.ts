@@ -22,4 +22,8 @@ export class HeaderComponentComponent implements OnInit {
     this.router.navigate(["client_list"])
   }
 
+  viewContrat(){
+    this.router.navigate(["contrat_list"])
+  }
+
 }

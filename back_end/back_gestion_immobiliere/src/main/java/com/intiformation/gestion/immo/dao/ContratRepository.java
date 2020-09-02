@@ -10,7 +10,7 @@ import com.intiformation.gestion.immo.modele.Contrat;
  * @author giovanni
  *
  */
-@RestResource(path="contrats")
+@Repository
 public interface ContratRepository extends JpaRepository<Contrat, Long>{
 	
 	/*________ Méthodes de requêtes __________*/

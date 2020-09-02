@@ -13,6 +13,7 @@ import { AuthGuardService } from './guards/auth-guard.service';
 const routes: Routes = [
 
   {path:"edit/contrat/:id", component:CreateContratComponent},
+  {path:"contrat_list", component:ListeContratComponent},
 
   {path:"client_card/:id", component:ClientCardComponent, canActivate:[]},
   {path:"client_edit/:id", component:ClientCreateComponent, canActivate:[]},
