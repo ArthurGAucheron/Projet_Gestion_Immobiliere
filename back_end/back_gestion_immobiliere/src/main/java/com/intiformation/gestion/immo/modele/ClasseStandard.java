@@ -13,6 +13,7 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
@@ -41,7 +42,7 @@ public class ClasseStandard {
 	
 	@OneToMany(targetEntity=BienImmobilier.class, mappedBy="classe")
 //	@JsonBackReference
-	@JsonIdentityReference(alwaysAsId=true)
+	@JsonIgnoreProperties(value= {"classe","proprietaire","adresse","contrat"})
 	private List<BienImmobilier> biensImmobilier;
 
 	// ______________constructeurs______________
