@@ -17,13 +17,13 @@ const routes: Routes = [
   
   {path:"edit/contrat/:id", component:CreateContratComponent},
 
-  {path:"edit/classeStandard/:id", component:CreateClasseStandardComponent, canActivate:[AuthGuardService]},
-  {path:"list/classeStandard", component:ListeClasseStandardComponent, canActivate:[AuthGuardService]},
-  {path:"look/classeStandard/:id", component:DetailsClasseStandardComponent, canActivate:[AuthGuardService]},
+  {path:"edit/classeStandard/:id", component:CreateClasseStandardComponent,/* canActivate:[AuthGuardService]*/},
+  {path:"list/classeStandard", component:ListeClasseStandardComponent, /* canActivate:[AuthGuardService]*/},
+  {path:"look/classeStandard/:id", component:DetailsClasseStandardComponent, /* canActivate:[AuthGuardService]*/},
 
-  {path:"edit/visite/:id", component:CreateVisiteComponent, canActivate:[AuthGuardService]},
-  {path:"list/visite", component:ListeVisiteComponent, canActivate:[AuthGuardService]},
-  {path:"look/visite/:id", component:DetailsClasseStandardComponent, canActivate:[AuthGuardService]},
+  {path:"edit/visite/:id", component:CreateVisiteComponent, /* canActivate:[AuthGuardService]*/},
+  {path:"list/visite", component:ListeVisiteComponent, /* canActivate:[AuthGuardService]*/},
+  {path:"look/visite/:id", component:DetailsClasseStandardComponent, /* canActivate:[AuthGuardService]*/},
 
   
   

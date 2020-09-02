@@ -74,6 +74,7 @@ export class CreateClasseStandardComponent implements OnInit {
     var reader = new FileReader();
    reader.readAsDataURL(this.fileToUpload);
    reader.onload = () => {
+     console.log(reader.result)
       this.test= <string>reader.result;
    };
    
