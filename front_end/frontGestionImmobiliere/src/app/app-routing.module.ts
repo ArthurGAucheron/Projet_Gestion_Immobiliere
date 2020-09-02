@@ -7,6 +7,7 @@ import { ListeClasseStandardComponent } from './composants/classeStandard/liste-
 import { DetailsClasseStandardComponent } from './composants/classeStandard/details-classe-standard/details-classe-standard/details-classe-standard.component';
 import { CreateVisiteComponent } from './composants/visite/create-visite/create-visite.component';
 import { ListeVisiteComponent } from './composants/visite/liste-visite/liste-visite.component';
+import { AuthGuardService } from './guards/auth-guard.service';
 
 const routes: Routes = [
 
@@ -16,13 +17,13 @@ const routes: Routes = [
   
   {path:"edit/contrat/:id", component:CreateContratComponent},
 
-  {path:"edit/classeStandard/:id", component:CreateClasseStandardComponent},
-  {path:"list/classeStandard", component:ListeClasseStandardComponent},
-  {path:"look/classeStandard/:id", component:DetailsClasseStandardComponent},
+  {path:"edit/classeStandard/:id", component:CreateClasseStandardComponent, canActivate:[AuthGuardService]},
+  {path:"list/classeStandard", component:ListeClasseStandardComponent, canActivate:[AuthGuardService]},
+  {path:"look/classeStandard/:id", component:DetailsClasseStandardComponent, canActivate:[AuthGuardService]},
 
-  {path:"edit/visite/:id", component:CreateVisiteComponent},
-  {path:"list/visite", component:ListeVisiteComponent},
-  {path:"look/visite/:id", component:DetailsClasseStandardComponent},
+  {path:"edit/visite/:id", component:CreateVisiteComponent, canActivate:[AuthGuardService]},
+  {path:"list/visite", component:ListeVisiteComponent, canActivate:[AuthGuardService]},
+  {path:"look/visite/:id", component:DetailsClasseStandardComponent, canActivate:[AuthGuardService]},
 
   
   
