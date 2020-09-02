@@ -121,17 +121,6 @@ public class Proprietaire implements Serializable {
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
 	}
-
-
-	/*
-	public List<BienImmoblier> getBiensImmobiliers() {
-		return biensImmobiliers;
-	}
-	public void setBiensImmobiliers(List<BienImmoblier> biensImmobiliers) {
-		this.biensImmobiliers = biensImmobiliers;
-	}
-	*/
-
 	
 	public List<BienImmobilier> getBiensImmobiliers() {
 		return biensImmobiliers;

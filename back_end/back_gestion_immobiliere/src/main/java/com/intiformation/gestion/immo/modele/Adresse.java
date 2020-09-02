@@ -137,7 +137,7 @@ public class Adresse implements Serializable {
 		this.pays = pays;
 	}
 
-	/*
+
 	public List<Proprietaire> getProprietaires() {
 		return proprietaires;
 	}
@@ -154,31 +154,15 @@ public class Adresse implements Serializable {
 		this.clients = clients;
 	}
 
-
 	public List<BienImmobilier> getBiensImmobilier() {
 		return biensImmobilier;
 	}
-
-	@Override
-	public String toString() {
-		return "Adresse [idAdresse=" + idAdresse + ", numero=" + numero + ", rue=" + rue + ", codePostal=" + codePostal
-				+ ", localite=" + localite + ", pays=" + pays + ", proprietaires=" + proprietaires + ", clients="
-				+ clients + "]";
-	}
-
-	
-	public List<BienImmobilier> getBiensImmobilier() {
-		return biensImmobilier;
-	}
-
 
 	public void setBiensImmobilier(List<BienImmobilier> biensImmobilier) {
 		this.biensImmobilier = biensImmobilier;
 	}
-	
 
-	*/
-	
+
 }//end class
 
 	

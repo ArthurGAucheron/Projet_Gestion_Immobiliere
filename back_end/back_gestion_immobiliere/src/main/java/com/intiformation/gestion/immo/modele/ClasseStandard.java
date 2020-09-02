@@ -110,6 +110,14 @@ public class ClasseStandard {
 		this.superficieMin = superficieMin;
 	}
 
+	public List<BienImmobilier> getBiensImmobilier() {
+		return biensImmobilier;
+	}
+
+	public void setBiensImmobilier(List<BienImmobilier> biensImmobilier) {
+		this.biensImmobilier = biensImmobilier;
+	}
+	
 	// ______________toString()______________
 
 	@Override

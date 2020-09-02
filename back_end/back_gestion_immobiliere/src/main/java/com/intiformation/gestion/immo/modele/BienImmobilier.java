@@ -220,6 +220,24 @@ public abstract class BienImmobilier implements Serializable {
 	public void setContrat(Contrat contrat) {
 		this.contrat = contrat;
 	}
+
+	public String getStatut() {
+		return statut;
+	}
+
+	public void setStatut(String statut) {
+		this.statut = statut;
+	}
+
+	public Visite getVisite() {
+		return visite;
+	}
+
+	public void setVisite(Visite visite) {
+		this.visite = visite;
+	}
+	
+	
 	
 	// ______________toString()______________
 
