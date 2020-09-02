@@ -10,19 +10,14 @@ import { ClasseStandardService } from 'src/app/services/classe-standard/classe-s
 })
 export class DetailsClasseStandardComponent implements OnInit {
 
-  classeStandard : ClasseStandard= { idClasse:1,typeBiens:"Maison",modeOffre:"Location",prixMax:300,
-  superficieMin:55, listeClients: [{ idClient : 1,
-                                    nom: "Georges",
-                                    telephone: "030303030330",
-                                    adresse : {idAdresse: 1,
-                                              numero: "13",
-                                              rue: "rue du mont",
-                                              codePostal : 70999,
-                                              localite : "Somewhere",
-                                              pays: "France",},
-                                    listeVisites : null,
-                                    listeContrat : null}],
-   listeBienImmobilier:null};
+  classeStandard : ClasseStandard= {  idClasse:null,
+                                      typeBiens:null,
+                                      modeOffre:null,
+                                      prixMax:null,
+                                      superficieMin:null,
+                                      listeClients: null,
+                                      listeBienImmobilier:null
+  };
   
 
   constructor(private classeStandardService : ClasseStandardService,
@@ -34,9 +29,9 @@ export class DetailsClasseStandardComponent implements OnInit {
       
       const id = +param.get("id");
       this.classeStandardService.getClasseStandardById(id)
-                                .subscribe(toUpdate=>this.classeStandard=toUpdate);
+                                .subscribe(toLook=>this.classeStandard=toLook);
 
-    })
+    });
   }
 
   //Redirection

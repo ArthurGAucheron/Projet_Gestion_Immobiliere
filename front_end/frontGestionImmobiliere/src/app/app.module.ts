@@ -32,6 +32,7 @@ import { PipeClasseStandardPipe } from './Pipes/ClasseStandard/pipe-classe-stand
 import { SuperficiePipe } from './Pipes/ClasseStandard/superficie.pipe';
 import { DetailsClasseStandardComponent } from './composants/classeStandard/details-classe-standard/details-classe-standard/details-classe-standard.component';
 import { BienImmoPipe } from './Pipes/Visite/bien-immo.pipe';
+import { DetailsVisiteComponent } from './composants/visite/details-visite/details-visite.component';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { BienImmoPipe } from './Pipes/Visite/bien-immo.pipe';
     PipeClasseStandardPipe,
     SuperficiePipe,
     DetailsClasseStandardComponent,
-    BienImmoPipe
+    BienImmoPipe,
+    DetailsVisiteComponent
 
   ],
   imports: [

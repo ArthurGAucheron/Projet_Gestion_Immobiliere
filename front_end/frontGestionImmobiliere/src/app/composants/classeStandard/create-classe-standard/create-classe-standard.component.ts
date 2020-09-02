@@ -28,7 +28,7 @@ export class CreateClasseStandardComponent implements OnInit {
     listeBienImmobilier : null
   };
 
-  listeClients : Array<Client> = [];
+  listeClientsAll : Array<Client> = [];
   listeBienImmoLoc : Array<BienLocation> =[];
   listeBienImmoAchat : Array<BienAchat> = [];
 
@@ -48,7 +48,7 @@ export class CreateClasseStandardComponent implements OnInit {
       }
     });
 
-    this.clientService.getAllClientFromWsRest().subscribe(liste=>this.listeClients=liste);
+    this.clientService.getAllClientFromWsRest().subscribe(liste=>this.listeClientsAll=liste);
     this.bienImmoService.getAllLocation().subscribe(liste=>this.listeBienImmoLoc=liste);
     this.bienImmoService.getAllAchat().subscribe(liste=>this.listeBienImmoAchat=liste);
 

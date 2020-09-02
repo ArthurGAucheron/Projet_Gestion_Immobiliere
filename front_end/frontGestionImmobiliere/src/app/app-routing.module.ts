@@ -22,7 +22,9 @@ const routes: Routes = [
 
   {path:"edit/visite/:id", component:CreateVisiteComponent},
   {path:"list/visite", component:ListeVisiteComponent},
- // {path:"look/visite/:id", component:DetailsClasseStandardComponent},
+  {path:"look/visite/:id", component:DetailsClasseStandardComponent},
+
+  
   
 
 
