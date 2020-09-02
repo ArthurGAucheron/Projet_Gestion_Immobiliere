@@ -1,1 +1,46 @@
 <p>liste-visite works!</p>
+
+<h1 style="color: #d49625;margin: 1rem 0 2rem 4rem;font-weight: bold;">Un titre</h1>
+
+<h2 style="color: #333333;margin: 1rem 0 2rem 6rem;">Un titre pour le tableau</h2>
+
+<div class="card shadow mb-4" style="width: 97.5%; margin: auto;">
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered" id="dataTable" width="80%" cellspacing="0" style="margin: auto;">
+        <thead class="thead-blue">
+
+          <tr>
+            <th colspan="7"><a href="" (click)="navigateToAddVisite($event)"><img width="25px" src="../../../../assets/images/file-earmark-plus.svg">Ajout Rendez-Vous</a></th>
+          </tr>
+
+
+          <tr style="background-color: #df4937;color:  #333333;">
+            <th scope="col">ID</th>
+            <th scope="col">Date</th>
+            <th scope="col">Client</th>
+            <th scope="col">Bien Immobilier</th>
+            <th scope="col">Conseiller</th>
+            <th scope="col">Consulter</th>
+            <th scope="col">Supprimer</th>
+          </tr>
+        </thead>
+
+        <!-- données de la table -->
+        <tbody *ngFor="let visite of listeVisite">
+          <tr>
+            <td>{{visite.idVisite}}</td>
+            <td>{{visite.dateVisite}}</td>
+            <td>{{visite.client.nom}}</td>
+            <td>{{visite.conseiller.nom}}</td>
+            <td>{{visite.bienImmobilier.libelle | bienImmo : visite}}</td>
+            <td class="tdCenter"><a href="" (click)="navigateToDetailsVisite($event, visite.idVisite)"><img width="25px" src="../../../../assets/images/search.svg"></a></td>
+            <td class="tdCenter"><a href="" (click)="deleteVisite($event,visite)"><img width="25px" src="../../../../assets/images/trash2-fill.svg"></a></td>
+          </tr>
+        </tbody>
+        
+      </table>
+    </div>
+  </div>
+</div>
+

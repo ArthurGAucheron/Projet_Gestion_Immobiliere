@@ -14,6 +14,7 @@ export class BienImmobilier{
     dateMiseADispo : any;
     revenuCadastral : number;
     descriptif : String;
+    photo : string;
     classeStandard : ClasseStandard;
     visites : Array<Visite>;
     contrat : Contrat;
