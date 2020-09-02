@@ -15,6 +15,7 @@ export class ListeImmobilierComponent implements OnInit {
   biens = [];
   biensAchat = [];
   biensLocation = [];
+  avendre ="à vendre";
   
   // ========== Constructeurs ============
   constructor(private bienService : BienImmobilierService , private router : Router) { }
@@ -26,7 +27,6 @@ export class ListeImmobilierComponent implements OnInit {
   }
   findAllAchatBien(){
     this.bienService.getAllAchat().subscribe(data => this.biens=data)
-
   }// end findAll()
 
   consulterFiche(idBienImmo : number){

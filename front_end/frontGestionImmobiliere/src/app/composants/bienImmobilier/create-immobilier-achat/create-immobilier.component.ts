@@ -23,7 +23,7 @@ export class CreateImmobilierComponent implements OnInit {
     proprietaire :null,
     adresse : null,
     listeClients : null,
-    prixDemande : null,
+    prix : null,
     etat : null,
   }
 

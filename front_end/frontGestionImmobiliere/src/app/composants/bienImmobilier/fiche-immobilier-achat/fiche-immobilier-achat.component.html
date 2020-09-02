@@ -1,21 +1,26 @@
 <div class="container-fluid">
     <br>
-    <h1>{{bienAchat.libelle}}</h1>
+    <h1>{{bien.libelle}} 
+        <span *ngIf="bien.caution && !bien.contrat">(à louer)</span>
+        <span *ngIf="bien.caution && bien.contrat">(loué)</span>
+        <span *ngIf="bien.prix && !bien.contrat">(à vendre)</span>
+        <span *ngIf="bien.prix && bien.contrat">(vendu)</span>
+    </h1>
     <br>
     <div class="card shadow mb-4" style="width: 95%; margin: auto;"> 
-        <div class="mx-4 my-4">
+        <div class="mx-2 my-2">
             <h3 class="card-title">Informations</h3>
         </div>
         <div class="row">
             <div class="col-6">
                 <div class="card" style="width: 100%; margin: 5px;">
                     <ul class="list-group list-group-flush"  >
-                        <li class="list-group-item">ID : {{bienAchat.idBien}} </li>
-                        <li class="list-group-item">Statut : {{bienAchat.statut}} </li>
-                        <li class="list-group-item">Date de Soumission : {{bienAchat.dateSoumission}} </li>
-                        <li class="list-group-item">Date de mise disposition : {{bienAchat.dateMiseADispo}}</li>
-                        <li class="list-group-item">Revenu cadastral : {{bienAchat.revenuCadastral}} €</li>
-                        <li class="list-group-item">Descriptif : {{bienAchat.descriptif}} </li>
+                        <li class="list-group-item">ID : {{bien.idBien}} </li>
+                        <li class="list-group-item">Statut : {{bien.statut}} </li>
+                        <li class="list-group-item">Date de Soumission : {{bien.dateSoumission}} </li>
+                        <li class="list-group-item">Date de mise disposition : {{bien.dateMiseADispo}}</li>
+                        <li class="list-group-item">Revenu cadastral : {{bien.revenuCadastral}} €</li>
+                        <li class="list-group-item">Descriptif : {{bien.descriptif}} </li>
                       </ul>
                 </div>
             </div>
@@ -25,134 +30,83 @@
                         <li class="list-group-item">Classe Standard :
                             <ul>
                                 <li>
-                                    Type de bien : {{bienAchat.classe.typeBiens}}
+                                    Type de bien : {{bien.classe.typeBiens}}
                                 </li>
                                 <li>
-                                    Mode d'offre :  {{bienAchat.classe.modeOffre}}
+                                    Mode d'offre :  {{bien.classe.modeOffre}}
                                 </li>
                                 <li>
-                                    Prix max :  {{bienAchat.classe.prixMax}} €
+                                    Prix max :  {{bien.classe.prixMax}} €
                                 </li>
                                 <li>
-                                    Surface min :  {{bienAchat.classe.superficieMin}} m²
+                                    Surface min :  {{bien.classe.superficieMin}} m²
                                 </li>
                             </ul>
                         </li>
-                        <li class="list-group-item" *ngIf="bienAchat.contrat">Contrat : <a href="#">consulter le contrat</a>
+                        <li class="list-group-item" *ngIf="bien.contrat">Contrat : <a href="#">consulter le contrat</a>
                             <ul>
                                 <li>
-                                    Numéros de contrat :  {{bienAchat.contrat.idContrat}}
+                                    Numéros de contrat :  {{bien.contrat.idContrat}}
                                 </li>
                                 <li>
-                                    Date du contrat : {{bienAchat.contrat.dateAcquisition | date : 'd MMM y' | lowercase}} 
+                                    Date du contrat : {{bien.contrat.dateAcquisition | date : 'd MMM y' | lowercase}} 
                                 </li>
                             </ul>
                            </li>
-                        <li class="list-group-item">Propriétaire : <a href="#">{{bienAchat.proprietaire.nom}}</a></li>
-                        <li class="list-group-item">Adresse : {{bienAchat.adresse.numero}} {{bienAchat.adresse.rue}} {{bienAchat.adresse.codePostal}} {{bienAchat.adresse.codePostal}} {{bienAchat.adresse.localite}} {{bienAchat.adresse.pays}} </li>
+                        <li class="list-group-item">Propriétaire : <a href="#">{{bien.proprietaire.nom}}</a></li>
+                        <li class="list-group-item">Adresse : {{bien.adresse.numero}} {{bien.adresse.rue}} {{bien.adresse.codePostal}} {{bien.adresse.codePostal}} {{bien.adresse.localite}} {{bien.adresse.pays}} </li>
                       </ul>
                 </div>
             </div>
         </div>
-        
-        
+        <div class="row">
+            <div class="col-6" *ngIf="bien.prix">
+                <div class="card" style="width: 100%; margin: 5px;">
+                    <ul class="list-group list-group-flush"  >
+                        <li class="list-group-item">Prix demander : {{bien.prix | number : '1.0-8' }} €</li>
+                        <li class="list-group-item">État : {{bien.etat}} </li>
+                      </ul>
+                </div>
+            </div>
+            <div class="col-6" *ngIf="bien.caution">
+                <div class="card" style="width: 100%; margin: 5px;">
+                    <ul class="list-group list-group-flush"  >
+                        <li class="list-group-item">Caution : {{bien.caution}} €</li>
+                        <li class="list-group-item">Loye : {{bien.loyer}} €</li>
+                        <li class="list-group-item">Charges : {{bien.charges}} €</li>
+                        <li class="list-group-item">Type de bail : {{bien.typeBail}}</li>
+                        <li class="list-group-item">Garniture : {{bien.garniture ? "meublé" : "non meublé"}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="container">
-        <br>
-        <!-- ///// Table d'informations à propors du bien -->
-        <table border="1px black solid" cellpadding="5px">
-            <thead>
-                <th>Informations</th>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>ID</td>
-                    <td>{{bienAchat.idBien}}</td>
-                </tr>
-                <tr>
-                    <td>Statut</td>
-                    <td>{{bienAchat.statut}}</td>
-                </tr>
-                <tr>
-                    <td>dateSoummission</td>
-                    <td>{{bienAchat.dateSoumission}}</td>
-                </tr>
-                <tr>
-                    <td>dateMiseADispo</td>
-                    <td>{{bienAchat.dateMiseADispo}}</td>
-                </tr>
-                <tr>
-                    <td>revenuCadastral</td>
-                    <td>{{bienAchat.revenuCadastral}}</td>
-                </tr>
-                <tr>
-                    <td>descriptif</td>
-                    <td>{{bienAchat.descriptif}}</td>
-                </tr>
-                <tr>
-                    <td>classeStandard</td>
-                    <td>{{bienAchat}}</td>
-                </tr>
-                <tr>
-                    <td>contrat</td>
-                    <td>{{bienAchat.contrat}}</td>
-                </tr>
-                <tr>
-                    <td>proprietaire</td>
-                    <td>{{bienAchat.proprietaire}}</td>
-                </tr>
-                <tr>
-                    <td>adresse</td>
-                    <td>{{bienAchat.adresse}}</td>
-                </tr>
-                <tr>
-                    <td>prixDemande</td>
-                    <td>{{bienAchat.prixDemande}}</td>
-                </tr>
-                <tr>
-                    <td>etat</td>
-                    <td>{{bienAchat.etat}}</td>
-                </tr>
-            </tbody>
-        </table>
-        <!-- //// Table liste des visites -->
-        <br>
-        <h2>Liste des visites</h2>
-            <table border="1px black solid" cellpadding="5px">
-                <thead>
-                    <th>idVisite</th>
-                    <th>dateVisite</th>
-                    <th>client</th>
-                    <th>conseiller</th>
-                </thead>
-                    <tr *ngFor="let visite of bienAchat.visites">
-                        <td>{{visite.idVisite}}</td>
-                        <td>{{visite.dateVisite}}</td>
-                        <td>{{visite.client.nom}}</td>
-                        <td>{{visite.conseiller.nom}}</td>
-                    </tr>
-                <tbody>
-                </tbody>
-            </table>
-        <!-- //// Table liste des clients-->
-        <br>
-        <h2>Liste des clients</h2>
-        <table border="1px black solid" cellpadding="5px">
-            <thead>
-                <th>idClient</th>
-                <th>nom</th>
-                <th>telephone</th>
-                <th>adresse</th>
-            </thead>
-                <tr *ngFor="let client of bienAchat.listeClients">
-                    <td>{{client.idClient}}</td>
-                    <td>{{client.nom}}</td>
-                    <td>{{client.telephone}}</td>
-                    <td>{{client.adresse}}</td>
-                </tr>
-            <tbody>
-            </tbody>
-        </table>
+      <!-- //// Table liste des visites -->
+    <div>
+        <h1>Liste des visites</h1>
+    </div>
+    <div class="card shadow mb-4" style="width: 95%; margin: auto;">
+        <div class="row">
+            <div class="col-12">
+                <div class="card" style="width: 100%; margin: 5px;">
+                    <ul class="list-group list-group-flush"  >
+                        <li class="list-group-item"> 
+                            <ul>
+                                <li> IdVisite :  {{bien.visite.idVisite}} </li>
+                                <li> Date : {{bien.visite.dateVisite | date : 'MMMM d, y, h:mm:ss a z'}} </li>
+                            </ul>
+                            </li>
+                      </ul>
+                </div>
+            </div>
+        <div>
+    </div>
+</div></div>
+    <div>
+        <h1>Liste des clients</h1>
     </div>
 </div>
+      
+
+        
+

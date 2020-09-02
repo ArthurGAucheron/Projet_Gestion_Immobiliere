@@ -1,8 +1,7 @@
 <div class="container-fluid">
   <h1 style="color: #d49625;margin: 1rem 0 2rem 4rem;font-weight: bold;">Liste des biens Immobilier</h1>
-  <!-- ////////////////////////////////////////////////////////// TABLEAU 1 : BIENS A ACHETER  /////////////////////////////////////////////////////// -->
-  <h2 style="color: #333333;margin: 1rem 0 2rem 6rem;">Liste des biens à acheter</h2>
-    <a routerLink="bienAchat/edit/0">Ajouter un bien</a>
+
+  <a routerLink="bienAchat/edit/0">Ajouter un bien</a>
     <div class="card shadow mb-4" style="width: 97.5%; margin: auto;">
         <div class="card-body">
           <div class="table-responsive">
@@ -13,10 +12,9 @@
                   <th scope="col">id</th>
                   <th scope="col">libelle</th>
                   <th scope="col">statut</th>
-                  <th scope="col">classeStandard</th>
                   <th scope="col">proprietaire</th>
                   <th scope="col">adresse</th>
-                  <th scope="col">prixDemande</th>
+                  <th scope="col">Consulter</th>
                 </tr>
               </thead>
               <!-- données de la table -->
@@ -24,12 +22,15 @@
                     <tr *ngFor="let bien of biens">
                     <td>{{bien.idBien}}</td>
                     <td>{{bien.libelle}}</td>
-                    <td>{{bien.classe.modeOffre}}</td>
-                    <td>{{bien.classe.typeBiens}}</td>
-                    <td>{{bien.proprietaire}}</td>
-                    <td>{{bien.adresse}}</td>
-                    <td>{{bien.prixDemande}}</td>
-                    <td><button (click)="consulterFiche(bien.idBien)">Consulter</button></td>
+                    <td> 
+                      <span *ngIf="bien.caution && !bien.contrat">à louer</span>
+                      <span *ngIf="bien.caution && bien.contrat">loué</span>
+                      <span *ngIf="bien.prix && !bien.contrat">à vendre</span>
+                      <span *ngIf="bien.prix && bien.contrat">vendu</span>
+                    </td>
+                    <td>{{bien.proprietaire.nom}}</td>
+                    <td>{{bien.adresse.numero}} {{bien.adresse.rue}} {{bien.adresse.codePostal}} {{bien.adresse.localite}} {{bien.adresse.pays}} </td>
+                    <td style="text-align: center;"><button class="btn btn-danger" (click)="consulterFiche(bien.idBien)">Consulter</button></td>
                     </tr>
               </tbody>
             </table>

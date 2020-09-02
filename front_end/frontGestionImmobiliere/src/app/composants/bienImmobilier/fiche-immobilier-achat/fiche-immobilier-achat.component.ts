@@ -10,23 +10,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class FicheImmobilierAchatComponent implements OnInit {
   // ========== Propriétés ============
-  bienAchat : BienAchat = {
-    idBien : null,
-    libelle : null,
-    statut : null,
-    dateSoumission : null,
-    dateMiseADispo : null,
-    revenuCadastral : null,
-    descriptif : null,
-    classe : null,
-    visites : null,
-    contrat :null,
-    proprietaire :null,
-    adresse : null,
-    listeClients : null,
-    prixDemande : null,
-    etat : null,
-  }
+
+  bien : any = null;
 
   // ========== Constructeurs ============
   constructor(private bienImmoService : BienImmobilierService, private activatedRoute : ActivatedRoute) { }
@@ -40,6 +25,6 @@ export class FicheImmobilierAchatComponent implements OnInit {
   }
 
   getBienAchatById(idBienImmo : number){
-    this.bienImmoService.getAchatById(idBienImmo).subscribe(data => this.bienAchat=data);
+    this.bienImmoService.getAchatById(idBienImmo).subscribe(data => this.bien=data);
   }
 }
