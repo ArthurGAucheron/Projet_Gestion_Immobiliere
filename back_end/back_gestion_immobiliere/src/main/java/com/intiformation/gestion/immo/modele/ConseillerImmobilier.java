@@ -51,7 +51,7 @@ public class ConseillerImmobilier {
 	 * Association OneToMany
 	 * One Conseillers To Many Visite
 	 */
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="conseillers")
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="conseillers", targetEntity=Visite.class)
 //	@JsonBackReference
 	@JsonIdentityReference(alwaysAsId=true)
 	private List<Visite> visite;
@@ -60,7 +60,7 @@ public class ConseillerImmobilier {
 	 * Association OneToMany
 	 * One Conseillers To Many Contrat
 	 */
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="conseillers")
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="conseillers", targetEntity=Contrat.class )
 //	@JsonBackReference
 	@JsonIdentityReference(alwaysAsId=true)
 	private List<Contrat> contrat;

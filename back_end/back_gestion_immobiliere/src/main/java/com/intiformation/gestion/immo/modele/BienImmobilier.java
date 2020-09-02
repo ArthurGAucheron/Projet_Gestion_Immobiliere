@@ -20,12 +20,14 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.Fetch;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
@@ -34,7 +36,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @DiscriminatorColumn(
 	    name="type",
 	    discriminatorType=DiscriminatorType.STRING)
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idBien", scope = Long.class)
+@JsonPropertyOrder({ "idBien", "libelle", "dateSoumission", "dateMiseADispo", "revenuCadastral", "descriptif"})
 public abstract class BienImmobilier implements Serializable {
 
 	
@@ -79,9 +81,10 @@ public abstract class BienImmobilier implements Serializable {
 	 * Many bienimmo To One Proprio
 	 */
 
-	@ManyToOne
+	
+	@ManyToOne()
 	@JoinColumn(name="proprietaire_id", referencedColumnName="id_proprietaire")
-//	@JsonManagedReference
+	@JsonIgnoreProperties({ "adresse", "biensImmobiliers" })
 	private Proprietaire proprietaire;
 	
 	/**

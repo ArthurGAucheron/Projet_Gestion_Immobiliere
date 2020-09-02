@@ -62,8 +62,8 @@ public class Proprietaire implements Serializable {
 	//association avec BienImmobilier : One to Many (un propriétaire pour plusieurs bien immobilier)
 
 	@OneToMany(targetEntity=BienImmobilier.class, mappedBy="proprietaire")
-//	@JsonManagedReference
 	@JsonIdentityReference(alwaysAsId=true)
+	@JsonIgnoreProperties({ "classe" , "adresse", "proprietaire", "contrat" })
 	private List<BienImmobilier> biensImmobiliers;
 
 

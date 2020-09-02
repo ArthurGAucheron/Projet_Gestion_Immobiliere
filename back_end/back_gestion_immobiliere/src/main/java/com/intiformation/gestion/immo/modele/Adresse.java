@@ -165,5 +165,6 @@ public class Adresse implements Serializable {
 				+ ", localite=" + localite + ", pays=" + pays + ", proprietaires=" + proprietaires + ", clients="
 				+ clients + "]";
 	}
+	*/
 
 }// end class
