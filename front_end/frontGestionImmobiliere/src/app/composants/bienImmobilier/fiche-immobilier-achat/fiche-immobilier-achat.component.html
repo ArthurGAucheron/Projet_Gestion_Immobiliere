@@ -1,6 +1,7 @@
 <div class="container-fluid">
     <br>
     <h1>{{bienAchat.libelle}}</h1>
+    <br>
     <div class="card shadow mb-4" style="width: 95%; margin: auto;"> 
         <div class="mx-4 my-4">
             <h3 class="card-title">Informations</h3>
@@ -13,18 +14,42 @@
                         <li class="list-group-item">Statut : {{bienAchat.statut}} </li>
                         <li class="list-group-item">Date de Soumission : {{bienAchat.dateSoumission}} </li>
                         <li class="list-group-item">Date de mise disposition : {{bienAchat.dateMiseADispo}}</li>
-                        <li class="list-group-item">Date de mise disposition : {{bienAchat.dateMiseADispo}}</li>
+                        <li class="list-group-item">Revenu cadastral : {{bienAchat.revenuCadastral}} €</li>
+                        <li class="list-group-item">Descriptif : {{bienAchat.descriptif}} </li>
                       </ul>
                 </div>
             </div>
             <div class="col-6">
                 <div class="card" style="width: 100%; margin: 5px;">
                     <ul class="list-group list-group-flush ">
-                        <li class="list-group-item">ID : {{bienAchat.idBien}} </li>
-                        <li class="list-group-item">Statut : {{bienAchat.statut}} </li>
-                        <li class="list-group-item">Date de Soumission : {{bienAchat.dateSoumission}} </li>
-                        <li class="list-group-item">Date de mise disposition : {{bienAchat.dateMiseADispo}}</li>
-                        <li class="list-group-item">Date de mise disposition : {{bienAchat.dateMiseADispo}}</li>
+                        <li class="list-group-item">Classe Standard :
+                            <ul>
+                                <li>
+                                    Type de bien : {{bienAchat.classe.typeBiens}}
+                                </li>
+                                <li>
+                                    Mode d'offre :  {{bienAchat.classe.modeOffre}}
+                                </li>
+                                <li>
+                                    Prix max :  {{bienAchat.classe.prixMax}} €
+                                </li>
+                                <li>
+                                    Surface min :  {{bienAchat.classe.superficieMin}} m²
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="list-group-item" *ngIf="bienAchat.contrat">Contrat : <a href="#">consulter le contrat</a>
+                            <ul>
+                                <li>
+                                    Numéros de contrat :  {{bienAchat.contrat.idContrat}}
+                                </li>
+                                <li>
+                                    Date du contrat : {{bienAchat.contrat.dateAcquisition | date : 'd MMM y' | lowercase}} 
+                                </li>
+                            </ul>
+                           </li>
+                        <li class="list-group-item">Propriétaire : <a href="#">{{bienAchat.proprietaire.nom}}</a></li>
+                        <li class="list-group-item">Adresse : {{bienAchat.adresse.numero}} {{bienAchat.adresse.rue}} {{bienAchat.adresse.codePostal}} {{bienAchat.adresse.codePostal}} {{bienAchat.adresse.localite}} {{bienAchat.adresse.pays}} </li>
                       </ul>
                 </div>
             </div>
@@ -67,7 +92,7 @@
                 </tr>
                 <tr>
                     <td>classeStandard</td>
-                    <td>{{bienAchat.classeStandard}}</td>
+                    <td>{{bienAchat}}</td>
                 </tr>
                 <tr>
                     <td>contrat</td>

@@ -18,7 +18,7 @@ export class FicheImmobilierAchatComponent implements OnInit {
     dateMiseADispo : null,
     revenuCadastral : null,
     descriptif : null,
-    classeStandard : null,
+    classe : null,
     visites : null,
     contrat :null,
     proprietaire :null,
