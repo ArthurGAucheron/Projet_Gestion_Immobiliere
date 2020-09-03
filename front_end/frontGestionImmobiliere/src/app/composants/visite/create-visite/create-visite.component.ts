@@ -22,15 +22,14 @@ export class CreateVisiteComponent implements OnInit {
   visite: Visite = {
     idVisite: null,
     dateVisite: null,
-    client: null,
-    conseillers: null,
+    client: new Client,
+    conseillers: new ConseillerImmobilier,
     bienImmobilier: null,
   };
 
   listeClient: Array<Client>;
   listeConseiller:Array<ConseillerImmobilier>;
-  listeBienAchat:Array<BienAchat>;
-  listeBienLocation:Array<BienLocation>;
+  listeBien:Array<BienAchat | BienLocation>;
 
   constructor(private visiteService:VisiteService,
               private conseillerService:ConseillerService,
@@ -58,18 +57,18 @@ export class CreateVisiteComponent implements OnInit {
     });
     this.clientService.getAllClientFromWsRest().subscribe(liste=>this.listeClient=liste);
     this.conseillerService.getAllConseillerFromWsRest().subscribe(liste=>this.listeConseiller=liste);
-    this.bienImmoService.getAllAchat().subscribe(liste=>this.listeBienAchat=liste);
-    this.bienImmoService.getAllLocation().subscribe(liste=>this.listeBienLocation=liste);
+    this.bienImmoService.getAllAchat().subscribe(liste=>this.listeBien=liste);
   }
 
   saveOrUpdateVisite(){
+    console.log(this.visite)
     if (this.visite.idVisite==null) {
       this.visiteService.ajouterVisiteViaWsRest(this.visite).subscribe();
     } else {
       this.visiteService.modifierVisiteViaWsRest(this.visite).subscribe();
       this.router.navigateByUrl("look/classeStandard/"+this.visite.idVisite);
     }
-    this.router.navigateByUrl("list/visite/");
+    this.router.navigateByUrl("list/visite");
     
   }
 

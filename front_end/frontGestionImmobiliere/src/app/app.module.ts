@@ -44,7 +44,7 @@ import { ListeImmobilierLocationComponent } from './composants/bienImmobilier/li
 import { ClientListComponent } from './composants/client/client-list/client-list.component';
 import { ClientCardComponent } from './composants/client/client-card/client-card.component';
 
-import { DataTablesModule } from 'angular-datatables';
+ 
 
 @NgModule({
   declarations: [

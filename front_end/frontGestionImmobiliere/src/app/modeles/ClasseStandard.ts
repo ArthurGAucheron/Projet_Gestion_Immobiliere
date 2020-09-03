@@ -1,5 +1,7 @@
 import { Client } from './Client';
 import { BienImmobilier } from './BienImmobilier';
+import { BienAchat } from './BienAchat';
+import { BienLocation } from './BienLocation';
 
 export class ClasseStandard {
 
@@ -10,6 +12,6 @@ export class ClasseStandard {
     superficieMin : number;
 
     clients : Array<Client>;
-    biensImmobilier : Array<BienImmobilier>
+    biensImmobilier : Array<any>
 
 }

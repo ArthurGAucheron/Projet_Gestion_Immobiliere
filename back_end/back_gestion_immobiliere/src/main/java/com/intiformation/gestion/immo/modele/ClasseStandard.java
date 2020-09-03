@@ -43,13 +43,13 @@ public class ClasseStandard {
 	@Column(name = "superficie_min")
 	private double superficieMin;
 	
-	@OneToMany(targetEntity=BienImmobilier.class, mappedBy="classe", cascade=CascadeType.REMOVE)
+	@OneToMany(targetEntity=BienImmobilier.class, mappedBy="classe", cascade= {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REMOVE})
 	@JsonIgnoreProperties(value= {"classe","contrat"})
 	private List<BienImmobilier> biensImmobilier;
 	
 	// association avec Clients : Many to Many (plusieurs clients pour
 	// plusieurs classes standards)
-	@ManyToMany(targetEntity=Client.class,mappedBy="classesStandard")
+	@ManyToMany(targetEntity=Client.class,mappedBy="classesStandard",cascade= {CascadeType.MERGE,CascadeType.PERSIST})
 	@JsonIgnoreProperties(value= {"biensImmobilier","classesStandard","visites","contrats"})
 	private List<Client> clients;
 

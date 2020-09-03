@@ -1,5 +1,7 @@
 package com.intiformation.gestion.immo.modele;
 
+import static org.hamcrest.CoreMatchers.containsStringIgnoringCase;
+
 import java.io.Serializable;
 
 import java.util.List;
@@ -61,7 +63,7 @@ public class Client implements Serializable {
 
 	// association avec ClasseStandard : Many to Many (plusieurs clients pour
 	// plusieurs classes standards)
-	@ManyToMany
+	@ManyToMany(cascade= {CascadeType.MERGE,CascadeType.PERSIST})
 	@JoinTable(name = "clients_assoc_classe", joinColumns = @JoinColumn(name = "client_id"), inverseJoinColumns = @JoinColumn(name = "classe_id"))
 	@JsonIgnoreProperties(value= {"biensImmobilier","clients"})
 	private List<ClasseStandard> classesStandard;

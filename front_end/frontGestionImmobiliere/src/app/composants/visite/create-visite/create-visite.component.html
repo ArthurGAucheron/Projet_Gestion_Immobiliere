@@ -19,11 +19,11 @@
         <!--Bien Immobilier-->
         <h4>Bien Immobilier : </h4>
         <select name="bien" id="tbBien" class="custom-select" [(ngModel)]="visite.bienImmobilier" >
-            <optgroup label="Achat" *ngFor="let bien of listeBienAchat">
-                <option value="{{bien}}">{{bien.libelle}}</option>
+            <optgroup label="Achat" >
+                <option *ngFor="let bien of listeBien" value="{{bien}}">{{bien.libelle}}</option>
             </optgroup>
-            <optgroup label="Location" *ngFor="let bien of listeBienLocation">
-                <option value="{{bien}}">{{bien.libelle}}</option>
+            <optgroup label="Location" >
+                <option *ngFor="let bien of listeBien" value="{{bien}}">{{bien.libelle}}</option>
             </optgroup>
         </select>
 

@@ -8,7 +8,7 @@
         <label for="tbtypeBiens">Type de Bien</label>
         <select name="idClasse" id="tbtypeBiens" class="custom-select" [(ngModel)]="classeStandard.typeBiens">
             <option>Maison</option>
-            <option>Appartement</option>
+            <option>appartement</option>
             <option>Studio</option>
             <option>Entrepôt</option>
             <option>Terrain</option>
@@ -59,11 +59,15 @@
             <div class="col-md-6" style="float: left;">
                 <h3>Bien Immobilier : </h3>
                 <select name="bien" class="form-control" multiple [(ngModel)]="classeStandard.biensImmobilier">
-                    <optgroup label="Achat">
-                        <option *ngFor="let bien of listeBienImmoAchat" value="{{bien}}">{{bien.libelle}}</option>
+                    <optgroup *ngIf="classeStandard.modeOffre=='Achat'" label="Achat">
+                        <ng-template ngFor let-bien [ngForOf]="listeBien">
+                            <option *ngIf="bien.statut=='à vendre'" value="{{bien.idBien}}" >{{bien.libelle}} ( {{bien.adresse.localite}} )</option>
+                        </ng-template>
                     </optgroup>
-                    <optgroup label="Location">
-                        <option *ngFor="let bien of listeBienImmoLoc" value="{{bien}}">{{bien.libelle}}</option>
+                    <optgroup *ngIf="classeStandard.modeOffre=='Location'" label="Location">
+                        <ng-template ngFor let-bien [ngForOf]="listeBien">
+                            <option *ngIf="bien.statut=='à louer'" value="{{bien.idBien}}" >{{bien.libelle}} ( {{bien.adresse.localite}} )</option>
+                        </ng-template>
                     </optgroup>
                 </select>
             </div>
@@ -72,7 +76,7 @@
                 <h3>Clients Intéressés : </h3>
                 <select name="client" class="form-control " multiple [(ngModel)]="classeStandard.clients">
                     <optgroup label="Clients">
-                        <option *ngFor="let client of listeClientsAll" value="{{client}}">{{client.nom}}</option>
+                        <option *ngFor="let client of listeClientsAll" value="{{client.idClient}}">{{client.nom}}</option>
 
                     </optgroup>
                 </select>
