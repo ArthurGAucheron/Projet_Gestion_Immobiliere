@@ -1,11 +1,7 @@
 <div class="container-fluid">
   <h1 style="color: #d49625;margin: 1rem 0 2rem 4rem;font-weight: bold;">Liste des biens Immobilier</h1>
-
   <a routerLink="bienAchat/edit/0">Ajouter un bien</a>
-    <div class="card shadow mb-4" style="width: 97.5%; margin: auto;">
-        <div class="card-body">
-          <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="80%" cellspacing="0" style="margin: auto;">
+            <table  datatable  [dtTrigger]="dtTrigger" class="row-border hover" style="margin: auto;">
               <!-- Header de la table -->
               <thead class="thead-blue">
                 <tr style="background-color: #df4937;color:  #333333;">
@@ -34,7 +30,4 @@
                     </tr>
               </tbody>
             </table>
-          </div>
-        </div>
-      </div>
 </div>

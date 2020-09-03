@@ -23,7 +23,7 @@
         <!-- données de la table -->
         <tbody>
           <tr *ngFor="let clt of clients">
-            <td><a (click)="selectClient(clt.idClient)">{{clt.nom}}</a></td>
+            <td><a (click)="selectClient(clt.idClient)">{{clt.nom}}</a></td> 
             <td>{{clt.telephone}}</td>
             <td> {{clt.adresse.numero}}, {{clt.adresse.rue}} <br>
               {{clt.adresse.codePostal}} {{clt.adresse.localite}} {{clt.adresse.pays}}

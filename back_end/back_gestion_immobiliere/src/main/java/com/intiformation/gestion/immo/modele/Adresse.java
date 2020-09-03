@@ -39,7 +39,6 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="adresses")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idAdresse", scope = Long.class)
 public class Adresse implements Serializable {
 
 	/* _______________ propriétés ______________ */
