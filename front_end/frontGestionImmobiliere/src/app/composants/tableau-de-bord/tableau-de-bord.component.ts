@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ClasseStandardService } from 'src/app/services/classe-standard/classe-standard.service';
 import { ClientService } from 'src/app/services/client/client.service';
 import { Subject } from 'rxjs';
+import { BienImmobilierService } from 'src/app/services/bien-immobilier/bien-immobilier.service';
 
 @Component({
   selector: 'app-tableau-de-bord',
@@ -14,9 +15,12 @@ export class TableauDeBordComponent implements OnDestroy, OnInit {
 
   /*____________ props ___________ */
   visites = [];
-  classes = [];
+  classesClients = [];
+  classesBiens = [];
   clientsByClasse = [];
   selectedClass:number;
+  clients=[];
+  biens = [];
 
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject();
@@ -24,16 +28,19 @@ export class TableauDeBordComponent implements OnDestroy, OnInit {
   /*____________ ctor ___________ */
   constructor(private visiteService : VisiteService, 
               private classeService : ClasseStandardService,
-              private clientService : ClientService) { }
+              private clientService : ClientService,
+              private bienService : BienImmobilierService) { }
 
   /*____________ méthodes ___________ */
   ngOnInit(): void {
     this.dtOptions = {
       pagingType: 'full_numbers',
-      pageLength: 2
+      pageLength: 5
     };
     this.findAllVisitesByIdConseiller(1);
-    this.findAllClassesStandards();
+    this.findAllClassesStandardsClients();
+    this.findAllClassesStandardsBiens();
+    this.findAllClients();
   }//end ngOnInit
 
   /**
@@ -49,14 +56,37 @@ export class TableauDeBordComponent implements OnDestroy, OnInit {
    * @param pIdClasse id de la classe standard
    */
   findAllClientsByIdClasse(idClasseRecherche:number){
-    this.clientService.findClientByIdClasseViaWsRest(idClasseRecherche).subscribe(data => {this.clientsByClasse = data; this.dtTrigger.next();});
+    console.log("idClasseRecherche " + idClasseRecherche);
+    this.clientService.findClientByIdClasseViaWsRest(idClasseRecherche).subscribe(data => {this.clientsByClasse = data;});
+  }
+
+  /**
+   * permet de recuperer tous les clients 
+   */
+  findAllClients(){
+    this.clientService.getAllClientFromWsRest().subscribe(data => {this.clients = data;});
   }
 
   /**
    * permet de recuperer toutes les classes standards
    */
-  findAllClassesStandards(){
-    this.classeService.getAllClasseStandard().subscribe(data => {this.classes = data; this.dtTrigger.next();});
+  findAllClassesStandardsBiens(){
+    this.classeService.getAllClasseStandard().subscribe(data => {this.classesBiens = data;});
+  }
+
+  /**
+   * permet de recuperer toutes les classes standards
+   */
+  findAllClassesStandardsClients(){
+    this.classeService.getAllClasseStandard().subscribe(data => {this.classesClients = data;});
+  }
+
+    /**
+   * permet de recuperer tous les biens d'une classe standard
+   */
+  findAllBiensByClasseStandard(pIdClasse:number){
+    console.log("pIdClasse : " +pIdClasse);
+    this.bienService.getAllBiensByClass(pIdClasse).subscribe(data => {this.biens = data;});
   }
 
   ngOnDestroy(): void {

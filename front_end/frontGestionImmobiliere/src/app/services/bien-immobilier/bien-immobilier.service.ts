@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { BienAchat } from "src/app/modeles/BienAchat";
 import { Observable } from 'rxjs';
 import { BienLocation } from "src/app/modeles/BienLocation";
+import { BienImmobilier } from 'src/app/modeles/BienImmobilier';
 
 @Injectable({
   providedIn: 'root'
@@ -62,4 +63,13 @@ export class BienImmobilierService {
    deleteLocation(pIdLocation : number):Observable<void>{
      return this.httpClient.delete<void>(`${this.WS_REST_URL}/delete/${pIdLocation}`)
    }
+
+
+
+
+   getAllBiensByClass(pIdClasse : number):Observable<BienImmobilier[]>{
+    return this.httpClient.get<BienImmobilier[]>(`${this.WS_REST_URL}/get-by-classe/${pIdClasse}`);
+  }
+
+
 }

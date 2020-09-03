@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.stereotype.Repository;
 
 import com.intiformation.gestion.immo.modele.ClasseStandard;
@@ -25,9 +26,7 @@ public interface ClientRepository extends JpaRepository<Client, Long>{
 	 * @param pIdClasse : l'id de la classe standard
 	 * @return
 	 */
-	//@Query("SELECT c FROM Client c WHERE c.classesStandard.idClasse = ?1")
-	//public List<Client> findClientsByClasse(Long pIdClasse);
+	@Query("SELECT c FROM Client c JOIN c.classesStandard cs WHERE cs.idClasse = ?1")	
+	public List<Client> findClientsByClasse(Long idClasse);
 	
-	//public List<Client> findByClassesStandard(ClasseStandard pClasse);
-
 }//end interface

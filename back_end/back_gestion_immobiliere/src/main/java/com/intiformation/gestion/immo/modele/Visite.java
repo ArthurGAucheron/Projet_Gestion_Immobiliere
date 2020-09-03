@@ -1,5 +1,6 @@
 package com.intiformation.gestion.immo.modele;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -32,7 +33,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
  */
 @Entity
 @Table(name="visites")
-public class Visite {
+public class Visite implements Serializable  {
 	
 	//// PROP //////
 	@Id
@@ -71,7 +72,7 @@ public class Visite {
 	 */
 	@ManyToOne
 	@JoinColumn(name="client_id", referencedColumnName="id_client")
-	@JsonIgnoreProperties(value= {"visite","contrat"})
+	@JsonIgnoreProperties(value= {"visite","contrat","biensImmobiliers"})
 	private Client client;
 	
 	

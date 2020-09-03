@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.intiformation.gestion.immo.dao.BienImmobilierRepository;
+import com.intiformation.gestion.immo.dao.ClasseStandardRepository;
 import com.intiformation.gestion.immo.modele.Adresse;
 import com.intiformation.gestion.immo.modele.BienImmobilier;
+import com.intiformation.gestion.immo.modele.ClasseStandard;
 
 /**
  * implémentation d'un ws REST pour un bien immobilier avec Spring Web Services
@@ -40,6 +42,19 @@ public class BienImmobilierWSRestSpringWS {
 	 */
 	public void setBienImmobilier(BienImmobilierRepository bienRepository) {
 		this.bienRepository = bienRepository;
+	}
+	
+	// déclaration du repository de classe standard et injection avec spring
+	@Autowired
+	private ClasseStandardRepository classeRepository;
+
+	/**
+	 * setter classeRepository pour injection spring
+	 * 
+	 * @param classeRepository
+	 */
+	public void setClasseRepository(ClasseStandardRepository classeRepository) {
+		this.classeRepository = classeRepository;
 	}
 
 	/*
@@ -146,5 +161,17 @@ public class BienImmobilierWSRestSpringWS {
 
 	}// end deleteBienById
 	
+	/**
+	 * méthode exposée dans le ws rest pour récupérer la liste des biens par classe standard renvoit les
+	 * données en JSON invoquée avec une requête HTTP GET via url :
+	 * http://localhost:8080/gestion-immo/biens/getall
+	 * 
+	 */
+	@RequestMapping(value = "/get-by-classe/{id}", method = RequestMethod.GET)
+	public List<BienImmobilier> listAllBiensByClasse(@PathVariable("id") Long pIdClasse) {
+
+		return bienRepository.findBiensByIdClasse(pIdClasse);
+
+	}// end listAllBiensByClasse
 	
 }// end class

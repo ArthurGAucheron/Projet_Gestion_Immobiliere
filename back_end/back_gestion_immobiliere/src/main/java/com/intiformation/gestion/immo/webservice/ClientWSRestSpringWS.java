@@ -146,43 +146,12 @@ public class ClientWSRestSpringWS {
 	 * invoquée avec une requête HTTP GET via url : http://localhost:8080/gestion-immo/clients/get-by-classe-standard/1
 	 * 
 	 */
-	/*
+	
 	@RequestMapping(value="/get-by-classe-standard/{id}", method=RequestMethod.GET)
 	public List<Client> listClientsByClass(@PathVariable("id") Long pIdClasse) {
-		
-		return clientRepository.findByClassesStandard(classeRepository.getOne(pIdClasse));
+				
+		return clientRepository.findClientsByClasse(pIdClasse);
 	
 	}//end listClientsByClass
-	*/
-	
-	/**
-	 * méthode exposée dans le ws rest pour récupérer la liste des clients interessés par une classe standard
-	 * renvoit les données en JSON 
-	 * invoquée avec une requête HTTP GET via url : http://localhost:8080/gestion-immo/clients/get-by-classe-standard/1
-	 * 
-	 */
-	@RequestMapping(value="/get-by-classe/{id}", method=RequestMethod.GET)
-	public List<Client> listClientsByClasseStandard(@PathVariable("id") Long pIdClasse) {
-		
-		List<Client> listeAllClients = clientRepository.findAll();
-		
-		List<Client> listeClientsByClasse = new ArrayList<>();
-		List<Long> listeIdClassesClient = new ArrayList<>();
-
-		for (Client client : listeAllClients) {
-		
-			for (ClasseStandard classeStandard : client.getClassesStandard()) {
-					listeIdClassesClient.add(classeStandard.getIdClasse());
-					
-					if (listeIdClassesClient.contains(pIdClasse)) {
-						listeClientsByClasse.add(client);
-					}
-			}//end foreach listeClassesClient	
-			
-		}//end foreach listeAllClients
-			
-		return listeClientsByClasse;
-		
-	}//end listClientsByClasseStandard
 
 }//end class

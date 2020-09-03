@@ -1,5 +1,6 @@
 package com.intiformation.gestion.immo.modele;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -28,7 +29,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
  */
 @Entity
 @Table(name = "conseillers")
-public class ConseillerImmobilier {
+public class ConseillerImmobilier implements Serializable  {
 
 	///// Prop /////
 	@Id

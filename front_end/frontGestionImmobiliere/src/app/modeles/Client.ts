@@ -1,6 +1,7 @@
 import { Adresse } from "./Adresse";
 import { Visite } from "./Visite";
 import { Contrat } from './Contrat';
+import { ClasseStandard } from './ClasseStandard';
 
 export class Client{
     idClient : number;

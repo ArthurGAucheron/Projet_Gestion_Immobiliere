@@ -43,7 +43,7 @@
     <div class="card-body">
       <h3 style="margin-bottom:20px;">Rendez-vous prévus</h3>
       <div class="table-responsive">
-        <table datatable class="row-border hover" [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" id="dataTable" width="80%" cellspacing="0" style="margin: auto;">
+        <table datatable class="row-border hover" [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" width="80%" cellspacing="0" style="margin: auto;">
           <thead class="thead-blue">
   
   
@@ -69,27 +69,29 @@
   </div>
 
   <!-- ========= Liste clients interessés par une classe standard de biens ============ -->
-  <div class="card shadow mb-4" style="width: 50%; margin: auto; float: left;">
+
+  <div class="card shadow mb-4" style="width: 80%; margin: auto; float: left;">
     <div class="card-body">
       <h3 style="margin-bottom:20px;">Liste des clients interessés par une classe standard</h3>
-      <div class="table-responsive">
-        <table  class="table table-bordered" id="dataTable" width="80%" cellspacing="0" style="margin: auto;">
-          <thead class="thead-blue">
-  
-            <div class="form-group">
-              <select class="form-control" (change)="findAllClientsByIdClasse($event.target.value)">        
-                <option *ngFor="let classe of classes" [value]="classe.idClasse">Code n°{{classe.idClasse}} : {{classe.typeBiens}} {{classe.modeOffre}} ( &lt; {{classe.prixMax}} € et &gt; {{classe.superficieMin}} m²)</option>
-              </select>
-            </div>
 
+      <div class="form-group">
+        <select class="form-control" (change)="findAllClientsByIdClasse($event.target.value)">
+          <option *ngFor="let classe of classesClients" [value]="classe.idClasse">Code n°{{classe.idClasse}} : {{classe.typeBiens}} {{classe.modeOffre}} ( &lt; {{classe.prixMax}} € et &gt; {{classe.superficieMin}} m²)</option>
+        </select>
+      </div>
+
+      <div class="table-responsive">
+        <table width="80%" cellspacing="0" style="margin: auto;">
+          <thead class="thead-blue">
             <tr style="background-color: #df4937;color:  #333333;">
               <th scope="col">Nom</th>
               <th scope="col">Téléphone</th>
               <th scope="col">Adresse</th>
             </tr>
           </thead>
-  
+
           <!-- données de la table -->
+   
           <tbody>
             
             <tr *ngFor="let clt of clientsByClasse">
@@ -106,3 +108,89 @@
       </div>
     </div>
   </div>
+
+    <!-- ========= Liste clients interessés par une classe standard de biens ============ -->
+    <!--
+    <div class="card shadow mb-4" style="width: 80%; margin: auto;">
+      <div class="card-body">
+        <h3 style="margin-bottom:20px;">Liste des clients interessés par une classe standard</h3>
+        <div class="table-responsive">
+          <table datatable class="row-border hover" [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" width="80%" cellspacing="0" style="margin: auto;">
+            <thead class="thead-blue">
+  
+              <tr style="background-color: #df4937;color:  #333333;">
+                <th scope="col">Nom</th>
+                <th scope="col">Téléphone</th>
+                <th scope="col">Adresse</th>
+                <th scope="col">Classe standard</th>
+              </tr>
+            </thead>
+          -->
+            <!-- données de la table -->
+            <!--
+            <tbody>
+              
+              <tr *ngFor="let clt of clients">
+                <td>{{clt.nom}}</td>
+                <td>{{clt.telephone}}</td>
+                <td> {{clt.adresse.numero}}, {{clt.adresse.rue}} <br>
+                  {{clt.adresse.codePostal}} {{clt.adresse.localite}} {{clt.adresse.pays}}
+                </td> 
+                <td>Code n°{{clt.classesStandard.idClasse}} : {{clt.classesStandard.typeBiens}} {{clt.classesStandard.modeOffre}} ( &lt; {{clt.classesStandard.prixMax}} € et &gt; {{clt.classesStandard.superficieMin}} m²)</td>            
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+          -->
+
+
+    <!-- ========= Liste des biens dispo par classe standard de biens ============ -->
+    <div class="card shadow mb-4" style="width: 80%; margin: auto; float: left;">
+      <div class="card-body">
+        <h3 style="margin-bottom:20px;">Liste des biens disponibles par classe standard</h3>
+
+        <div class="form-group">
+          <select class="form-control" (change)="findAllBiensByClasseStandard($event.target.value)">        
+            <option *ngFor="let classe of classesBiens" [value]="classe.idClasse">Code n°{{classe.idClasse}} : {{classe.typeBiens}} {{classe.modeOffre}} ( &lt; {{classe.prixMax}} € et &gt; {{classe.superficieMin}} m²)</option>
+          </select>
+        </div>
+        
+        <div>
+
+          <table width="80%" style="margin: auto;">
+           
+            <thead class="thead-blue">
+  
+              <tr style="background-color: #df4937;color:  #333333;">
+                <th scope="col">Id</th>
+                <th scope="col">Libellé</th>
+                <th scope="col">Adresse</th>
+                <th scope="col">Propriétaire</th>
+              </tr>
+            </thead>
+    
+            <!-- données de la table -->
+            <tbody>
+              
+              <tr *ngFor="let bien of biens">
+                <td>{{bien.idBien}}</td>
+                <td>{{bien.libelle}}</td>
+                <td> {{bien.adresse.numero}}, {{bien.adresse.rue}} <br>
+                  {{bien.adresse.codePostal}} {{bien.adresse.localite}} {{bien.adresse.pays}}
+                </td> 
+                <td>{{bien.proprietaire.nom}}</td>            
+      <!--          <td><button (click)="goToFicheBien(bien.idBien)">Consulter</button></td>    -->
+              </tr>
+              
+            </tbody>
+            
+          </table>
+        </div>
+      </div>
+    </div>
+
+
+    
