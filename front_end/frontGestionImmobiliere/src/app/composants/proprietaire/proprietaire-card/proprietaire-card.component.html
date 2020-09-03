@@ -54,8 +54,13 @@
 <div style="width: 95%; margin: auto;">
     <div class="d-flex flex-row flex-nowrap overflow-auto">
         <div class="card shadow card-block mr-4 mb-3" style="min-width: 300px;" *ngFor="let bien of proprietaire.biensImmobiliers">
-           <div class="mx-4 my-4">
-                {{bien.idBien}}
+           <div class="mx-4 my-4" (click)=selectBienImmobiller(bien)>
+                <h5>{{bien.libelle}}</h5>
+                <p>{{bien.statut}}</p>
+                <p>{{bien.adresse.numero}}, {{bien.adresse.rue}} <br>
+                {{bien.adresse.codePostal}} {{bien.adresse.localite}} <br>
+                {{bien.adresse.pays}}
+                </p>
            </div> 
         </div>
     </div>

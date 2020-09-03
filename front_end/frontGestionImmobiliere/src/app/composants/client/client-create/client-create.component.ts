@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Client } from 'src/app/modeles/Client';
 import { ClientService } from 'src/app/services/client/client.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Adresse } from 'src/app/modeles/Adresse';
 
 @Component({
   selector: 'app-client-create',
@@ -15,7 +16,7 @@ export class ClientCreateComponent implements OnInit {
     idClient : null,
     nom: null,
     telephone: null,
-    adresse : null,
+    adresse : new Adresse,
     visites : null,
     contrats : null
   }
@@ -56,7 +57,7 @@ export class ClientCreateComponent implements OnInit {
       this.clientService.modifierClientViaWsRest(this.client).subscribe();
     }
     //redirection
-    this.router.navigate(["client_list"]);
+    this.router.navigate(["client_list"]).then(()=>window.location.reload());
   }
 
 }
