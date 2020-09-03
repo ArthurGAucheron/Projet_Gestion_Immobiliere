@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Proprietaire } from 'src/app/modeles/Proprietaire';
 import { ProprietaireService } from 'src/app/services/propietaire/proprietaire.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Adresse } from 'src/app/modeles/Adresse';
 
 @Component({
   selector: 'app-proprietaire-create',
@@ -16,7 +17,7 @@ export class ProprietaireCreateComponent implements OnInit {
     nom: null,
     telPrive: null,
     telTravail: null,
-    adresse : null,
+    adresse : new Adresse,
     biensImmobiliers: null
   }
 
@@ -58,7 +59,8 @@ export class ProprietaireCreateComponent implements OnInit {
     }
 
     //redirection
-    this.router.navigate(["proprietaire_list"]);
+    this.router.navigate(["proprietaire_list"]).then(()=>window.location.reload());
+    
   }
 
 
