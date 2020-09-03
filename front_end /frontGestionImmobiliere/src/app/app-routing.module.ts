@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CreateContratComponent } from './composants/contrat/create-contrat/create-contrat.component';
 import { ListeContratComponent } from './composants/contrat/liste-contrat/liste-contrat.component';
+import {DetailsContratComponent} from './composants/contrat/details-contrat/details-contrat.component';
 import { ListeImmobilierComponent } from "./composants/bienImmobilier/liste-immobilier-achat/liste-immobilier.component";
 import { ListeImmobilierLocationComponent } from './composants/bienImmobilier/liste-immobilier-location/liste-immobilier-location.component';
 import { FicheImmobilierAchatComponent } from './composants/bienImmobilier/fiche-immobilier-achat/fiche-immobilier-achat.component';
@@ -29,11 +30,9 @@ const routes: Routes = [
 
    //URLs : gestion des CONTRATS
 
-
+  {path:"contrat/card/:id", component:DetailsContratComponent},
   {path:"list/contrat", component:ListeContratComponent},
   {path:"edit/contrat/:id", component:CreateContratComponent},
-  {path:"contrat/list", component:ListeContratComponent},
-  {path:"contrat/edit/:id", component:CreateContratComponent},
 
   //URLs : gestion des CLIENTS
   {path:"client_card/:id", component:ClientCardComponent},

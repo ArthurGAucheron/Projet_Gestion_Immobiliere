@@ -23,10 +23,10 @@ export class HeaderComponentComponent implements OnInit {
   }
 
   viewContrat(){
-    this.router.navigate(["list/contrat"])
+    this.router.navigate(["list/contrat"]).then(() => window.location.reload() );
   }
 
   viewBiens(){
-    this.router.navigate(["bienImmoAchat/list"]).then(()=>window.location.reload());
+    this.router.navigate(["bienImmoAchat/list"]).then(() => window.location.reload());
   }
 }

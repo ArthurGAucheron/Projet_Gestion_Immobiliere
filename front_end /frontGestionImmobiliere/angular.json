@@ -32,11 +32,6 @@
               "./node_modules/jquery/dist/jquery.min.js",
               "./node_modules/bootstrap/dist/js/bootstrap.min.js",
               "./node_modules/datatables.net/js/jquery.dataTables.js",
-              "src/assets/styles/bootstrap-select.css",
-              "src/assets/styles/styleTableau.css",
-              "./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
-              "src/assets/scripts/scriptsTableau.js",
-              "src/assets/scripts/bootstrap-select.js"
             ]
           },
           "configurations": {

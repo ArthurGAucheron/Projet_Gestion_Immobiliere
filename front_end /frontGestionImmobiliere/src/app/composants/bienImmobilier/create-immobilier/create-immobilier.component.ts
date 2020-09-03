@@ -13,12 +13,12 @@ export class CreateImmobilierComponent implements OnInit {
     idBien : null,
     libelle : null,
     statut : null,
-    dateSoummission : null,
+    dateSoumission : null,
     dateMiseADispo : null,
     revenuCadastral : null,
     descriptif : null,
    /* photo : null,*/
-    classeStandard : null,
+   /* classeStandard : null,*/
     visites : null,
     contrat :null,
     proprietaire :null,
@@ -35,18 +35,18 @@ export class CreateImmobilierComponent implements OnInit {
     idBien : null,
     libelle : null,
     statut : null,
-    dateSoummission : null,
+    dateSoumission : null,
     dateMiseADispo : null,
     revenuCadastral : null,
     descriptif : null,
-  /*  photo : null,*/
-    classeStandard : null,
+  /* photo : null,*/
+  /* classeStandard : null,*/
     visites : null,
     contrat :null,
     proprietaire :null,
     adresse : null,
     listeClients : null,
-    prixDemande : null,
+    /*prixDemande : null,*/
     etat : null,
   }
 

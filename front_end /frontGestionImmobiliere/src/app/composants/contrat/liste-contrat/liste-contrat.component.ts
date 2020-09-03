@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ContratService } from "src/app/services/contrat/contrat.service";
 import { Router, ActivatedRoute} from '@angular/router';
 import { Contrat } from 'src/app/modeles/Contrat';
+import { Subject } from 'rxjs';
+
 @Component({
   selector: 'app-liste-contrat',
   templateUrl: './liste-contrat.component.html',
@@ -13,6 +15,8 @@ export class ListeContratComponent implements OnInit {
 
   contrats = [] ;
 
+  dtOptions: DataTables.Settings = {};
+  dtTrigger : Subject<any> = new Subject();
 
   // ========= Constructeurs ==========
 
@@ -21,11 +25,21 @@ export class ListeContratComponent implements OnInit {
   // ========= Méthodes ==========
   
   ngOnInit(): void {
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 5};
+
     this.findAllContrat();
   }
 
+  ngOnDestroy(): void {
+    // Do not forget to unsubscribe the event
+    this.dtTrigger.unsubscribe();
+  }
+
   findAllContrat(){
-    this.contratService.getAllContrat().subscribe(data => this.contrats = data)
+    this.contratService.getAllContrat().subscribe(data => { this.contrats = data;
+      this.dtTrigger.next()});
   }
   
   updateContrat(idContrat : number ){
@@ -38,6 +52,10 @@ export class ListeContratComponent implements OnInit {
 
   newContrat(){
     this.router.navigate(["edit/contrat/0"])
+  }
+
+  selectContrat(idContrat : number){
+    this.router.navigate(["contrat/card", idContrat])
   }
   
 }

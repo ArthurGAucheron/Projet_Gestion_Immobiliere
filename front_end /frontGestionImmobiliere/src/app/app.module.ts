@@ -44,6 +44,7 @@ import { ListeImmobilierLocationComponent } from './composants/bienImmobilier/li
 import { ClientListComponent } from './composants/client/client-list/client-list.component';
 import { ClientCardComponent } from './composants/client/client-card/client-card.component';
 import { TableauDeBordComponent } from './composants/tableau-de-bord/tableau-de-bord.component';
+import { DetailsContratComponent } from './composants/contrat/details-contrat/details-contrat.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +79,8 @@ import { TableauDeBordComponent } from './composants/tableau-de-bord/tableau-de-
     ListeImmobilierLocationComponent,
     ClientListComponent,
     ClientCardComponent,
-    TableauDeBordComponent
+    TableauDeBordComponent,
+    DetailsContratComponent
   ],
   imports: [
     BrowserModule,
