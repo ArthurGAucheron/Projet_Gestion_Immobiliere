@@ -1,6 +1,5 @@
 <h1 style="color: #d49625;margin: 1rem 0 2rem 4rem;font-weight: bold;">Listes des contrats</h1>
 
-{{contrats}}
 
 
 <div class="card shadow mb-4" style="width: 95%; margin: auto;">
@@ -30,7 +29,6 @@
             <td>{{contrat.dateAcquisition}}</td>
             <td>{{contrat.bienImmobilier.libelle}}</td>
             <td>{{contrat.conseillers.nom}}</td>
-            <td>{{contrat.client.nom}}</td>
             <td><button (click)="deleteContrat(contrat.idContrat)">Supprimer</button></td>
             <td><button (click)="updateContrat(contrat.idContrat)">Modifier</button></td>
           </tr>

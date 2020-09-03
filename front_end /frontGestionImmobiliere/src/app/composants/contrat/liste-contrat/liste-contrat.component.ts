@@ -13,7 +13,7 @@ export class ListeContratComponent implements OnInit {
   
   // ========= Propriétés ==========
 
-  contrats : Contrat[] ;
+  contrats : Contrat[] = [] ;
 
   dtOptions: DataTables.Settings = {};
   dtTrigger : Subject<any> = new Subject();
