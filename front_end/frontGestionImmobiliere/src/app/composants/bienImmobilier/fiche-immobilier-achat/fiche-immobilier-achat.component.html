@@ -13,7 +13,7 @@
         </div>
         <div class="row">
             <div class="col-6">
-                <div class="card" style="width: 100%; margin: 5px;">
+                <div class="card-body" style="width: 100%; margin: 5px;">
                     <ul class="list-group list-group-flush"  >
                         <li class="list-group-item">ID : {{bien.idBien}} </li>
                         <li class="list-group-item">Statut : {{bien.statut}} </li>
@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div class="col-6">
-                <div class="card" style="width: 100%; margin: 5px;">
+                <div class="card-body" style="width: 100%; margin: 5px;">
                     <ul class="list-group list-group-flush ">
                         <li class="list-group-item">Classe Standard :
                             <ul>
@@ -61,7 +61,7 @@
         </div>
         <div class="row">
             <div class="col-6" *ngIf="bien.prix">
-                <div class="card" style="width: 100%; margin: 5px;">
+                <div class="card-body" style="width: 100%; margin: 5px;">
                     <ul class="list-group list-group-flush"  >
                         <li class="list-group-item">Prix demander : {{bien.prix | number : '1.0-8' }} €</li>
                         <li class="list-group-item">État : {{bien.etat}} </li>
@@ -69,7 +69,7 @@
                 </div>
             </div>
             <div class="col-6" *ngIf="bien.caution">
-                <div class="card" style="width: 100%; margin: 5px;">
+                <div class="card-body" style="width: 100%; margin: 5px;">
                     <ul class="list-group list-group-flush"  >
                         <li class="list-group-item">Caution : {{bien.caution}} €</li>
                         <li class="list-group-item">Loye : {{bien.loyer}} €</li>
@@ -80,6 +80,10 @@
                 </div>
             </div>
         </div>
+        <div class="card-footer text-muted">
+            <button type="button"  class="btn btn-danger">Supprimer</button> || 
+            <button type="button" class="btn btn-success">Modifier</button>
+        </div>
     </div>
       <!-- //// Table liste des visites -->
     <div>
@@ -88,12 +92,12 @@
             <div class="card shadow mb-4" style="width: 95%; margin: auto;">
                 <div class="row">
                     <div class="col-12">
-                        <div class="card" style="width: 100%; margin: 5px;">
+                        <div class="card-body" style="width: 100%; margin: 5px;">
                             <ul class="list-group list-group-flush"  >
                                 <li class="list-group-item"> 
-                                    <ul>
-                                        <li> IdVisite :  {{bien.visite.idVisite}} </li>
-                                        <li> Date : {{bien.visite.dateVisite | date : 'MMMM d, y, h:mm:ss a z'}} </li>
+                                    <ul *ngFor="let visite of bien.visite">
+                                        <li> IdVisite :  {{visite.idVisite}} </li>
+                                        <li> Date : {{visite.dateVisite | date : 'MMMM d, y, h:mm:ss a z'}} </li>
                                     </ul>
                                     </li>
                             </ul>
