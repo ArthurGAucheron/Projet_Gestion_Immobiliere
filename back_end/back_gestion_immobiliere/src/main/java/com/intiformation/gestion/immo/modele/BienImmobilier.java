@@ -39,7 +39,6 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @DiscriminatorColumn(
 	    name="type",
 	    discriminatorType=DiscriminatorType.STRING)
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idBien", scope = Long.class)
 public abstract class BienImmobilier implements Serializable {
 
 	
