@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Proprietaire } from 'src/app/modeles/Proprietaire';
 import { ProprietaireService } from 'src/app/services/propietaire/proprietaire.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { BienImmobilier } from 'src/app/modeles/BienImmobilier';
 
 @Component({
   selector: 'app-proprietaire-card',
@@ -50,6 +51,14 @@ export class ProprietaireCardComponent implements OnInit {
   deleteProprietaire(proprietaire : Proprietaire){
     this.proprietaireService.supprimerProprietaireViaWsRest(proprietaire).subscribe();
     this.router.navigate(["proprietaire_list"])
+  }
+
+  selectBienImmobiller(bien: BienImmobilier){
+    if (bien.statut == "à vendre") {
+      this.router.navigate(["bienImmoAchat/fiche", bien.idBien])
+    } else {
+      this.router.navigate(["bienImmoLocation/fiche", bien.idBien])
+    }
   }
 
 }
