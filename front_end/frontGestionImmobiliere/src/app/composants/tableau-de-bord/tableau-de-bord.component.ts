@@ -45,7 +45,6 @@ export class TableauDeBordComponent implements OnDestroy, OnInit {
     this.findAllClassesStandardsBiens();
     this.findAllClients();
     this.findAllBienByConseiller(1);
-  }
 
   }//end ngOnInit
 

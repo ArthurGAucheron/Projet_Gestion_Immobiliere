@@ -1,38 +1,7 @@
-<!--
-<div class="card shadow mb-4" style="width: 95%; margin: auto;">
-    <div class="card-body">
-      <div class="table-responsive">
-        <table  class="table table-bordered" id="dataTable" width="80%" cellspacing="0" style="margin: auto;">
-          <thead class="thead-blue">
-  
-  
-            <tr style="background-color: #df4937;color:  #333333;">
-              <th scope="col">Id Bien</th>
-              <th scope="col">Id Libelle</th>
-              <th scope="col">Id Client</th>
-            </tr>
-          </thead>
-        --> 
-          <!-- données de la table -->
-<!--
-          <tbody>
-            <tr *ngFor="let bien of biensConseiller" >
-              <td>{{bien.idBien}}</td>
-              <td>{{bien.libelle}}</td>
-              <td>{{bien.contrat.client.idClient}}</td>
-            </tr>
-          </tbody>
-          
-        </table>
-      </div>
-    </div>
-  </div>
--->
-
+<br/><br/>
 
 <!-- ========================= Rendez-vous du conseiller ======================== -->
-<br/><br/>
-  <div class="card shadow mb-4" style="width: 40%; margin: auto; float:left;">
+  <div class="card shadow mb-4" style="width: 40%; margin: auto; margin-left:20px; float:left;">
     <div class="card-body">
       <h3 style="margin-bottom:20px;">Mes rendez-vous</h3>
       <div class="table-responsive">
@@ -50,7 +19,7 @@
           <!-- données de la table -->
           <tbody>
             <tr *ngFor="let visite of visites">
-              <td>{{visite.dateVisite | date:'medium'}}</td>
+              <td>{{visite.dateVisite | date:'d/MM/y H:mm'}}</td>
               <td>{{visite.client.nom}}</td>
               <td>N°{{visite.bienImmobilier.idBien}} : {{visite.bienImmobilier.libelle}} </td>           
             </tr>
@@ -61,9 +30,40 @@
     </div>
   </div>
 
+  
+<!-- ========================= Bien acquis sous le conseiller ======================== -->
+<div class="card shadow mb-4" style="width: 50%; margin: auto;">
+  <div class="card-body">
+    <h3 style="margin-bottom:20px;">Biens acquis sous ma responsabilité</h3>
+    <div>
+      <table width="80%" cellspacing="0" style="margin: auto;">
+        <thead class="thead-blue">
+
+          <tr style="background-color: #df4937;color:  #333333;">
+            <th scope="col">Id Bien</th>
+            <th scope="col">Id Libelle</th>
+            <th scope="col">Id Client</th>
+          </tr>
+        </thead>
+      
+        <!-- données de la table -->
+
+        <tbody>
+          <tr *ngFor="let bien of biensConseiller" >
+            <td>{{bien.idBien}}</td>
+            <td>{{bien.libelle}}</td>
+            <td>{{bien.contrat.client.idClient}}</td>
+          </tr>
+        </tbody>
+        
+      </table>
+    </div>
+  </div>
+</div>
+
   <!-- ========= Liste clients interessés par une classe standard de biens ============ -->
 
-  <div class="card shadow mb-4" style="width: 60%; margin: auto;">
+  <div class="card shadow mb-4" style="width: 80%; margin: auto;">
     <div class="card-body">
       <h3 style="margin-bottom:20px;">Liste des clients interessés par une classe standard</h3>
 
@@ -104,7 +104,7 @@
 
 
     <!-- ========= Liste des biens dispo par classe standard de biens ============ -->
-    <div class="card shadow mb-4" style="width: 60%; margin: auto; ">
+    <div class="card shadow mb-4" style="width: 80%; margin: auto; ">
       <div class="card-body">
         <h3 style="margin-bottom:20px;">Liste des biens disponibles par classe standard</h3>
 
