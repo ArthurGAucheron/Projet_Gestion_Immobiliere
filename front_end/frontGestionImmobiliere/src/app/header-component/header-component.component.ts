@@ -15,14 +15,14 @@ export class HeaderComponentComponent implements OnInit {
   }
 
   viewProprietaire(){
-    this.router.navigate(["proprietaire_list"]).then(() => window.location.reload() );
+    this.router.navigate(["proprietaire_list"])
   }
 
   viewClient(){
-    this.router.navigate(["client_list"]).then(() => window.location.reload() );
+    this.router.navigate(["client_list"])
   }
 
   viewBiens(){
-    this.router.navigate(["bienImmoAchat/list"]).then(()=>window.location.reload());
+    this.router.navigate(["bienImmoAchat/list"]);
   }
 }
