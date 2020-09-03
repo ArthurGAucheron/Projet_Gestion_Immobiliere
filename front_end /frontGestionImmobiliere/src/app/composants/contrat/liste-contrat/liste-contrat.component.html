@@ -1,0 +1,43 @@
+<h1 style="color: #d49625;margin: 1rem 0 2rem 4rem;font-weight: bold;">Listes des contrats</h1>
+
+
+
+<div class="card shadow mb-4" style="width: 95%; margin: auto;">
+  <div class="card-body">
+    <button class="btn btn-primary float-right my-4" (click)=newContrat()>Ajouter un contrat</button>
+    <div class="table-responsive">
+      <table datatable [dtTrigger]="dtTrigger" class="table table-bordered" id="dataTable" width="80%" cellspacing="0" style="margin: auto;">
+        <thead class="thead-blue">
+
+          <tr style="background-color: #df4937;color:  #333333;">
+            <th scope="col">IdContrat</th>
+            <th scope="col">Bien Immobilier</th>
+            <th scope="col">Prix d'achat</th>
+            <th scope="col">Date d'achat</th>
+            <th scope="col">Conseiller</th>
+            <th scope="col">Client</th>
+            <th scope="col">Consulter</th>
+            <th scope="col">Supprimer</th>
+          </tr>
+        </thead>
+
+        <!-- données de la table -->
+        <tbody>
+          <tr *ngFor="let contrat of contrats" >
+            <td>{{contrat.idContrat}}</td>
+            <td>{{contrat.prixAcquisition}}</td>
+            <td>{{contrat.dateAcquisition}}</td>
+            <td>{{contrat.bienImmobilier.libelle}}</td>
+            <td>{{contrat.conseillers.nom}}</td>
+            <td><button (click)="deleteContrat(contrat.idContrat)">Supprimer</button></td>
+            <td><button (click)="updateContrat(contrat.idContrat)">Modifier</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<footer class="container">
+  <p style="text-align: center;">&copy; Company nom Agence 2020 </p>
+</footer>

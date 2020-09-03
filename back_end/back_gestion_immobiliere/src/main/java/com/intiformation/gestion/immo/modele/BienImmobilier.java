@@ -1,6 +1,7 @@
 package com.intiformation.gestion.immo.modele;
 
 import java.io.Serializable;
+import java.util.Base64;
 import java.util.Date;
 import java.util.List;
 
@@ -15,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -22,7 +24,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
+import org.hibernate.annotations.Fetch;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
@@ -30,7 +34,12 @@ import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+import com.fasterxml.jackson.annotation.JsonView;
+
 import com.fasterxml.jackson.annotation.JsonTypeName;
+
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
@@ -44,6 +53,13 @@ public abstract class BienImmobilier implements Serializable {
 	
 	// ______________propriétés______________
 
+	@Lob
+	@Column(name = "photo")
+	private byte[] photo;
+	
+	@Transient
+	private String base64;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_bien")
@@ -77,7 +93,7 @@ public abstract class BienImmobilier implements Serializable {
 	private ClasseStandard classe;
 
 	@ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE})
-	@JoinColumn(name="adresse_id", referencedColumnName="id_adresse")
+	@JoinColumn(name="adresse_id", referencedColumnName="id_adresse",updatable=true)
 	private Adresse adresse;
 
 	/**
@@ -85,8 +101,11 @@ public abstract class BienImmobilier implements Serializable {
 	 * Many bienimmo To One Proprio
 	 */
 
-	@ManyToOne
+	
+	@ManyToOne()
 	@JoinColumn(name="proprietaire_id", referencedColumnName="id_proprietaire")
+
+//	@JsonManagedReference
 	@JsonIgnoreProperties(value= {"adresse","biensImmobiliers"})
 	private Proprietaire proprietaire;
 	
@@ -97,13 +116,9 @@ public abstract class BienImmobilier implements Serializable {
 
 	@OneToOne(mappedBy="bienImmobilier", cascade=CascadeType.REMOVE)
 	@JoinColumn(name="bien_id", referencedColumnName="id_bien")
-	@JsonIgnoreProperties(value= {"conseillers","bienImmobilier","client"})	
+	@JsonIgnoreProperties(value= {"bienImmobilier"})	
 	private Contrat contrat;
 	
-	/**
-	 * Association entre BienImmobilier et visite
-	 * One bienimmo To One Contrat
-	 */
 
 	@OneToMany(mappedBy="bienImmobilier", cascade=CascadeType.REMOVE)
 	@JsonIgnoreProperties(value= {"conseillers","bienImmobilier"})	
@@ -119,9 +134,33 @@ public abstract class BienImmobilier implements Serializable {
 	public BienImmobilier() {
 	}// end ctor vide
 
-	public BienImmobilier(Long idBien, String libelle, Date dateSoumission, Date dateMiseADispo, double revenuCadastral,
-			String descriptif, ClasseStandard classe,  Adresse adresse) {
+
+
+	public BienImmobilier(byte[] photo, String base64, String libelle, Date dateSoumission, Date dateMiseADispo,
+			double revenuCadastral, String descriptif, ClasseStandard classe, Adresse adresse,
+			Proprietaire proprietaire, Contrat contrat) {
 		super();
+		this.photo = photo;
+		this.base64 = base64;
+		this.libelle = libelle;
+		this.dateSoumission = dateSoumission;
+		this.dateMiseADispo = dateMiseADispo;
+		this.revenuCadastral = revenuCadastral;
+		this.descriptif = descriptif;
+		this.classe = classe;
+		this.adresse = adresse;
+		this.proprietaire = proprietaire;
+		this.contrat = contrat;
+	}//end ctor chargé sans id
+
+
+
+	public BienImmobilier(byte[] photo, String base64, Long idBien, String libelle, Date dateSoumission,
+			Date dateMiseADispo, double revenuCadastral, String descriptif, ClasseStandard classe, Adresse adresse,
+			Proprietaire proprietaire, Contrat contrat) {
+		super();
+		this.photo = photo;
+		this.base64 = base64;
 		this.idBien = idBien;
 		this.libelle = libelle;
 		this.dateSoumission = dateSoumission;
@@ -129,22 +168,41 @@ public abstract class BienImmobilier implements Serializable {
 		this.revenuCadastral = revenuCadastral;
 		this.descriptif = descriptif;
 		this.classe = classe;
-		this.adresse=adresse;
-	}// end ctor chargé
+		this.adresse = adresse;
+		this.proprietaire = proprietaire;
+		this.contrat = contrat;
+	}//end ctor chargé avec id
 
-	public BienImmobilier(String libelle, Date dateSoumission, Date dateMiseADispo, double revenuCadastral,
-			String descriptif, ClasseStandard classe, Adresse adresse) {
-		super();
-		this.libelle = libelle;
-		this.dateSoumission = dateSoumission;
-		this.dateMiseADispo = dateMiseADispo;
-		this.revenuCadastral = revenuCadastral;
-		this.descriptif = descriptif;
-		this.classe = classe;
-		this.adresse=adresse;
-	}// end ctor chargé sans id
+
 
 	// ______________getters/setters______________
+
+	public byte[] getPhoto() {
+		return photo;
+	}
+
+
+
+	public void setPhoto(byte[] photo) {
+		this.photo = photo;
+	}
+
+
+
+	public String getBase64() {
+		if (this.photo != null) {
+			return this.base64 = Base64.getEncoder().encodeToString(this.photo);
+		} else {
+			return base64;
+		}
+		
+	}
+
+	public void setBase64(String base64) {
+		this.base64 = base64;
+	}
+
+
 
 	public Long getIdBien() {
 		return idBien;

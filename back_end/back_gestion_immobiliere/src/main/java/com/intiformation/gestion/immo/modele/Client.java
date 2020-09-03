@@ -51,7 +51,7 @@ public class Client implements Serializable {
 	// +++++++ associations +++++++++
 	// association avec Adresse : Many to One (plusieurs clients pour une adresse)
 	@ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE})
-	@JoinColumn(name = "adresse_id", referencedColumnName = "id_adresse")
+	@JoinColumn(name = "adresse_id", referencedColumnName = "id_adresse",updatable=true)
 	private Adresse adresse;
 
 	@ManyToMany
@@ -73,7 +73,7 @@ public class Client implements Serializable {
 
 	//association avec Contrat : One to Many (un client pour plusieurs contrats)
 	@OneToMany(targetEntity=Contrat.class, mappedBy="client", cascade=CascadeType.REMOVE)
-	@JsonIgnoreProperties(value= {"client","bienImmobilier","conseillers"})
+	@JsonIgnoreProperties(value= {"client","conseillers"})
 	private List<Contrat> contrats;
 
 	/* _______________ ctor ______________ */

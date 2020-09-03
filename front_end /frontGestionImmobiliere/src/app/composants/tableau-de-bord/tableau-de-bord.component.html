@@ -1,0 +1,27 @@
+<div class="card shadow mb-4" style="width: 95%; margin: auto;">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table  class="table table-bordered" id="dataTable" width="80%" cellspacing="0" style="margin: auto;">
+          <thead class="thead-blue">
+  
+  
+            <tr style="background-color: #df4937;color:  #333333;">
+              <th scope="col">Id Bien</th>
+              <th scope="col">Id Libelle</th>
+              <th scope="col">Id Client</th>
+            </tr>
+          </thead>
+  
+          <!-- données de la table -->
+          <tbody>
+            <tr *ngFor="let bien of biensConseiller" >
+              <td>{{bien.idBien}}</td>
+              <td>{{bien.libelle}}</td>
+              <td>{{bien.contrat.client.idClient}}</td>
+            </tr>
+          </tbody>
+          
+        </table>
+      </div>
+    </div>
+  </div>

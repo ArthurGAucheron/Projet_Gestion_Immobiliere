@@ -124,7 +124,6 @@ public class Contrat {
 	}
 
 	public ConseillerImmobilier getConseillers() {
-
 		return conseillers;
 	}
 

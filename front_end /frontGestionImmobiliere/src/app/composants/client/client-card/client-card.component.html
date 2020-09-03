@@ -1,0 +1,95 @@
+<h1 style="color: #d49625;margin: 1rem 0 2rem 4rem;font-weight: bold;">Client</h1>
+
+<h2 style="color: #333333;margin: 1rem 0 2rem 6rem;">Fiche d'un client</h2>
+
+<div class="card shadow mb-4" style="width: 97.5%; margin: auto;">
+
+    <div class="mx-4 my-4">
+        <h3 class="card-title">
+            {{client.nom}}
+        </h3>
+        <!--tel1-->
+        <div style="float: left;" class="mx-5">
+            <div>
+                <h5 class="card-subtitle">Téléphone :</h5>
+                {{client.telephone}}
+            </div>
+
+        </div>
+        <div style="float: left;" class="mx-5">
+            <!--adresse-->
+            <div>
+                <h5 class="card-subtitle"> Adresse : </h5>
+                {{client.adresse.numero}}, {{client.adresse.rue}} <br>
+                {{client.adresse.codePostal}} {{client.adresse.localite}} <br>
+                {{client.adresse.pays}}
+
+            </div>
+        </div>
+    </div>
+
+    <!--====== footer du panel ======-->
+    <div>
+        <button class="btn btn-primary float-right mr-4 mb-4" (click)="editClient(client.idClient)">
+            Edit
+        </button>
+        <button class="btn btn-primary float-right mr-4 mb-4" (click)="deleteClient(client)">
+            Delete
+        </button>
+    </div>
+
+</div>
+
+
+
+<!--===========================================================-->
+<!--=========== Biens immobilier associés =====================-->
+<!--===========================================================-->
+<h2 style="color: #333333;margin: 1rem 0 2rem 6rem;">Contrats de {{client.nom}}</h2>
+
+<div style="width: 95%; margin: auto;">
+    <div class="d-flex flex-row flex-nowrap overflow-auto">
+        <div class="card shadow card-block mr-4 mb-3" style="min-width: 400px; margin-left: 70px;"
+            *ngFor="let contrat of client.contrats">
+
+            <div class="mx-4 my-4" (click)="selectContrat(contrat.idContrat)"> 
+                <h6>ID contrat :
+                    {{contrat.idContrat}}
+                </h6>
+
+                <h6>Nom bu bien :
+                    {{contrat.bienImmobilier.libelle}}
+                </h6>
+
+                <h6>Prix d'achat :
+                    {{contrat.prixAcquisition}} €
+                </h6>
+
+                <h6>Date d'acquisition du bien :
+                    {{contrat.dateAcquisition | date : 'd MMMM y' | lowercase}}
+                </h6>     
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<h2 style="color: #333333;margin: 1rem 0 2rem 6rem;">Visites de {{client.nom}}</h2>
+
+<div style="width: 95%; margin: auto;">
+    <div class="d-flex flex-row flex-nowrap overflow-auto">
+        <div class="card shadow card-block mr-4 mb-3" style="min-width: 300px; margin-left: 70px;"
+            *ngFor="let visite of client.visites">
+            <div class="mx-4 my-4" (click) = "navigateToDetailsVisite($event, visite.idVisite)">
+
+                <h6> Date visite :
+                    {{visite.dateVisite | date : 'd MMMM y' | lowercase}} 
+                </h6>
+                <h6> Bien visité :
+                   {{visite.bienImmobilier.libelle}} 
+                </h6>
+
+            </div>
+        </div>
+    </div>
+</div>

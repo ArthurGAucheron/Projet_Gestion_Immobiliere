@@ -34,6 +34,7 @@ public class ConseillerImmobilier {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_conseiller")
+	
 	private Long idConseiller;
 
 	@Column(name = "identifiant")

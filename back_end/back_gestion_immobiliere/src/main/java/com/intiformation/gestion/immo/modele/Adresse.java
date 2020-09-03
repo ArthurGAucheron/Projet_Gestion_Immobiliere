@@ -1,4 +1,4 @@
-  
+
 package com.intiformation.gestion.immo.modele;
 
 import java.util.List;
@@ -6,10 +6,12 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.PreRemove;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -31,6 +33,7 @@ import javax.persistence.Table;
 
 /**
  * modèle de données pour une adresse
+ * 
  * @author marle
  *
  */
@@ -38,33 +41,34 @@ import javax.persistence.Table;
 @Table(name="adresses")
 public class Adresse implements Serializable {
 
-	/*_______________ propriétés ______________*/
+	/* _______________ propriétés ______________ */
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id_adresse")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_adresse")
 	private Long idAdresse;
-	
-	@Column(name="numero")
+
+	@Column(name = "numero")
 	private String numero;
-	
-	@Column(name="rue")
+
+	@Column(name = "rue")
 	private String rue;
-	
-	@Column(name="code_postal")
+
+	@Column(name = "code_postal")
 	private int codePostal;
-	
-	@Column(name="localite")
+
+	@Column(name = "localite")
 	private String localite;
 
-	@Column(name="pays")
+	@Column(name = "pays")
 	private String pays;
 	
 	
 	//+++++++ associations +++++++++
 	//association avec Propriétaire : One to Many (une adresse pour plusieurs propriétaires)
-	@OneToMany(targetEntity=Proprietaire.class, mappedBy="adresse")
+	@OneToMany(targetEntity=Proprietaire.class, mappedBy="adresse",cascade={CascadeType.REFRESH, CascadeType.MERGE})
 	@JsonIgnore
 	private List<Proprietaire> proprietaires;
+	
 	
 	//association avec Client : One to Many (une adresse pour plusieurs clients)
 	@OneToMany(targetEntity=Client.class, mappedBy="adresse")
@@ -76,16 +80,14 @@ public class Adresse implements Serializable {
 	@JsonIgnore
 	private List<BienImmobilier> biensImmobilier;
 
-	
-	/*_______________ ctor ______________*/
+	/* _______________ ctor ______________ */
 	/**
 	 * ctor vide
 	 */
 	public Adresse() {
 	}
-	
-	/*_______________ getters/setters ______________*/
 
+	/* _______________ getters/setters ______________ */
 
 	public Long getIdAdresse() {
 		return idAdresse;
@@ -165,4 +167,3 @@ public class Adresse implements Serializable {
 }//end class
 
 	
-
