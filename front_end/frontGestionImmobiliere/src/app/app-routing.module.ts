@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { CreateContratComponent } from './composants/contrat/create-contrat/create-contrat.component';
 import { ListeContratComponent } from './composants/contrat/liste-contrat/liste-contrat.component';
 import { ListeImmobilierComponent } from "./composants/bienImmobilier/liste-immobilier-achat/liste-immobilier.component";
-import { ListeImmobilierLocationComponent } from './composants/bienImmobilier/liste-immobilier-location/liste-immobilier-location.component';
+
 import { FicheImmobilierAchatComponent } from './composants/bienImmobilier/fiche-immobilier-achat/fiche-immobilier-achat.component';
 import { CreateImmobilierComponent } from "./composants/bienImmobilier/create-immobilier-achat/create-immobilier.component";
 
@@ -20,8 +20,7 @@ import { ClientCreateComponent } from './composants/client/client-create/client-
 import { ClientListComponent } from './composants/client/client-list/client-list.component';
 import { ProprietaireCardComponent } from './composants/proprietaire/proprietaire-card/proprietaire-card.component';
 import { AuthGuardService } from './guards/auth-guard.service';
-import { FicheImmobilierLocationComponent } from './composants/bienImmobilier/fiche-immobilier-location/fiche-immobilier-location.component';
-import { CreateImmobilierLocationComponent } from './composants/bienImmobilier/create-immobilier-location/create-immobilier-location.component';
+
 
 
 
@@ -46,11 +45,6 @@ const routes: Routes = [
   {path:"bienImmoAchat/fiche/:id", component:FicheImmobilierAchatComponent},
   {path:"bienImmoAchat/edit/:id", component:CreateImmobilierComponent},
   
-
-  //URLs : gestion des BIENS IMMOBILIER A LOUER
-  {path:"bienImmoLocation/list", component:ListeImmobilierLocationComponent},
-  {path:"bienImmoLocation/fiche/:id", component:FicheImmobilierLocationComponent},
-  {path:"bienImmoLocation/edit/:id", component:CreateImmobilierLocationComponent},
   
   //URLs : gestion DES PROPRIETAIRES 
   {path:"proprietaire_card/:id", component:ProprietaireCardComponent},
