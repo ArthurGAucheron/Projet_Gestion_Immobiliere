@@ -22,6 +22,8 @@ export class TableauDeBordComponent implements OnDestroy, OnInit {
   clients=[];
   biens = [];
 
+  biensConseiller=[];
+
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject();
 
@@ -29,7 +31,8 @@ export class TableauDeBordComponent implements OnDestroy, OnInit {
   constructor(private visiteService : VisiteService, 
               private classeService : ClasseStandardService,
               private clientService : ClientService,
-              private bienService : BienImmobilierService) { }
+              private bienService : BienImmobilierService,
+              private router: Router) { }
 
   /*____________ méthodes ___________ */
   ngOnInit(): void {
@@ -41,6 +44,9 @@ export class TableauDeBordComponent implements OnDestroy, OnInit {
     this.findAllClassesStandardsClients();
     this.findAllClassesStandardsBiens();
     this.findAllClients();
+    this.findAllBienByConseiller(1);
+  }
+
   }//end ngOnInit
 
   /**
@@ -89,9 +95,19 @@ export class TableauDeBordComponent implements OnDestroy, OnInit {
     this.bienService.getAllBiensByClass(pIdClasse).subscribe(data => {this.biens = data;});
   }
 
+  findAllBienByConseiller(pIdConseiller:number){
+    this.bienService.getAllBienByConseiller(pIdConseiller).subscribe(data => this.biensConseiller = data);
+  }
+
   ngOnDestroy(): void {
     // Do not forget to unsubscribe the event
     this.dtTrigger.unsubscribe();
   }
 
 }//end class
+
+    
+
+  
+
+

@@ -14,6 +14,9 @@ export class BienImmobilierService {
 
   constructor(private httpClient : HttpClient) { }
 
+  getAllBienByConseiller(pIdConseiller : number):Observable<BienImmobilier[]>{
+    return this.httpClient.get<BienImmobilier[]>(`${this.WS_REST_URL}/get-by-idConseiller/${pIdConseiller}`);
+  }
 
   /* =============================================================================== */
   /* ========================= CRUD BIEN A ACHETER ================================= */
