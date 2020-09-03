@@ -1,10 +1,16 @@
-<div class="container-fluid">
+<div class="container">
     <div class="panel panel-primary">
         <div class="panel-heading">
-            <h3 class="panel-title">{{bienAchat.idBien ? "Modifier" : "Ajouter"}} un bien immobilier à vendre</h3>
+            <h3 class="panel-title">{{bienAchat.idBien ? "Modifier" : "Ajouter"}} un bien immobilier</h3>
         </div>
-        <div class="container" style="padding-top: 15px; padding-bottom: 15px;">
-            <form (ngSubmit)="saveOrUpdateBien()">
+        <div>
+            <button type="button" class="btn btn-success" (click)="changeOffre()">
+                Type d'offre  ==> <span style="font-weight: bold; font-size: large;">{{typeDeBien ? "A vendre" : "A louer"}}</span></button>
+        </div>
+        
+        <!-- //////////// FORMULAIRE BIEN A VENDRE //////////////-->
+        <div class="container" style="padding-top: 15px; padding-bottom: 15px;" *ngIf="typeDeBien">
+            <form (ngSubmit)="saveOrUpdateBien()" name="formBienAchat">
                 <div class="panel-body">
 
                     <div class="form-group">
@@ -13,10 +19,14 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="pStatut">Statut</label>
-                        <input type="text" id="pStatut" class="form-control" [(ngModel)]="bienAchat.statut" value="A vendre" readonly="true"/>
+                        <input type="hidden" id="pStatut" class="form-control" [(ngModel)]="bienAchat.statut" value="A vendre" readonly="true" name="statut"/>
                     </div>
                     
+                    <div class="form-group">
+                        <label for="pDateSoumission"> Date de mise de soummission</label>
+                        <input type="date" id="pDateSoumission" class="form-control" [(ngModel)]="bienAchat.dateSoumission" name="dateMiseADispo"/>
+                    </div>
+
                     <div class="form-group">
                         <label for="pDateMiseADispo"> Date de mise à disposition</label>
                         <input type="date" id="pDateMiseADispo" class="form-control" [(ngModel)]="bienAchat.dateMiseADispo" name="dateMiseADispo"/>
@@ -33,16 +43,16 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="pClasseStandart">Veuillez choisir une classe standart</label>
-                        <select>
-                            <option *ngFor="let classe of listeClasse" id="pClasseStandart" [(ngModel)]="bienAchat.classeStandard">{{classe}}</option>
+                        <label for="pClasseStandart">Veuillez choisir une classe standart => </label>
+                        <select name="classe" [(ngModel)]="bienAchat.classe">
+                            <option  id="pClasseStandart" *ngFor="let classe of listeClasse" [value]="classe">Type : {{classe.typeBiens}} || PrixMax : {{classe.prixMax}} € || Smin : {{classe.superficieMin}} m²</option>
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <label for="pProprietaire">Propriétaire :</label>
-                        <select>
-                            <option *ngFor="let prop of listeProprietaire" id="pProprietaire" [(ngModel)]="bienAchat.prop">{{prop}}</option>
+                        <label for="pProprietaire">Propriétaire => </label>
+                        <select [(ngModel)]="bienAchat.proprietaire" name="proprietaire">
+                            <option *ngFor="let prop of listeProprietaire" id="pProprietaire" value="{{prop}}" >{{prop.nom}}</option>
                         </select>
                     </div>
                     <div style="border: 1px solid grey; padding:10px 10px 10px 10px; border-radius: 5px; ">
@@ -50,29 +60,40 @@
                         <div class="row">
                             <div class="form-group col-sm-2"> 
                                 <label for="pNumero">Numero</label>
-                                <input type="text" id="pNumero" class="form-control" [(ngModel)]="bienAchat.adresse.numero" name="numero"/>
+                                <input type="text" id="pNumero" class="form-control" [(ngModel)]="adresse.numero" name="numero"/>
                             </div>
                             <div class="form-group col-sm-6">
                                 <label for="pRue">Rue</label>
-                                <input type="text" id="pRue" class="form-control" [(ngModel)]="bienAchat.adresse.rue" name="rue"/>
+                                <input type="text" id="pRue" class="form-control" [(ngModel)]="adresse.rue" name="rue"/>
                             </div>
                             <div class="form-group col-sm-4">
                                 <label for="pCP">Code Postal</label>
-                                <input type="text" id="pCP" class="form-control" [(ngModel)]="bienAchat.adresse.codePostal" name="CP"/>
+                                <input type="text" id="pCP" class="form-control" [(ngModel)]="adresse.codePostal" name="codePostal"/>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-sm-6">
                                 <label for="pLocalite">Ville</label>
-                                <input type="text" id="pCP" class="form-control" [(ngModel)]="bienAchat.adresse.rue" name="localite"/>
+                                <input type="text" id="pCP" class="form-control" [(ngModel)]="adresse.ville" name="ville"/>
                             </div>
                             <div class="form-group col-sm-6">
                                 <label for="pPays">Pays</label>
-                                <input type="text" id="pPays" class="form-control" [(ngModel)]="bienAchat.adresse.pays" name="pays"/>
+                                <input type="text" id="pPays" class="form-control" [(ngModel)]="adresse.pays" name="pays"/>
                             </div>
                         </div> 
                     </div>
+               
+                        <div class="form-group">
+                            <label for="pPrix">Prix demander (€)</label>
+                            <input type="text" id="pPrix" class="form-control" [(ngModel)]="bienAchat.prix" name="prix"/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pEtat">Etat</label>
+                            <input type="text" id="pEtat" class="form-control" [(ngModel)]="bienAchat.etat" name="etat"/>
+                        </div>
                 </div>
+               
                 <div class="panel-footer">
                     <button type="submit" class="btn btn-primary">{{bienAchat.idBien ? "Modifier" : "Ajouter"}}</button>
                 </div>

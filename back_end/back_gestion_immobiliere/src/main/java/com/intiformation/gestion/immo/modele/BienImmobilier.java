@@ -106,7 +106,7 @@ public abstract class BienImmobilier implements Serializable {
 	 */
 
 	@OneToMany(mappedBy="bienImmobilier", cascade=CascadeType.REMOVE)
-	@JsonIgnoreProperties(value= {"conseillers","bienImmobilier"})	
+	@JsonIgnoreProperties(value= {"conseillers","bienImmobilier","client"})	
 	private List<Visite> visite;
 	
 	@ManyToMany(mappedBy="biensImmobiliers")
@@ -143,6 +143,25 @@ public abstract class BienImmobilier implements Serializable {
 		this.classe = classe;
 		this.adresse=adresse;
 	}// end ctor chargé sans id
+
+	
+	
+	
+	public BienImmobilier(Long idBien, String libelle, String statut, Date dateSoumission, Date dateMiseADispo,
+			double revenuCadastral, String descriptif, ClasseStandard classe, Adresse adresse,
+			Proprietaire proprietaire) {
+		super();
+		this.idBien = idBien;
+		this.libelle = libelle;
+		this.statut = statut;
+		this.dateSoumission = dateSoumission;
+		this.dateMiseADispo = dateMiseADispo;
+		this.revenuCadastral = revenuCadastral;
+		this.descriptif = descriptif;
+		this.classe = classe;
+		this.adresse = adresse;
+		this.proprietaire = proprietaire;
+	}
 
 	// ______________getters/setters______________
 

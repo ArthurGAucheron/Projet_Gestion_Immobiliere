@@ -18,7 +18,7 @@ export class BienImmobilierService {
   /* ========================= CRUD BIEN A ACHETER ================================= */
   /* =============================================================================== */
 
-  addBienAchat(pBienAchat : BienAchat):Observable<void>{
+  addBienAchat(pBienAchat : any):Observable<void>{
     return this.httpClient.post<void>(`${this.WS_REST_URL}/save`, pBienAchat);
   }
 
