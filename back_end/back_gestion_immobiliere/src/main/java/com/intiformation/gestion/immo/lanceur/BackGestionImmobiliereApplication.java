@@ -12,7 +12,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringBootApplication
 @EntityScan(basePackages= {"com.intiformation.gestion.immo.modele"})
 @EnableJpaRepositories(basePackages= {"com.intiformation.gestion.immo.dao"})
-@ComponentScan(basePackages= {"com.intiformation.gestion.immo.webservice"})
+@ComponentScan(basePackages= {"com.intiformation.gestion.immo.webservice", "com.intiformation.gestion.immo.authentification"})
 public class BackGestionImmobiliereApplication implements CommandLineRunner{
 
 	

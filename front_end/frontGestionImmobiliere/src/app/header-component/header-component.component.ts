@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-//import { AuthenticationService } from '';
+import { AuthenticationService } from 'src/app/services/authentification.service';
 
 @Component({
   selector: 'app-header-component',
@@ -9,9 +9,9 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponentComponent implements OnInit {
 
-  constructor(/*private loginService:AuthentificationService,*/ private router: Router ) { }
+  constructor(public loginService:AuthenticationService, private router: Router ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
 
   viewProprietaire(){

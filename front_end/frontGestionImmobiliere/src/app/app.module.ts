@@ -12,7 +12,7 @@ import { LoginComponent } from './guards/login/login.component';
 import { LogoutComponent } from './guards/logout/logout.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BasicAuthHttpInterceptorService } from './services/basic-auth-http-interceptor.service';
-import { AuthGuardService } from './guards/auth-guard.service';
+import { AuthGuard} from './guards/auth.guard';
 
 import { ProprietaireCreateComponent } from './composants/proprietaire/proprietaire-create/proprietaire-create.component';
 import { ProprietaireListComponent } from './composants/proprietaire/proprietaire-list/proprietaire-list.component';
@@ -30,6 +30,7 @@ import { CreateVisiteComponent } from './composants/visite/create-visite/create-
 import { ProprietaireCardComponent } from './composants/proprietaire/proprietaire-card/proprietaire-card.component';
 import { ClientListComponent } from './composants/client/client-list/client-list.component';
 import { ClientCardComponent } from './composants/client/client-card/client-card.component';
+import { ConseillerImmobilier } from './modeles/ConseillerImmobilier';
 
 @NgModule({
   declarations: [
@@ -59,10 +60,12 @@ import { ClientCardComponent } from './composants/client/client-card/client-card
     BrowserModule,
     AppRoutingModule,
     HttpClientModule, 
-    FormsModule
+    FormsModule,
+  
   ],
   providers: [
-    AuthGuardService,{provide:HTTP_INTERCEPTORS, useClass:BasicAuthHttpInterceptorService, multi:true }
+    ConseillerImmobilier,
+    AuthGuard,{provide:HTTP_INTERCEPTORS, useClass:BasicAuthHttpInterceptorService, multi:true }
   ],
   bootstrap: [AppComponent]
 })

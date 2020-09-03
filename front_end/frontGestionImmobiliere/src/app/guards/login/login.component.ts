@@ -1,36 +1,28 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthentificationService } from 'src/app/services/authentification.service';
+import { AuthenticationService } from 'src/app/services/authentification.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-
+ 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
-
-  username = 'javainuse'
-  password = ''
+export class LoginComponent {
+ 
   invalidLogin = false
+  username: String = '';
+  password: String = '';
 
   constructor(private router: Router,
-    private loginservice: AuthentificationService) { }
-
+    private loginservice: AuthenticationService) { }
+ 
   ngOnInit() {
   }
-
-  checkLogin() {
-    if (this.loginservice.authenticate(this.username, this.password)
-    ) {
-      this.router.navigate([''])
-      this.invalidLogin = false
-    } else
-      this.invalidLogin = true
-
-
-    }
-
-
-  
-}//end class
+ 
+  doLogin() {
+    this.loginservice.authenticate(this.username, this.password);
+  }
+ 
+ 
+}

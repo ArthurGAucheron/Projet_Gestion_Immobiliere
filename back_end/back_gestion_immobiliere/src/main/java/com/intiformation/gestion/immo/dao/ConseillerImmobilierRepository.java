@@ -15,6 +15,6 @@ import com.intiformation.gestion.immo.modele.ConseillerImmobilier;
 public interface ConseillerImmobilierRepository extends JpaRepository<ConseillerImmobilier, Long> {
 	
 	/*__________ Méthode des requêtes ___________*/
-	
+	public ConseillerImmobilier findByIdentifiant(String Login);
 
 }//END INTERFACE
