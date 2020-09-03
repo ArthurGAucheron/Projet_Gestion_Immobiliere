@@ -1,0 +1,14 @@
+<div style="width: 95%;margin: auto;">
+  
+    <h1>Détails Visite N°{{visite.idVisite}} prévue le {{visite.dateVisite}} <a href="" (click)="navigateToUpdateVisite($event,visite.idVisite)"><img class="imgModif" src="../../../../assets/images/pen.svg" ></a></h1>
+    <h2>{{visite.bienImmobilier.libelle}}</h2>
+    <img class="imgBien" width="150px"  src="" >
+    <div id="SCprincipal">
+        <p><span>Infos Biens : </span>{{visite.bienImmobilier.descriptif}}</p>
+        <p><span>Agent immobilier : </span>{{visite.conseiller.nom}}</p>
+        <p><span> Client : </span>{{visite.client.nom}} </p>
+        
+    </div>
+    
+</div>
+

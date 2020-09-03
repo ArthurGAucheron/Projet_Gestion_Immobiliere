@@ -1,14 +1,15 @@
 <h1 style="color: #d49625;margin: 1rem 0 2rem 4rem;font-weight: bold;">Client</h1>
 
-<h2 style="color: #333333;margin: 1rem 0 2rem 6rem;">Liste des clients</h2>
+<h2 style="color: #333333;margin: 1rem 0 2rem 6rem; display: inline-flex;">Liste des clients</h2>
 
-<div class="card shadow mb-4" style="width: 95%; margin: auto;">
+<button class="btn btn-primary float-right my-4 mx-5" (click)="newClient()">
+  Ajouter Client
+</button>
+
+<div class="card shadow mb-4 px-3 py-3" style="width: 95%; margin: auto;">
   <div class="card-body">
-    <button class="btn btn-primary float-right my-4" (click)="newClient()">
-      Ajouter Client
-    </button>
-    <div class="table-responsive">
-      <table  class="table table-bordered" id="dataTable" width="80%" cellspacing="0" style="margin: auto;">
+    
+      <table  datatable class="row-border hover" style="margin: auto;">
         <thead class="thead-blue">
 
 
@@ -32,7 +33,6 @@
         </tbody>
         
       </table>
-    </div>
   </div>
 </div>
 

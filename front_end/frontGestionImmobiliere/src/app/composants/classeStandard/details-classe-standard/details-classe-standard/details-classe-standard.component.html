@@ -1,0 +1,80 @@
+
+<div style="width: 95%;margin: auto;">
+  
+    <h1>Détails Classe Standard N°{{classeStandard.idClasse}} <a href="" (click)="navigateToUpdateClasseStandard($event,classeStandard.idClasse)"><img class="imgModif" src="../../../../assets/images/pen.svg" ></a></h1>
+
+    <img class="imgBien" width="150px"  src="./././././assets/images/{{classeStandard.typeBiens}}.png" >
+    <div id="SCprincipal">
+        <h2>{{classeStandard.typeBiens}} pour  {{classeStandard.modeOffre}}</h2>
+        <p><span>Prix Maximum : </span>{{classeStandard.prixMax | prixClasseStandard : classeStandard.modeOffre}}</p>
+        <p><span> Superficie Minimale : </span>{{classeStandard.superficieMin | superficie : classeStandard.typeBiens}} </p>
+        
+    </div>
+
+    <div>
+        <h2>Liste des Clients intéressés</h2>
+        <div class="card shadow mb-4" style="width: 97.5%; margin: auto;">
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="80%" cellspacing="0" style="margin: auto;">
+                  <thead class="thead-blue">
+          
+          
+                    <tr style="background-color: #df4937;color:  #333333;">
+                      <th scope="col">ID</th>
+                      <th scope="col">Telephone</th>
+                      <th scope="col">Adresse</th>
+                      <th scope="col">Pays</th>
+                      <th scope="col">Consulter</th>
+                    </tr>
+                  </thead>
+          
+                  <!-- données de la table -->
+                  <tbody *ngFor="let client of classeStandard.listeClients">
+                    <tr>
+                      <td>{{client.idClient}}</td>
+                      <td>{{client.telephone}}</td>
+                      <td>{{client.adresse.numero}} {{client.adresse.rue}}, {{client.adresse.codePostal}} {{client.adresse.localite}}</td>
+                      <td>{{client.adresse.pays}}</td>
+                        <td><a href="">test</a></td>
+                    </tr>
+                  </tbody>                  
+                </table>
+              </div>
+            </div>
+          </div>
+          
+    </div>
+
+    <h2>Liste des Biens Immobiliers appartenant à la Classe Standard</h2>
+
+    <div *ngFor="let BienImmobilier of classeStandard.listeBienImmobilier">
+        <h3 >BienImmobilier.libelle - BienImmobilier.statut</h3>
+        <img src="../../../../../assets/images/building.svg" style="float: left;" width="150px">
+        <div>
+            <div>
+                <p style="float: left;margin-right: 3rem;">Date de Soumission : BienImmobilier.dateSoumission</p>
+                <p>Date de Mise à Disposition : BienImmobilier.dateMiseADispo</p>
+            </div>
+            <div>
+                <p style="float: left;margin-right: 3rem;">Revenu cadastral : BienImmobilier.revenuCadastral €</p>
+                <p>Adresse : BienImmobilier.adresse.numero BienImmobilier.adresse.rue, BienImmobilier.adresse.codePostal BienImmobilier.adresse.localite</p>
+            </div>
+            <div>
+                <p style="opacity: 0.8;">
+                    BienImmobilier.descriptif 
+                </p>
+            </div>
+            <p style="float: right;font-weight: bold;margin-right: 3rem;">BienImmobilier.proprietaire.nom</p>
+           
+            <br>
+            
+        </div>
+
+        <hr>
+    </div>
+    
+</div>
+
+
+

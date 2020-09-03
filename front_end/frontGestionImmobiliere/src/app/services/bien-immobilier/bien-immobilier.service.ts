@@ -9,7 +9,7 @@ import { BienLocation } from "src/app/modeles/BienLocation";
 })
 export class BienImmobilierService {
 
-  private WS_REST_URL = "";
+  private WS_REST_URL = "http://localhost:8080/gestion-immo/biens";
 
   constructor(private httpClient : HttpClient) { }
 
@@ -22,12 +22,12 @@ export class BienImmobilierService {
     return this.httpClient.post<void>(`${this.WS_REST_URL}/save`, pBienAchat);
   }
 
-  getAllAchat():Observable<BienAchat[]>{
-    return this.httpClient.get<BienAchat[]>(`${this.WS_REST_URL}/getAll`);
+  getAllAchat():Observable<any[]>{
+    return this.httpClient.get<any[]>(`${this.WS_REST_URL}/getall`);
   }
-
-  getAchatById(idBienAchat : number):Observable<BienAchat>{
-    return this.httpClient.get<BienAchat>(`${this.WS_REST_URL}/getById/${idBienAchat}`);
+ 
+  getAchatById(idBienAchat : number):Observable<any>{
+    return this.httpClient.get<any>(`${this.WS_REST_URL}/get-by-id/${idBienAchat}`);
   }
 
   updateAchat(pBienAchat : BienAchat):Observable<void>{
@@ -46,13 +46,13 @@ export class BienImmobilierService {
     return this.httpClient.post<void>(`${this.WS_REST_URL}/save`, pBienLocation)
   }
 
-  getAllLocation():Observable<BienLocation[]>{
-    return this.httpClient.get<BienLocation[]>(`${this.WS_REST_URL}/getAll`);
+  getAllLocation():Observable<any[]>{
+    return this.httpClient.get<any[]>(`${this.WS_REST_URL}/getAll`);
   }
 
 
-  getLocationById(idBienLocation : number):Observable<BienLocation>{
-    return this.httpClient.get<BienLocation>(`${this.WS_REST_URL}/getById/${idBienLocation}`);
+  getLocationById(idBienLocation : number):Observable<any>{
+    return this.httpClient.get<any>(`${this.WS_REST_URL}/getById/${idBienLocation}`);
   }
 
   updateLocation(pLocation : BienLocation):Observable<void>{

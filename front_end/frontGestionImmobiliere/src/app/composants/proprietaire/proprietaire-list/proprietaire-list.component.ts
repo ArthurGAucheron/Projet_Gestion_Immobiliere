@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ProprietaireService } from 'src/app/services/propietaire/proprietaire.service';
 import { Router } from '@angular/router';
 
@@ -11,6 +11,7 @@ export class ProprietaireListComponent implements OnInit {
 
   /*____________ props ___________ */
   proprietaires = [];
+  dataTable: any;
 
   /*____________ ctor ___________ */
   constructor(private proprietaireService : ProprietaireService, private router: Router) { }
@@ -19,11 +20,14 @@ export class ProprietaireListComponent implements OnInit {
     this.findAllProprietaire();
   }
 
+
   /**
    * permet de recuperer tous les propriétaire via le service
    */
   findAllProprietaire(){
-    this.proprietaireService.getAllProprietaireFromWsRest().subscribe(data => this.proprietaires = data)
+    this.proprietaireService.getAllProprietaireFromWsRest().subscribe(
+      data => {this.proprietaires = data},
+      error => {console.log(error)})
   }
 
   /**
