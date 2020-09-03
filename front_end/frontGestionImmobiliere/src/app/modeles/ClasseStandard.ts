@@ -9,7 +9,7 @@ export class ClasseStandard {
     prixMax : number;
     superficieMin : number;
 
-    listeClients : Array<Client>;
-    listeBienImmobilier : Array<BienImmobilier>
+    clients : Array<Client>;
+    biensImmobilier : Array<BienImmobilier>
 
 }

@@ -15,6 +15,9 @@ import { ClientListComponent } from './composants/client/client-list/client-list
 import { ProprietaireCardComponent } from './composants/proprietaire/proprietaire-card/proprietaire-card.component';
 import { AuthGuardService } from './guards/auth-guard.service';
 
+import{ListeAllClasseStandardService} from './services/Resolver/liste-all-classe-standard.service';
+import { DetailsVisiteComponent } from './composants/visite/details-visite/details-visite.component';
+
 const routes: Routes = [
 
 
@@ -23,13 +26,13 @@ const routes: Routes = [
   
   {path:"edit/contrat/:id", component:CreateContratComponent},
 
-  {path:"edit/classeStandard/:id", component:CreateClasseStandardComponent,/* canActivate:[AuthGuardService]*/},
-  {path:"list/classeStandard", component:ListeClasseStandardComponent, /* canActivate:[AuthGuardService]*/},
+  {path:"edit/classeStandard/:id", component:CreateClasseStandardComponent, /* canActivate:[AuthGuardService]*/},
+  {path:"list/classeStandard", component:ListeClasseStandardComponent,/* canActivate:[AuthGuardService]*/},
   {path:"look/classeStandard/:id", component:DetailsClasseStandardComponent, /* canActivate:[AuthGuardService]*/},
 
   {path:"edit/visite/:id", component:CreateVisiteComponent, /* canActivate:[AuthGuardService]*/},
   {path:"list/visite", component:ListeVisiteComponent, /* canActivate:[AuthGuardService]*/},
-  {path:"look/visite/:id", component:DetailsClasseStandardComponent, /* canActivate:[AuthGuardService]*/},
+  {path:"look/visite/:id", component:DetailsVisiteComponent, /* canActivate:[AuthGuardService]*/},
 
   
   

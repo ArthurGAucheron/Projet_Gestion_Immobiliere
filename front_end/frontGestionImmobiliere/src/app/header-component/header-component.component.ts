@@ -22,4 +22,14 @@ export class HeaderComponentComponent implements OnInit {
     this.router.navigate(["client_list"])
   }
 
+  viewVisite(event:Event){
+    event.preventDefault();
+    this.router.navigate(["list/visite"]).then(() => window.location.reload() );
+  }
+
+  viewClasseStandard(event:Event){
+    event.preventDefault();
+    this.router.navigate(["list","classeStandard"]).then(() => window.location.reload() );
+  }
+  
 }

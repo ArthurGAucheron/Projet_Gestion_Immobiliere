@@ -23,7 +23,7 @@ export class CreateVisiteComponent implements OnInit {
     idVisite: null,
     dateVisite: null,
     client: null,
-    conseiller: null,
+    conseillers: null,
     bienImmobilier: null,
   };
 
@@ -46,6 +46,14 @@ export class CreateVisiteComponent implements OnInit {
       const id = +param.get("id");
       if (id!=0) {
         this.visiteService.findVisiteByIdFromWsRest(id).subscribe(toUpdate =>this.visite=toUpdate);
+      }else{
+        this.visite = {
+          idVisite: null,
+          dateVisite: null,
+          client: null,
+          conseillers: null,
+          bienImmobilier: null,
+        };
       }
     });
     this.clientService.getAllClientFromWsRest().subscribe(liste=>this.listeClient=liste);

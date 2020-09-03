@@ -40,6 +40,8 @@ import { ProprietaireCardComponent } from './composants/proprietaire/proprietair
 import { ClientListComponent } from './composants/client/client-list/client-list.component';
 import { ClientCardComponent } from './composants/client/client-card/client-card.component';
 
+import { DataTablesModule } from 'angular-datatables';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -75,7 +77,8 @@ import { ClientCardComponent } from './composants/client/client-card/client-card
     BrowserModule,
     AppRoutingModule,
     HttpClientModule, 
-    FormsModule
+    FormsModule,
+    DataTablesModule
   ],
   providers: [
     AuthGuardService,{provide:HTTP_INTERCEPTORS, useClass:BasicAuthHttpInterceptorService, multi:true }

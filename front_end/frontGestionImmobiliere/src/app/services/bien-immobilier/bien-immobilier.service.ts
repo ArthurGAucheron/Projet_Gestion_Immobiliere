@@ -9,7 +9,7 @@ import { BienLocation } from "src/app/modeles/BienLocation";
 })
 export class BienImmobilierService {
 
-  private WS_REST_URL = "";
+  private WS_REST_URL = "http://localhost:8080/gestion-immo/biens";
 
   constructor(private httpClient : HttpClient) { }
 
@@ -23,11 +23,11 @@ export class BienImmobilierService {
   }
 
   getAllAchat():Observable<BienAchat[]>{
-    return this.httpClient.get<BienAchat[]>(`${this.WS_REST_URL}/getAll`);
+    return this.httpClient.get<BienAchat[]>(`${this.WS_REST_URL}/getall`);
   }
 
   getAchatById(idBienAchat : number):Observable<BienAchat>{
-    return this.httpClient.get<BienAchat>(`${this.WS_REST_URL}/getById/${idBienAchat}`);
+    return this.httpClient.get<BienAchat>(`${this.WS_REST_URL}/get-by-id/${idBienAchat}`);
   }
 
   updateAchat(pBienAchat : BienAchat):Observable<void>{
@@ -47,12 +47,12 @@ export class BienImmobilierService {
   }
 
   getAllLocation():Observable<BienLocation[]>{
-    return this.httpClient.get<BienLocation[]>(`${this.WS_REST_URL}/getAll`);
+    return this.httpClient.get<BienLocation[]>(`${this.WS_REST_URL}/getall`);
   }
 
 
   getLocationById(idBienLocation : number):Observable<BienLocation>{
-    return this.httpClient.get<BienLocation>(`${this.WS_REST_URL}/getById/${idBienLocation}`);
+    return this.httpClient.get<BienLocation>(`${this.WS_REST_URL}/get-by-id/${idBienLocation}`);
   }
 
   updateLocation(pLocation : BienLocation):Observable<void>{

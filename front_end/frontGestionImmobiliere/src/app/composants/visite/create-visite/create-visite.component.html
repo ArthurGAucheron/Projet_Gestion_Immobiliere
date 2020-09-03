@@ -6,18 +6,18 @@
 
         <!--Client-->
         <label for="tbClient">Client : </label>
-        <select name="client" id="tbClient" class="custom-select" [(ngModel)]="visite.client" *ngFor="let client of listeClient">
-            <option value="{{client}}">{{client.nom}}</option>
+        <select name="client" id="tbClient" class="custom-select" [(ngModel)]="visite.client">
+            <option *ngFor="let client of listeClient" value="{{client}}">{{client.nom}}</option>
         </select>
 
         <!--Conseiller-->
         <label for="tbConseiller">Conseiller : </label>
-        <select name="conseiller" id="tbConseiller" class="custom-select" [(ngModel)]="visite.conseiller" *ngFor="let conseiller of listeConseiller">
-            <option value="{{conseiller}}">{{conseiller.nom}}</option>
+        <select name="conseiller" id="tbConseiller" class="custom-select" [(ngModel)]="visite.conseillers" >
+            <option *ngFor="let conseiller of listeConseiller" value="{{conseiller}}">{{conseiller.nom}}</option>
         </select>
 
         <!--Bien Immobilier-->
-        <h2>Bien Immobilier : </h2>
+        <h4>Bien Immobilier : </h4>
         <select name="bien" id="tbBien" class="custom-select" [(ngModel)]="visite.bienImmobilier" >
             <optgroup label="Achat" *ngFor="let bien of listeBienAchat">
                 <option value="{{bien}}">{{bien.libelle}}</option>
@@ -35,9 +35,12 @@
         pattern="(3[0-1]|[0-2][0-9])\/(1[0-2]|0[0-9])\/([0-9]{4}) (1[0-2]|0[0-9]):([0-5][0-9])" required>
 
 
+        <div style="margin: 3rem 0 3rem 0;">
+           Liste Conseiller : {{listeConseiller}}
+        </div>
 
         <div style="margin: 3rem 0 3rem 0;">
-            {{visite.client}}||{{visite.conseiller}}||{{visite.bienImmobilier}}||{{visite.dateVisite}}
+            {{visite.client}}||{{visite.conseillers}}||{{visite.bienImmobilier}}||{{visite.dateVisite}}
         </div>
 
         

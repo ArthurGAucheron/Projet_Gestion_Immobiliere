@@ -64,7 +64,7 @@ public class Client implements Serializable {
 	// plusieurs classes standards)
 	@ManyToMany
 	@JoinTable(name = "clients_assoc_classe", joinColumns = @JoinColumn(name = "client_id"), inverseJoinColumns = @JoinColumn(name = "classe_id"))
-	@JsonIgnoreProperties(value= {"biensImmobilier"})
+	@JsonIgnoreProperties(value= {"biensImmobilier","clients"})
 	private List<ClasseStandard> classesStandard;
 
 	// association avec Visite : One to Many (un client pour plusieurs visites)

@@ -1,12 +1,12 @@
 
-<h1 style="color: #d49625;margin: 1rem 0 2rem 4rem;font-weight: bold;">Un titre</h1>
+<h1 style="color: #d49625;margin: 1rem 0 2rem 4rem;font-weight: bold;">Classe Standard</h1>
 
-<h2 style="color: #333333;margin: 1rem 0 2rem 6rem;">Un titre pour le tableau</h2>
+<h2 style="color: #333333;margin: 1rem 0 2rem 6rem;">Tableau des classes standards :</h2>
 
 <div class="card shadow mb-4" style="width: 97.5%; margin: auto;">
   <div class="card-body">
     <div class="table-responsive">
-      <table class="table table-bordered" id="dataTable" width="80%" cellspacing="0" style="margin: auto;">
+      <table [dtTrigger]="dtTrigger" class="table table-bordered" datatable  width="80%" cellspacing="0" style="margin: auto;">
         <thead class="thead-blue">
 
           <tr>
@@ -26,8 +26,8 @@
         </thead>
 
         <!-- données de la table -->
-        <tbody *ngFor="let classeStandard of listeClasseStandard">
-          <tr>
+        <tbody >
+          <tr *ngFor="let classeStandard of listeClasseStandard">
             <td>{{classeStandard.idClasse}}</td>
             <td>{{classeStandard.typeBiens}}</td>
             <td>{{classeStandard.modeOffre}}</td>

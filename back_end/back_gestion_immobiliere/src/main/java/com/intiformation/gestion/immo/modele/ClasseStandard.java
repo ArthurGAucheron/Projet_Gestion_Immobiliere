@@ -8,6 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -42,8 +45,14 @@ public class ClasseStandard {
 	private double superficieMin;
 	
 	@OneToMany(targetEntity=BienImmobilier.class, mappedBy="classe", cascade=CascadeType.REMOVE)
-	@JsonIgnoreProperties(value= {"classe","proprietaire","adresse","contrat"})
+	@JsonIgnoreProperties(value= {"classe","contrat"})
 	private List<BienImmobilier> biensImmobilier;
+	
+	// association avec Clients : Many to Many (plusieurs clients pour
+	// plusieurs classes standards)
+	@ManyToMany(targetEntity=Client.class,mappedBy="classesStandard")
+	@JsonIgnoreProperties(value= {"biensImmobilier","classesStandard","visites","contrats"})
+	private List<Client> clients;
 
 	// ______________constructeurs______________
 
@@ -118,7 +127,18 @@ public class ClasseStandard {
 		this.biensImmobilier = biensImmobilier;
 	}
 	
+	public List<Client> getClients() {
+		return clients;
+	}
+
+	public void setClients(List<Client> clients) {
+		this.clients = clients;
+	}
+	
+	
+	
 	// ______________toString()______________
+
 
 	@Override
 	public String toString() {

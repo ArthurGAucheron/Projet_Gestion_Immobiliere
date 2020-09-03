@@ -15,7 +15,10 @@ import { BienAchat } from 'src/app/modeles/BienAchat';
   templateUrl: './create-classe-standard.component.html',
   styleUrls: ['./create-classe-standard.component.css']
 })
+
 export class CreateClasseStandardComponent implements OnInit {
+
+  
 
   classeStandard = {
     idClasse : null,
@@ -24,8 +27,8 @@ export class CreateClasseStandardComponent implements OnInit {
     prixMax : null,
     superficieMin : null,
 
-    listeClients : null,
-    listeBienImmobilier : null
+    clients : null,
+    biensImmobilier : null
   };
 
   listeClientsAll : Array<Client> = [];
@@ -39,6 +42,7 @@ export class CreateClasseStandardComponent implements OnInit {
               private activatedRoute :ActivatedRoute) { }
 
   ngOnInit(): void {
+    
     this.activatedRoute.paramMap.subscribe(param => {
       
       const id = +param.get("id");
@@ -52,7 +56,11 @@ export class CreateClasseStandardComponent implements OnInit {
     this.bienImmoService.getAllLocation().subscribe(liste=>this.listeBienImmoLoc=liste);
     this.bienImmoService.getAllAchat().subscribe(liste=>this.listeBienImmoAchat=liste);
 
+    
+
   }
+
+  
 
   saveOrUpdateClasseStandard(){
     if (this.classeStandard.idClasse==null) {

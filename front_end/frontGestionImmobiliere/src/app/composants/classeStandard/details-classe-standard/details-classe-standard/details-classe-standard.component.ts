@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ClasseStandard } from 'src/app/modeles/ClasseStandard';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ClasseStandardService } from 'src/app/services/classe-standard/classe-standard.service';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-details-classe-standard',
@@ -15,9 +16,12 @@ export class DetailsClasseStandardComponent implements OnInit {
                                       modeOffre:null,
                                       prixMax:null,
                                       superficieMin:null,
-                                      listeClients: null,
-                                      listeBienImmobilier:null
+                                      clients: null,
+                                      biensImmobilier:null
   };
+
+  dtTrigger: Subject<any> = new Subject();
+
   
 
   constructor(private classeStandardService : ClasseStandardService,
@@ -29,7 +33,9 @@ export class DetailsClasseStandardComponent implements OnInit {
       
       const id = +param.get("id");
       this.classeStandardService.getClasseStandardById(id)
-                                .subscribe(toLook=>this.classeStandard=toLook);
+                                .subscribe(toLook=>{this.classeStandard=toLook;
+                                                    this.dtTrigger.next();}
+                                );
 
     });
   }
@@ -38,6 +44,10 @@ export class DetailsClasseStandardComponent implements OnInit {
   navigateToUpdateClasseStandard($event : Event,idClasse:number){
     event.preventDefault();
     this.router.navigateByUrl("edit/classeStandard/"+idClasse);
+  }
+
+  ngOnDestroy(): void {
+    this.dtTrigger.unsubscribe();
   }
   
 
