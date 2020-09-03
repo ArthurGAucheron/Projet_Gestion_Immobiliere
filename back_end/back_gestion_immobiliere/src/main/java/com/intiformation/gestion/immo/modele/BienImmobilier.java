@@ -70,6 +70,7 @@ public abstract class BienImmobilier implements Serializable {
 	private String descriptif;
 
 	@ManyToOne
+	@JsonIgnoreProperties(value= {"biensImmobilier"})
 	@JoinColumn(name="classe_id", referencedColumnName="id_classe")
 	@JsonIgnoreProperties(value= {"biensImmobilier"})
 	private ClasseStandard classe;

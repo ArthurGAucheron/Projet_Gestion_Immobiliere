@@ -1,1 +1,107 @@
-<p>create-classe-standard works!</p>
+<h1>Formulaire {{(classeStandard.idClasse==null)? "d'Ajout" : "de Modification"}}</h1>
+
+<form (ngSubmit)="saveOrUpdateClasseStandard()">
+
+    <div class="col-md-10" style="margin: auto;margin-top:1rem;">
+
+        <!--Type de bien-->
+        <label for="tbtypeBiens">Type de Bien</label>
+        <select name="idClasse" id="tbtypeBiens" class="custom-select" [(ngModel)]="classeStandard.typeBiens">
+            <option>Maison</option>
+            <option>Appartement</option>
+            <option>Studio</option>
+            <option>Entrepôt</option>
+            <option>Terrain</option>
+        </select>
+
+        <h2>Mode d'Offre : </h2>
+        <div class="custom-control custom-radio">
+            <label class="radio" for="achat">Achat : </label>
+            <input type="radio" name="modeOffre" id="achat" [(ngModel)]="classeStandard.modeOffre" value="Achat"
+                style="margin: 0 2rem 0 1rem;">
+
+            <label class="radio" for="location">Location : </label>
+            <input type="radio" name="modeOffre" id="location" [(ngModel)]="classeStandard.modeOffre" value="Location"
+                style="margin: 0 2rem 0 1rem;">
+        </div>
+
+        <!--Prix Maximum-->
+        <div style="margin-top: 2rem ;">
+        <div class="col-md-6" style="float: left; padding: 0 1rem 0 0 ;">
+            <label *ngIf="classeStandard.modeOffre=='Achat'||classeStandard.modeOffre==null" for="tbprixMax">Prix
+                d'Achat Maximum</label>
+            <label *ngIf="classeStandard.modeOffre=='Location'" for="tbprixMax">Prix Mensuel Maximum</label>
+
+            <div class="input-group" >
+                <input class="form-control" type="number" name="prixMax" [(ngModel)]="classeStandard.prixMax"
+                    id="tbprixMax" min="0">
+                <div class="input-group-append">
+                    <span class="input-group-text">€</span>
+                </div>
+            </div>
+        </div>
+
+        <label for="tbsuperficieMin" style="padding-left:1rem ;">Superficie Minimale</label>
+        <div class="input-group col-md-6" style="padding: 0 0 0 1rem;">
+            
+            <input class="form-control" type="number" name="superficieMin" [(ngModel)]="classeStandard.superficieMin"
+                id="tbsuperficieMin">
+            <div class="input-group-append">
+                <span *ngIf="classeStandard.typeBiens!='Terrain'||classeStandard.modeOffre==null"
+                    class="input-group-text">m²</span>
+                <span *ngIf="classeStandard.typeBiens=='Terrain'" class="input-group-text">ares</span>
+            </div>
+        </div>
+    </div>
+
+    <h2>Optionnelle</h2>
+    <div>
+    <div class="col-md-6" style="float: left;">
+    <h3>Bien Immobilier : </h3>
+        <select name="bien" class="selectpicker" multiple [(ngModel)]="classeStandard.listeBienImmobilier" >
+            <optgroup label="Achat" >
+                <option *ngFor="let bien of listeBienImmoAchat" value="{{bien}}">{{bien.libelle}}</option>
+            </optgroup>
+            <optgroup label="Location" >
+                <option *ngFor="let bien of listeBienImmoLoc" value="{{bien}}">{{bien.libelle}}</option>
+            </optgroup>
+        </select>
+    </div>
+
+    <div class="col-md-6" style="float: right;" >
+        <h3>Clients Intéressés : </h3>
+            <select name="client" class="selectpicker" multiple [(ngModel)]="classeStandard.listeClients" >
+               
+                <optgroup label="Clients" >
+                    <option *ngFor="let clients of listeClientsAll" value="{{clients}}">{{clients.nom}}</option>
+                </optgroup>
+            </select>
+        </div>
+    </div>
+
+        <div style="margin: 3rem 0 3rem 0;">
+            {{classeStandard.typeBiens}}||{{classeStandard.modeOffre}}||{{classeStandard.prixMax}}||{{classeStandard.superficieMin}}||{{classeStandard.listeClients}}
+        </div>
+
+
+
+
+  
+            <button type="submit" class="btn" style="background-color: #962d21; color:#ededed;">{{(classeStandard.idClasse==null)? 'Ajout' : 'Modification'}}</button>
+     
+
+    </div>
+
+    <div class="form-group">
+        <label for="file">Choose File</label>
+        <input type="file"
+               id="file"
+               (change)="handleFileInput($event.target.files)"
+               >
+    </div>
+    <div>Test
+    <img src="{{test}}" alt="">
+    <p>{{test}}</p>
+</div>
+
+</form>

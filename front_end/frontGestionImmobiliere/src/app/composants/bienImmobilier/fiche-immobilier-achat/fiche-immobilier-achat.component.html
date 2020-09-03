@@ -1,0 +1,113 @@
+<div class="container-fluid">
+    <br>
+    <h1>{{bien.libelle}} 
+        <span *ngIf="bien.caution && !bien.contrat">(à louer)</span>
+        <span *ngIf="bien.caution && bien.contrat">(loué)</span>
+        <span *ngIf="bien.prix && !bien.contrat">(à vendre)</span>
+        <span *ngIf="bien.prix && bien.contrat">(vendu)</span>
+    </h1>
+    <br>
+    <div class="card shadow mb-4" style="width: 95%; margin: auto;"> 
+        <div class="mx-2 my-2">
+            <h3 class="card-title">Informations</h3>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="card" style="width: 100%; margin: 5px;">
+                    <ul class="list-group list-group-flush"  >
+                        <li class="list-group-item">ID : {{bien.idBien}} </li>
+                        <li class="list-group-item">Statut : {{bien.statut}} </li>
+                        <li class="list-group-item">Date de Soumission : {{bien.dateSoumission}} </li>
+                        <li class="list-group-item">Date de mise disposition : {{bien.dateMiseADispo}}</li>
+                        <li class="list-group-item">Revenu cadastral : {{bien.revenuCadastral}} €</li>
+                        <li class="list-group-item">Descriptif : {{bien.descriptif}} </li>
+                      </ul>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="card" style="width: 100%; margin: 5px;">
+                    <ul class="list-group list-group-flush ">
+                        <li class="list-group-item">Classe Standard :
+                            <ul>
+                                <li>
+                                    Type de bien : {{bien.classe.typeBiens}}
+                                </li>
+                                <li>
+                                    Mode d'offre :  {{bien.classe.modeOffre}}
+                                </li>
+                                <li>
+                                    Prix max :  {{bien.classe.prixMax}} €
+                                </li>
+                                <li>
+                                    Surface min :  {{bien.classe.superficieMin}} m²
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="list-group-item" *ngIf="bien.contrat">Contrat : <a href="#">consulter le contrat</a>
+                            <ul>
+                                <li>
+                                    Numéros de contrat :  {{bien.contrat.idContrat}}
+                                </li>
+                                <li>
+                                    Date du contrat : {{bien.contrat.dateAcquisition | date : 'd MMM y' | lowercase}} 
+                                </li>
+                            </ul>
+                           </li>
+                        <li class="list-group-item">Propriétaire : <a href="#">{{bien.proprietaire.nom}}</a></li>
+                        <li class="list-group-item">Adresse : {{bien.adresse.numero}} {{bien.adresse.rue}} {{bien.adresse.codePostal}} {{bien.adresse.codePostal}} {{bien.adresse.localite}} {{bien.adresse.pays}} </li>
+                      </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6" *ngIf="bien.prix">
+                <div class="card" style="width: 100%; margin: 5px;">
+                    <ul class="list-group list-group-flush"  >
+                        <li class="list-group-item">Prix demander : {{bien.prix | number : '1.0-8' }} €</li>
+                        <li class="list-group-item">État : {{bien.etat}} </li>
+                      </ul>
+                </div>
+            </div>
+            <div class="col-6" *ngIf="bien.caution">
+                <div class="card" style="width: 100%; margin: 5px;">
+                    <ul class="list-group list-group-flush"  >
+                        <li class="list-group-item">Caution : {{bien.caution}} €</li>
+                        <li class="list-group-item">Loye : {{bien.loyer}} €</li>
+                        <li class="list-group-item">Charges : {{bien.charges}} €</li>
+                        <li class="list-group-item">Type de bail : {{bien.typeBail}}</li>
+                        <li class="list-group-item">Garniture : {{bien.garniture ? "meublé" : "non meublé"}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+      <!-- //// Table liste des visites -->
+    <div>
+        <h1>Liste des visites</h1>
+    </div>
+            <div class="card shadow mb-4" style="width: 95%; margin: auto;">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card" style="width: 100%; margin: 5px;">
+                            <ul class="list-group list-group-flush"  >
+                                <li class="list-group-item"> 
+                                    <ul>
+                                        <li> IdVisite :  {{bien.visite.idVisite}} </li>
+                                        <li> Date : {{bien.visite.dateVisite | date : 'MMMM d, y, h:mm:ss a z'}} </li>
+                                    </ul>
+                                    </li>
+                            </ul>
+                        </div>
+                    </div>
+                <div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <h1>Liste des clients</h1>
+    </div>
+</div>
+      
+
+        
+
