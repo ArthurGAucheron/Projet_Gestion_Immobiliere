@@ -11,31 +11,34 @@
             </div>
 
             <div class="form-group">
-                <label for="pFonction">dateAcquisition :</label>
-                <input type="text" id="pFonction" class="form-control" [(ngModel)]="contrat.dateAcquisition" name="fonction"/>
+                <label for="pDateAcqui">dateAcquisition :</label>
+                <input type="text" id="pDateAcqui" class="form-control" [(ngModel)]="contrat.dateAcquisition" name="fonction"/>
             </div>
 
             <div class="form-group">
-                <label for="pSalaire">bienImmobilier :</label>
-                <input type="text" id="pSalaire" class="form-control"  [(ngModel)]="contrat.bienImmobilier"  name="salaire"/>
+                <label for="pBienImmo">bienImmobilier :</label>
+                <button type="button" class="btn btn-primary" (click)="choixModeOffre()"> {{modeOffre ? "Location" : "Bien à acheter"}} :</button>
+                <select>
+                    <option *ngFor="let bien of biensImmobilier" id="pBienImmo" [(ngModel)]="contrat.bienImmobilier">{{bien}}</option>
+                </select>
             </div>
 
             <div class="form-group">
                 <label for="pImage">conseiller :</label>
                 <input type="text" id="pImage" class="form-control"  [(ngModel)]="contrat.conseillers" name="urlImage"/>
+                <label for="pConseiller">conseiller :</label>
+                <option *ngFor="let conseiller of conseillers" id="pConseiller" [(ngModel)]="contrat.conseiller">{{conseiller}}</option>
             </div>
 
             <div class="form-group">
-                <label for="pImage">client :</label>
-                <input type="text" id="pImage" class="form-control" [(ngModel)]="contrat.client" name="urlImage"/>
+                <label for="pConseiller">client :</label>
+                <option *ngFor="let client of clients" id="pConseiller" [(ngModel)]="contrat.client">{{client}}</option>
             </div>
 
         </div>
         <div class="panel-footer">
             <button type="submit" class="btn btn-primary">{{contrat.idContrat ? "Modifier" : "Ajouter"}}</button>
         </div>
-        
-
     </div>
 </form>
 
