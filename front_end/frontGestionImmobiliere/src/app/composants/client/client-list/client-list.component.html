@@ -22,8 +22,8 @@
 
         <!-- données de la table -->
         <tbody>
-          <tr *ngFor="let clt of clients">
-            <td><a (click)="selectClient(clt.idClient)">{{clt.nom}}</a></td>
+          <tr *ngFor="let clt of clients" (click)="selectClient(clt.idClient)">
+            <td>{{clt.nom}}</td>
             <td>{{clt.telephone}}</td>
             <td> {{clt.adresse.numero}}, {{clt.adresse.rue}} <br>
               {{clt.adresse.codePostal}} {{clt.adresse.localite}} {{clt.adresse.pays}}
