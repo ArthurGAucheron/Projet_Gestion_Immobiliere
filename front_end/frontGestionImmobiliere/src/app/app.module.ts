@@ -38,9 +38,6 @@ import { DetailsVisiteComponent } from './composants/visite/details-visite/detai
 
 import { ProprietaireCardComponent } from './composants/proprietaire/proprietaire-card/proprietaire-card.component';
 import { FicheImmobilierAchatComponent } from './composants/bienImmobilier/fiche-immobilier-achat/fiche-immobilier-achat.component';
-import { FicheImmobilierLocationComponent } from './composants/bienImmobilier/fiche-immobilier-location/fiche-immobilier-location.component';
-import { CreateImmobilierLocationComponent } from './composants/bienImmobilier/create-immobilier-location/create-immobilier-location.component';
-import { ListeImmobilierLocationComponent } from './composants/bienImmobilier/liste-immobilier-location/liste-immobilier-location.component';
 import { ClientListComponent } from './composants/client/client-list/client-list.component';
 import { ClientCardComponent } from './composants/client/client-card/client-card.component';
 
@@ -72,9 +69,6 @@ import { ClientCardComponent } from './composants/client/client-card/client-card
 
     ProprietaireCardComponent,
     FicheImmobilierAchatComponent,
-    FicheImmobilierLocationComponent,
-    CreateImmobilierLocationComponent,
-    ListeImmobilierLocationComponent,
     ClientListComponent,
     ClientCardComponent
   ],
