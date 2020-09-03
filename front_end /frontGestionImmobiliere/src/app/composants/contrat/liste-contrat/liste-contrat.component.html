@@ -7,7 +7,7 @@
   <div class="card-body">
     <button class="btn btn-primary float-right my-4" (click)=newContrat()>Ajouter un contrat</button>
     <div class="table-responsive">
-      <table datatable class="table table-bordered" id="dataTable" width="80%" cellspacing="0" style="margin: auto;">
+      <table datatable [dtTrigger]="dtTrigger" class="table table-bordered" id="dataTable" width="80%" cellspacing="0" style="margin: auto;">
         <thead class="thead-blue">
 
           <tr style="background-color: #df4937;color:  #333333;">

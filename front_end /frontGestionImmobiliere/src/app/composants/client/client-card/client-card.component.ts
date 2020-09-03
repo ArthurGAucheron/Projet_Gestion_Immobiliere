@@ -53,4 +53,13 @@ export class ClientCardComponent implements OnInit {
     this.router.navigate(["client_list"])
   }
 
+  selectContrat(idContrat : number){
+    this.router.navigate(["contrat_card", idContrat])
+  }
+
+  navigateToDetailsVisite(event : Event, idVisite : number){
+    event.preventDefault();
+    this.router.navigateByUrl("look/visite/"+idVisite);
+  }
+
 }

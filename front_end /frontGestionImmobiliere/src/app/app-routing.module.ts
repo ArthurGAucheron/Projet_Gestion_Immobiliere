@@ -23,6 +23,7 @@ import { ProprietaireCardComponent } from './composants/proprietaire/proprietair
 import { AuthGuardService } from './guards/auth-guard.service';
 import { FicheImmobilierLocationComponent } from './composants/bienImmobilier/fiche-immobilier-location/fiche-immobilier-location.component';
 import { CreateImmobilierLocationComponent } from './composants/bienImmobilier/create-immobilier-location/create-immobilier-location.component';
+import { DetailsVisiteComponent } from './composants/visite/details-visite/details-visite.component';
 
 
 
@@ -30,7 +31,7 @@ const routes: Routes = [
 
    //URLs : gestion des CONTRATS
 
-  {path:"contrat/card/:id", component:DetailsContratComponent},
+  {path:"contrat_card/:id", component:DetailsContratComponent},
   {path:"list/contrat", component:ListeContratComponent},
   {path:"edit/contrat/:id", component:CreateContratComponent},
 
@@ -60,7 +61,7 @@ const routes: Routes = [
 
   {path:"edit/visite/:id", component:CreateVisiteComponent, /* canActivate:[AuthGuardService]*/},
   {path:"list/visite", component:ListeVisiteComponent, /* canActivate:[AuthGuardService]*/},
-  {path:"look/visite/:id", component:DetailsClasseStandardComponent, /* canActivate:[AuthGuardService]*/},
+  {path:"look/visite/:id", component:DetailsVisiteComponent, /* canActivate:[AuthGuardService]*/},
   
 
   {path:"client_card/:id", component:ClientCardComponent, canActivate:[]},

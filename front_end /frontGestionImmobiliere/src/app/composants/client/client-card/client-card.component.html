@@ -52,17 +52,23 @@
         <div class="card shadow card-block mr-4 mb-3" style="min-width: 400px; margin-left: 70px;"
             *ngFor="let contrat of client.contrats">
 
-            <div class="mx-4 my-4">
+            <div class="mx-4 my-4" (click)="selectContrat(contrat.idContrat)"> 
                 <h6>ID contrat :
-                    <a href="contrat/card/:idContrat"> {{contrat.idContrat}} </a>
+                    {{contrat.idContrat}}
                 </h6>
+
+                <h6>Nom bu bien :
+                    {{contrat.bienImmobilier.libelle}}
+                </h6>
+
                 <h6>Prix d'achat :
                     {{contrat.prixAcquisition}} €
                 </h6>
 
                 <h6>Date d'acquisition du bien :
                     {{contrat.dateAcquisition | date : 'd MMMM y' | lowercase}}
-                </h6>
+                </h6>     
+                
             </div>
         </div>
     </div>
@@ -74,10 +80,10 @@
     <div class="d-flex flex-row flex-nowrap overflow-auto">
         <div class="card shadow card-block mr-4 mb-3" style="min-width: 300px; margin-left: 70px;"
             *ngFor="let visite of client.visites">
-            <div class="mx-4 my-4">
+            <div class="mx-4 my-4" (click) = "navigateToDetailsVisite($event, visite.idVisite)">
 
                 <h6> Date visite :
-                    <a href="look/visite/:idVisite"> {{visite.dateVisite | date : 'd MMMM y' | lowercase}} </a>
+                    {{visite.dateVisite | date : 'd MMMM y' | lowercase}} 
                 </h6>
                 <h6> Bien visité :
                    {{visite.bienImmobilier.libelle}} 

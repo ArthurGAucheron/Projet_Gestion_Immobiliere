@@ -73,7 +73,7 @@ public class Client implements Serializable {
 
 	//association avec Contrat : One to Many (un client pour plusieurs contrats)
 	@OneToMany(targetEntity=Contrat.class, mappedBy="client", cascade=CascadeType.REMOVE)
-	@JsonIgnoreProperties(value= {"client","bienImmobilier","conseillers"})
+	@JsonIgnoreProperties(value= {"client","conseillers"})
 	private List<Contrat> contrats;
 
 	/* _______________ ctor ______________ */

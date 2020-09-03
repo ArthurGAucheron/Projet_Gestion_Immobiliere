@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ProprietaireService } from 'src/app/services/propietaire/proprietaire.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-proprietaire-list',
@@ -12,11 +13,17 @@ export class ProprietaireListComponent implements OnInit {
   /*____________ props ___________ */
   proprietaires = [];
   dataTable: any;
+  dtOptions: DataTables.Settings = {};
+  dtTrigger : Subject<any> = new Subject();
 
   /*____________ ctor ___________ */
   constructor(private proprietaireService : ProprietaireService, private router: Router) { }
 
   ngOnInit(): void {
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 20};
+
     this.findAllProprietaire();
   }
 
@@ -26,8 +33,8 @@ export class ProprietaireListComponent implements OnInit {
    */
   findAllProprietaire(){
     this.proprietaireService.getAllProprietaireFromWsRest().subscribe(
-      data => {this.proprietaires = data},
-      error => {console.log(error)})
+      data => {this.proprietaires = data, this.dtTrigger.next()});
+     
   }
 
   /**

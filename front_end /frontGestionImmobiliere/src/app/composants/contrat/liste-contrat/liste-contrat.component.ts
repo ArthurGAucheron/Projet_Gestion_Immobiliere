@@ -13,7 +13,7 @@ export class ListeContratComponent implements OnInit {
   
   // ========= Propriétés ==========
 
-  contrats = [] ;
+    contrats : Contrat[] ;
 
   dtOptions: DataTables.Settings = {};
   dtTrigger : Subject<any> = new Subject();
@@ -55,7 +55,7 @@ export class ListeContratComponent implements OnInit {
   }
 
   selectContrat(idContrat : number){
-    this.router.navigate(["contrat/card", idContrat])
+    this.router.navigate(["contrat_card", idContrat])
   }
   
 }

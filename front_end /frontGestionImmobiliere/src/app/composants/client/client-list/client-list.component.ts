@@ -13,6 +13,7 @@ export class ClientListComponent implements OnInit {
 
   /*____________ props ___________ */
   clients = [];
+ 
   dtTrigger: Subject<any> = new Subject();
 
   /*____________ ctor ___________ */
@@ -44,5 +45,7 @@ export class ClientListComponent implements OnInit {
   newClient(){
     this.router.navigate(["client_edit", 0])
   }
+
+  
 
 }
