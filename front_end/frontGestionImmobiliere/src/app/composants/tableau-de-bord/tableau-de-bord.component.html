@@ -39,11 +39,12 @@
 
 
 <!-- ========================= Rendez-vous du conseiller ======================== -->
-  <div class="card shadow mb-4" style="width: 50%; margin: auto; float: left;">
+<br/><br/>
+  <div class="card shadow mb-4" style="width: 40%; margin: auto; float:left;">
     <div class="card-body">
-      <h3 style="margin-bottom:20px;">Rendez-vous prévus</h3>
+      <h3 style="margin-bottom:20px;">Mes rendez-vous</h3>
       <div class="table-responsive">
-        <table datatable class="row-border hover" [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" width="80%" cellspacing="0" style="margin: auto;">
+        <table datatable class="row-border hover" [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" width="90%" cellspacing="0" style="margin: auto;">
           <thead class="thead-blue">
   
   
@@ -70,7 +71,7 @@
 
   <!-- ========= Liste clients interessés par une classe standard de biens ============ -->
 
-  <div class="card shadow mb-4" style="width: 80%; margin: auto; float: left;">
+  <div class="card shadow mb-4" style="width: 60%; margin: auto;">
     <div class="card-body">
       <h3 style="margin-bottom:20px;">Liste des clients interessés par une classe standard</h3>
 
@@ -109,46 +110,9 @@
     </div>
   </div>
 
-    <!-- ========= Liste clients interessés par une classe standard de biens ============ -->
-    <!--
-    <div class="card shadow mb-4" style="width: 80%; margin: auto;">
-      <div class="card-body">
-        <h3 style="margin-bottom:20px;">Liste des clients interessés par une classe standard</h3>
-        <div class="table-responsive">
-          <table datatable class="row-border hover" [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" width="80%" cellspacing="0" style="margin: auto;">
-            <thead class="thead-blue">
-  
-              <tr style="background-color: #df4937;color:  #333333;">
-                <th scope="col">Nom</th>
-                <th scope="col">Téléphone</th>
-                <th scope="col">Adresse</th>
-                <th scope="col">Classe standard</th>
-              </tr>
-            </thead>
-          -->
-            <!-- données de la table -->
-            <!--
-            <tbody>
-              
-              <tr *ngFor="let clt of clients">
-                <td>{{clt.nom}}</td>
-                <td>{{clt.telephone}}</td>
-                <td> {{clt.adresse.numero}}, {{clt.adresse.rue}} <br>
-                  {{clt.adresse.codePostal}} {{clt.adresse.localite}} {{clt.adresse.pays}}
-                </td> 
-                <td>Code n°{{clt.classesStandard.idClasse}} : {{clt.classesStandard.typeBiens}} {{clt.classesStandard.modeOffre}} ( &lt; {{clt.classesStandard.prixMax}} € et &gt; {{clt.classesStandard.superficieMin}} m²)</td>            
-              </tr>
-              
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-          -->
-
 
     <!-- ========= Liste des biens dispo par classe standard de biens ============ -->
-    <div class="card shadow mb-4" style="width: 80%; margin: auto; float: left;">
+    <div class="card shadow mb-4" style="width: 60%; margin: auto; ">
       <div class="card-body">
         <h3 style="margin-bottom:20px;">Liste des biens disponibles par classe standard</h3>
 
@@ -160,7 +124,7 @@
         
         <div>
 
-          <table width="80%" style="margin: auto;">
+          <table width="80%" style="margin: auto;" cellspacing="0">
            
             <thead class="thead-blue">
   
