@@ -32,7 +32,7 @@
             <td>{{visite.idVisite}}</td>
             <td>{{visite.dateVisite}}</td>
             <td>{{visite.client.nom}}</td>
-            <td>{{visite.conseiller.nom}}</td>
+            <td>{{visite.conseillers.nom}}</td>
             <td>{{visite.bienImmobilier.libelle | bienImmo : visite}}</td>
             <td class="tdCenter"><a href="" (click)="navigateToDetailsVisite($event, visite.idVisite)"><img width="25px" src="../../../../assets/images/search.svg"></a></td>
             <td class="tdCenter"><a href="" (click)="deleteVisite($event,visite)"><img width="25px" src="../../../../assets/images/trash2-fill.svg"></a></td>

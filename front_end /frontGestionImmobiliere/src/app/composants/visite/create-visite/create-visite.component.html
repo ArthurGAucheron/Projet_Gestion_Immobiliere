@@ -12,8 +12,8 @@
 
         <!--Conseiller-->
         <label for="tbConseiller">Conseiller : </label>
-        <select name="conseiller" id="tbConseiller" class="custom-select" [(ngModel)]="visite.conseiller" *ngFor="let conseiller of listeConseiller">
-            <option value="{{conseiller}}">{{conseiller.nom}}</option>
+        <select name="conseiller" id="tbConseiller" class="custom-select" [(ngModel)]="visite.conseillers" *ngFor="let conseiller of listeConseiller">
+            <option value="{{conseiller}}">{{conseillers.nom}}</option>
         </select>
 
         <!--Bien Immobilier-->
@@ -37,7 +37,7 @@
 
 
         <div style="margin: 3rem 0 3rem 0;">
-            {{visite.client}}||{{visite.conseiller}}||{{visite.bienImmobilier}}||{{visite.dateVisite}}
+            {{visite.client}}||{{visite.conseillers}}||{{visite.bienImmobilier}}||{{visite.dateVisite}}
         </div>
 
         

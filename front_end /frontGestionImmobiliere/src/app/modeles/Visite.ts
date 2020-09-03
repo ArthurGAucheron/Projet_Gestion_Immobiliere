@@ -8,6 +8,6 @@ export class Visite{
     idVisite: number;
     dateVisite: Date;
     client: Client;
-    conseiller: ConseillerImmobilier;
+    conseillers: ConseillerImmobilier;
     bienImmobilier : BienLocation | BienAchat;
 }

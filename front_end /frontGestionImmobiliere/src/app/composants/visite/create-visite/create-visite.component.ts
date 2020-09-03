@@ -23,7 +23,7 @@ export class CreateVisiteComponent implements OnInit {
     idVisite: null,
     dateVisite: null,
     client: null,
-    conseiller: null,
+    conseillers: null,
     bienImmobilier: null,
   };
 

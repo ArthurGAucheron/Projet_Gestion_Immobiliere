@@ -1,5 +1,7 @@
 <h1 style="color: #d49625;margin: 1rem 0 2rem 4rem;font-weight: bold;">Listes des contrats</h1>>
 
+{{contrats}}
+
 
 <div class="card shadow mb-4" style="width: 95%; margin: auto;">
   <div class="card-body">
@@ -15,17 +17,19 @@
             <th scope="col">Date d'achat</th>
             <th scope="col">Conseiller</th>
             <th scope="col">Client</th>
+            <th scope="col">Consulter</th>
+            <th scope="col">Supprimer</th>
           </tr>
         </thead>
 
         <!-- données de la table -->
         <tbody>
-          <tr *ngFor="let contrat of contrats">
+          <tr *ngFor="let contrat of contrats" >
             <td>{{contrat.idContrat}}</td>
             <td>{{contrat.prixAcquisition}}</td>
             <td>{{contrat.dateAcquisition}}</td>
             <td>{{contrat.bienImmobilier.libelle}}</td>
-            <td>{{contrat.conseiller.nom}}</td>
+            <td>{{contrat.conseillers.nom}}</td>
             <td>{{contrat.client.nom}}</td>
             <td><button (click)="deleteContrat(contrat.idContrat)">Supprimer</button></td>
             <td><button (click)="updateContrat(contrat.idContrat)">Modifier</button></td>

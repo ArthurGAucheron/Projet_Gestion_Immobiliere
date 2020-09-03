@@ -23,7 +23,7 @@ export class HeaderComponentComponent implements OnInit {
   }
 
   viewContrat(){
-    this.router.navigate(["contrat_list"])
+    this.router.navigate(["list/contrat"])
   }
 
 }

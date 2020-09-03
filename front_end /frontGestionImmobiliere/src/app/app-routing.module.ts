@@ -20,9 +20,7 @@ const routes: Routes = [
 
 
   {path:"list/contrat", component:ListeContratComponent},
-  
   {path:"edit/contrat/:id", component:CreateContratComponent},
-  {path:"contrat_list", component:ListeContratComponent},
 
   {path:"edit/classeStandard/:id", component:CreateClasseStandardComponent,/* canActivate:[AuthGuardService]*/},
   {path:"list/classeStandard", component:ListeClasseStandardComponent, /* canActivate:[AuthGuardService]*/},
@@ -31,8 +29,6 @@ const routes: Routes = [
   {path:"edit/visite/:id", component:CreateVisiteComponent, /* canActivate:[AuthGuardService]*/},
   {path:"list/visite", component:ListeVisiteComponent, /* canActivate:[AuthGuardService]*/},
   {path:"look/visite/:id", component:DetailsClasseStandardComponent, /* canActivate:[AuthGuardService]*/},
-
-  
   
 
   {path:"client_card/:id", component:ClientCardComponent, canActivate:[]},

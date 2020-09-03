@@ -11,7 +11,7 @@ export class ListeContratComponent implements OnInit {
   
   // ========= Propriétés ==========
 
-  contrats : Array<Contrat> = [];
+  contrats = [] ;
 
 
   // ========= Constructeurs ==========
@@ -25,7 +25,7 @@ export class ListeContratComponent implements OnInit {
   }
 
   findAllContrat(){
-    this.contratService.getAllContrat().subscribe(data => this.contrats =data)
+    this.contratService.getAllContrat().subscribe(data => this.contrats = data)
   }
   
   updateContrat(idContrat : number ){
@@ -37,7 +37,7 @@ export class ListeContratComponent implements OnInit {
   }
 
   newContrat(){
-    this.router.navigate(["edit/contrat/:id", 0])
+    this.router.navigate(["edit/contrat/0"])
   }
   
 }
