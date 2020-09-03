@@ -22,7 +22,6 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "classes")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idClasse", scope = Long.class)
 public class ClasseStandard {
 
 	// ______________propriétés______________

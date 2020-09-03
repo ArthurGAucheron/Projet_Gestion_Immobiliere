@@ -32,4 +32,7 @@ export class HeaderComponentComponent implements OnInit {
     this.router.navigate(["list","classeStandard"]).then(() => window.location.reload() );
   }
   
+  viewBiens(){
+    this.router.navigate(["bienImmoAchat/list"]);
+  }
 }

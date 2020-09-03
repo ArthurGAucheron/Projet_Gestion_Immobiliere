@@ -2,7 +2,7 @@ import { BienImmobilier } from "./BienImmobilier";
 
 export class BienAchat extends BienImmobilier{
 
-    prixDemande : Number;
+    prix : Number;
     etat : String;
 
 

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Client } from 'src/app/modeles/Client';
 import { ClientService } from 'src/app/services/client/client.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-client-list',
@@ -12,6 +13,7 @@ export class ClientListComponent implements OnInit {
 
   /*____________ props ___________ */
   clients = [];
+  dtTrigger: Subject<any> = new Subject();
 
   /*____________ ctor ___________ */
   constructor(private clientService : ClientService, private router: Router) { }
@@ -25,7 +27,10 @@ export class ClientListComponent implements OnInit {
    * permet de recuperer tout les clients via le service
    */
   findAllClients(){
-    this.clientService.getAllClientFromWsRest().subscribe(data => this.clients = data)
+    this.clientService.getAllClientFromWsRest().subscribe(
+      data => {this.clients = data;
+               this.dtTrigger.next();
+      })
   }
 
   /**
