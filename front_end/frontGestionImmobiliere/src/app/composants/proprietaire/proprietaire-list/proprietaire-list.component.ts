@@ -1,6 +1,7 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProprietaireService } from 'src/app/services/propietaire/proprietaire.service';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-proprietaire-list',
@@ -11,7 +12,7 @@ export class ProprietaireListComponent implements OnInit {
 
   /*____________ props ___________ */
   proprietaires = [];
-  dataTable: any;
+  dtTrigger: Subject<any> = new Subject();
 
   /*____________ ctor ___________ */
   constructor(private proprietaireService : ProprietaireService, private router: Router) { }
@@ -20,13 +21,18 @@ export class ProprietaireListComponent implements OnInit {
     this.findAllProprietaire();
   }
 
+  ngOnDestroy() : void{
+    this.dtTrigger.unsubscribe();
+  }
 
   /**
    * permet de recuperer tous les propriétaire via le service
    */
   findAllProprietaire(){
     this.proprietaireService.getAllProprietaireFromWsRest().subscribe(
-      data => {this.proprietaires = data},
+      data => {this.proprietaires = data;
+               this.dtTrigger.next();
+      },
       error => {console.log(error)})
   }
 

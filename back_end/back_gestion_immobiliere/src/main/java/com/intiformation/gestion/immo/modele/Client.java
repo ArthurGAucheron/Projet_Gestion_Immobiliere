@@ -34,7 +34,6 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
  */
 @Entity
 @Table(name = "clients")
-//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idClient", scope = Long.class)
 public class Client implements Serializable {
 
 	/* _______________ propriétés ______________ */
@@ -52,7 +51,7 @@ public class Client implements Serializable {
 	// +++++++ associations +++++++++
 	// association avec Adresse : Many to One (plusieurs clients pour une adresse)
 	@ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE})
-	@JoinColumn(name = "adresse_id", referencedColumnName = "id_adresse",updatable=true)
+	@JoinColumn(name = "adresse_id", referencedColumnName = "id_adresse")
 	private Adresse adresse;
 
 	@ManyToMany
