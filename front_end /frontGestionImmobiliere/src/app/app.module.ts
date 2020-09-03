@@ -39,6 +39,7 @@ import { DetailsVisiteComponent } from './composants/visite/details-visite/detai
 import { ProprietaireCardComponent } from './composants/proprietaire/proprietaire-card/proprietaire-card.component';
 import { ClientListComponent } from './composants/client/client-list/client-list.component';
 import { ClientCardComponent } from './composants/client/client-card/client-card.component';
+import { TableauDeBordComponent } from './composants/tableau-de-bord/tableau-de-bord.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { ClientCardComponent } from './composants/client/client-card/client-card
 
     ProprietaireCardComponent,
     ClientListComponent,
-    ClientCardComponent
+    ClientCardComponent,
+    TableauDeBordComponent
   ],
   imports: [
     BrowserModule,
