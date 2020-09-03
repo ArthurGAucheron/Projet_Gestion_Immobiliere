@@ -43,7 +43,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @DiscriminatorColumn(
 	    name="type",
 	    discriminatorType=DiscriminatorType.STRING)
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idBien", scope = Long.class)
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idBien", scope = Long.class)
 public abstract class BienImmobilier implements Serializable {
 
 	
@@ -84,7 +84,6 @@ public abstract class BienImmobilier implements Serializable {
 	private String descriptif;
 
 	@ManyToOne
-	@JsonIgnoreProperties(value= {"biensImmobilier"})
 	@JoinColumn(name="classe_id", referencedColumnName="id_classe")
 	@JsonIgnoreProperties(value= {"biensImmobilier"})
 	private ClasseStandard classe;

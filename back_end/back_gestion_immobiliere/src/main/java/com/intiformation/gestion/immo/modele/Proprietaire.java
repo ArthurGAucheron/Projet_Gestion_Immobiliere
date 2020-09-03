@@ -38,7 +38,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
  */
 @Entity
 @Table(name="proprietaires")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idProprietaire", scope = Long.class)
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idProprietaire", scope = Long.class)
 public class Proprietaire implements Serializable {
 
 

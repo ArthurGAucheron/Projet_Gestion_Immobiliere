@@ -22,10 +22,14 @@ import { ProprietaireCardComponent } from './composants/proprietaire/proprietair
 import { AuthGuardService } from './guards/auth-guard.service';
 import { FicheImmobilierLocationComponent } from './composants/bienImmobilier/fiche-immobilier-location/fiche-immobilier-location.component';
 import { CreateImmobilierLocationComponent } from './composants/bienImmobilier/create-immobilier-location/create-immobilier-location.component';
+import { TableauDeBordComponent } from './composants/tableau-de-bord/tableau-de-bord.component';
 
 
 
 const routes: Routes = [
+
+   //URLs : tableau de bord
+   {path:"welcome", component:TableauDeBordComponent},
 
    //URLs : gestion des CONTRATS
 

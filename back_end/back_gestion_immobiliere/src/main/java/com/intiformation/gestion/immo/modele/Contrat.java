@@ -27,7 +27,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
  */
 @Entity
 @Table(name="contrats")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idContrat", scope = Long.class)
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idContrat", scope = Long.class)
 public class Contrat {
 	
 	////// PROP //////
