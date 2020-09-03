@@ -10,12 +10,12 @@ export class BienImmobilier{
     idBien : number;
     libelle : String;
     statut : String;
-    dateSoummission : any;
+    dateSoumission : any;
     dateMiseADispo : any;
     revenuCadastral : number;
     descriptif : String;
+    classe : ClasseStandard;
     photo : string;
-    classeStandard : ClasseStandard;
     visites : Array<Visite>;
     contrat : Contrat;
     proprietaire : Proprietaire;

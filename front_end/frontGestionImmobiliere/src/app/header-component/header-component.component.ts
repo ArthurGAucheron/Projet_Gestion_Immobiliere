@@ -22,4 +22,7 @@ export class HeaderComponentComponent implements OnInit {
     this.router.navigate(["client_list"])
   }
 
+  viewBiens(){
+    this.router.navigate(["bienImmoAchat/list"]);
+  }
 }
