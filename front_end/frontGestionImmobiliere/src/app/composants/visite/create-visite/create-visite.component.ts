@@ -22,10 +22,14 @@ export class CreateVisiteComponent implements OnInit {
   visite: Visite = {
     idVisite: null,
     dateVisite: null,
-    client: new Client,
-    conseillers: new ConseillerImmobilier,
+    client: null,
+    conseillers: null,
     bienImmobilier: null,
   };
+
+  idBien :number=0;
+  idConseiller:number = 0;
+  idClient ;number = 0;
 
   listeClient: Array<Client>;
   listeConseiller:Array<ConseillerImmobilier>;
@@ -60,9 +64,16 @@ export class CreateVisiteComponent implements OnInit {
     this.bienImmoService.getAllAchat().subscribe(liste=>this.listeBien=liste);
   }
 
+
+
   saveOrUpdateVisite(){
     console.log(this.visite)
     if (this.visite.idVisite==null) {
+      this.clientService.findClientByIdFromWsRest(this.idClient).subscribe(data=>this.visite.client=data);
+      this.conseillerService.findConseillerByIdFromWsRest(this.idConseiller).subscribe(data=>this.visite.conseillers=data);
+      this.bienImmoService.getAchatById(this.idBien).subscribe(data=>this.visite.bienImmobilier=data);
+
+      console.log(this.visite);
       this.visiteService.ajouterVisiteViaWsRest(this.visite).subscribe();
     } else {
       this.visiteService.modifierVisiteViaWsRest(this.visite).subscribe();

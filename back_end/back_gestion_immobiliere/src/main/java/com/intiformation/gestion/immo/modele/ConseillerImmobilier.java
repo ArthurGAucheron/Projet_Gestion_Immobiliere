@@ -11,15 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.SQLUpdate;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIdentityReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 
 /**
  * Classe mappé à partie la table ConseillerImmobilier de la bdd <br/>

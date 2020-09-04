@@ -2,7 +2,6 @@ package com.intiformation.gestion.immo.webservice;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.intiformation.gestion.immo.dao.BienImmobilierRepository;
-import com.intiformation.gestion.immo.modele.Adresse;
 import com.intiformation.gestion.immo.modele.BienImmobilier;
 
 /**

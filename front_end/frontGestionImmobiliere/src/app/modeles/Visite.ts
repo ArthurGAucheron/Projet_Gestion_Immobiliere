@@ -10,4 +10,5 @@ export class Visite{
     client: Client;
     conseillers: ConseillerImmobilier;
     bienImmobilier : BienLocation | BienAchat;
+
 }

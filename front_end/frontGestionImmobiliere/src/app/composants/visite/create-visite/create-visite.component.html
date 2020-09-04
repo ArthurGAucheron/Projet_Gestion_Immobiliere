@@ -6,24 +6,28 @@
 
         <!--Client-->
         <label for="tbClient">Client : </label>
-        <select name="client" id="tbClient" class="custom-select" [(ngModel)]="visite.client">
-            <option *ngFor="let client of listeClient" value="{{client}}">{{client.nom}}</option>
+        <select name="client" id="tbClient" class="custom-select" [(ngModel)]="idClient">
+            <option *ngFor="let client of listeClient" value="{{client.idClient}}">{{client.nom}}</option>
         </select>
 
         <!--Conseiller-->
         <label for="tbConseiller">Conseiller : </label>
-        <select name="conseiller" id="tbConseiller" class="custom-select" [(ngModel)]="visite.conseillers" >
-            <option *ngFor="let conseiller of listeConseiller" value="{{conseiller}}">{{conseiller.nom}}</option>
+        <select name="conseiller" id="tbConseiller" class="custom-select" [(ngModel)]="idConseiller" >
+            <option *ngFor="let conseiller of listeConseiller" value="{{conseiller.idConseiller}}">{{conseiller.nom}}</option>
         </select>
 
         <!--Bien Immobilier-->
         <h4>Bien Immobilier : </h4>
-        <select name="bien" id="tbBien" class="custom-select" [(ngModel)]="visite.bienImmobilier" >
+        <select name="bien" id="tbBien" class="custom-select" [(ngModel)]="idBien" >
             <optgroup label="Achat" >
-                <option *ngFor="let bien of listeBien" value="{{bien}}">{{bien.libelle}}</option>
+                <ng-template ngFor let-bien [ngForOf]="listeBien">
+                    <option *ngIf="bien.statut=='à vendre'" value="{{bien.idBien}}">{{bien.libelle}}</option>
+                </ng-template>           
             </optgroup>
             <optgroup label="Location" >
-                <option *ngFor="let bien of listeBien" value="{{bien}}">{{bien.libelle}}</option>
+                <ng-template ngFor let-bien [ngForOf]="listeBien">
+                    <option *ngIf="bien.statut=='à louer'" value="{{bien.idBien}}">{{bien.libelle}}</option>
+                </ng-template>
             </optgroup>
         </select>
 
