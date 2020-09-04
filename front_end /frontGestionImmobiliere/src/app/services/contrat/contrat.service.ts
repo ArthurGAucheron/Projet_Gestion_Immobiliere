@@ -25,7 +25,7 @@ export class ContratService {
   }
 
   getContratById(idContrat : number):Observable<Contrat>{
-    return this.httpClient.get<Contrat>(`${this.WS_REST_URL}/getById/${idContrat}`);
+    return this.httpClient.get<Contrat>(`${this.WS_REST_URL}/get-by-id/${idContrat}`);
   }
 
   updateContrat(pContrat : Contrat):Observable<void>{

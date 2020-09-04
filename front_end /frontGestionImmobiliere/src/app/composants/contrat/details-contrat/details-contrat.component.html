@@ -6,7 +6,7 @@
 
     <div class="mx-4 my-4" >
         <h3 class="card-title" >
-            Contrat de {{contrats.idContrat}} 
+            Contrat de  {{contrats.idContrat}}
         </h3>
         <!--tel1-->
         <div style="float: left;" class="mx-5" >
@@ -22,7 +22,8 @@
             <!--adresse-->
             <div>
                 <h5 class="card-subtitle" > Info contrat : </h5>
-                {{contrats.prixAcquisition}}, {{contrats.dateAcquisition}} <br>
+                {{contrats.prixAcquisition}}, 
+                {{contrats.dateAcquisition | date : 'd MMMM y' | lowercase }} <br>
 
             </div>
         </div>
