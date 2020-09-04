@@ -98,6 +98,30 @@ export class TableauDeBordComponent implements OnDestroy, OnInit {
     this.bienService.getAllBienByConseiller(pIdConseiller).subscribe(data => this.biensConseiller = data);
   }
 
+  /**
+   * permet de naviguer vers la fiche d'un client
+   * @param idClient id du client selectionné
+   */
+  selectClient(idClient: number){
+    this.router.navigate(["client_card", idClient])
+  }
+
+    /**
+   * permet de naviguer vers la fiche d'un bien
+   * @param idBien id du bien selectionné
+   */
+  selectBien(idBien: number){
+    this.router.navigate(['bienImmoAchat/fiche',idBien]);
+   }
+
+       /**
+   * permet de naviguer vers la fiche d'une visite
+   * @param idVisite de la visite selectionné
+   */
+  selectVisite(idVisite: number){
+    this.router.navigateByUrl("look/visite/"+idVisite);
+   }
+
   ngOnDestroy(): void {
     // Do not forget to unsubscribe the event
     this.dtTrigger.unsubscribe();

@@ -147,7 +147,7 @@ public class ClientWSRestSpringWS {
 	 * 
 	 */
 	
-	@RequestMapping(value="/get-by-classe-standard/{id}", method=RequestMethod.GET)
+	@RequestMapping(value="/get-by-classe/{id}", method=RequestMethod.GET)
 	public List<Client> listClientsByClass(@PathVariable("id") Long pIdClasse) {
 				
 		return clientRepository.findClientsByClasse(pIdClasse);

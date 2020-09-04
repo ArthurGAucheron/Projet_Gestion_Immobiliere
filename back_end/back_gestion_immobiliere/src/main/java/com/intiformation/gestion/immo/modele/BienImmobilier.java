@@ -96,7 +96,7 @@ public abstract class BienImmobilier implements Serializable {
 	 */
 
 	@OneToOne(mappedBy="bienImmobilier", cascade=CascadeType.REMOVE)
-	@JoinColumn(name="bien_id", referencedColumnName="id_bien")
+	//@JoinColumn(name="bien_id", referencedColumnName="id_bien")
 	@JsonIgnoreProperties(value= {"bienImmobilier"})	
 	private Contrat contrat;
 	

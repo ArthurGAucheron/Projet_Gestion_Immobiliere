@@ -9,10 +9,11 @@
           <thead class="thead-blue">
   
   
-            <tr style="background-color: #df4937;color:  #333333;">
+            <tr style="background-color: #e6de79;color:  #333333;">
               <th scope="col">Date de visite</th>
               <th scope="col">Client</th>
               <th scope="col">Bien Immobilier</th>
+              <th scope="col"></th>
             </tr>
           </thead>
   
@@ -21,7 +22,8 @@
             <tr *ngFor="let visite of visites">
               <td>{{visite.dateVisite | date:'d/MM/y H:mm'}}</td>
               <td>{{visite.client.nom}}</td>
-              <td>N°{{visite.bienImmobilier.idBien}} : {{visite.bienImmobilier.libelle}} </td>           
+              <td>N°{{visite.bienImmobilier.idBien}} : {{visite.bienImmobilier.libelle}} </td> 
+              <td><button type="button" class="btn btn-outline-secondary btn-sm" (click)="selectVisite(visite.idVisite)">Consulter</button></td>                     
             </tr>
           </tbody>
           
@@ -32,17 +34,17 @@
 
   
 <!-- ========================= Bien acquis sous le conseiller ======================== -->
-<div class="card shadow mb-4" style="width: 50%; margin: auto;">
+<div class="card shadow mb-4" style="width: 55%; margin: auto;">
   <div class="card-body">
     <h3 style="margin-bottom:20px;">Biens acquis sous ma responsabilité</h3>
     <div>
-      <table width="80%" cellspacing="0" style="margin: auto;">
+      <table class="table" width="90%" cellspacing="0" style="margin: auto; text-indent: 15px;">
         <thead class="thead-blue">
 
-          <tr style="background-color: #df4937;color:  #333333;">
-            <th scope="col">Id Bien</th>
-            <th scope="col">Id Libelle</th>
-            <th scope="col">Id Client</th>
+          <tr style="background-color: #e2b34dfa;color:  #333333; ">
+            <th scope="col">Bien immobilier</th>
+            <th scope="col">Client</th>
+            <th scope="col"></th>
           </tr>
         </thead>
       
@@ -50,9 +52,9 @@
 
         <tbody>
           <tr *ngFor="let bien of biensConseiller" >
-            <td>{{bien.idBien}}</td>
-            <td>{{bien.libelle}}</td>
-            <td>{{bien.contrat.client.idClient}}</td>
+            <td>N°{{bien.idBien}} : {{bien.libelle}} </td>
+            <td>{{bien.contrat.client.nom}} (id = {{bien.contrat.client.idClient}})</td>
+            <td><button type="button" class="btn btn-outline-secondary btn-sm" (click)="selectBien(bien.idBien)">Consulter</button></td>           
           </tr>
         </tbody>
         
@@ -74,12 +76,13 @@
       </div>
 
       <div class="table-responsive">
-        <table width="80%" cellspacing="0" style="margin: auto;">
+        <table class="table" width="90%" cellspacing="0" style="margin: auto; text-indent: 15px;">
           <thead class="thead-blue">
-            <tr style="background-color: #df4937;color:  #333333;">
+            <tr style="background-color: #e79055;color:  #333333;">
               <th scope="col">Nom</th>
               <th scope="col">Téléphone</th>
               <th scope="col">Adresse</th>
+              <th scope="col"></th>
             </tr>
           </thead>
 
@@ -92,7 +95,8 @@
               <td>{{clt.telephone}}</td>
               <td> {{clt.adresse.numero}}, {{clt.adresse.rue}} <br>
                 {{clt.adresse.codePostal}} {{clt.adresse.localite}} {{clt.adresse.pays}}
-              </td>             
+              </td>  
+              <td><button type="button" class="btn btn-outline-secondary btn-sm" (click)="selectClient(clt.idClient)">Consulter</button></td>           
             </tr>
             
           </tbody>
@@ -116,15 +120,15 @@
         
         <div>
 
-          <table width="80%" style="margin: auto;" cellspacing="0">
+          <table class="table" width="90%" style="margin: auto; text-indent: 15px;" cellspacing="0">
            
             <thead class="thead-blue">
   
-              <tr style="background-color: #df4937;color:  #333333;">
-                <th scope="col">Id</th>
-                <th scope="col">Libellé</th>
+              <tr style="background-color: #e79055;color:  #333333;">
+                <th scope="col">Bien immobilier</th>
                 <th scope="col">Adresse</th>
                 <th scope="col">Propriétaire</th>
+                <th scope="col"></th>
               </tr>
             </thead>
     
@@ -132,13 +136,12 @@
             <tbody>
               
               <tr *ngFor="let bien of biens">
-                <td>{{bien.idBien}}</td>
-                <td>{{bien.libelle}}</td>
+                <td>N°{{bien.idBien}} : {{bien.libelle}} </td>
                 <td> {{bien.adresse.numero}}, {{bien.adresse.rue}} <br>
                   {{bien.adresse.codePostal}} {{bien.adresse.localite}} {{bien.adresse.pays}}
                 </td> 
                 <td>{{bien.proprietaire.nom}}</td>            
-      <!--          <td><button (click)="goToFicheBien(bien.idBien)">Consulter</button></td>    -->
+                <td><button type="button" class="btn btn-outline-secondary btn-sm" (click)="selectBien(bien.idBien)">Consulter</button></td>           
               </tr>
               
             </tbody>
