@@ -55,8 +55,8 @@
         </div>
 
         <h2>Optionnelle</h2>
-        <div>
-            <div class="col-md-6" style="float: left;">
+        <div >
+            <div class="col-md-6" style="float: left;margin-bottom: 3rem;">
                 <h3>Bien Immobilier : </h3>
                 <select name="bien" class="form-control" multiple [(ngModel)]="classeStandard.biensImmobilier">
                     <optgroup *ngIf="classeStandard.modeOffre=='Achat'" label="Achat">
@@ -72,7 +72,7 @@
                 </select>
             </div>
 
-            <div class="col-md-6" style="float: right;">
+            <div class="col-md-6" style="float: right;margin-bottom: 3rem;">
                 <h3>Clients Intéressés : </h3>
                 <select name="client" class="form-control " multiple [(ngModel)]="classeStandard.clients">
                     <optgroup label="Clients">
@@ -83,29 +83,14 @@
             </div>
         </div>
        
-        <div style="margin: 3rem 0 3rem 0;">
-            Test {{listeClientsAll}} Test
-            {{classeStandard.typeBiens}}||{{classeStandard.modeOffre}}||{{classeStandard.prixMax}}||{{classeStandard.superficieMin}}||{{classeStandard.clients}}
-        </div>
-
-
-
-
-
         <button type="submit" class="btn"
             style="background-color: #962d21; color:#ededed;">{{(classeStandard.idClasse==null)? 'Ajout' : 'Modification'}}</button>
-
 
     </div>
 
     <div class="form-group">
         <label for="file">Choose File</label>
         <input type="file" id="file" (change)="handleFileInput($event.target.files)">
-    </div>
-    
-    <div>Test
-        <img src="{{test}}">
-        <p>{{test}}</p>
     </div>
 
 </form>
