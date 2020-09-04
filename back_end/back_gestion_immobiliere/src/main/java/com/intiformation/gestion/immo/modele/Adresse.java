@@ -5,10 +5,12 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.PreRemove;
 import javax.persistence.Table;
 
 
@@ -52,9 +54,10 @@ public class Adresse implements Serializable {
 	
 	//+++++++ associations +++++++++
 	//association avec Propriétaire : One to Many (une adresse pour plusieurs propriétaires)
-	@OneToMany(targetEntity=Proprietaire.class, mappedBy="adresse")
+	@OneToMany(targetEntity=Proprietaire.class, mappedBy="adresse",cascade={CascadeType.REFRESH, CascadeType.MERGE})
 	@JsonIgnore
 	private List<Proprietaire> proprietaires;
+	
 	
 	//association avec Client : One to Many (une adresse pour plusieurs clients)
 	@OneToMany(targetEntity=Client.class, mappedBy="adresse")

@@ -14,6 +14,10 @@ export class HeaderComponentComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  viewWelcome(){
+    this.router.navigate(["welcome"])
+  }
+
   viewProprietaire(){
     this.router.navigate(["proprietaire_list"])
   }

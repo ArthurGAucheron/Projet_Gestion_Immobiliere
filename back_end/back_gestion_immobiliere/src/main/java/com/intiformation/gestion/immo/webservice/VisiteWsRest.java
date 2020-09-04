@@ -128,4 +128,14 @@ public class VisiteWsRest {
 
 	}// END MEHTODE
 
+	/**
+	 * méthode exposée dans le ws rest pour récupérer les visites d'un conseiller via son id, renvoie la
+	 * liste des visites en JSON invoquée avec une requete HTTP en GET
+	 */
+	@RequestMapping(value = "/get-rendez-vous/{id}", method = RequestMethod.GET)
+	public List<Visite> getVisiteByIdConseiller(@PathVariable("id") Long pIdConseiller) {
+
+		return visiteRepository.findVisiteByIdConseiller(pIdConseiller);
+
+	}// END MEHTODE
 }

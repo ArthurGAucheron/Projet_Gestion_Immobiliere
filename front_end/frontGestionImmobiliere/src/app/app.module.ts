@@ -43,6 +43,7 @@ import { CreateImmobilierLocationComponent } from './composants/bienImmobilier/c
 import { ListeImmobilierLocationComponent } from './composants/bienImmobilier/liste-immobilier-location/liste-immobilier-location.component';
 import { ClientListComponent } from './composants/client/client-list/client-list.component';
 import { ClientCardComponent } from './composants/client/client-card/client-card.component';
+import { TableauDeBordComponent } from './composants/tableau-de-bord/tableau-de-bord.component';
 
  
 
@@ -78,7 +79,8 @@ import { ClientCardComponent } from './composants/client/client-card/client-card
     CreateImmobilierLocationComponent,
     ListeImmobilierLocationComponent,
     ClientListComponent,
-    ClientCardComponent
+    ClientCardComponent,
+    TableauDeBordComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
 package com.intiformation.gestion.immo.modele;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -22,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  */
 @Entity
 @Table(name="contrats")
-public class Contrat {
+public class Contrat implements Serializable  {
 	
 	////// PROP //////
 	@Id

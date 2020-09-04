@@ -1,5 +1,6 @@
 package com.intiformation.gestion.immo.modele;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -18,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "classes")
-public class ClasseStandard {
+public class ClasseStandard implements Serializable {
 
 	// ______________propriétés______________
 

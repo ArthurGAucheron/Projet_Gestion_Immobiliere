@@ -1,0 +1,155 @@
+<br/><br/>
+
+<!-- ========================= Rendez-vous du conseiller ======================== -->
+  <div class="card shadow mb-4" style="width: 40%; margin: auto; margin-left:20px; float:left;">
+    <div class="card-body">
+      <h3 style="margin-bottom:20px;">Mes rendez-vous</h3>
+      <div class="table-responsive">
+        <table datatable class="row-border hover" [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" width="90%" cellspacing="0" style="margin: auto;">
+          <thead class="thead-blue">
+  
+  
+            <tr style="background-color: #e6de79;color:  #333333;">
+              <th scope="col">Date de visite</th>
+              <th scope="col">Client</th>
+              <th scope="col">Bien Immobilier</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+  
+          <!-- données de la table -->
+          <tbody>
+            <tr *ngFor="let visite of visites">
+              <td>{{visite.dateVisite | date:'d/MM/y H:mm'}}</td>
+              <td>{{visite.client.nom}}</td>
+              <td>N°{{visite.bienImmobilier.idBien}} : {{visite.bienImmobilier.libelle}} </td> 
+              <td><button type="button" class="btn btn-outline-secondary btn-sm" (click)="selectVisite(visite.idVisite)">Consulter</button></td>                     
+            </tr>
+          </tbody>
+          
+        </table>
+      </div>
+    </div>
+  </div>
+
+  
+<!-- ========================= Bien acquis sous le conseiller ======================== -->
+<div class="card shadow mb-4" style="width: 55%; margin: auto;">
+  <div class="card-body">
+    <h3 style="margin-bottom:20px;">Biens acquis sous ma responsabilité</h3>
+    <div>
+      <table class="table" width="90%" cellspacing="0" style="margin: auto; text-indent: 15px;">
+        <thead class="thead-blue">
+
+          <tr style="background-color: #e2b34dfa;color:  #333333; ">
+            <th scope="col">Bien immobilier</th>
+            <th scope="col">Client</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+      
+        <!-- données de la table -->
+
+        <tbody>
+          <tr *ngFor="let bien of biensConseiller" >
+            <td>N°{{bien.idBien}} : {{bien.libelle}} </td>
+            <td>{{bien.contrat.client.nom}} (id = {{bien.contrat.client.idClient}})</td>
+            <td><button type="button" class="btn btn-outline-secondary btn-sm" (click)="selectBien(bien.idBien)">Consulter</button></td>           
+          </tr>
+        </tbody>
+        
+      </table>
+    </div>
+  </div>
+</div>
+
+  <!-- ========= Liste clients interessés par une classe standard de biens ============ -->
+
+  <div class="card shadow mb-4" style="width: 80%; margin: auto;">
+    <div class="card-body">
+      <h3 style="margin-bottom:20px;">Liste des clients interessés par une classe standard</h3>
+
+      <div class="form-group">
+        <select class="form-control" (change)="findAllClientsByIdClasse($event.target.value)">
+          <option *ngFor="let classe of classesClients" [value]="classe.idClasse">Code n°{{classe.idClasse}} : {{classe.typeBiens}} {{classe.modeOffre}} ( &lt; {{classe.prixMax}} € et &gt; {{classe.superficieMin}} m²)</option>
+        </select>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table" width="90%" cellspacing="0" style="margin: auto; text-indent: 15px;">
+          <thead class="thead-blue">
+            <tr style="background-color: #e79055;color:  #333333;">
+              <th scope="col">Nom</th>
+              <th scope="col">Téléphone</th>
+              <th scope="col">Adresse</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+
+          <!-- données de la table -->
+   
+          <tbody>
+            
+            <tr *ngFor="let clt of clientsByClasse">
+              <td>{{clt.nom}}</td>
+              <td>{{clt.telephone}}</td>
+              <td> {{clt.adresse.numero}}, {{clt.adresse.rue}} <br>
+                {{clt.adresse.codePostal}} {{clt.adresse.localite}} {{clt.adresse.pays}}
+              </td>  
+              <td><button type="button" class="btn btn-outline-secondary btn-sm" (click)="selectClient(clt.idClient)">Consulter</button></td>           
+            </tr>
+            
+          </tbody>
+          
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+    <!-- ========= Liste des biens dispo par classe standard de biens ============ -->
+    <div class="card shadow mb-4" style="width: 80%; margin: auto; ">
+      <div class="card-body">
+        <h3 style="margin-bottom:20px;">Liste des biens disponibles par classe standard</h3>
+
+        <div class="form-group">
+          <select class="form-control" (change)="findAllBiensByClasseStandard($event.target.value)">        
+            <option *ngFor="let classe of classesBiens" [value]="classe.idClasse">Code n°{{classe.idClasse}} : {{classe.typeBiens}} {{classe.modeOffre}} ( &lt; {{classe.prixMax}} € et &gt; {{classe.superficieMin}} m²)</option>
+          </select>
+        </div>
+        
+        <div>
+
+          <table class="table" width="90%" style="margin: auto; text-indent: 15px;" cellspacing="0">
+           
+            <thead class="thead-blue">
+  
+              <tr style="background-color: #e79055;color:  #333333;">
+                <th scope="col">Bien immobilier</th>
+                <th scope="col">Adresse</th>
+                <th scope="col">Propriétaire</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+    
+            <!-- données de la table -->
+            <tbody>
+              
+              <tr *ngFor="let bien of biens">
+                <td>N°{{bien.idBien}} : {{bien.libelle}} </td>
+                <td> {{bien.adresse.numero}}, {{bien.adresse.rue}} <br>
+                  {{bien.adresse.codePostal}} {{bien.adresse.localite}} {{bien.adresse.pays}}
+                </td> 
+                <td>{{bien.proprietaire.nom}}</td>            
+                <td><button type="button" class="btn btn-outline-secondary btn-sm" (click)="selectBien(bien.idBien)">Consulter</button></td>           
+              </tr>
+              
+            </tbody>
+            
+          </table>
+        </div>
+      </div>
+    </div>
+
+
+    

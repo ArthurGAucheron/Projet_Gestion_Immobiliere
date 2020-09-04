@@ -37,4 +37,8 @@ export class ClientService {
   modifierClientViaWsRest(client : Client) : Observable<void>{
     return this.httpClient.put<void>(`${this.WS_REST_BASE_URL}/update/${client.idClient}`, client);
   }
+
+  findClientByIdClasseViaWsRest(idClasse : number) : Observable<Client[]>{
+    return this.httpClient.get<Client[]>(`${this.WS_REST_BASE_URL}/get-by-classe/${idClasse}`);
+  }
 }

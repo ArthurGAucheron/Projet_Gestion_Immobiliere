@@ -22,6 +22,7 @@ import { ProprietaireCardComponent } from './composants/proprietaire/proprietair
 import { AuthGuardService } from './guards/auth-guard.service';
 import { FicheImmobilierLocationComponent } from './composants/bienImmobilier/fiche-immobilier-location/fiche-immobilier-location.component';
 import { CreateImmobilierLocationComponent } from './composants/bienImmobilier/create-immobilier-location/create-immobilier-location.component';
+import { TableauDeBordComponent } from './composants/tableau-de-bord/tableau-de-bord.component';
 
 
 
@@ -29,6 +30,9 @@ import{ListeAllClasseStandardService} from './services/Resolver/liste-all-classe
 import { DetailsVisiteComponent } from './composants/visite/details-visite/details-visite.component';
 
 const routes: Routes = [
+
+   //URLs : tableau de bord
+   {path:"welcome", component:TableauDeBordComponent},
 
    //URLs : gestion des CONTRATS
 
@@ -70,13 +74,13 @@ const routes: Routes = [
   
   
 
-  {path:"client_card/:id", component:ClientCardComponent, canActivate:[]},
-  {path:"client_edit/:id", component:ClientCreateComponent, canActivate:[]},
-  {path:"client_list", component:ClientListComponent, canActivate:[]},
+  {path:"client_card/:id", component:ClientCardComponent, /*canActivate:[]*/},
+  {path:"client_edit/:id", component:ClientCreateComponent,/*canActivate:[]*/},
+  {path:"client_list", component:ClientListComponent, /*canActivate:[]*/},
 
-  {path:"proprietaire_card/:id", component:ProprietaireCardComponent, canActivate:[]},
-  {path:"proprietaire_edit/:id", component:ProprietaireCreateComponent, canActivate:[]},
-  {path:"proprietaire_list", component:ProprietaireListComponent, canActivate:[]},
+  {path:"proprietaire_card/:id", component:ProprietaireCardComponent, /*canActivate:[]*/},
+  {path:"proprietaire_edit/:id", component:ProprietaireCreateComponent, /*canActivate:[]*/},
+  {path:"proprietaire_list", component:ProprietaireListComponent, /*canActivate:[]*/},
 ];
 
 

@@ -1,5 +1,6 @@
 package com.intiformation.gestion.immo.webservice;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,7 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.intiformation.gestion.immo.dao.ClasseStandardRepository;
 import com.intiformation.gestion.immo.dao.ClientRepository;
+import com.intiformation.gestion.immo.dao.ContratRepository;
+import com.intiformation.gestion.immo.dao.VisiteRepository;
+import com.intiformation.gestion.immo.modele.ClasseStandard;
 import com.intiformation.gestion.immo.modele.Client;
 
 /**
@@ -39,6 +44,17 @@ public class ClientWSRestSpringWS {
 		this.clientRepository = clientRepository;
 	}
 	
+	//déclaration du repository classe standard et injection avec spring
+	@Autowired
+	private ClasseStandardRepository classeRepository;
+
+	/**
+	 * setter couche repository pour injection spring
+	 * @param clientRepository
+	 */
+	public void setClasseStandardRepository(ClasseStandardRepository classeRepository) {
+		this.classeRepository = classeRepository;
+	}
 	/*===============================================================================*/
 	/*============== Méthodes à exposer dans le web service REST ====================*/
 	/*===============================================================================*/
@@ -122,5 +138,19 @@ public class ClientWSRestSpringWS {
 		return new ResponseEntity<>(Boolean.TRUE, HttpStatus.OK);
 	
 	}//end deleteClientById
+	
+	/**
+	 * méthode exposée dans le ws rest pour récupérer la liste des clients interessés par une classe standard
+	 * renvoit les données en JSON 
+	 * invoquée avec une requête HTTP GET via url : http://localhost:8080/gestion-immo/clients/get-by-classe-standard/1
+	 * 
+	 */
+	
+	@RequestMapping(value="/get-by-classe/{id}", method=RequestMethod.GET)
+	public List<Client> listClientsByClass(@PathVariable("id") Long pIdClasse) {
+				
+		return clientRepository.findClientsByClasse(pIdClasse);
+	
+	}//end listClientsByClass
 
 }//end class

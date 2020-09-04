@@ -36,4 +36,5 @@ export class ClasseStandardService {
   deleteClasseStandard( idClasseStandard : number):Observable<void>{
     return this.httpClient.delete<void>(`${this.WS_REST_URL}/delete/${idClasseStandard}`)
   }
+  
 }
