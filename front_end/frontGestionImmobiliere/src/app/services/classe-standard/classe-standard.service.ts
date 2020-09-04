@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ClasseStandardService {
 
-  private WS_REST_URL;
+  private WS_REST_URL="http://localhost:8080/gestion-immo/classes";
 
   constructor(private httpClient : HttpClient) { }
 
@@ -22,11 +22,11 @@ export class ClasseStandardService {
   }
 
   getAllClasseStandard():Observable<ClasseStandard[]>{
-    return this.httpClient.get<ClasseStandard[]>(`${this.WS_REST_URL}/getAll`);
+    return this.httpClient.get<ClasseStandard[]>(`${this.WS_REST_URL}/getall`);
   }
 
   getClasseStandardById(idClasseStandard : number):Observable<ClasseStandard>{
-    return this.httpClient.get<ClasseStandard>(`${this.WS_REST_URL}/getById/${idClasseStandard}`);
+    return this.httpClient.get<ClasseStandard>(`${this.WS_REST_URL}/get-by-id/${idClasseStandard}`);
   }
 
   updateClasseStandard(pClasseStandard : ClasseStandard):Observable<void>{

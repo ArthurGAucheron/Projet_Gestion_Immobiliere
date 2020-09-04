@@ -1,1 +1,56 @@
-<p>create-visite works!</p>
+<h1>Formulaire {{(visite.idVisite==null)? "d'Ajout" : "de Modification"}}</h1>
+
+<form (ngSubmit)="saveOrUpdateVisite()">
+
+    <div class="col-md-10" style="margin: auto;margin-top:1rem;">
+
+        <!--Client-->
+        <label for="tbClient">Client : </label>
+        <select name="client" id="tbClient" class="custom-select" [(ngModel)]="idClient">
+            <option *ngFor="let client of listeClient" value="{{client.idClient}}">{{client.nom}}</option>
+        </select>
+
+        <!--Conseiller-->
+        <label for="tbConseiller">Conseiller : </label>
+        <select name="conseiller" id="tbConseiller" class="custom-select" [(ngModel)]="idConseiller" >
+            <option *ngFor="let conseiller of listeConseiller" value="{{conseiller.idConseiller}}">{{conseiller.nom}}</option>
+        </select>
+
+        <!--Bien Immobilier-->
+        <h4>Bien Immobilier : </h4>
+        <select name="bien" id="tbBien" class="custom-select" [(ngModel)]="idBien" >
+            <optgroup label="Achat" >
+                <ng-template ngFor let-bien [ngForOf]="listeBien">
+                    <option *ngIf="bien.statut=='à vendre'" value="{{bien.idBien}}">{{bien.libelle}}</option>
+                </ng-template>           
+            </optgroup>
+            <optgroup label="Location" >
+                <ng-template ngFor let-bien [ngForOf]="listeBien">
+                    <option *ngIf="bien.statut=='à louer'" value="{{bien.idBien}}">{{bien.libelle}}</option>
+                </ng-template>
+            </optgroup>
+        </select>
+
+    
+
+        <!--Date de visite-->
+        <label for="tbdate">Date : </label>          
+        <input type="datetime-local" name="dateVisite" id="tbdate" class="form-control" [(ngModel)]="visite.dateVisite"
+        pattern="(3[0-1]|[0-2][0-9])\/(1[0-2]|0[0-9])\/([0-9]{4}) (1[0-2]|0[0-9]):([0-5][0-9])" required>
+
+
+        <div style="margin: 3rem 0 3rem 0;">
+           Liste Conseiller : {{listeConseiller}}
+        </div>
+
+        <div style="margin: 3rem 0 3rem 0;">
+            {{visite.client}}||{{visite.conseillers}}||{{visite.bienImmobilier}}||{{visite.dateVisite}}
+        </div>
+
+        
+        <button type="submit" class="btn" style="background-color: #962d21; color:#ededed;">{{(visite.idVisite==null)? 'Créer RDV' : 'Modifier RDV'}}</button>
+        
+
+    </div>
+
+</form>

@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.intiformation.gestion.immo.dao.ClasseStandardRepository;
-import com.intiformation.gestion.immo.modele.Adresse;
-import com.intiformation.gestion.immo.modele.BienImmobilier;
 import com.intiformation.gestion.immo.modele.ClasseStandard;
 
 @CrossOrigin(value="http://localhost:4200")
@@ -108,7 +106,7 @@ public class ClasseStandardWSRestSpringWS {
 		classeToUpdate.setSuperficieMin(pClasse.getSuperficieMin());
 
 		// modification
-		classeRepository.save(classeToUpdate);
+		classeRepository.save(pClasse);
 
 		return new ResponseEntity<>(Boolean.TRUE, HttpStatus.OK);
 

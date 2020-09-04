@@ -8,18 +8,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIdentityReference;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 
 @Entity
 @Table(name = "classes")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idClasse", scope = Long.class)
 public class ClasseStandard {
 
 	// ______________propriétés______________
@@ -41,9 +39,15 @@ public class ClasseStandard {
 	@Column(name = "superficie_min")
 	private double superficieMin;
 	
-	@OneToMany(targetEntity=BienImmobilier.class, mappedBy="classe", cascade=CascadeType.REMOVE)
-	@JsonIgnoreProperties(value= {"classe","proprietaire","adresse","contrat"})
+	@OneToMany(targetEntity=BienImmobilier.class, mappedBy="classe", cascade= {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REMOVE})
+	@JsonIgnoreProperties(value= {"classe","contrat"})
 	private List<BienImmobilier> biensImmobilier;
+	
+	// association avec Clients : Many to Many (plusieurs clients pour
+	// plusieurs classes standards)
+	@ManyToMany(targetEntity=Client.class,mappedBy="classesStandard",cascade= {CascadeType.MERGE,CascadeType.PERSIST})
+	@JsonIgnoreProperties(value= {"biensImmobilier","classesStandard","visites","contrats"})
+	private List<Client> clients;
 
 	// ______________constructeurs______________
 
@@ -118,7 +122,18 @@ public class ClasseStandard {
 		this.biensImmobilier = biensImmobilier;
 	}
 	
+	public List<Client> getClients() {
+		return clients;
+	}
+
+	public void setClients(List<Client> clients) {
+		this.clients = clients;
+	}
+	
+	
+	
 	// ______________toString()______________
+
 
 	@Override
 	public String toString() {

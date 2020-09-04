@@ -1,1 +1,45 @@
-<p>liste-classe-standard works!</p>
+
+<h1 style="color: #d49625;margin: 1rem 0 2rem 4rem;font-weight: bold;">Classe Standard</h1>
+
+<h2 style="color: #333333;margin: 1rem 0 2rem 6rem;">Tableau des classes standards :</h2>
+
+<div class="card shadow mb-4" style="width: 97.5%; margin: auto;">
+  <div class="card-body">
+    <div class="table-responsive">
+      <table [dtTrigger]="dtTrigger" class="row-border hover" datatable  width="80%" cellspacing="0" style="margin: auto;">
+        <thead class="thead-blue">
+
+          <tr>
+            <th colspan="7"><a href="" (click)="navigateToAddClasseStandard($event)"><img width="25px" src="../../../../assets/images/file-earmark-plus.svg">Ajout Classe Standard</a></th>
+          </tr>
+
+
+          <tr style="background-color: #df4937;color:  #333333;">
+            <th scope="col">ID</th>
+            <th scope="col">Type</th>
+            <th scope="col">Offre</th>
+            <th scope="col">Prix Max</th>
+            <th scope="col">Superficie Min</th>
+            <th scope="col">Consulter</th>
+            <th scope="col">Supprimer</th>
+          </tr>
+        </thead>
+
+        <!-- données de la table -->
+        <tbody >
+          <tr *ngFor="let classeStandard of listeClasseStandard">
+            <td>{{classeStandard.idClasse}}</td>
+            <td>{{classeStandard.typeBiens}}</td>
+            <td>{{classeStandard.modeOffre}}</td>
+            <td>{{classeStandard.prixMax | prixClasseStandard : classeStandard.modeOffre}}</td>
+            <td>{{classeStandard.superficieMin | superficie : classeStandard.typeBiens}}</td>
+            <td class="tdCenter"><a href="" (click)="navigateToDetailsClasseStandard($event, classeStandard.idClasse)"><img width="25px" src="../../../../assets/images/search.svg"></a></td>
+            <td class="tdCenter"><a href="" (click)="deleteClasseStandard($event,classeStandard.idClasse)"><img width="25px" src="../../../../assets/images/trash2-fill.svg"></a></td>
+          </tr>
+        </tbody>
+        
+      </table>
+    </div>
+  </div>
+</div>
+

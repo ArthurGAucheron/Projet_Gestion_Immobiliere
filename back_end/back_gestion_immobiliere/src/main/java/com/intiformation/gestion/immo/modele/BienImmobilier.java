@@ -3,6 +3,7 @@ package com.intiformation.gestion.immo.modele;
 import java.io.Serializable;
 import java.util.Base64;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -16,7 +17,9 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -25,9 +28,6 @@ import javax.persistence.Transient;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIdentityReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -37,13 +37,13 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
+
 @Entity
 @Table(name ="biens_immobiliers")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(
 	    name="type",
 	    discriminatorType=DiscriminatorType.STRING)
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idBien", scope = Long.class)
 public abstract class BienImmobilier implements Serializable {
 
 	
@@ -115,10 +115,13 @@ public abstract class BienImmobilier implements Serializable {
 	private Contrat contrat;
 	
 
-	@OneToOne(mappedBy="bienImmobilier", cascade=CascadeType.REMOVE)
-	@JoinColumn(name="bien_id", referencedColumnName="id_bien")
-	@JsonIgnoreProperties(value= {"conseillers","bienImmobilier","client"})	
-	private Visite visite;
+	@OneToMany(mappedBy="bienImmobilier", cascade=CascadeType.REMOVE)
+	@JsonIgnoreProperties(value= {"conseillers","bienImmobilier"})	
+	private List<Visite> visite;
+	
+	@ManyToMany(mappedBy="biensImmobiliers")
+	@JsonIgnoreProperties(value= {"biensImmobiliers","classesStandard","visites","contrats"})
+	private List<Client> client;
 
 
 	// ______________constructeurs______________
@@ -285,13 +288,22 @@ public abstract class BienImmobilier implements Serializable {
 		this.statut = statut;
 	}
 
-	public Visite getVisite() {
+	public List<Visite> getVisite() {
 		return visite;
 	}
 
-	public void setVisite(Visite visite) {
+	public void setVisite(List<Visite> visite) {
 		this.visite = visite;
 	}
+
+	public List<Client> getClient() {
+		return client;
+	}
+
+	public void setClient(List<Client> client) {
+		this.client = client;
+	}
+
 	
 	
 	

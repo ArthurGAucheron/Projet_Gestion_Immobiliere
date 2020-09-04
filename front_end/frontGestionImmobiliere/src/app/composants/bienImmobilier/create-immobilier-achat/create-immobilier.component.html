@@ -1,0 +1,85 @@
+<div class="container-fluid">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{bienAchat.idBien ? "Modifier" : "Ajouter"}} un bien immobilier à vendre</h3>
+        </div>
+        <div class="container" style="padding-top: 15px; padding-bottom: 15px;">
+            <form (ngSubmit)="saveOrUpdateBien()">
+                <div class="panel-body">
+
+                    <div class="form-group">
+                        <label for="pLibelle">Titre du bien immobilier</label>
+                        <input type="text" id="pLibelle" class="form-control" [(ngModel)]="bienAchat.libelle" name="libelle"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pStatut">Statut</label>
+                        <input type="text" id="pStatut" class="form-control" [(ngModel)]="bienAchat.statut" value="A vendre" readonly="true"/>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="pDateMiseADispo"> Date de mise à disposition</label>
+                        <input type="date" id="pDateMiseADispo" class="form-control" [(ngModel)]="bienAchat.dateMiseADispo" name="dateMiseADispo"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pRevenuCadastral">Revenu cadastral (€)</label>
+                        <input type="text" id="pRevenuCadastral" class="form-control" [(ngModel)]="bienAchat.revenuCadastral" name="revenuCadastral"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pDescriptif">Descriptif du bien immobilier :</label>
+                        <textarea class="form-control" id="pDescriptif" rows="3" [(ngModel)]="bienAchat.descriptif" name="descriptif"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="pClasseStandart">Veuillez choisir une classe standart</label>
+                        <select>
+                            <option *ngFor="let classe of listeClasse" id="pClasseStandart" [(ngModel)]="bienAchat.classeStandard">{{classe}}</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pProprietaire">Propriétaire :</label>
+                        <select>
+                            <option *ngFor="let prop of listeProprietaire" id="pProprietaire" [(ngModel)]="bienAchat.prop">{{prop}}</option>
+                        </select>
+                    </div>
+                    <div style="border: 1px solid grey; padding:10px 10px 10px 10px; border-radius: 5px; ">
+                        <h3>Adresse du bien</h3>
+                        <div class="row">
+                            <div class="form-group col-sm-2"> 
+                                <label for="pNumero">Numero</label>
+                                <input type="text" id="pNumero" class="form-control" [(ngModel)]="bienAchat.adresse.numero" name="numero"/>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label for="pRue">Rue</label>
+                                <input type="text" id="pRue" class="form-control" [(ngModel)]="bienAchat.adresse.rue" name="rue"/>
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label for="pCP">Code Postal</label>
+                                <input type="text" id="pCP" class="form-control" [(ngModel)]="bienAchat.adresse.codePostal" name="CP"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-sm-6">
+                                <label for="pLocalite">Ville</label>
+                                <input type="text" id="pCP" class="form-control" [(ngModel)]="bienAchat.adresse.rue" name="localite"/>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label for="pPays">Pays</label>
+                                <input type="text" id="pPays" class="form-control" [(ngModel)]="bienAchat.adresse.pays" name="pays"/>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <button type="submit" class="btn btn-primary">{{bienAchat.idBien ? "Modifier" : "Ajouter"}}</button>
+                </div>
+        </form>
+        </div>
+    </div>  
+</div>
+
+
+

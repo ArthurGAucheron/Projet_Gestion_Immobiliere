@@ -1,0 +1,33 @@
+<div class="container-fluid">
+  <h1 style="color: #d49625;margin: 1rem 0 2rem 4rem;font-weight: bold;">Liste des biens Immobilier</h1>
+  <a routerLink="bienAchat/edit/0">Ajouter un bien</a>
+            <table  datatable  [dtTrigger]="dtTrigger" class="row-border hover" style="margin: auto;">
+              <!-- Header de la table -->
+              <thead class="thead-blue">
+                <tr style="background-color: #df4937;color:  #333333;">
+                  <th scope="col">id</th>
+                  <th scope="col">libelle</th>
+                  <th scope="col">statut</th>
+                  <th scope="col">proprietaire</th>
+                  <th scope="col">adresse</th>
+                  <th scope="col">Consulter</th>
+                </tr>
+              </thead>
+              <!-- données de la table -->
+              <tbody>
+                    <tr *ngFor="let bien of biens">
+                    <td>{{bien.idBien}}</td>
+                    <td>{{bien.libelle}}</td>
+                    <td> 
+                      <span *ngIf="bien.caution && !bien.contrat">à louer</span>
+                      <span *ngIf="bien.caution && bien.contrat">loué</span>
+                      <span *ngIf="bien.prix && !bien.contrat">à vendre</span>
+                      <span *ngIf="bien.prix && bien.contrat">vendu</span>
+                    </td>
+                    <td>{{bien.proprietaire.nom}}</td>
+                    <td>{{bien.adresse.numero}} {{bien.adresse.rue}} {{bien.adresse.codePostal}} {{bien.adresse.localite}} {{bien.adresse.pays}} </td>
+                    <td style="text-align: center;"><button class="btn btn-danger" (click)="consulterFiche(bien.idBien)">Consulter</button></td>
+                    </tr>
+              </tbody>
+            </table>
+</div>

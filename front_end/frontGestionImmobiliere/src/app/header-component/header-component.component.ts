@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticationService } from 'src/app/services/authentification.service';
 
 @Component({
   selector: 'app-header-component',
@@ -9,7 +8,7 @@ import { AuthenticationService } from 'src/app/services/authentification.service
 })
 export class HeaderComponentComponent implements OnInit {
 
-  constructor(public loginService:AuthenticationService, private router: Router ) { }
+  constructor(private router: Router ) { }
 
   ngOnInit() {
   }
@@ -22,4 +21,17 @@ export class HeaderComponentComponent implements OnInit {
     this.router.navigate(["client_list"])
   }
 
+  viewVisite(event:Event){
+    event.preventDefault();
+    this.router.navigate(["list/visite"]).then(() => window.location.reload() );
+  }
+
+  viewClasseStandard(event:Event){
+    event.preventDefault();
+    this.router.navigate(["list","classeStandard"]).then(() => window.location.reload() );
+  }
+  
+  viewBiens(){
+    this.router.navigate(["bienImmoAchat/list"]);
+  }
 }

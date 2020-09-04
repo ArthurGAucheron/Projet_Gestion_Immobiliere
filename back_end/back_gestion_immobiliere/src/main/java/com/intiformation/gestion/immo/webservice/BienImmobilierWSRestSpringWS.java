@@ -18,6 +18,7 @@ import com.intiformation.gestion.immo.dao.BienImmobilierRepository;
 import com.intiformation.gestion.immo.dao.ConseillerImmobilierRepository;
 import com.intiformation.gestion.immo.dao.ContratRepository;
 import com.intiformation.gestion.immo.modele.Adresse;
+
 import com.intiformation.gestion.immo.modele.BienImmobilier;
 import com.intiformation.gestion.immo.modele.ConseillerImmobilier;
 import com.intiformation.gestion.immo.modele.Contrat;

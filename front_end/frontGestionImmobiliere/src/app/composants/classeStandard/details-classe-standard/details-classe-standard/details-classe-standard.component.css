@@ -1,0 +1,26 @@
+img.imgBien{
+    float: left;
+    margin-right: 2rem; 
+}
+.imgModif{
+    width: 2rem;
+    margin-left: 1rem;
+    padding-bottom: 10px;
+}
+h1{
+    margin: 1rem 0 2rem 2rem;
+    color: #d49625;
+    
+}
+
+h2{
+    margin-bottom: 1rem;
+}
+h3{
+    margin-left: 2rem;
+    margin-bottom: 2rem;
+}
+
+#SCprincipal{
+    margin-bottom: 2rem;
+}
