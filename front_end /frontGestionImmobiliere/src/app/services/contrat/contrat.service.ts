@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class ContratService {
 
-  private WS_REST_URL : "http://localhost:8080/gestion-immo/contrats";
+  private WS_REST_URL : string = "http://localhost:8080/gestion-immo/contrats";
 
   constructor(private httpClient : HttpClient) { }
 

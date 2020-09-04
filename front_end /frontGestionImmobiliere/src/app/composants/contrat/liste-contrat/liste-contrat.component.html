@@ -24,13 +24,15 @@
         <!-- données de la table -->
         <tbody>
           <tr *ngFor="let contrat of contrats" >
-            <td>{{contrat.idContrat}}</td>
-            <td>{{contrat.prixAcquisition}}</td>
-            <td>{{contrat.dateAcquisition}}</td>
+            
+            <td><a (click)="selectContrat(contrat.idContrat)">{{contrat.idContrat}}</a></td>
+            <td>{{contrat.prixAcquisition}} €</td>
+            <td>{{contrat.dateAcquisition | date : 'd MMMM y' | lowercase }}</td>
             <td>{{contrat.bienImmobilier.libelle}}</td>
             <td>{{contrat.conseillers.nom}}</td>
+            <td>{{contrat.client.nom}}</td>
+            <td><button (click)="updateContrat(contrat.idContrat)">Consulter</button></td>
             <td><button (click)="deleteContrat(contrat.idContrat)">Supprimer</button></td>
-            <td><button (click)="updateContrat(contrat.idContrat)">Modifier</button></td>
           </tr>
         </tbody>
       </table>

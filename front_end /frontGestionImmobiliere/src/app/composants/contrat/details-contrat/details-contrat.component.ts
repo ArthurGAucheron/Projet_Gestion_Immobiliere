@@ -11,15 +11,15 @@ import { Client } from 'src/app/modeles/Client';
 })
 export class DetailsContratComponent implements OnInit {
 
-  contrat: Contrat;
+  contrats : Contrat;
   client : Client;
 
   constructor(private contratService: ContratService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     //recup du param id de l'url
-    this.activatedRoute.paramMap.subscribe(params => {
-      const id = +params.get("id");
+    this.activatedRoute.paramMap.subscribe(params => 
+      { const id = +params.get("id");
       this.findContratById(id);
     });
   }
@@ -31,7 +31,8 @@ export class DetailsContratComponent implements OnInit {
    */
   findContratById(id: number) {
     this.contratService.getContratById(id).subscribe(
-      data => this.contrat = data);
+      data => this.contrats = data
+    );
   }
 
 
