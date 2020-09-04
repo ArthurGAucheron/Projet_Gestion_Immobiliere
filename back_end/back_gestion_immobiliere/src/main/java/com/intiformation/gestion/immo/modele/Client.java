@@ -18,13 +18,8 @@ import javax.persistence.OneToMany;
 
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIdentityReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 
 /**
  * modèle de données pour un client
@@ -61,9 +56,9 @@ public class Client implements Serializable {
 
 	// association avec ClasseStandard : Many to Many (plusieurs clients pour
 	// plusieurs classes standards)
-	@ManyToMany
+	@ManyToMany(cascade= {CascadeType.MERGE,CascadeType.PERSIST})
 	@JoinTable(name = "clients_assoc_classe", joinColumns = @JoinColumn(name = "client_id"), inverseJoinColumns = @JoinColumn(name = "classe_id"))
-	@JsonIgnoreProperties(value= {"biensImmobilier"})
+	@JsonIgnoreProperties(value= {"biensImmobilier","clients"})
 	private List<ClasseStandard> classesStandard;
 
 	// association avec Visite : One to Many (un client pour plusieurs visites)

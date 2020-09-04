@@ -14,7 +14,7 @@ export class DetailsVisiteComponent implements OnInit {
     idVisite: null,
     dateVisite: null,
     client: null,
-    conseiller: null,
+    conseillers: null,
     bienImmobilier : null
   }
 

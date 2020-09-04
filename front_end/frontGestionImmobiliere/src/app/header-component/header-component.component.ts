@@ -15,13 +15,23 @@ export class HeaderComponentComponent implements OnInit {
   }
 
   viewProprietaire(){
-    this.router.navigate(["proprietaire_list"]);
+    this.router.navigate(["proprietaire_list"])
   }
 
   viewClient(){
-    this.router.navigate(["client_list"]);
+    this.router.navigate(["client_list"])
   }
 
+  viewVisite(event:Event){
+    event.preventDefault();
+    this.router.navigate(["list/visite"]).then(() => window.location.reload() );
+  }
+
+  viewClasseStandard(event:Event){
+    event.preventDefault();
+    this.router.navigate(["list","classeStandard"]).then(() => window.location.reload() );
+  }
+  
   viewBiens(){
     this.router.navigate(["bienImmoAchat/list"]);
   }

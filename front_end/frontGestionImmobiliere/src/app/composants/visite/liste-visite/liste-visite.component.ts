@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { VisiteService} from "src/app/services/visite/visite.service";
 import { Visite } from 'src/app/modeles/Visite';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-liste-visite',
@@ -13,10 +14,13 @@ export class ListeVisiteComponent implements OnInit {
 
   constructor(private visiteService:VisiteService, private router : Router) { }
 
-  listeVisite : Array<Visite>;
+  listeVisite : Array<Visite>=[];
+  dtTrigger: Subject<any> = new Subject();
 
 
   ngOnInit(): void {
+    this.visiteService.getAllVisiteFromWsRest().subscribe(data=>{this.listeVisite=data;
+                                                                this.dtTrigger.next();});
   }
 
   navigateToAddVisite(event: Event){
@@ -31,7 +35,11 @@ export class ListeVisiteComponent implements OnInit {
   
   deleteVisite(event : Event, visite : Visite){
     event.preventDefault();
-    this.visiteService.supprimerVisiteViaWsRest(visite).subscribe();
+    this.visiteService.supprimerVisiteViaWsRest(visite).subscribe(() => this.ngOnInit());
+  }
+
+  ngOnDestroy(): void {
+    this.dtTrigger.unsubscribe();
   }
 
 }

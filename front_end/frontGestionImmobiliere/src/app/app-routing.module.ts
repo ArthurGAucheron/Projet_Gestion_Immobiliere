@@ -24,6 +24,9 @@ import { AuthGuardService } from './guards/auth-guard.service';
 
 
 
+import{ListeAllClasseStandardService} from './services/Resolver/liste-all-classe-standard.service';
+import { DetailsVisiteComponent } from './composants/visite/details-visite/details-visite.component';
+
 const routes: Routes = [
 
    //URLs : gestion des CONTRATS
@@ -56,7 +59,7 @@ const routes: Routes = [
 
   {path:"edit/visite/:id", component:CreateVisiteComponent, /* canActivate:[AuthGuardService]*/},
   {path:"list/visite", component:ListeVisiteComponent, /* canActivate:[AuthGuardService]*/},
-  {path:"look/visite/:id", component:DetailsClasseStandardComponent, /* canActivate:[AuthGuardService]*/},
+  {path:"look/visite/:id", component:DetailsVisiteComponent, /* canActivate:[AuthGuardService]*/},
 
   
   

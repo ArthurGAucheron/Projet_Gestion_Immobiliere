@@ -1,30 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,OnDestroy } from '@angular/core';
 import { ClasseStandardService } from "src/app/services/classe-standard/classe-standard.service";
 import { ClasseStandard } from 'src/app/modeles/ClasseStandard';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-liste-classe-standard',
   templateUrl: './liste-classe-standard.component.html',
   styleUrls: ['./liste-classe-standard.component.css']
 })
-export class ListeClasseStandardComponent implements OnInit {
+export class ListeClasseStandardComponent implements OnDestroy,OnInit {
 
-  
-  listeClasseStandard  =[
-    { idClasse:1,typeBiens:"Maison",modeOffre:"Location",prixMax:300,superficieMin:55 }
-    ,{ idClasse:2,typeBiens:"Terrain",modeOffre:"Achat",prixMax:30000,superficieMin:75 }];
+  listeClasseStandard :ClasseStandard[] =[];
+  dtTrigger: Subject<any> = new Subject();
 
-  constructor(private classeStandardService : ClasseStandardService, private router : Router) { }
+  constructor(private classeStandardService : ClasseStandardService, private router : Router, private activatedRoute : ActivatedRoute) { }
 
   ngOnInit(): void {
-    //this.classeStandardService.getAllClasseStandard().subscribe(data=>this.listeClasseStandard=data);
+    this.classeStandardService.getAllClasseStandard()
+                              .subscribe(data=>{
+                                                this.listeClasseStandard=data;
+                                                this.dtTrigger.next();
+                                              });
   }
 
   deleteClasseStandard(event:Event , idClasseStandard : number){
     event.preventDefault();
     this.classeStandardService.deleteClasseStandard(idClasseStandard).subscribe(() => this.ngOnInit());
-    this.router.navigate(["list/classeStandard"]);
   }
 
   //Redirection
@@ -35,7 +37,11 @@ export class ListeClasseStandardComponent implements OnInit {
 
   navigateToDetailsClasseStandard(event:Event, idClasseStandard:number){
     event.preventDefault();
-    this.router.navigateByUrl("look/classeStandard/"+idClasseStandard);
+    this.router.navigateByUrl("look/classeStandard/"+idClasseStandard).then(() => window.location.reload() );
+  }
+
+  ngOnDestroy(): void {
+    this.dtTrigger.unsubscribe();
   }
 
 }

@@ -19,16 +19,8 @@ import javax.persistence.OneToMany;
 
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
-import com.fasterxml.jackson.annotation.JsonView;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 
 /**
  * modèle de données pour un propriétaire
@@ -64,7 +56,7 @@ public class Proprietaire implements Serializable {
 	//association avec BienImmobilier : One to Many (un propriétaire pour plusieurs bien immobilier)
 
 	@OneToMany(targetEntity=BienImmobilier.class, mappedBy="proprietaire", cascade=CascadeType.REMOVE)
-	@JsonIgnoreProperties(value= {"classe","proprietaire","adresse","contrat"})
+	@JsonIgnoreProperties(value= {"classe","proprietaire","visite", "client","contrat"})
 	private List<BienImmobilier> biensImmobiliers;
 
 

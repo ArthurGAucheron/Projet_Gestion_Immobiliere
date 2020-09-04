@@ -21,12 +21,12 @@ export class ClasseStandardService {
     return this.httpClient.post<void>(`${this.WS_REST_URL}/save`, pClasseStandard);
   }
 
-  getAllClasseStandard():Observable<any[]>{
-    return this.httpClient.get<any[]>(`${this.WS_REST_URL}/getall`);
+  getAllClasseStandard():Observable<ClasseStandard[]>{
+    return this.httpClient.get<ClasseStandard[]>(`${this.WS_REST_URL}/getall`);
   }
 
   getClasseStandardById(idClasseStandard : number):Observable<ClasseStandard>{
-    return this.httpClient.get<ClasseStandard>(`${this.WS_REST_URL}/getById/${idClasseStandard}`);
+    return this.httpClient.get<ClasseStandard>(`${this.WS_REST_URL}/get-by-id/${idClasseStandard}`);
   }
 
   updateClasseStandard(pClasseStandard : ClasseStandard):Observable<void>{

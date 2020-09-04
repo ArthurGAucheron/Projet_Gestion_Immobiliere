@@ -12,7 +12,7 @@
   <div class="card-body">
     
     
-      <table datatable class="row-border hover" style="margin: auto;">
+      <table datatable [dtTrigger]="dtTrigger" class="row-border hover" style="margin: auto;">
         <thead>
 
 
@@ -26,8 +26,8 @@
 
         <!-- données de la table -->
         <tbody>
-          <tr *ngFor="let proprio of proprietaires">
-            <td><a (click)="selectProprietaire(proprio.idProprietaire)">{{proprio.nom}}</a></td>
+          <tr *ngFor="let proprio of proprietaires" (click)="selectProprietaire(proprio.idProprietaire)">
+            <td>{{proprio.nom}}</td>
             <td>{{proprio.telPrive}}</td>
             <td>{{proprio.telTravail}}</td>
             <td>

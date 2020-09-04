@@ -23,14 +23,17 @@ export class CreateVisiteComponent implements OnInit {
     idVisite: null,
     dateVisite: null,
     client: null,
-    conseiller: null,
+    conseillers: null,
     bienImmobilier: null,
   };
 
+  idBien :number=0;
+  idConseiller:number = 0;
+  idClient ;number = 0;
+
   listeClient: Array<Client>;
   listeConseiller:Array<ConseillerImmobilier>;
-  listeBienAchat:Array<BienAchat>;
-  listeBienLocation:Array<BienLocation>;
+  listeBien:Array<BienAchat | BienLocation>;
 
   constructor(private visiteService:VisiteService,
               private conseillerService:ConseillerService,
@@ -46,22 +49,37 @@ export class CreateVisiteComponent implements OnInit {
       const id = +param.get("id");
       if (id!=0) {
         this.visiteService.findVisiteByIdFromWsRest(id).subscribe(toUpdate =>this.visite=toUpdate);
+      }else{
+        this.visite = {
+          idVisite: null,
+          dateVisite: null,
+          client: null,
+          conseillers: null,
+          bienImmobilier: null,
+        };
       }
     });
     this.clientService.getAllClientFromWsRest().subscribe(liste=>this.listeClient=liste);
     this.conseillerService.getAllConseillerFromWsRest().subscribe(liste=>this.listeConseiller=liste);
-    this.bienImmoService.getAllAchat().subscribe(liste=>this.listeBienAchat=liste);
-    this.bienImmoService.getAllLocation().subscribe(liste=>this.listeBienLocation=liste);
+    this.bienImmoService.getAllAchat().subscribe(liste=>this.listeBien=liste);
   }
 
+
+
   saveOrUpdateVisite(){
+    console.log(this.visite)
     if (this.visite.idVisite==null) {
+      this.clientService.findClientByIdFromWsRest(this.idClient).subscribe(data=>this.visite.client=data);
+      this.conseillerService.findConseillerByIdFromWsRest(this.idConseiller).subscribe(data=>this.visite.conseillers=data);
+      this.bienImmoService.getAchatById(this.idBien).subscribe(data=>this.visite.bienImmobilier=data);
+
+      console.log(this.visite);
       this.visiteService.ajouterVisiteViaWsRest(this.visite).subscribe();
     } else {
       this.visiteService.modifierVisiteViaWsRest(this.visite).subscribe();
       this.router.navigateByUrl("look/classeStandard/"+this.visite.idVisite);
     }
-    this.router.navigateByUrl("list/visite/");
+    this.router.navigateByUrl("list/visite");
     
   }
 

@@ -14,10 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.intiformation.gestion.immo.dao.ClientRepository;
-import com.intiformation.gestion.immo.dao.ContratRepository;
-import com.intiformation.gestion.immo.dao.VisiteRepository;
 import com.intiformation.gestion.immo.modele.Client;
-import com.intiformation.gestion.immo.modele.Visite;
 
 /**
  * implémentation d'un ws REST pour le client avec Spring Web Services

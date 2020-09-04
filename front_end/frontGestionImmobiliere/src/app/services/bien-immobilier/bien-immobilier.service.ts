@@ -47,12 +47,12 @@ export class BienImmobilierService {
   }
 
   getAllLocation():Observable<any[]>{
-    return this.httpClient.get<any[]>(`${this.WS_REST_URL}/getAll`);
+    return this.httpClient.get<any[]>(`${this.WS_REST_URL}/getall`);
   }
 
 
   getLocationById(idBienLocation : number):Observable<any>{
-    return this.httpClient.get<any>(`${this.WS_REST_URL}/getById/${idBienLocation}`);
+    return this.httpClient.get<any>(`${this.WS_REST_URL}/get-by-id/${idBienLocation}`);
   }
 
   updateLocation(pLocation : BienLocation):Observable<void>{

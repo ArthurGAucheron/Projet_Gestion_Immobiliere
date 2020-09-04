@@ -15,7 +15,10 @@ import { BienAchat } from 'src/app/modeles/BienAchat';
   templateUrl: './create-classe-standard.component.html',
   styleUrls: ['./create-classe-standard.component.css']
 })
+
 export class CreateClasseStandardComponent implements OnInit {
+
+  
 
   classeStandard = {
     idClasse : null,
@@ -24,13 +27,13 @@ export class CreateClasseStandardComponent implements OnInit {
     prixMax : null,
     superficieMin : null,
 
-    listeClients : null,
-    listeBienImmobilier : null
+    clients : null,
+    biensImmobilier : null
   };
 
   listeClientsAll : Array<Client> = [];
-  listeBienImmoLoc : Array<BienLocation> =[];
-  listeBienImmoAchat : Array<BienAchat> = [];
+  listeBien : Array<any> =[];
+  
 
   constructor(private classeStandardService : ClasseStandardService,
               private clientService : ClientService,
@@ -39,6 +42,7 @@ export class CreateClasseStandardComponent implements OnInit {
               private activatedRoute :ActivatedRoute) { }
 
   ngOnInit(): void {
+    
     this.activatedRoute.paramMap.subscribe(param => {
       
       const id = +param.get("id");
@@ -49,21 +53,37 @@ export class CreateClasseStandardComponent implements OnInit {
     });
 
     this.clientService.getAllClientFromWsRest().subscribe(liste=>this.listeClientsAll=liste);
-    this.bienImmoService.getAllLocation().subscribe(liste=>this.listeBienImmoLoc=liste);
-    this.bienImmoService.getAllAchat().subscribe(liste=>this.listeBienImmoAchat=liste);
-
+    this.bienImmoService.getAllLocation().subscribe(liste=>this.listeBien=liste);
   }
 
+  
+
   saveOrUpdateClasseStandard(){
+    let listeBienImmo : Array<any>=[];
+    let listeClient : Array<Client>=[];
+
     if (this.classeStandard.idClasse==null) {
+
+      this.classeStandard.biensImmobilier.forEach(element => {
+        this.bienImmoService.getAchatById(element).subscribe(data=>listeBienImmo.push(data));
+      });
+      this.classeStandard.biensImmobilier=listeBienImmo;
+
+      this.classeStandard.clients.forEach(element => {
+        this.clientService.findClientByIdFromWsRest(element).subscribe(data=>listeClient.push(data)); 
+      });
+      this.classeStandard.clients=listeClient;
+
+      console.log("Ajout")
+      console.log(this.classeStandard)
       this.classeStandardService.addClasseStandard(this.classeStandard).subscribe();
       
     } else {
 
       this.classeStandardService.updateClasseStandard(this.classeStandard).subscribe();
-      this.router.navigateByUrl("look/classeStandard/"+this.classeStandard.idClasse);
+      this.router.navigateByUrl("look/classeStandard/"+this.classeStandard.idClasse).then(() => window.location.reload());
     }
-    this.router.navigateByUrl("list/classeStandard/");
+    this.router.navigateByUrl("list/classeStandard");
   }
 
   fileToUpload: File = null;

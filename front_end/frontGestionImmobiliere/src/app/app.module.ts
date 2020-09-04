@@ -41,6 +41,8 @@ import { FicheImmobilierAchatComponent } from './composants/bienImmobilier/fiche
 import { ClientListComponent } from './composants/client/client-list/client-list.component';
 import { ClientCardComponent } from './composants/client/client-card/client-card.component';
 
+ 
+
 @NgModule({
   declarations: [
     AppComponent,
