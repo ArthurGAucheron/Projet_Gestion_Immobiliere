@@ -18,7 +18,7 @@ import com.intiformation.gestion.immo.modele.Contrat;
 
 /**
  * implémentation d'un web service REST pour les visites Url d'accès :
- * http://localhost:8080/gestion-immo/contrat/
+ * http://localhost:8080/gestion-immo/contrats/
  * 
  * @author giovanni
  *
