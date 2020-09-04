@@ -38,8 +38,9 @@ export class ListeContratComponent implements OnInit {
   }
 
   findAllContrat(){
-    this.contratService.getAllContrat().subscribe(data => { this.contrats = data;
-      this.dtTrigger.next()});
+    this.contratService.getAllContrat().subscribe(data => 
+      { this.contrats = data;
+        this.dtTrigger.next()});
   }
   
   updateContrat(idContrat : number ){
