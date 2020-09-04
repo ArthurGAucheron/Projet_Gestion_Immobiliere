@@ -8,29 +8,23 @@ import { ProprietaireListComponent } from './composants/proprietaire/proprietair
 import { ClientCreateComponent } from './composants/client/client-create/client-create.component';
 import { ClientListComponent } from './composants/client/client-list/client-list.component';
 import { ProprietaireCardComponent } from './composants/proprietaire/proprietaire-card/proprietaire-card.component';
-import { AuthGuard} from './guards/auth.guard';
-import { AppComponent } from "./app.component";
-import { LoginComponent } from "./guards/login/login.component";
-import { LogoutComponent } from "./guards/logout/logout.component";
+
 
 const routes: Routes = [
 
  
 
-  {path : 'public/accueil', component:AppComponent},
-  
-  {path : 'public/login',         component:LoginComponent},
-  {path : 'public/logout',        component:LogoutComponent},
+
  
   {path:"edit/contrat/:id", component:CreateContratComponent},
 
-  {path:"client_card/:id", component:ClientCardComponent, canActivate:[]},
-  {path:"client_edit/:id", component:ClientCreateComponent, canActivate:[]},
-  {path:"client_list", component:ClientListComponent, canActivate:[]},
+  {path:"client_card/:id", component:ClientCardComponent, /*canActivate:[]*/},
+  {path:"client_edit/:id", component:ClientCreateComponent, /*canActivate:[]*/},
+  {path:"client_list", component:ClientListComponent, /*canActivate:[]*/},
 
-  {path:"proprietaire_card/:id", component:ProprietaireCardComponent, canActivate:[]},
-  {path:"proprietaire_edit/:id", component:ProprietaireCreateComponent, canActivate:[]},
-  {path:"proprietaire_list", component:ProprietaireListComponent, canActivate:[]},
+  {path:"proprietaire_card/:id", component:ProprietaireCardComponent, /*canActivate:[]*/},
+  {path:"proprietaire_edit/:id", component:ProprietaireCreateComponent, /*canActivate:[]*/},
+  {path:"proprietaire_list", component:ProprietaireListComponent, /*canActivate:[]*/},
 ];
 
 @NgModule({

@@ -8,11 +8,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponentComponent } from './header-component/header-component.component';
 
-import { LoginComponent } from './guards/login/login.component';
-import { LogoutComponent } from './guards/logout/logout.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { BasicAuthHttpInterceptorService } from './services/basic-auth-http-interceptor.service';
-import { AuthGuard} from './guards/auth.guard';
+
 
 import { ProprietaireCreateComponent } from './composants/proprietaire/proprietaire-create/proprietaire-create.component';
 import { ProprietaireListComponent } from './composants/proprietaire/proprietaire-list/proprietaire-list.component';
@@ -31,13 +28,13 @@ import { ProprietaireCardComponent } from './composants/proprietaire/proprietair
 import { ClientListComponent } from './composants/client/client-list/client-list.component';
 import { ClientCardComponent } from './composants/client/client-card/client-card.component';
 import { ConseillerImmobilier } from './modeles/ConseillerImmobilier';
+import { TableauDeBordComponent } from './composants/tableau-de-bord/tableau-de-bord.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponentComponent,
-    LoginComponent,
-    LogoutComponent,
+  
 
     
     ProprietaireCreateComponent,
@@ -54,7 +51,8 @@ import { ConseillerImmobilier } from './modeles/ConseillerImmobilier';
     CreateVisiteComponent,
     ProprietaireCardComponent,
     ClientListComponent,
-    ClientCardComponent
+    ClientCardComponent,
+    TableauDeBordComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +63,6 @@ import { ConseillerImmobilier } from './modeles/ConseillerImmobilier';
   ],
   providers: [
     ConseillerImmobilier,
-    AuthGuard,{provide:HTTP_INTERCEPTORS, useClass:BasicAuthHttpInterceptorService, multi:true }
   ],
   bootstrap: [AppComponent]
 })

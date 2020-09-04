@@ -3,16 +3,20 @@ import { HttpClient } from "@angular/common/http";
 import { BienAchat } from "src/app/modeles/BienAchat";
 import { Observable } from 'rxjs';
 import { BienLocation } from "src/app/modeles/BienLocation";
+import { BienImmobilier } from 'src/app/modeles/BienImmobilier';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BienImmobilierService {
 
-  private WS_REST_URL = "";
+  private WS_REST_URL = "http://localhost:8080/gestion-immo/biens";
 
   constructor(private httpClient : HttpClient) { }
 
+  getAllBienByConseiller(pIdConseiller : number):Observable<BienImmobilier[]>{
+    return this.httpClient.get<BienImmobilier[]>(`${this.WS_REST_URL}/get-by-idConseiller/${pIdConseiller}`);
+  }
 
   /* =============================================================================== */
   /* ========================= CRUD BIEN A ACHETER ================================= */

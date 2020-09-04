@@ -11,10 +11,14 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.SQLUpdate;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 /**
@@ -50,18 +54,16 @@ public class ConseillerImmobilier {
 	 * Association OneToMany
 	 * One Conseillers To Many Visite
 	 */
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="conseillers")
-//	@JsonBackReference
-	@JsonIdentityReference(alwaysAsId=true)
+	@OneToMany(mappedBy="conseillers", cascade=CascadeType.REMOVE)
+	@JsonIgnoreProperties(value= {"client","bienImmobilier","conseillers"})
 	private List<Visite> visite;
 	
 	/**
 	 * Association OneToMany
 	 * One Conseillers To Many Contrat
 	 */
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="conseillers")
-//	@JsonBackReference
-	@JsonIdentityReference(alwaysAsId=true)
+	@OneToMany(mappedBy="conseillers")
+	@JsonIgnoreProperties(value= {"client","bienImmobilier","conseillers"})
 	private List<Contrat> contrat;
 	
 	////// Ctor /////
