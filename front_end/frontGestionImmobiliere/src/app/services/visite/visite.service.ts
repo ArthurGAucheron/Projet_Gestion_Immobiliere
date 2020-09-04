@@ -38,5 +38,9 @@ export class VisiteService {
   modifierVisiteViaWsRest(visite : Visite) : Observable<void>{
     return this.httpClient.put<void>(`${this.WS_REST_BASE_URL}/update/${visite.idVisite}`, visite);
   }
+
+  getVisiteByConseillerViaWsRest(idConseiller : number) : Observable<Visite[]>{
+    return this.httpClient.get<Visite[]>(`${this.WS_REST_BASE_URL}/get-rendez-vous/${idConseiller}`);
+  }
 }
 

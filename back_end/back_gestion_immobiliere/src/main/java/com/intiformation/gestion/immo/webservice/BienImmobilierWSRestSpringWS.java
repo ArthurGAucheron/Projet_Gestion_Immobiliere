@@ -2,8 +2,10 @@ package com.intiformation.gestion.immo.webservice;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.web.embedded.NettyWebServerFactoryCustomizer;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -13,7 +15,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.intiformation.gestion.immo.dao.BienImmobilierRepository;
+import com.intiformation.gestion.immo.dao.ClasseStandardRepository;
+import com.intiformation.gestion.immo.modele.Adresse;
 import com.intiformation.gestion.immo.modele.BienImmobilier;
+import com.intiformation.gestion.immo.modele.ClasseStandard;
+import com.intiformation.gestion.immo.dao.ConseillerImmobilierRepository;
+import com.intiformation.gestion.immo.dao.ContratRepository;
+import com.intiformation.gestion.immo.modele.Adresse;
+import com.intiformation.gestion.immo.modele.BienImmobilier;
+import com.intiformation.gestion.immo.modele.ConseillerImmobilier;
+import com.intiformation.gestion.immo.modele.Contrat;
 
 /**
  * implémentation d'un ws REST pour un bien immobilier avec Spring Web Services
@@ -30,15 +41,30 @@ public class BienImmobilierWSRestSpringWS {
 	// déclaration du repository et injection avec spring
 	@Autowired
 	private BienImmobilierRepository bienRepository;
+	
 
 	/**
 	 * setter couche repository pour injection spring
 	 * 
 	 * @param bienRepository
 	 */
-	public void setBienImmobilier(BienImmobilierRepository bienRepository) {
+	public void setBienImmobilierRepository(BienImmobilierRepository bienRepository) {
 		this.bienRepository = bienRepository;
 	}
+	
+	// déclaration du repository de classe standard et injection avec spring
+	@Autowired
+	private ClasseStandardRepository classeRepository;
+
+	/**
+	 * setter classeRepository pour injection spring
+	 * 
+	 * @param classeRepository
+	 */
+	public void setClasseRepository(ClasseStandardRepository classeRepository) {
+		this.classeRepository = classeRepository;
+	}
+
 
 	/*
 	 * =============================================================================
@@ -65,6 +91,7 @@ public class BienImmobilierWSRestSpringWS {
 
 	}// end listAllBiens
 
+
 	/**
 	 * méthode exposée dans le ws rest pour récupérer une adresse via son id
 	 * invoquée avec une requête HTTP GET via url :
@@ -82,6 +109,15 @@ public class BienImmobilierWSRestSpringWS {
 		} // end if
 
 		return bien;
+
+	}// end getBienById
+	
+	@RequestMapping(value = "/get-by-idConseiller/{id}", method = RequestMethod.GET)
+	public Set<BienImmobilier> getBienByConseillerId(@PathVariable("id") Long pIdConseiller) {
+
+		Set<BienImmobilier> listebiens = bienRepository.getBienByConseillerId(pIdConseiller);
+
+		return listebiens;
 
 	}// end getBienById
 
@@ -144,5 +180,17 @@ public class BienImmobilierWSRestSpringWS {
 
 	}// end deleteBienById
 	
+	/**
+	 * méthode exposée dans le ws rest pour récupérer la liste des biens par classe standard renvoit les
+	 * données en JSON invoquée avec une requête HTTP GET via url :
+	 * http://localhost:8080/gestion-immo/biens/getall
+	 * 
+	 */
+	@RequestMapping(value = "/get-by-classe/{id}", method = RequestMethod.GET)
+	public List<BienImmobilier> listAllBiensByClasse(@PathVariable("id") Long pIdClasse) {
+
+		return bienRepository.findBiensByIdClasse(pIdClasse);
+
+	}// end listAllBiensByClasse
 	
 }// end class

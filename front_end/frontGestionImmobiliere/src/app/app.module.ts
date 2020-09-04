@@ -40,6 +40,7 @@ import { ProprietaireCardComponent } from './composants/proprietaire/proprietair
 import { FicheImmobilierAchatComponent } from './composants/bienImmobilier/fiche-immobilier-achat/fiche-immobilier-achat.component';
 import { ClientListComponent } from './composants/client/client-list/client-list.component';
 import { ClientCardComponent } from './composants/client/client-card/client-card.component';
+import { TableauDeBordComponent } from './composants/tableau-de-bord/tableau-de-bord.component';
 
  
 
@@ -72,7 +73,8 @@ import { ClientCardComponent } from './composants/client/client-card/client-card
     ProprietaireCardComponent,
     FicheImmobilierAchatComponent,
     ClientListComponent,
-    ClientCardComponent
+    ClientCardComponent,
+    TableauDeBordComponent
   ],
   imports: [
     BrowserModule,
